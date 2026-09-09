@@ -1,0 +1,18 @@
+{
+    "a2_v2.py":  {
+                     "sha256":  "4a417fc266bc5b898d249389ce3492e54e3b76b37476d49d039c98ae59a7a9e7",
+                     "source":  "C:\\Users\\EDY\\Desktop\\new\\a2_v2.py"
+                 },
+    "claude_a2.py":  {
+                         "sha256":  "d298faf5e8eeddcefd99fca093045d4152cb5eb8fb3f253f5ead47bdbf8757d6",
+                         "source":  "D:\\Deepseek_herness\\2026-08\\diarization\\claude_a2.py"
+                     },
+    "denoise_frcrn.py":  {
+                             "sha256":  "218cc908d76e5133e33b022089cd78e7a467ba74847228459af080492afdf1aa",
+                             "source":  "D:\\Deepseek_herness\\2026-08\\diarization\\denoise_frcrn.py"
+                         },
+    "env_detect.py":  {
+                          "sha256":  "6290d584883f55d289a9197bd5bf5d99d283c281309770ab80d8d0f4fc420584",
+                          "source":  "D:\\Deepseek_herness\\2026-08\\diarization\\env_detect.py"
+                      }
+}
