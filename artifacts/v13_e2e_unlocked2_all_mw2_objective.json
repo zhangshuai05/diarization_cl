@@ -1,0 +1,138 @@
+{
+  "schema": "v13-e2e-unlocked2-v1",
+  "split": "all",
+  "root": "D:\\yinp\\AISHELL-4\\data\\train_L",
+  "min_win": 2,
+  "cap": 10,
+  "mode": "objective",
+  "rows": [
+    {
+      "meeting": "20200706_L_R001S01C01",
+      "eff_k": 6,
+      "base": {
+        "total_frames": 45973,
+        "missed": 0,
+        "false_alarm": 4323,
+        "confusion": 15105,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.094,
+        "confusion_rate": 0.3286,
+        "der": 0.4226,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 3,
+        "mapping": {
+          "v_1": "003-M",
+          "v_0": "004-M",
+          "v_2": "006-F"
+        },
+        "k": 3,
+        "level": "refined",
+        "n_segments": 230
+      },
+      "fixed": {
+        "total_frames": 45973,
+        "missed": 0,
+        "false_alarm": 4323,
+        "confusion": 15105,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.094,
+        "confusion_rate": 0.3286,
+        "der": 0.4226,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 3,
+        "mapping": {
+          "v_1": "003-M",
+          "v_0": "004-M",
+          "v_2": "006-F"
+        },
+        "k": 3,
+        "level": "refined",
+        "n_segments": 230
+      }
+    },
+    {
+      "meeting": "20200706_L_R001S02C01",
+      "eff_k": 5,
+      "base": {
+        "total_frames": 41779,
+        "missed": 0,
+        "false_alarm": 6433,
+        "confusion": 28597,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.154,
+        "confusion_rate": 0.6845,
+        "der": 0.8385,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 2,
+        "mapping": {
+          "v_0": "002-M",
+          "v_1": "005-F"
+        },
+        "k": 2,
+        "level": "refined",
+        "n_segments": 164
+      },
+      "fixed": {
+        "total_frames": 41779,
+        "missed": 0,
+        "false_alarm": 6433,
+        "confusion": 28597,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.154,
+        "confusion_rate": 0.6845,
+        "der": 0.8385,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 2,
+        "mapping": {
+          "v_0": "002-M",
+          "v_1": "005-F"
+        },
+        "k": 2,
+        "level": "refined",
+        "n_segments": 164
+      }
+    },
+    {
+      "meeting": "20200706_L_R001S03C01",
+      "eff_k": 4,
+      "base": {
+        "total_frames": 36984,
+        "missed": 0,
+        "false_alarm": 11074,
+        "confusion": 21213,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.2994,
+        "confusion_rate": 0.5736,
+        "der": 0.873,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 2,
+        "mapping": {
+          "v_0": "002-M",
+          "v_1": "004-M"
+        },
+        "k": 2,
+        "level": "refined",
+        "n_segments": 159
+      },
+      "fixed": {
+        "total_frames": 36984,
+        "missed": 0,
+        "false_alarm": 11074,
+        "confusion": 21213,
+        "miss_rate": 0.0,
+        "false_alarm_rate": 0.2994,
+        "confusion_rate": 0.5736,
+        "der": 0.873,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 2,
+        "mapping": {
+          "v_0": "002-M",
+          "v_1": "004-M"
+        },
+        "k": 2,
+        "level": "refined",
+        "n_segments": 159
+      }
+    }
+  ]
+}
