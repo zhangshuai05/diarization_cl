@@ -1,0 +1,673 @@
+{
+  "schema": "v13-selector-locks-split3-v1",
+  "rows": [
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "现状",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "只拆B(轮廓)",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "只拆C(分数门)",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆B+C",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 4,
+      "accuracy": 0.8757,
+      "der": 0.196,
+      "sizes": [
+        32,
+        273,
+        129,
+        113
+      ],
+      "eff_k": 5,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "现状",
+      "k": 1,
+      "accuracy": 0.4769,
+      "der": 0.5302,
+      "sizes": [
+        585
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "只拆B(轮廓)",
+      "k": 1,
+      "accuracy": 0.4769,
+      "der": 0.5302,
+      "sizes": [
+        585
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "只拆C(分数门)",
+      "k": 1,
+      "accuracy": 0.4769,
+      "der": 0.5302,
+      "sizes": [
+        585
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆B+C",
+      "k": 1,
+      "accuracy": 0.4769,
+      "der": 0.5302,
+      "sizes": [
+        585
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 5,
+      "accuracy": 0.932,
+      "der": 0.076,
+      "sizes": [
+        299,
+        189,
+        1,
+        86,
+        10
+      ],
+      "eff_k": 3,
+      "tiny": 1
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 5,
+      "accuracy": 0.932,
+      "der": 0.076,
+      "sizes": [
+        299,
+        189,
+        1,
+        86,
+        10
+      ],
+      "eff_k": 3,
+      "tiny": 1
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.7124,
+      "der": 0.2925,
+      "sizes": [
+        295,
+        291
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.7124,
+      "der": 0.2925,
+      "sizes": [
+        295,
+        291
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.7124,
+      "der": 0.2925,
+      "sizes": [
+        295,
+        291
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.7124,
+      "der": 0.2925,
+      "sizes": [
+        295,
+        291
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 5,
+      "accuracy": 0.932,
+      "der": 0.0696,
+      "sizes": [
+        186,
+        262,
+        91,
+        18,
+        29
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 5,
+      "accuracy": 0.932,
+      "der": 0.0696,
+      "sizes": [
+        186,
+        262,
+        91,
+        18,
+        29
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 2,
+      "accuracy": 0.8511,
+      "der": 0.2638,
+      "sizes": [
+        281,
+        243
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "现状",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "只拆B(轮廓)",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "只拆C(分数门)",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆B+C",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 3,
+      "accuracy": 0.9822,
+      "der": 0.0466,
+      "sizes": [
+        395,
+        51,
+        133
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 2,
+      "accuracy": 0.5778,
+      "der": 0.4579,
+      "sizes": [
+        355,
+        220
+      ],
+      "eff_k": 4,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "现状",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "只拆B(轮廓)",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "只拆C(分数门)",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆B+C",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 4,
+      "accuracy": 0.9815,
+      "der": 0.0587,
+      "sizes": [
+        12,
+        254,
+        68,
+        244
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "现状",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "只拆B(轮廓)",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "只拆C(分数门)",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆B+C",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 3,
+      "accuracy": 0.9115,
+      "der": 0.059,
+      "sizes": [
+        314,
+        223,
+        51
+      ],
+      "eff_k": 3,
+      "tiny": 0
+    }
+  ]
+}

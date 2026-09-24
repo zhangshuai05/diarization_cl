@@ -1,0 +1,285 @@
+{
+  "schema": "v13-pseudo-replication-v1",
+  "rows": [
+    {
+      "meeting": "L_R003S01C02",
+      "split": "dev",
+      "group": "L_R003C02",
+      "pair": [
+        "005-M",
+        "006-M"
+      ],
+      "cosine": 0.6654031872749329,
+      "group_size": 4,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 562
+    },
+    {
+      "meeting": "L_R003S02C02",
+      "split": "dev",
+      "group": "L_R003C02",
+      "pair": [
+        "006-M",
+        "007-M"
+      ],
+      "cosine": 0.7256662845611572,
+      "group_size": 3,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 545
+    },
+    {
+      "meeting": "L_R003S03C02",
+      "split": "dev",
+      "group": "L_R003C02",
+      "pair": [
+        "005-M",
+        "006-M"
+      ],
+      "cosine": 0.5577684044837952,
+      "group_size": 5,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 564
+    },
+    {
+      "meeting": "L_R003S04C02",
+      "split": "dev",
+      "group": "L_R003C02",
+      "pair": [
+        "005-M",
+        "006-M"
+      ],
+      "cosine": 0.6034892797470093,
+      "group_size": 4,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 539
+    },
+    {
+      "meeting": "M_R003S01C01",
+      "split": "dev",
+      "group": "M_R003C01",
+      "pair": [
+        "001-M",
+        "006-F"
+      ],
+      "cosine": 0.328063428401947,
+      "group_size": 2,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 570
+    },
+    {
+      "meeting": "M_R003S02C01",
+      "split": "dev",
+      "group": "M_R003C01",
+      "pair": [
+        "005-F",
+        "006-F"
+      ],
+      "cosine": 0.5466933846473694,
+      "group_size": 3,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 580
+    },
+    {
+      "meeting": "M_R003S04C01",
+      "split": "dev",
+      "group": "M_R003C01",
+      "pair": [
+        "005-F",
+        "006-F"
+      ],
+      "cosine": 0.7539891004562378,
+      "group_size": 4,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 576
+    },
+    {
+      "meeting": "M_R003S05C01",
+      "split": "dev",
+      "group": "M_R003C01",
+      "pair": [
+        "004-F",
+        "005-F"
+      ],
+      "cosine": 0.5578058958053589,
+      "group_size": 5,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 560
+    },
+    {
+      "meeting": "S_R004S01C01",
+      "split": "dev",
+      "group": "S_R004C01",
+      "pair": [
+        "002-F",
+        "003-F"
+      ],
+      "cosine": 0.483256995677948,
+      "group_size": 5,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 522
+    },
+    {
+      "meeting": "S_R004S02C01",
+      "split": "dev",
+      "group": "S_R004C01",
+      "pair": [
+        "001-M",
+        "004-F"
+      ],
+      "cosine": 0.2270895093679428,
+      "group_size": 2,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 585
+    },
+    {
+      "meeting": "S_R004S03C01",
+      "split": "dev",
+      "group": "S_R004C01",
+      "pair": [
+        "001-M",
+        "004-F"
+      ],
+      "cosine": 0.24779757857322693,
+      "group_size": 2,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 584
+    },
+    {
+      "meeting": "S_R004S04C01",
+      "split": "dev",
+      "group": "S_R004C01",
+      "pair": [
+        "001-M",
+        "004-F"
+      ],
+      "cosine": 0.44449472427368164,
+      "group_size": 2,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 583
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "split": "holdout",
+      "group": "L_R004C01",
+      "pair": [
+        "001-M",
+        "004-M"
+      ],
+      "cosine": 0.6563666462898254,
+      "group_size": 5,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 547
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "split": "holdout",
+      "group": "L_R004C01",
+      "pair": [
+        "001-M",
+        "002-M"
+      ],
+      "cosine": 0.522213339805603,
+      "group_size": 4,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 585
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "split": "holdout",
+      "group": "L_R004C01",
+      "pair": [
+        "001-M",
+        "005-F"
+      ],
+      "cosine": 0.4752811789512634,
+      "group_size": 5,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 586
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "split": "holdout",
+      "group": "L_R004C01",
+      "pair": [
+        "001-M",
+        "004-M"
+      ],
+      "cosine": 0.5530551671981812,
+      "group_size": 4,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 524
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "split": "holdout",
+      "group": "S_R003C01",
+      "pair": [
+        "001-M",
+        "005-M"
+      ],
+      "cosine": 0.34467825293540955,
+      "group_size": 3,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 579
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "split": "holdout",
+      "group": "S_R003C01",
+      "pair": [
+        "003-M",
+        "004-F"
+      ],
+      "cosine": 0.43076813220977783,
+      "group_size": 4,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 575
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "split": "holdout",
+      "group": "S_R003C01",
+      "pair": [
+        "001-M",
+        "005-M"
+      ],
+      "cosine": 0.33267372846603394,
+      "group_size": 3,
+      "n_merges": 1,
+      "has_merge": true,
+      "n_windows": 578
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "split": "holdout",
+      "group": "S_R003C01",
+      "pair": [
+        "001-M",
+        "005-M"
+      ],
+      "cosine": 0.2700365483760834,
+      "group_size": 3,
+      "n_merges": 0,
+      "has_merge": false,
+      "n_windows": 588
+    }
+  ]
+}

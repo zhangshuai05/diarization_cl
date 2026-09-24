@@ -1,0 +1,128 @@
+[
+  {
+    "id": "cer",
+    "source_type": "tex",
+    "source": "\\mathrm{CER} = \\frac{S + D + I}{N}",
+    "description": "Character error rate with substitution, deletion, insertion, and reference length."
+  },
+  {
+    "id": "pre_emphasis",
+    "source_type": "tex",
+    "source": "y_{n} = x_{n} - 0.97 x_{n-1}",
+    "description": "First-order pre-emphasis filter."
+  },
+  {
+    "id": "mel",
+    "source_type": "tex",
+    "source": "m = 2595 \\log_{10}(1 + f/700)",
+    "description": "Mel frequency mapping."
+  },
+  {
+    "id": "ctc_path",
+    "source_type": "tex",
+    "source": "P(y|x) = \\sum_{\\pi \\in B^{-1}(y)} \\prod_{t=1}^{T} P(\\pi_t|x)",
+    "description": "CTC path marginalisation."
+  },
+  {
+    "id": "der",
+    "source_type": "tex",
+    "source": "\\mathrm{DER} = \\frac{T_{miss} + T_{false} + T_{conf}}{T_{ref}}",
+    "description": "Diarization error rate decomposition."
+  },
+  {
+    "id": "fraunhofer",
+    "source_type": "tex",
+    "source": "r > \\frac{2D^2}{\\lambda}",
+    "description": "Fraunhofer far-field condition."
+  },
+  {
+    "id": "alias_limit",
+    "source_type": "tex",
+    "source": "f < \\frac{c}{2d}",
+    "description": "A simple spatial-aliasing upper bound."
+  },
+  {
+    "id": "rms",
+    "source_type": "tex",
+    "source": "\\mathrm{RMS} = \\sqrt{\\frac{1}{N} \\sum_{n=0}^{N-1} x_n^2}",
+    "description": "Root-mean-square amplitude for a finite frame."
+  },
+  {
+    "id": "dbfs",
+    "source_type": "tex",
+    "source": "\\mathrm{dBFS} = 20 \\log_{10}(\\mathrm{RMS})",
+    "description": "A normalized digital full-scale level."
+  },
+  {
+    "id": "snr",
+    "source_type": "tex",
+    "source": "\\mathrm{SNR} = 10 \\log_{10} \\frac{P_{signal}}{P_{noise}}",
+    "description": "Signal-to-noise ratio in decibels."
+  },
+  {
+    "id": "attention_prob",
+    "source_type": "tex",
+    "source": "P(y_i \\mid y_1, \\ldots, y_{i-1}, H)",
+    "description": "The autoregressive AED conditional probability."
+  },
+  {
+    "id": "posterior_fusion",
+    "source_type": "tex",
+    "source": "S(s \\mid x) = \\lambda_v f_{voice}(s,x) + \\lambda_d f_{doa}(s,x) + \\lambda_t f_{time}(s,x) + \\lambda_a f_{active}(s,x)",
+    "description": "A weighted speaker-evidence score, deliberately not presented as a calibrated probability."
+  },
+  {
+    "id": "core_ascii",
+    "source_type": "tex",
+    "source": "\\mathrm{Audio} + \\mathrm{Model} + \\mathrm{Evaluation}",
+    "description": "ASCII companion for the Chinese core-system slogan."
+  },
+  {
+    "id": "engineer_core",
+    "source_type": "tex",
+    "source": "\\mathrm{Evidence} + \\mathrm{Model} + \\mathrm{Constraints} + \\mathrm{Evaluation}",
+    "description": "The four-part engineering loop used throughout the new textbook."
+  },
+  {
+    "id": "erle",
+    "source_type": "tex",
+    "source": "\\mathrm{ERLE} = 10 \\log_{10} \\frac{P_{echo}}{P_{residual}}",
+    "description": "Echo return loss enhancement, used as a diagnostic rather than a complete quality score."
+  },
+  {
+    "id": "si_sdr",
+    "source_type": "tex",
+    "source": "\\alpha = \\frac{\\langle \\hat{s},s \\rangle}{\\|s\\|^2},\\quad s_{target}=\\alpha s,\\quad e_{res}=\\hat{s}-s_{target},\\quad \\mathrm{SI} - \\mathrm{SDR}=10\\log_{10}\\frac{\\|s_{target}\\|^2}{\\|e_{res}\\|^2}",
+    "description": "SI-SDR with the projection coefficient, scale-adjusted target, and residual explicitly defined."
+  },
+  {
+    "id": "rtf",
+    "source_type": "tex",
+    "source": "\\mathrm{RTF} = \\frac{t_{compute}}{t_{audio}}",
+    "description": "Real-time factor."
+  },
+  {
+    "id": "latency_budget",
+    "source_type": "tex",
+    "source": "L_{e2e}=L_{capture}+L_{frame}+L_{frontend}+L_{model}+L_{decode}+L_{queue}+L_{network}+L_{stabilize}+L_{present}",
+    "description": "A complete additive budget from audio capture through framing, processing, stabilization, and user presentation."
+  },
+  {
+    "id": "quantization",
+    "source_type": "tex",
+    "source": "x_{fp32} \\approx s(q - z)",
+    "description": "The affine relationship used for integer quantization."
+  },
+  {
+    "id": "beamformer",
+    "source_type": "tex",
+    "source": "y(t) = \\sum_{m=1}^{M} w_m x_m(t - \\tau_m)",
+    "description": "A delay-and-sum beamformer expression."
+  },
+  {
+    "id": "kws_far",
+    "source_type": "tex",
+    "source": "\\mathrm{FAR} = \\frac{N_{false\\ alarm}}{T_{non\\ target}}",
+    "description": "False alarm rate per unit non-target time."
+  }
+]

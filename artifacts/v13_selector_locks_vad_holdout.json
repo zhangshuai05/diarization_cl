@@ -1,0 +1,720 @@
+{
+  "schema": "v13-selector-locks-vad-v1",
+  "split": "holdout",
+  "rows": [
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "现状",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "只拆B(轮廓)",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "只拆C(分数门)",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆B+C",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 4,
+      "accuracy": 0.7954,
+      "der": 0.2006,
+      "sizes": [
+        31,
+        239,
+        74,
+        114
+      ],
+      "eff_k": 5,
+      "n_windows": 458,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 2,
+      "accuracy": 0.7878,
+      "der": 0.2247,
+      "sizes": [
+        383,
+        195
+      ],
+      "eff_k": 3,
+      "n_windows": 578,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.6707,
+      "der": 0.2981,
+      "sizes": [
+        285,
+        248
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.6707,
+      "der": 0.2981,
+      "sizes": [
+        285,
+        248
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.6707,
+      "der": 0.2981,
+      "sizes": [
+        285,
+        248
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.6707,
+      "der": 0.2981,
+      "sizes": [
+        285,
+        248
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 5,
+      "accuracy": 0.8908,
+      "der": 0.0749,
+      "sizes": [
+        181,
+        219,
+        86,
+        18,
+        29
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 5,
+      "accuracy": 0.8908,
+      "der": 0.0749,
+      "sizes": [
+        181,
+        219,
+        86,
+        18,
+        29
+      ],
+      "eff_k": 4,
+      "n_windows": 533,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 2,
+      "accuracy": 0.8247,
+      "der": 0.2649,
+      "sizes": [
+        245,
+        232
+      ],
+      "eff_k": 3,
+      "n_windows": 477,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "现状",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "只拆B(轮廓)",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "只拆C(分数门)",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆B+C",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 3,
+      "accuracy": 0.9797,
+      "der": 0.0456,
+      "sizes": [
+        387,
+        50,
+        131
+      ],
+      "eff_k": 3,
+      "n_windows": 568,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "现状",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "只拆B(轮廓)",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "只拆C(分数门)",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆B+C",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 4,
+      "accuracy": 0.9751,
+      "der": 0.0482,
+      "sizes": [
+        177,
+        166,
+        57,
+        150
+      ],
+      "eff_k": 4,
+      "n_windows": 550,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "现状",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "只拆B(轮廓)",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "只拆C(分数门)",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆B+C",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 2,
+      "accuracy": 0.8474,
+      "der": 0.1845,
+      "sizes": [
+        242,
+        319
+      ],
+      "eff_k": 3,
+      "n_windows": 561,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "现状",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "只拆B(轮廓)",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "只拆C(分数门)",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆B+C",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆A+B+C(=上版)",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "rule": "拆A+B(留分数门)",
+      "k": 3,
+      "accuracy": 0.9093,
+      "der": 0.0586,
+      "sizes": [
+        309,
+        221,
+        51
+      ],
+      "eff_k": 3,
+      "n_windows": 581,
+      "gate": "vad"
+    }
+  ]
+}

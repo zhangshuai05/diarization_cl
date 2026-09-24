@@ -1,0 +1,59 @@
+{
+  "schema": "v13-refine-isolation-v1",
+  "split": "holdout",
+  "mode": "largest_eligible",
+  "cap": 8,
+  "min_win": 2,
+  "rows": [
+    {
+      "meeting": "L_R004S02C01",
+      "eff_k": 3,
+      "on": {
+        "total_frames": 51448,
+        "missed": 20,
+        "false_alarm": 790,
+        "confusion": 3789,
+        "miss_rate": 0.0004,
+        "false_alarm_rate": 0.0154,
+        "confusion_rate": 0.0736,
+        "der": 0.0894,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 8,
+        "mapping": {
+          "v_3": "001-M",
+          "v_2": "005-F",
+          "v_1": "002-M",
+          "v_7": "006-F",
+          "v_5": "004-M",
+          "v_0": "007-M",
+          "v_6": "003-M"
+        },
+        "k": 8,
+        "level": "refined"
+      },
+      "off": {
+        "total_frames": 51448,
+        "missed": 75,
+        "false_alarm": 790,
+        "confusion": 2470,
+        "miss_rate": 0.0015,
+        "false_alarm_rate": 0.0154,
+        "confusion_rate": 0.048,
+        "der": 0.0648,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 8,
+        "mapping": {
+          "v_3": "001-M",
+          "v_2": "005-F",
+          "v_1": "002-M",
+          "v_7": "006-F",
+          "v_0": "007-M",
+          "v_5": "004-M"
+        },
+        "k": 8,
+        "level": "2s-only"
+      }
+    }
+  ],
+  "note": "原名 v13_refine_isolation_holdout.json 有误导：只含单场 L_R004S02C01；已按规范名另存。"
+}

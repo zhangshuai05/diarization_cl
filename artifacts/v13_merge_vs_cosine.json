@@ -1,0 +1,518 @@
+{
+  "schema": "v13-merge-vs-cosine-v1",
+  "rows": [
+    {
+      "meeting": "L_R003S01C02",
+      "split": "dev",
+      "k": 4,
+      "n_windows": 562,
+      "n_speakers": 4,
+      "merged_pair": [
+        "005-M",
+        "006-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 373,
+      "merged_ratio": 0.517,
+      "pair_all": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_all": 0.665,
+      "pair_large": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_large": 0.665,
+      "cos_inside": 0.665,
+      "agree_all": true,
+      "agree_large": true
+    },
+    {
+      "meeting": "L_R003S02C02",
+      "split": "dev",
+      "k": 3,
+      "n_windows": 545,
+      "n_speakers": 3,
+      "merged_pair": [
+        "005-M",
+        "006-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 514,
+      "merged_ratio": 0.71,
+      "pair_all": [
+        "006-M",
+        "007-M"
+      ],
+      "cos_all": 0.726,
+      "pair_large": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_large": 0.545,
+      "cos_inside": 0.545,
+      "agree_all": false,
+      "agree_large": true
+    },
+    {
+      "meeting": "L_R003S03C02",
+      "split": "dev",
+      "k": 3,
+      "n_windows": 564,
+      "n_speakers": 5,
+      "merged_pair": [
+        "005-M",
+        "006-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 398,
+      "merged_ratio": 0.668,
+      "pair_all": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_all": 0.558,
+      "pair_large": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_large": 0.558,
+      "cos_inside": 0.558,
+      "agree_all": true,
+      "agree_large": true
+    },
+    {
+      "meeting": "L_R003S04C02",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 539,
+      "n_speakers": 4,
+      "merged_pair": [
+        "005-M",
+        "006-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 523,
+      "merged_ratio": 0.593,
+      "pair_all": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_all": 0.603,
+      "pair_large": [
+        "005-M",
+        "006-M"
+      ],
+      "cos_large": 0.603,
+      "cos_inside": 0.603,
+      "agree_all": true,
+      "agree_large": true
+    },
+    {
+      "meeting": "M_R003S01C01",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 570,
+      "n_speakers": 2,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "006-F"
+      ],
+      "cos_all": 0.328,
+      "pair_large": [
+        "001-M",
+        "006-F"
+      ],
+      "cos_large": 0.328,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "M_R003S02C01",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 580,
+      "n_speakers": 3,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "005-F",
+        "006-F"
+      ],
+      "cos_all": 0.547,
+      "pair_large": [
+        "001-M",
+        "006-F"
+      ],
+      "cos_large": 0.344,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "M_R003S04C01",
+      "split": "dev",
+      "k": 4,
+      "n_windows": 576,
+      "n_speakers": 4,
+      "merged_pair": [
+        "004-F",
+        "006-F"
+      ],
+      "n_merges": 1,
+      "merged_windows": 293,
+      "merged_ratio": 0.481,
+      "pair_all": [
+        "005-F",
+        "006-F"
+      ],
+      "cos_all": 0.754,
+      "pair_large": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_large": 0.47,
+      "cos_inside": 0.729,
+      "agree_all": false,
+      "agree_large": false
+    },
+    {
+      "meeting": "M_R003S05C01",
+      "split": "dev",
+      "k": 4,
+      "n_windows": 560,
+      "n_speakers": 5,
+      "merged_pair": [
+        "004-F",
+        "006-F"
+      ],
+      "n_merges": 1,
+      "merged_windows": 472,
+      "merged_ratio": 0.428,
+      "pair_all": [
+        "004-F",
+        "005-F"
+      ],
+      "cos_all": 0.558,
+      "pair_large": [
+        "004-F",
+        "005-F"
+      ],
+      "cos_large": 0.558,
+      "cos_inside": 0.507,
+      "agree_all": false,
+      "agree_large": false
+    },
+    {
+      "meeting": "S_R004S01C01",
+      "split": "dev",
+      "k": 5,
+      "n_windows": 522,
+      "n_speakers": 5,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "002-F",
+        "003-F"
+      ],
+      "cos_all": 0.483,
+      "pair_large": [
+        "001-M",
+        "005-F"
+      ],
+      "cos_large": 0.409,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "S_R004S02C01",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 585,
+      "n_speakers": 2,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_all": 0.227,
+      "pair_large": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_large": 0.227,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "S_R004S03C01",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 584,
+      "n_speakers": 2,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_all": 0.248,
+      "pair_large": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_large": 0.248,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "S_R004S04C01",
+      "split": "dev",
+      "k": 2,
+      "n_windows": 583,
+      "n_speakers": 2,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_all": 0.444,
+      "pair_large": [
+        "001-M",
+        "004-F"
+      ],
+      "cos_large": 0.444,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "L_R004S01C01",
+      "split": "holdout",
+      "k": 5,
+      "n_windows": 547,
+      "n_speakers": 5,
+      "merged_pair": [
+        "001-M",
+        "004-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 273,
+      "merged_ratio": 0.799,
+      "pair_all": [
+        "001-M",
+        "004-M"
+      ],
+      "cos_all": 0.656,
+      "pair_large": [
+        "001-M",
+        "005-F"
+      ],
+      "cos_large": 0.472,
+      "cos_inside": 0.656,
+      "agree_all": true,
+      "agree_large": false
+    },
+    {
+      "meeting": "L_R004S02C01",
+      "split": "holdout",
+      "k": 3,
+      "n_windows": 585,
+      "n_speakers": 4,
+      "merged_pair": [
+        "001-M",
+        "002-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 385,
+      "merged_ratio": 0.738,
+      "pair_all": [
+        "001-M",
+        "002-M"
+      ],
+      "cos_all": 0.522,
+      "pair_large": [
+        "001-M",
+        "005-F"
+      ],
+      "cos_large": 0.511,
+      "cos_inside": 0.522,
+      "agree_all": true,
+      "agree_large": false
+    },
+    {
+      "meeting": "L_R004S03C01",
+      "split": "holdout",
+      "k": 4,
+      "n_windows": 586,
+      "n_speakers": 5,
+      "merged_pair": [
+        "002-M",
+        "007-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 277,
+      "merged_ratio": 0.603,
+      "pair_all": [
+        "001-M",
+        "005-F"
+      ],
+      "cos_all": 0.475,
+      "pair_large": [
+        "002-M",
+        "005-F"
+      ],
+      "cos_large": 0.371,
+      "cos_inside": 0.436,
+      "agree_all": false,
+      "agree_large": false
+    },
+    {
+      "meeting": "L_R004S06C01",
+      "split": "holdout",
+      "k": 3,
+      "n_windows": 524,
+      "n_speakers": 4,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "004-M"
+      ],
+      "cos_all": 0.553,
+      "pair_large": [
+        "003-M",
+        "004-M"
+      ],
+      "cos_large": 0.246,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "S_R003S01C01",
+      "split": "holdout",
+      "k": 3,
+      "n_windows": 579,
+      "n_speakers": 3,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "005-M"
+      ],
+      "cos_all": 0.345,
+      "pair_large": [
+        "001-M",
+        "003-M"
+      ],
+      "cos_large": 0.084,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    },
+    {
+      "meeting": "S_R003S02C01",
+      "split": "holdout",
+      "k": 4,
+      "n_windows": 575,
+      "n_speakers": 4,
+      "merged_pair": [
+        "003-M",
+        "004-F"
+      ],
+      "n_merges": 1,
+      "merged_windows": 218,
+      "merged_ratio": 0.711,
+      "pair_all": [
+        "003-M",
+        "004-F"
+      ],
+      "cos_all": 0.431,
+      "pair_large": [
+        "001-M",
+        "005-M"
+      ],
+      "cos_large": 0.43,
+      "cos_inside": 0.431,
+      "agree_all": true,
+      "agree_large": false
+    },
+    {
+      "meeting": "S_R003S03C01",
+      "split": "holdout",
+      "k": 3,
+      "n_windows": 578,
+      "n_speakers": 3,
+      "merged_pair": [
+        "001-M",
+        "005-M"
+      ],
+      "n_merges": 1,
+      "merged_windows": 322,
+      "merged_ratio": 0.786,
+      "pair_all": [
+        "001-M",
+        "005-M"
+      ],
+      "cos_all": 0.333,
+      "pair_large": [
+        "002-F",
+        "005-M"
+      ],
+      "cos_large": 0.181,
+      "cos_inside": 0.333,
+      "agree_all": true,
+      "agree_large": false
+    },
+    {
+      "meeting": "S_R003S04C01",
+      "split": "holdout",
+      "k": 3,
+      "n_windows": 588,
+      "n_speakers": 3,
+      "merged_pair": null,
+      "n_merges": 0,
+      "merged_windows": null,
+      "merged_ratio": null,
+      "pair_all": [
+        "001-M",
+        "005-M"
+      ],
+      "cos_all": 0.27,
+      "pair_large": [
+        "003-M",
+        "005-M"
+      ],
+      "cos_large": 0.216,
+      "cos_inside": null,
+      "agree_all": null,
+      "agree_large": null
+    }
+  ]
+}

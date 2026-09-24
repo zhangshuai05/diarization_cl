@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>3A &amp; VAD 处理链演示</title>
+<style>
+  :root { --blue:#2456a6; --ink:#2b3a4a; --bg:#f7f9fc; --panel:#fff; --line:#dfe6ef; --red:#c0392b; --green:#1e8e5a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI", "Microsoft YaHei", sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:10px 18px 6px; }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .sub { font-size:12px; color:#667; }
+  .warn { display:inline-block; margin-top:4px; font-size:12px; color:var(--red); }
+  .layout { display:flex; gap:12px; padding:6px 18px 18px; }
+  .main { flex:1 1 66%; }
+  .side { flex:1 1 34%; min-width:300px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px; margin-bottom:12px; }
+  .card h2 { font-size:13px; margin:0 0 8px; color:var(--blue); }
+  canvas { width:100%; display:block; background:#fff; border:1px solid var(--line); border-radius:6px; }
+  #wave { height:200px; } #spec { height:110px; margin-top:8px; }
+  .controls { display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+  button { border:1px solid var(--blue); background:#fff; color:var(--blue); border-radius:6px; padding:5px 14px; cursor:pointer; font-size:13px; }
+  button:hover { background:#eef3fb; }
+  button.primary { background:var(--blue); color:#fff; }
+  select, input[type=file] { font-size:12px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 14px; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:13px; }
+  .row span.name { color:#444; }
+  input[type=range] { width:110px; }
+  .val { width:52px; text-align:right; font-family:Consolas, monospace; font-size:12px; }
+  input[type=number] { width:64px; font-size:12px; }
+  .group { margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); }
+  .metrics { font-size:13px; line-height:1.7; }
+  .metrics b { color:var(--blue); }
+  .bad { color:var(--red); } .good { color:var(--green); }
+  table { width:100%; border-collapse:collapse; font-size:12px; margin-top:6px; }
+  th, td { border-bottom:1px solid var(--line); padding:3px 6px; text-align:left; }
+  th { color:#667; font-weight:600; }
+  #status { font-size:12px; color:#667; margin-top:6px; }
+  .tip { font-size:12px; color:#445; line-height:1.65; }
+  .src-row { display:flex; gap:10px; align-items:center; font-size:12px; margin-bottom:6px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+<header>
+  <h1>3A &amp; VAD 处理链演示：回声/噪声 → AEC(NLMS) → ANS(谱减) → AGC → VAD</h1>
+  <div class="sub">近端说话人 x + 远端参考 r，麦克风收到 x + 回声(g·r延迟) + 噪声。改参数即时重算；拖动滑块观察每级波形/频谱/指标的变化。</div>
+  <span class="warn">⚠ 提醒：SNR/AEC 数字变好 ≠ 识别质量变好（见底部说明）。</span>
+</header>
+
+<div class="layout">
+  <div class="main">
+    <div class="card">
+      <h2>波形与频谱（上=所选阶段波形，下=平均幅度谱，绿色底纹= VAD 段）</h2>
+      <canvas id="wave" width="1600" height="400"></canvas>
+      <canvas id="spec" width="1600" height="220"></canvas>
+      <div class="controls">
+        <button id="play" class="primary">▶ 播放</button>
+        <label>阶段
+          <select id="stage">
+            <option value="near">近端 x</option>
+            <option value="echo">回声 g·r(延时)</option>
+            <option value="mix">麦克风输入(混音)</option>
+            <option value="aec">AEC 输出</option>
+            <option value="ans">ANS 输出</option>
+            <option value="agc" selected>AGC 输出(链路尾)</option>
+          </select>
+        </label>
+        <button id="download">保存当前 wav</button>
+        <div id="status">就绪</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>指标（各阶段对照）</h2>
+      <div class="metrics" id="metrics">等待计算…</div>
+    </div>
+    <div class="card">
+      <h2>VAD 分段（能量法，作用在链路尾信号上）</h2>
+      <table id="segtable"><thead><tr><th>#</th><th>起(s)</th><th>止(s)</th><th>时长(ms)</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card">
+      <h2>信号源</h2>
+      <div class="src-row">
+        <label>近端 x：<input type="file" id="fileNear" accept=".wav"></label>
+        <button id="demoNear">用演示音频</button>
+      </div>
+      <div class="src-row">
+        <label>远端 r(参考)：<input type="file" id="fileFar" accept=".wav"></label>
+        <button id="demoFar">用演示音频</button>
+      </div>
+      <div class="tip">演示音频=系统 TTS 合成的 16k wav（近端/远端各一段），放在 fe/demo_audio*.js。</div>
+    </div>
+
+    <div class="card">
+      <h2>干扰（"厨房"：构造麦克风输入）</h2>
+      <div class="grid">
+        <div class="row"><span class="name">回声延迟</span><input type="range" id="p_delay" min="0" max="1000" step="10" value="150"><span class="val" id="v_delay">150 ms</span></div>
+        <div class="row"><span class="name">回声增益</span><input type="range" id="p_gain" min="-40" max="0" step="1" value="-8"><span class="val" id="v_gain">-8 dB</span></div>
+        <div class="row"><span class="name">噪声类型</span><select id="p_noise"><option value="none">无</option><option value="white">白噪声</option><option value="pink">粉红噪声</option></select></div>
+        <div class="row"><span class="name">噪声 SNR</span><input type="range" id="p_snr" min="0" max="30" step="1" value="15"><span class="val" id="v_snr">15 dB</span></div>
+      </div>
+      <div class="tip">AEC 滤波器长度需 ≥ 回声延迟采样数(delay×16)，否则盖不到回声位置。</div>
+    </div>
+
+    <div class="card">
+      <h2>处理链（3A + VAD）</h2>
+      <div class="grid">
+        <div class="row"><span class="name">AEC 开关</span><input type="checkbox" id="p_aecOn" checked></div>
+        <div class="row"><span class="name">滤波长度</span><input type="number" id="p_aecLen" min="256" max="4096" step="256" value="2048"></div>
+        <div class="row"><span class="name">步长 μ</span><input type="range" id="p_mu" min="0.01" max="0.8" step="0.01" value="0.3"><span class="val" id="v_mu">0.30</span></div>
+        <div class="row"><span class="name">ANS 开关</span><input type="checkbox" id="p_ansOn" checked></div>
+        <div class="row"><span class="name">降噪强度</span><input type="range" id="p_ans" min="0" max="2" step="0.1" value="0.9"><span class="val" id="v_ans">0.9</span></div>
+        <div class="row"><span class="name">AGC 开关</span><input type="checkbox" id="p_agcOn" checked></div>
+        <div class="row"><span class="name">目标电平</span><input type="range" id="p_agc" min="-40" max="-10" step="1" value="-20"><span class="val" id="v_agc">-20 dBFS</span></div>
+        <div class="row"><span class="name">VAD 开关</span><input type="checkbox" id="p_vadOn" checked></div>
+        <div class="row"><span class="name">VAD 阈值</span><input type="range" id="p_vad" min="-45" max="-15" step="1" value="-30"><span class="val" id="v_vad">-30 dB</span></div>
+      </div>
+      <div class="tip">VAD 口径：20ms 帧 / 10ms hop / -30dB 阈值 / 250ms 间隙合并 / 120ms 最小段长。</div>
+    </div>
+
+    <div class="card">
+      <h2>怎么读这些数字（教学）</h2>
+      <div class="tip" id="teach">
+        <b>AEC(NLMS)</b>：用参考 r 估计回声并减去。μ 大→收敛快但残差大(excess MSE)；μ 小→稳态干净但收敛慢。<br>
+        <b>双讲</b>：近端 x 与远端 r 同时说话时，NLMS 被 x 驱动产生 excess 噪声，SNR 可能<u>不升反降</u>——真实产品用 double-talk detector 冻结更新。<br>
+        <b>ANS(谱减)</b>：先估计噪声谱(逐 bin 中位数)，再减走。强度大→安静但可能"音乐噪声/语音损伤"。<br>
+        <b>VAD</b>：阈值高→段破碎；阈值低→停顿填平后段数变少。回声/噪声会悄悄改 VAD 行为。<br>
+        <b>⚠ SNR 变好看 ≠ 识别变好</b>：SNR 不含时域结构，同样的 SNR 下回声延迟不同，ASR 结果天差地别（见 shiyan/README.md 的实验）。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="dsp.js"></script>
+<script src="demo_audio.js"></script>
+<script src="demo_audio_far.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const SR = DSP.SR;
+let audioCtx = null;
+let nearX = null, farR = null;           // Float32Array（近端/远端）
+let result = null, lastParams = null;
+let computing = false, pending = false;
+
+// ---------- 音频解码 ----------
+function decodeB64(b64, cb) {
+  const bin = atob(b64), u8 = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: SR });
+  audioCtx.decodeAudioData(u8.buffer.slice(0)).then(buf => cb(buf.getChannelData(0).slice())).catch(e => setStatus("解码失败: " + e));
+}
+function loadFile(input, cb) {
+  const f = input.files[0];
+  if (!f) return;
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: SR });
+  f.arrayBuffer().then(ab => audioCtx.decodeAudioData(ab)).then(buf => cb(buf.getChannelData(0).slice())).catch(e => setStatus("解码失败: " + e));
+}
+$("demoNear").onclick = () => decodeB64(window.DEMO_AUDIO_B64, b => { nearX = b; setStatus("近端：演示音频 " + (b.length / SR).toFixed(1) + "s"); schedule(); });
+$("demoFar").onclick = () => decodeB64(window.DEMO_FAR_B64, b => { farR = b; setStatus("远端：演示音频 " + (b.length / SR).toFixed(1) + "s"); schedule(); });
+$("fileNear").onchange = e => loadFile(e.target, b => { nearX = b; setStatus("近端：文件 " + (b.length / SR).toFixed(1) + "s"); schedule(); });
+$("fileFar").onchange = e => loadFile(e.target, b => { farR = b; setStatus("远端：文件 " + (b.length / SR).toFixed(1) + "s"); schedule(); });
+
+// ---------- 参数 ----------
+function params() {
+  return {
+    delayMs: +$("p_delay").value, gainDb: +$("p_gain").value,
+    noiseKind: $("p_noise").value, noiseSnrDb: +$("p_snr").value,
+    aecOn: $("p_aecOn").checked, aecLen: +$("p_aecLen").value, aecMu: +$("p_mu").value,
+    ansOn: $("p_ansOn").checked, ansStrength: +$("p_ans").value,
+    agcOn: $("p_agcOn").checked, agcTarget: +$("p_agc").value,
+    vadOn: $("p_vadOn").checked, vadThr: +$("p_vad").value,
+  };
+}
+function bindRange(id, vid, fmt) {
+  $(id).oninput = () => { $(vid).textContent = fmt($(id).value); schedule(); };
+  $(id).onchange = () => schedule();
+}
+bindRange("p_delay", "v_delay", v => v + " ms");
+bindRange("p_gain", "v_gain", v => v + " dB");
+bindRange("p_snr", "v_snr", v => v + " dB");
+bindRange("p_mu", "v_mu", v => (+v).toFixed(2));
+bindRange("p_ans", "v_ans", v => (+v).toFixed(1));
+bindRange("p_agc", "v_agc", v => v + " dBFS");
+bindRange("p_vad", "v_vad", v => v + " dB");
+$("p_noise").onchange = schedule;
+["p_aecOn", "p_ansOn", "p_agcOn", "p_vadOn"].forEach(id => $(id).onchange = schedule);
+$("p_aecLen").onchange = schedule;
+
+// ---------- 计算 ----------
+let timer = null;
+function schedule() {
+  if (!nearX || !farR) return;
+  clearTimeout(timer);
+  timer = setTimeout(compute, 400);
+}
+function compute() {
+  if (computing) { pending = true; return; }
+  computing = true; setStatus("计算中…");
+  lastParams = params();
+  setTimeout(() => {
+    const t0 = performance.now();
+    try {
+      result = DSP.computeAll(nearX, farR, lastParams);
+      renderAll();
+      setStatus(`完成 ${((performance.now() - t0) / 1000).toFixed(1)}s`);
+    } catch (e) { setStatus("出错: " + e.message); }
+    computing = false;
+    if (pending) { pending = false; schedule(); }
+  }, 30);
+}
+
+// ---------- 渲染 ----------
+function setStatus(s) { $("status").textContent = s; }
+
+function drawWave(canvas, sig, segs, label) {
+  const ctx = canvas.getContext("2d"); const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
+  // VAD 段底纹
+  if (segs && segs.length) {
+    ctx.fillStyle = "rgba(30,142,90,0.14)";
+    for (const [s, e] of segs) ctx.fillRect(s / sig.length * W, 0, (e - s) / sig.length * W, H);
+  }
+  // 包络 min/max
+  const n = sig.length, bins = 1600, step = Math.max(1, n / bins | 0), m = n - n % step;
+  ctx.strokeStyle = "#2456a6"; ctx.lineWidth = 1; ctx.beginPath();
+  const mid = H / 2, amp = H / 2 - 38;
+  for (let i = 0; i < m; i += step) {
+    let lo = 1e9, hi = -1e9;
+    for (let j = i; j < i + step; j += 4) { const v = sig[j]; if (v < lo) lo = v; if (v > hi) hi = v; }
+    const x = i / n * W;
+    ctx.moveTo(x, mid - lo * amp); ctx.lineTo(x, mid - hi * amp);
+  }
+  ctx.stroke();
+  ctx.fillStyle = "#444"; ctx.font = "12px sans-serif";
+  ctx.fillText(label + (segs ? "  |  VAD段数=" + segs.length : ""), 6, 14);
+}
+
+function drawSpec(canvas, sig) {
+  const ctx = canvas.getContext("2d"); const W = canvas.width, H = canvas.height;
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
+  const spec = DSP.avgSpectrum(sig, 1024);
+  const n = spec.length;
+  let mx = 1e-9; for (let i = 0; i < n; i++) mx = Math.max(mx, spec[i]);
+  ctx.strokeStyle = "#2456a6"; ctx.lineWidth = 1; ctx.beginPath();
+  for (let i = 0; i < n; i++) {
+    const db = 20 * Math.log10(spec[i] / mx + 1e-9); // 0..-60
+    const y = H - 8 - Math.max(0, (db + 60) / 60) * (H - 20);
+    i ? ctx.lineTo(i / n * W, y) : ctx.moveTo(i / n * W, y);
+  }
+  ctx.stroke();
+  ctx.fillStyle = "#444"; ctx.font = "11px sans-serif";
+  ctx.fillText("0", 4, H - 8); ctx.fillText("-30dB", W / 2 + 4, H - 8);
+  ctx.fillText("-60dB", W - 48, H - 8);
+  ctx.fillStyle = "#888"; ctx.font = "11px sans-serif";
+  ctx.fillText("平均幅度谱(100Hz~8kHz)", 6, 14);
+}
+
+function stageSig(name) {
+  if (!result) return null;
+  if (name === "near") return nearX;
+  if (name === "echo") return result.echo;
+  return result[name];
+}
+function renderAll() {
+  const stage = $("stage").value;
+  const sig = stageSig(stage);
+  if (!sig) return;
+  drawWave($("wave"), sig, stage === "agc" || stage === "ans" || stage === "aec" ? result.segments : null, stageName(stage));
+  drawSpec($("spec"), sig);
+  renderMetrics();
+  renderSegs();
+  selfCheck();
+}
+function selfCheck() {
+  const c = $("wave"), d = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+  let nz = 0, total = 0;
+  for (let i = 0; i < d.length; i += 16) { total++; const a = d[i + 3]; if (a > 0 && (d[i] < 230 || d[i + 1] < 230 || d[i + 2] < 230)) nz++; }
+  document.title = `SELFTEST wave=${(nz / total * 100).toFixed(1)}% segs=${result ? result.segments.length : -1} snrMix=${result ? result.metrics.snrMix.toFixed(1) : -1}`;
+}
+function stageName(s) { return { near: "近端 x", echo: "回声", mix: "麦克风输入", aec: "AEC 输出", ans: "ANS 输出", agc: "AGC 输出" }[s]; }
+function renderMetrics() {
+  const m = result.metrics;
+  const f = v => v == null ? "—" : (isFinite(v) ? v.toFixed(1) + " dB" : "∞");
+  const cls = (a, b) => (b > a + 1 ? "good" : b < a - 1 ? "bad" : "");
+  $("metrics").innerHTML = `
+    输入SNR(混音 vs 近端)：<b>${f(m.snrMix)}</b>
+    → AEC 后：<span class="${cls(m.snrMix, m.snrAec)}"><b>${f(m.snrAec)}</b></span>
+    → ANS 后：<span class="${cls(m.snrAec, m.snrAns)}"><b>${f(m.snrAns)}</b></span><br>
+    AGC 增益：<b>${(20 * Math.log10(m.agcGain)).toFixed(1)} dB</b>（输出 RMS ${f(m.rmsAgc)}） ｜ VAD 段数：<b>${m.vadSegs}</b>`;
+}
+function renderSegs() {
+  const tb = $("segtable").querySelector("tbody");
+  tb.innerHTML = result.segments.map(([s, e], i) =>
+    `<tr><td>${i + 1}</td><td>${s.toFixed(2)}</td><td>${e.toFixed(2)}</td><td>${((e - s) * 1000).toFixed(0)}</td></tr>`).join("") || "<tr><td colspan=4>无语音段</td></tr>";
+}
+
+// ---------- 播放 ----------
+let playing = false;
+$("play").onclick = () => {
+  if (!result) return;
+  const sig = stageSig($("stage").value);
+  if (!sig) return;
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const buf = audioCtx.createBuffer(1, sig.length, SR);
+  buf.getChannelData(0).set(sig);
+  const src = audioCtx.createBufferSource();
+  src.buffer = buf; src.connect(audioCtx.destination);
+  src.onended = () => { $("play").textContent = "▶ 播放"; playing = false; };
+  src.start();
+  $("play").textContent = "■ 停止"; playing = true;
+};
+$("stage").onchange = () => { renderAll(); };
+
+// ---------- 下载 ----------
+$("download").onclick = () => {
+  const sig = stageSig($("stage").value);
+  if (!sig) return;
+  const n = sig.length, u8 = new Uint8Array(44 + n * 2), dv = new DataView(u8.buffer);
+  const W = (o, s) => { for (let i = 0; i < s.length; i++) u8[o + i] = s.charCodeAt(i); };
+  W(0, "RIFF"); dv.setUint32(4, 36 + n * 2, true); W(8, "WAVE"); W(12, "fmt ");
+  dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
+  dv.setUint32(24, SR, true); dv.setUint32(28, SR * 2, true); dv.setUint16(32, 2, true); dv.setUint16(34, 16, true);
+  W(36, "data"); dv.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++) dv.setInt16(44 + i * 2, Math.max(-1, Math.min(1, sig[i])) * 32767, true);
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([u8], { type: "audio/wav" }));
+  a.download = `${$("stage").value}_${(SR / 1000)}k.wav`; a.click();
+};
+
+// ---------- 启动 ----------
+window.addEventListener("load", () => {
+  decodeB64(window.DEMO_AUDIO_B64, b => { nearX = b; decodeB64(window.DEMO_FAR_B64, r => { farR = r; setStatus(`演示音频就绪：近端 ${nearX.length / SR | 0}s / 远端 ${farR.length / SR | 0}s`); schedule(); }); });
+});
+</script>
+</body>
+</html>

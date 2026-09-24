@@ -1,0 +1,400 @@
+{
+  "cur": {
+    "key": "20260908_154631_a9859b_16k",
+    "strategy": "a2ovl",
+    "diag": {
+      "file": "20260908_154631_a9859b_16k",
+      "n_windows": 52,
+      "n_vad_segs": 1,
+      "n_segments": 11,
+      "overlap_detection": "bimodal_only",
+      "n_dense_windows": 209,
+      "n_clusters": 2,
+      "gap2": 0.041461692597828836,
+      "verdict": "unreliable",
+      "n_overlap_spans": 0,
+      "overlap_seconds": 0,
+      "n_bimodal_segments": 6,
+      "n_reclustered": 0,
+      "n_pure_A": 33,
+      "n_pure_B": 81,
+      "centroid_refined": true,
+      "centroid_mode": "strict",
+      "c1_weight_energy": false,
+      "c1_wpgma": false,
+      "elapsed": 15.0
+    },
+    "separation": {
+      "reliable": false,
+      "gap2": 0.041461692597828836,
+      "fallback": "guest",
+      "overlap_spans": 0
+    },
+    "sentence_info": [
+      {
+        "start": 2.85,
+        "end": 3.9,
+        "text": "ok",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 3.9,
+        "end": 6.0,
+        "text": "欢 迎 光 临 请 问 想 喝 点 什",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 5.7,
+        "end": 6.6,
+        "text": "喝 点 什 么",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 6.6,
+        "end": 10.5,
+        "text": "两 杯 一 杯 芋 泥 波 波 青 奶 还 有 一 杯 柠 檬 枇 茶",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 10.2,
+        "end": 13.2,
+        "text": "收 到 一 波 鲜 奶 要 什 么 冰 甜 度",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 13.2,
+        "end": 16.35,
+        "text": "喝 的 微 糖 柠 檬 茶 正 常 冰 无 糖",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 16.35,
+        "end": 19.8,
+        "text": "需 不 需 要 额 外 加 料 芋 泥 波 波 可 以 再 加 一 份 波 波",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 19.8,
+        "end": 20.55,
+        "text": "我 就",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 20.25,
+        "end": 20.55,
+        "text": "我 又 我",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 20.55,
+        "end": 22.5,
+        "text": "两 杯 合 计 二 十 八 元 微 信",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 22.5,
+        "end": 23.4,
+        "text": "支 付 宝 支 付 宝",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 22.8,
+        "end": 23.55,
+        "text": "支 付 宝",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 23.55,
+        "end": 30.15,
+        "text": "麻 烦 出 示 付 款 码 收 到 了 小 票 拿 好 麻 烦 旁 边 等 候 取 餐 哦",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 29.85,
+        "end": 34.65,
+        "text": "您 好 两 杯 饮 品 做 好 了 谢 谢 慢 走 期 待 下 次 光 临",
+        "spk": 1,
+        "overlap": false
+      }
+    ],
+    "method": "当前版（a2ovl）",
+    "verdict": "unreliable",
+    "file": "Note20260803112329.wav",
+    "elapsed": 15.0,
+    "env": {
+      "snr_db": 71.3,
+      "noise_db": -82.3,
+      "speech_db": -11.0,
+      "verdict": "安静",
+      "method": "vad+percentile",
+      "n_vad_frames": 3120
+    }
+  },
+  "snap": {
+    "key": "20260908_154631_a9859b_16k",
+    "strategy": "a2ovl",
+    "diag": {
+      "file": "20260908_154631_a9859b_16k",
+      "n_windows": 52,
+      "n_vad_segs": 1,
+      "n_segments": 11,
+      "overlap_detection": "bimodal_only",
+      "n_dense_windows": 209,
+      "n_clusters": 2,
+      "gap2": 0.041461692597828836,
+      "verdict": "unreliable",
+      "n_overlap_spans": 0,
+      "overlap_seconds": 0,
+      "n_bimodal_segments": 6,
+      "n_reclustered": 0,
+      "n_pure_A": 33,
+      "n_pure_B": 81,
+      "centroid_refined": true,
+      "centroid_mode": "strict",
+      "c1_weight_energy": false,
+      "c1_wpgma": false,
+      "elapsed": 14.4
+    },
+    "separation": {
+      "reliable": false,
+      "gap2": 0.041461692597828836,
+      "fallback": "guest",
+      "overlap_spans": 0
+    },
+    "sentence_info": [
+      {
+        "start": 2.85,
+        "end": 3.9,
+        "text": "ok",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 3.9,
+        "end": 6.0,
+        "text": "欢 迎 光 临 请 问 想 喝 点 什",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 5.7,
+        "end": 6.6,
+        "text": "喝 点 什 么",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 6.6,
+        "end": 10.5,
+        "text": "两 杯 一 杯 芋 泥 波 波 青 奶 还 有 一 杯 柠 檬 枇 茶",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 10.2,
+        "end": 13.2,
+        "text": "收 到 一 波 鲜 奶 要 什 么 冰 甜 度",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 13.2,
+        "end": 16.35,
+        "text": "喝 的 微 糖 柠 檬 茶 正 常 冰 无 糖",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 16.35,
+        "end": 19.8,
+        "text": "需 不 需 要 额 外 加 料 芋 泥 波 波 可 以 再 加 一 份 波 波",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 19.8,
+        "end": 20.55,
+        "text": "我 就",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 20.25,
+        "end": 20.55,
+        "text": "我 又 我",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 20.55,
+        "end": 22.5,
+        "text": "两 杯 合 计 二 十 八 元 微 信",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 22.5,
+        "end": 23.4,
+        "text": "支 付 宝 支 付 宝",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 22.8,
+        "end": 23.55,
+        "text": "支 付 宝",
+        "spk": 0,
+        "overlap": false
+      },
+      {
+        "start": 23.55,
+        "end": 30.15,
+        "text": "麻 烦 出 示 付 款 码 收 到 了 小 票 拿 好 麻 烦 旁 边 等 候 取 餐 哦",
+        "spk": 1,
+        "overlap": false
+      },
+      {
+        "start": 29.85,
+        "end": 34.65,
+        "text": "您 好 两 杯 饮 品 做 好 了 谢 谢 慢 走 期 待 下 次 光 临",
+        "spk": 1,
+        "overlap": false
+      }
+    ],
+    "method": "历史最优（snapshot_20260904）",
+    "verdict": "unreliable",
+    "file": "Note20260803112329.wav",
+    "elapsed": 14.4,
+    "env": {
+      "snr_db": 71.3,
+      "noise_db": -82.3,
+      "speech_db": -11.0,
+      "verdict": "安静",
+      "method": "vad+percentile",
+      "n_vad_frames": 3120
+    }
+  },
+  "c1": {
+    "method": "claude-a2-v4-c1",
+    "file": "Note20260803112329.wav",
+    "elapsed": 14.3,
+    "diag": {
+      "n_segments": 15,
+      "n_clusters": 2
+    },
+    "verdict": "reliable",
+    "sentence_info": [
+      {
+        "start": 2.85,
+        "end": 4.12,
+        "spk": 1,
+        "text": "ok"
+      },
+      {
+        "start": 4.12,
+        "end": 6.22,
+        "spk": 0,
+        "text": "欢 迎 光 临 请 问 想 喝 点 什 么"
+      },
+      {
+        "start": 6.22,
+        "end": 10.43,
+        "spk": 1,
+        "text": "两 杯 一 杯 芋 泥 波 波 青 奶 还 有 一 杯 柠 檬 枇 茶"
+      },
+      {
+        "start": 10.43,
+        "end": 13.28,
+        "spk": 0,
+        "text": "收 到 芋 泥 波 鲜 奶 要 什 么 冰 甜 度"
+      },
+      {
+        "start": 13.28,
+        "end": 16.57,
+        "spk": 1,
+        "text": "喝 的 微 糖 柠 檬 茶 正 常 冰 无 糖"
+      },
+      {
+        "start": 16.57,
+        "end": 20.03,
+        "spk": 0,
+        "text": "需 不 需 要 额 外 加 料 芋 泥 波 波 可 以 再 加 一 份 波 波"
+      },
+      {
+        "start": 20.03,
+        "end": 20.78,
+        "spk": 1,
+        "text": "我 用"
+      },
+      {
+        "start": 20.78,
+        "end": 23.03,
+        "spk": 0,
+        "text": "两 杯 合 计 二 十 八 元 微 信 还 是 支 付 宝"
+      },
+      {
+        "start": 23.03,
+        "end": 23.62,
+        "spk": 1,
+        "text": "支 付 宝"
+      },
+      {
+        "start": 23.62,
+        "end": 29.32,
+        "spk": 0,
+        "text": "麻 烦 出 示 付 款 码 收 到 了 小 票 拿 好 麻 烦 旁 边 等 候 取 餐"
+      },
+      {
+        "start": 29.32,
+        "end": 30.07,
+        "spk": 1,
+        "text": "哦"
+      },
+      {
+        "start": 30.07,
+        "end": 32.02,
+        "spk": 0,
+        "text": "你 好 两 杯 饮 品 做 好 了"
+      },
+      {
+        "start": 32.02,
+        "end": 32.62,
+        "spk": 1,
+        "text": "谢 谢"
+      },
+      {
+        "start": 32.62,
+        "end": 34.27,
+        "spk": 0,
+        "text": "慢 走 期 待 下 次 光 临"
+      },
+      {
+        "start": 34.27,
+        "end": 34.65,
+        "spk": 1,
+        "text": "嗯"
+      }
+    ],
+    "env": {
+      "snr_db": 71.3,
+      "noise_db": -82.3,
+      "speech_db": -11.0,
+      "verdict": "安静",
+      "method": "vad+percentile",
+      "n_vad_frames": 3120
+    }
+  }
+}

@@ -1,0 +1,2698 @@
+{
+  "generated_at": "2026-08-19T09:43:50+00:00",
+  "pdf": "output/pdf/语音算法工程师教学-全图重制版.pdf",
+  "source_audit": {
+    "markdown_files": 21,
+    "image_references": 20,
+    "equation_references": 19,
+    "unique_images": 20,
+    "unique_equations": 19,
+    "missing_assets": 0,
+    "malformed_blocks": 0
+  },
+  "pdf_stats": {
+    "page_count": 49,
+    "toc_count": 126,
+    "toc_entries": [
+      {
+        "level": 1,
+        "title": "导读：岗位要求不是技术清单",
+        "page": 6
+      },
+      {
+        "level": 2,
+        "title": "怎么读",
+        "page": 6
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 6
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 7
+      },
+      {
+        "level": 1,
+        "title": "第 1 章 从岗位反推能力地图",
+        "page": 7
+      },
+      {
+        "level": 2,
+        "title": "1.1 五份岗位的共同骨架",
+        "page": 7
+      },
+      {
+        "level": 2,
+        "title": "1.2 三种语言描述同一件事",
+        "page": 8
+      },
+      {
+        "level": 2,
+        "title": "1.3 把要求改写成可验收任务",
+        "page": 8
+      },
+      {
+        "level": 2,
+        "title": "1.4 作品集应该留下什么",
+        "page": 9
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 9
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 9
+      },
+      {
+        "level": 1,
+        "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+        "page": 9
+      },
+      {
+        "level": 2,
+        "title": "2.1 采样、量化与时间锚点",
+        "page": 9
+      },
+      {
+        "level": 2,
+        "title": "2.2 振幅、RMS、dBFS 与 SNR",
+        "page": 10
+      },
+      {
+        "level": 2,
+        "title": "2.3 为什么一张频谱不够",
+        "page": 10
+      },
+      {
+        "level": 2,
+        "title": "2.4 Fbank、MFCC 与 CMVN",
+        "page": 12
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 13
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 13
+      },
+      {
+        "level": 1,
+        "title": "第 3 章 3A 前端：回声、噪声、增益与判停",
+        "page": 14
+      },
+      {
+        "level": 2,
+        "title": "3.1 AEC 先问“回声从哪里来”",
+        "page": 14
+      },
+      {
+        "level": 2,
+        "title": "3.2 ANS 与 AGC 的边界",
+        "page": 14
+      },
+      {
+        "level": 2,
+        "title": "3.3 VAD、判停与快速打断",
+        "page": 14
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 15
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 15
+      },
+      {
+        "level": 1,
+        "title": "第 4 章 麦克风阵列、方向与分离",
+        "page": 16
+      },
+      {
+        "level": 2,
+        "title": "4.1 先确认通道真的独立",
+        "page": 16
+      },
+      {
+        "level": 2,
+        "title": "4.2 GCC-PHAT、DOA 与波束形成",
+        "page": 16
+      },
+      {
+        "level": 2,
+        "title": "4.3 分离不是“把人名分出来”",
+        "page": 18
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 18
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 18
+      },
+      {
+        "level": 1,
+        "title": "第 5 章 DNN-HMM 与 WFST：经典路线仍在教你解码",
+        "page": 19
+      },
+      {
+        "level": 2,
+        "title": "5.1 HMM 解决的是时间结构",
+        "page": 19
+      },
+      {
+        "level": 2,
+        "title": "5.2 WFST 把约束放进搜索图",
+        "page": 19
+      },
+      {
+        "level": 2,
+        "title": "5.3 为什么工程团队仍需要这条路线",
+        "page": 19
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 20
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 20
+      },
+      {
+        "level": 1,
+        "title": "第 6 章 CTC、AED、RNN-T 与 Conformer：端到端不是一种模型",
+        "page": 20
+      },
+      {
+        "level": 2,
+        "title": "6.1 CTC 用路径求和隐藏对齐",
+        "page": 20
+      },
+      {
+        "level": 2,
+        "title": "6.2 AED 用注意力建模文本历史",
+        "page": 21
+      },
+      {
+        "level": 2,
+        "title": "6.3 RNN-T 与 Conformer 的工程位置",
+        "page": 21
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 22
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 22
+      },
+      {
+        "level": 1,
+        "title": "第 7 章 流式识别：结果一边出来，一边被修订",
+        "page": 23
+      },
+      {
+        "level": 2,
+        "title": "7.1 三种结果和一条时间轴",
+        "page": 23
+      },
+      {
+        "level": 2,
+        "title": "7.2 延迟预算要拆开",
+        "page": 23
+      },
+      {
+        "level": 2,
+        "title": "7.3 判停、唤醒与打断",
+        "page": 24
+      },
+      {
+        "level": 2,
+        "title": "7.4 LID 和多语种边界",
+        "page": 24
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 25
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 25
+      },
+      {
+        "level": 1,
+        "title": "第 8 章 数据、训练与鲁棒性：模型上限先由输入决定",
+        "page": 25
+      },
+      {
+        "level": 2,
+        "title": "8.1 从音频到样本的流水线",
+        "page": 25
+      },
+      {
+        "level": 2,
+        "title": "8.2 增强不是随机加噪声",
+        "page": 26
+      },
+      {
+        "level": 2,
+        "title": "8.3 自监督与个性化适配",
+        "page": 26
+      },
+      {
+        "level": 2,
+        "title": "8.4 口音、方言和长尾",
+        "page": 26
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 27
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 27
+      },
+      {
+        "level": 1,
+        "title": "第 9 章 说话人、语种与音频理解",
+        "page": 27
+      },
+      {
+        "level": 2,
+        "title": "9.1 分段、识别、验证与分离",
+        "page": 27
+      },
+      {
+        "level": 2,
+        "title": "9.2 在线聚类与匿名标签",
+        "page": 28
+      },
+      {
+        "level": 2,
+        "title": "9.3 LID、TTS 与音频事件",
+        "page": 28
+      },
+      {
+        "level": 2,
+        "title": "9.4 DER 与证据强度",
+        "page": 29
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 29
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 29
+      },
+      {
+        "level": 1,
+        "title": "第 10 章 评测：一个分数永远不够",
+        "page": 29
+      },
+      {
+        "level": 2,
+        "title": "10.1 CER/WER 要先固定文本口径",
+        "page": 29
+      },
+      {
+        "level": 2,
+        "title": "10.2 音频、说话人与端侧指标",
+        "page": 30
+      },
+      {
+        "level": 2,
+        "title": "10.3 固定集、切片和统计不确定性",
+        "page": 31
+      },
+      {
+        "level": 2,
+        "title": "10.4 从指标回到失败样例",
+        "page": 31
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 31
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 31
+      },
+      {
+        "level": 1,
+        "title": "第 11 章 模型压缩与部署：从 checkpoint 到设备",
+        "page": 32
+      },
+      {
+        "level": 2,
+        "title": "11.1 三种压缩思路",
+        "page": 32
+      },
+      {
+        "level": 2,
+        "title": "11.2 量化不是按一个按钮",
+        "page": 32
+      },
+      {
+        "level": 2,
+        "title": "11.3 ONNX、TensorRT 与 Triton 的分工",
+        "page": 32
+      },
+      {
+        "level": 2,
+        "title": "11.4 ARM、DSP 与 NPU",
+        "page": 33
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 34
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 34
+      },
+      {
+        "level": 1,
+        "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+        "page": 34
+      },
+      {
+        "level": 2,
+        "title": "12.1 事件和版本链",
+        "page": 34
+      },
+      {
+        "level": 2,
+        "title": "12.2 云端、端侧和故障回退",
+        "page": 35
+      },
+      {
+        "level": 2,
+        "title": "12.3 研究、专利和沟通",
+        "page": 36
+      },
+      {
+        "level": 2,
+        "title": "12.4 一份可面试、可交付的作品",
+        "page": 36
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 36
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 36
+      },
+      {
+        "level": 1,
+        "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+        "page": 37
+      },
+      {
+        "level": 2,
+        "title": "13.1 二次开发先从可回放基线开始",
+        "page": 37
+      },
+      {
+        "level": 2,
+        "title": "13.2 ASR 与 LLM：校对员不能改写录音证据",
+        "page": 37
+      },
+      {
+        "level": 2,
+        "title": "13.3 TTS、全双工与打断是一套状态协议",
+        "page": 38
+      },
+      {
+        "level": 2,
+        "title": "13.4 情绪、音频事件与多模态不要共用一个结论",
+        "page": 39
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 40
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 40
+      },
+      {
+        "level": 1,
+        "title": "附录 A 24 周学习路线",
+        "page": 41
+      },
+      {
+        "level": 2,
+        "title": "三条分叉路线",
+        "page": 42
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 42
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 42
+      },
+      {
+        "level": 1,
+        "title": "附录 B 开源工具包怎么选",
+        "page": 42
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 43
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 43
+      },
+      {
+        "level": 1,
+        "title": "附录 C 数据集、模型与许可检查",
+        "page": 43
+      },
+      {
+        "level": 2,
+        "title": "固定数据的最小结构",
+        "page": 44
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 44
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 44
+      },
+      {
+        "level": 1,
+        "title": "附录 D 五份岗位要求的能力映射",
+        "page": 44
+      },
+      {
+        "level": 2,
+        "title": "面试题的四层回答法",
+        "page": 45
+      },
+      {
+        "level": 2,
+        "title": "评分 rubric",
+        "page": 45
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 45
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 45
+      },
+      {
+        "level": 1,
+        "title": "附录 E 实验记录模板与指标词典",
+        "page": 46
+      },
+      {
+        "level": 2,
+        "title": "E.1 实验记录模板",
+        "page": 46
+      },
+      {
+        "level": 2,
+        "title": "E.2 常用指标的边界",
+        "page": 46
+      },
+      {
+        "level": 2,
+        "title": "E.3 一页评测声明",
+        "page": 46
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 47
+      },
+      {
+        "level": 1,
+        "title": "附录 F 数学按需补给",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "F.1 能量和对数",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "F.2 卷积和相关",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "F.3 概率与搜索",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "F.4 矩阵与复杂度",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "F.5 统计与置信区间",
+        "page": 47
+      },
+      {
+        "level": 2,
+        "title": "本章小结",
+        "page": 48
+      },
+      {
+        "level": 2,
+        "title": "思考题",
+        "page": 48
+      },
+      {
+        "level": 1,
+        "title": "附录 G 网上调研与参考资料",
+        "page": 48
+      },
+      {
+        "level": 2,
+        "title": "论文与数据",
+        "page": 48
+      },
+      {
+        "level": 2,
+        "title": "官方工程文档",
+        "page": 49
+      },
+      {
+        "level": 2,
+        "title": "课程组织参考（未实时打开核验）",
+        "page": 49
+      },
+      {
+        "level": 2,
+        "title": "资料使用声明",
+        "page": 49
+      }
+    ],
+    "text_characters": 59440,
+    "embedded_image_blocks": 40,
+    "bad_text_pages": 0,
+    "overflow_blocks": 0,
+    "low_density_pages": 0,
+    "orphan_candidates": 0,
+    "pages": [
+      {
+        "page": 1,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 89,
+        "text_blocks": 4,
+        "image_blocks": 1,
+        "occupied_ratio": 0.2301,
+        "headings": [],
+        "low_density": false
+      },
+      {
+        "page": 2,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 5007,
+        "text_blocks": 33,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2974,
+        "headings": [
+          {
+            "level": 1,
+            "title": "导读：岗位要求不是技术清单",
+            "y1": 145.9
+          },
+          {
+            "level": 2,
+            "title": "怎么读",
+            "y1": 166.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 186.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 205.2
+          },
+          {
+            "level": 1,
+            "title": "第 1 章 从岗位反推能力地图",
+            "y1": 234.9
+          },
+          {
+            "level": 2,
+            "title": "1.1 五份岗位的共同骨架",
+            "y1": 255.8
+          },
+          {
+            "level": 2,
+            "title": "1.2 三种语言描述同一件事",
+            "y1": 275.0
+          },
+          {
+            "level": 2,
+            "title": "1.3 把要求改写成可验收任务",
+            "y1": 294.2
+          },
+          {
+            "level": 2,
+            "title": "1.4 作品集应该留下什么",
+            "y1": 313.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 332.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 351.8
+          },
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 381.5
+          },
+          {
+            "level": 2,
+            "title": "2.1 采样、量化与时间锚点",
+            "y1": 402.4
+          },
+          {
+            "level": 2,
+            "title": "2.2 振幅、RMS、dBFS 与 SNR",
+            "y1": 421.6
+          },
+          {
+            "level": 2,
+            "title": "2.3 为什么一张频谱不够",
+            "y1": 440.8
+          },
+          {
+            "level": 2,
+            "title": "2.4 Fbank、MFCC 与 CMVN",
+            "y1": 460.0
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 479.2
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 498.4
+          },
+          {
+            "level": 1,
+            "title": "第 3 章 3A 前端：回声、噪声、增益与判停",
+            "y1": 528.1
+          },
+          {
+            "level": 2,
+            "title": "3.1 AEC 先问“回声从哪里来”",
+            "y1": 549.0
+          },
+          {
+            "level": 2,
+            "title": "3.2 ANS 与 AGC 的边界",
+            "y1": 568.2
+          },
+          {
+            "level": 2,
+            "title": "3.3 VAD、判停与快速打断",
+            "y1": 587.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 606.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 625.8
+          },
+          {
+            "level": 1,
+            "title": "第 4 章 麦克风阵列、方向与分离",
+            "y1": 655.5
+          },
+          {
+            "level": 2,
+            "title": "4.1 先确认通道真的独立",
+            "y1": 676.4
+          },
+          {
+            "level": 2,
+            "title": "4.2 GCC-PHAT、DOA 与波束形成",
+            "y1": 695.6
+          },
+          {
+            "level": 2,
+            "title": "4.3 分离不是“把人名分出来”",
+            "y1": 714.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 734.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 753.2
+          },
+          {
+            "level": 1,
+            "title": "第 5 章 DNN-HMM 与 WFST：经典路线仍在教你解码",
+            "y1": 782.9
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 3,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 5595,
+        "text_blocks": 36,
+        "image_blocks": 0,
+        "occupied_ratio": 0.3293,
+        "headings": [
+          {
+            "level": 2,
+            "title": "5.1 HMM 解决的是时间结构",
+            "y1": 68.4
+          },
+          {
+            "level": 2,
+            "title": "5.2 WFST 把约束放进搜索图",
+            "y1": 87.6
+          },
+          {
+            "level": 2,
+            "title": "5.3 为什么工程团队仍需要这条路线",
+            "y1": 106.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 126.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 145.2
+          },
+          {
+            "level": 1,
+            "title": "第 6 章 CTC、AED、RNN-T 与 Conformer：端到端不是一种模型",
+            "y1": 174.8
+          },
+          {
+            "level": 2,
+            "title": "6.1 CTC 用路径求和隐藏对齐",
+            "y1": 195.8
+          },
+          {
+            "level": 2,
+            "title": "6.2 AED 用注意力建模文本历史",
+            "y1": 215.0
+          },
+          {
+            "level": 2,
+            "title": "6.3 RNN-T 与 Conformer 的工程位置",
+            "y1": 234.2
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 253.4
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 272.6
+          },
+          {
+            "level": 1,
+            "title": "第 7 章 流式识别：结果一边出来，一边被修订",
+            "y1": 302.2
+          },
+          {
+            "level": 2,
+            "title": "7.1 三种结果和一条时间轴",
+            "y1": 323.2
+          },
+          {
+            "level": 2,
+            "title": "7.2 延迟预算要拆开",
+            "y1": 342.4
+          },
+          {
+            "level": 2,
+            "title": "7.3 判停、唤醒与打断",
+            "y1": 361.6
+          },
+          {
+            "level": 2,
+            "title": "7.4 LID 和多语种边界",
+            "y1": 380.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 400.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 419.2
+          },
+          {
+            "level": 1,
+            "title": "第 8 章 数据、训练与鲁棒性：模型上限先由输入决定",
+            "y1": 448.8
+          },
+          {
+            "level": 2,
+            "title": "8.1 从音频到样本的流水线",
+            "y1": 469.8
+          },
+          {
+            "level": 2,
+            "title": "8.2 增强不是随机加噪声",
+            "y1": 489.0
+          },
+          {
+            "level": 2,
+            "title": "8.3 自监督与个性化适配",
+            "y1": 508.2
+          },
+          {
+            "level": 2,
+            "title": "8.4 口音、方言和长尾",
+            "y1": 527.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 546.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 565.8
+          },
+          {
+            "level": 1,
+            "title": "第 9 章 说话人、语种与音频理解",
+            "y1": 595.4
+          },
+          {
+            "level": 2,
+            "title": "9.1 分段、识别、验证与分离",
+            "y1": 616.4
+          },
+          {
+            "level": 2,
+            "title": "9.2 在线聚类与匿名标签",
+            "y1": 635.6
+          },
+          {
+            "level": 2,
+            "title": "9.3 LID、TTS 与音频事件",
+            "y1": 654.8
+          },
+          {
+            "level": 2,
+            "title": "9.4 DER 与证据强度",
+            "y1": 674.0
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 693.2
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 712.4
+          },
+          {
+            "level": 1,
+            "title": "第 10 章 评测：一个分数永远不够",
+            "y1": 742.0
+          },
+          {
+            "level": 2,
+            "title": "10.1 CER/WER 要先固定文本口径",
+            "y1": 763.0
+          },
+          {
+            "level": 2,
+            "title": "10.2 音频、说话人与端侧指标",
+            "y1": 782.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 4,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 5413,
+        "text_blocks": 35,
+        "image_blocks": 0,
+        "occupied_ratio": 0.3211,
+        "headings": [
+          {
+            "level": 2,
+            "title": "10.3 固定集、切片和统计不确定性",
+            "y1": 68.4
+          },
+          {
+            "level": 2,
+            "title": "10.4 从指标回到失败样例",
+            "y1": 87.6
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 106.8
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 126.0
+          },
+          {
+            "level": 1,
+            "title": "第 11 章 模型压缩与部署：从 checkpoint 到设备",
+            "y1": 155.6
+          },
+          {
+            "level": 2,
+            "title": "11.1 三种压缩思路",
+            "y1": 176.6
+          },
+          {
+            "level": 2,
+            "title": "11.2 量化不是按一个按钮",
+            "y1": 195.8
+          },
+          {
+            "level": 2,
+            "title": "11.3 ONNX、TensorRT 与 Triton 的分工",
+            "y1": 215.0
+          },
+          {
+            "level": 2,
+            "title": "11.4 ARM、DSP 与 NPU",
+            "y1": 234.2
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 253.4
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 272.6
+          },
+          {
+            "level": 1,
+            "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+            "y1": 302.2
+          },
+          {
+            "level": 2,
+            "title": "12.1 事件和版本链",
+            "y1": 323.2
+          },
+          {
+            "level": 2,
+            "title": "12.2 云端、端侧和故障回退",
+            "y1": 342.4
+          },
+          {
+            "level": 2,
+            "title": "12.3 研究、专利和沟通",
+            "y1": 361.6
+          },
+          {
+            "level": 2,
+            "title": "12.4 一份可面试、可交付的作品",
+            "y1": 380.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 400.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 419.2
+          },
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 448.8
+          },
+          {
+            "level": 2,
+            "title": "13.1 二次开发先从可回放基线开始",
+            "y1": 469.8
+          },
+          {
+            "level": 2,
+            "title": "13.2 ASR 与 LLM：校对员不能改写录音证据",
+            "y1": 489.0
+          },
+          {
+            "level": 2,
+            "title": "13.3 TTS、全双工与打断是一套状态协议",
+            "y1": 508.2
+          },
+          {
+            "level": 2,
+            "title": "13.4 情绪、音频事件与多模态不要共用一个结论",
+            "y1": 527.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 546.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 565.8
+          },
+          {
+            "level": 1,
+            "title": "附录 A 24 周学习路线",
+            "y1": 595.4
+          },
+          {
+            "level": 2,
+            "title": "三条分叉路线",
+            "y1": 616.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 635.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 654.8
+          },
+          {
+            "level": 1,
+            "title": "附录 B 开源工具包怎么选",
+            "y1": 684.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 705.4
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 724.6
+          },
+          {
+            "level": 1,
+            "title": "附录 C 数据集、模型与许可检查",
+            "y1": 754.2
+          },
+          {
+            "level": 2,
+            "title": "固定数据的最小结构",
+            "y1": 775.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 5,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 4389,
+        "text_blocks": 27,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2449,
+        "headings": [
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 68.4
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 87.6
+          },
+          {
+            "level": 1,
+            "title": "附录 D 五份岗位要求的能力映射",
+            "y1": 117.2
+          },
+          {
+            "level": 2,
+            "title": "面试题的四层回答法",
+            "y1": 138.2
+          },
+          {
+            "level": 2,
+            "title": "评分 rubric",
+            "y1": 157.4
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 176.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 195.8
+          },
+          {
+            "level": 1,
+            "title": "附录 E 实验记录模板与指标词典",
+            "y1": 225.4
+          },
+          {
+            "level": 2,
+            "title": "E.1 实验记录模板",
+            "y1": 246.4
+          },
+          {
+            "level": 2,
+            "title": "E.2 常用指标的边界",
+            "y1": 265.6
+          },
+          {
+            "level": 2,
+            "title": "E.3 一页评测声明",
+            "y1": 284.8
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 304.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 323.2
+          },
+          {
+            "level": 1,
+            "title": "附录 F 数学按需补给",
+            "y1": 352.8
+          },
+          {
+            "level": 2,
+            "title": "F.1 能量和对数",
+            "y1": 373.8
+          },
+          {
+            "level": 2,
+            "title": "F.2 卷积和相关",
+            "y1": 393.0
+          },
+          {
+            "level": 2,
+            "title": "F.3 概率与搜索",
+            "y1": 412.2
+          },
+          {
+            "level": 2,
+            "title": "F.4 矩阵与复杂度",
+            "y1": 431.4
+          },
+          {
+            "level": 2,
+            "title": "F.5 统计与置信区间",
+            "y1": 450.6
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 469.8
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 489.0
+          },
+          {
+            "level": 1,
+            "title": "附录 G 网上调研与参考资料",
+            "y1": 518.6
+          },
+          {
+            "level": 2,
+            "title": "论文与数据",
+            "y1": 539.6
+          },
+          {
+            "level": 2,
+            "title": "官方工程文档",
+            "y1": 558.8
+          },
+          {
+            "level": 2,
+            "title": "课程组织参考（未实时打开核验）",
+            "y1": 578.0
+          },
+          {
+            "level": 2,
+            "title": "资料使用声明",
+            "y1": 597.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 6,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1128,
+        "text_blocks": 33,
+        "image_blocks": 1,
+        "occupied_ratio": 0.2741,
+        "headings": [
+          {
+            "level": 1,
+            "title": "导读：岗位要求不是技术清单",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "导读：岗位要求不是技术清单",
+            "y1": 81.4
+          },
+          {
+            "level": 2,
+            "title": "怎么读",
+            "y1": 426.3
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 726.5
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 7,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1321,
+        "text_blocks": 32,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2492,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 1 章 从岗位反推能力地图",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 107.4
+          },
+          {
+            "level": 1,
+            "title": "第 1 章 从岗位反推能力地图",
+            "y1": 320.0
+          },
+          {
+            "level": 2,
+            "title": "1.1 五份岗位的共同骨架",
+            "y1": 435.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 8,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 787,
+        "text_blocks": 22,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3625,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 1 章 从岗位反推能力地图",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "1.2 三种语言描述同一件事",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "1.3 把要求改写成可验收任务",
+            "y1": 489.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 9,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1171,
+        "text_blocks": 29,
+        "image_blocks": 0,
+        "occupied_ratio": 0.3038,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "1.4 作品集应该留下什么",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 232.3
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 339.4
+          },
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 488.2
+          },
+          {
+            "level": 2,
+            "title": "2.1 采样、量化与时间锚点",
+            "y1": 584.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 10,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 616,
+        "text_blocks": 18,
+        "image_blocks": 3,
+        "occupied_ratio": 0.1639,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "2.2 振幅、RMS、dBFS 与 SNR",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "2.3 为什么一张频谱不够",
+            "y1": 369.1
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 11,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 297,
+        "text_blocks": 5,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3695,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 35.1
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 12,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 794,
+        "text_blocks": 20,
+        "image_blocks": 2,
+        "occupied_ratio": 0.4389,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "2.4 Fbank、MFCC 与 CMVN",
+            "y1": 608.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 13,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 644,
+        "text_blocks": 15,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3353,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 2 章 声音的数字地基：从采样到 Fbank",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 477.0
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 584.1
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 14,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1007,
+        "text_blocks": 27,
+        "image_blocks": 1,
+        "occupied_ratio": 0.2799,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 3 章 3A 前端：回声、噪声、增益与判停",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "第 3 章 3A 前端：回声、噪声、增益与判停",
+            "y1": 126.4
+          },
+          {
+            "level": 2,
+            "title": "3.1 AEC 先问“回声从哪里来”",
+            "y1": 222.2
+          },
+          {
+            "level": 2,
+            "title": "3.2 ANS 与 AGC 的边界",
+            "y1": 471.2
+          },
+          {
+            "level": 2,
+            "title": "3.3 VAD、判停与快速打断",
+            "y1": 625.6
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 15,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 791,
+        "text_blocks": 20,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3289,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 3 章 3A 前端：回声、噪声、增益与判停",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 551.9
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 659.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 16,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 765,
+        "text_blocks": 21,
+        "image_blocks": 3,
+        "occupied_ratio": 0.2217,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 4 章 麦克风阵列、方向与分离",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "第 4 章 麦克风阵列、方向与分离",
+            "y1": 126.4
+          },
+          {
+            "level": 2,
+            "title": "4.1 先确认通道真的独立",
+            "y1": 222.2
+          },
+          {
+            "level": 2,
+            "title": "4.2 GCC-PHAT、DOA 与波束形成",
+            "y1": 524.4
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 17,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 367,
+        "text_blocks": 7,
+        "image_blocks": 2,
+        "occupied_ratio": 0.543,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 4 章 麦克风阵列、方向与分离",
+            "y1": 35.1
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 18,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 657,
+        "text_blocks": 20,
+        "image_blocks": 0,
+        "occupied_ratio": 0.1348,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 4 章 麦克风阵列、方向与分离",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "4.3 分离不是“把人名分出来”",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 310.3
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 417.4
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 19,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1134,
+        "text_blocks": 29,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2787,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 5 章 DNN-HMM 与 WFST：经典路线仍在教你解码",
+            "y1": 168.0
+          },
+          {
+            "level": 2,
+            "title": "5.1 HMM 解决的是时间结构",
+            "y1": 293.8
+          },
+          {
+            "level": 2,
+            "title": "5.2 WFST 把约束放进搜索图",
+            "y1": 448.2
+          },
+          {
+            "level": 2,
+            "title": "5.3 为什么工程团队仍需要这条路线",
+            "y1": 602.6
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 20,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 854,
+        "text_blocks": 25,
+        "image_blocks": 1,
+        "occupied_ratio": 0.2782,
+        "headings": [
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 163.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 270.6
+          },
+          {
+            "level": 1,
+            "title": "第 6 章 CTC、AED、RNN-T 与 Conformer：端到端不是一种模型",
+            "y1": 419.4
+          },
+          {
+            "level": 2,
+            "title": "6.1 CTC 用路径求和隐藏对齐",
+            "y1": 564.7
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 21,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 780,
+        "text_blocks": 17,
+        "image_blocks": 2,
+        "occupied_ratio": 0.3329,
+        "headings": [
+          {
+            "level": 2,
+            "title": "6.2 AED 用注意力建模文本历史",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "6.3 RNN-T 与 Conformer 的工程位置",
+            "y1": 238.9
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 22,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 576,
+        "text_blocks": 19,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3193,
+        "headings": [
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 519.6
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 644.9
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 23,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1016,
+        "text_blocks": 24,
+        "image_blocks": 2,
+        "occupied_ratio": 0.262,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 7 章 流式识别：结果一边出来，一边被修订",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "第 7 章 流式识别：结果一边出来，一边被修订",
+            "y1": 126.4
+          },
+          {
+            "level": 2,
+            "title": "7.1 三种结果和一条时间轴",
+            "y1": 222.2
+          },
+          {
+            "level": 2,
+            "title": "7.2 延迟预算要拆开",
+            "y1": 376.6
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 24,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 727,
+        "text_blocks": 20,
+        "image_blocks": 2,
+        "occupied_ratio": 0.3506,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 7 章 流式识别：结果一边出来，一边被修订",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "7.3 判停、唤醒与打断",
+            "y1": 388.1
+          },
+          {
+            "level": 2,
+            "title": "7.4 LID 和多语种边界",
+            "y1": 599.5
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 25,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 952,
+        "text_blocks": 22,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2468,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 8 章 数据、训练与鲁棒性：模型上限先由输入决定",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 178.8
+          },
+          {
+            "level": 1,
+            "title": "第 8 章 数据、训练与鲁棒性：模型上限先由输入决定",
+            "y1": 327.6
+          },
+          {
+            "level": 2,
+            "title": "8.1 从音频到样本的流水线",
+            "y1": 453.4
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 26,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 838,
+        "text_blocks": 25,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3773,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 8 章 数据、训练与鲁棒性：模型上限先由输入决定",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "8.2 增强不是随机加噪声",
+            "y1": 323.3
+          },
+          {
+            "level": 2,
+            "title": "8.3 自监督与个性化适配",
+            "y1": 477.7
+          },
+          {
+            "level": 2,
+            "title": "8.4 口音、方言和长尾",
+            "y1": 650.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 27,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1006,
+        "text_blocks": 26,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2237,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 9 章 说话人、语种与音频理解",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 163.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 270.6
+          },
+          {
+            "level": 1,
+            "title": "第 9 章 说话人、语种与音频理解",
+            "y1": 465.0
+          },
+          {
+            "level": 2,
+            "title": "9.1 分段、识别、验证与分离",
+            "y1": 560.8
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 28,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 766,
+        "text_blocks": 22,
+        "image_blocks": 2,
+        "occupied_ratio": 0.3853,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 9 章 说话人、语种与音频理解",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "9.2 在线聚类与匿名标签",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "9.3 LID、TTS 与音频事件",
+            "y1": 591.6
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 29,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 994,
+        "text_blocks": 24,
+        "image_blocks": 2,
+        "occupied_ratio": 0.2677,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 10 章 评测：一个分数永远不够",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "9.4 DER 与证据强度",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 311.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 418.6
+          },
+          {
+            "level": 1,
+            "title": "第 10 章 评测：一个分数永远不够",
+            "y1": 567.4
+          },
+          {
+            "level": 2,
+            "title": "10.1 CER/WER 要先固定文本口径",
+            "y1": 663.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 30,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 661,
+        "text_blocks": 17,
+        "image_blocks": 2,
+        "occupied_ratio": 0.4734,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 10 章 评测：一个分数永远不够",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "10.2 音频、说话人与端侧指标",
+            "y1": 139.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 31,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 828,
+        "text_blocks": 23,
+        "image_blocks": 0,
+        "occupied_ratio": 0.1491,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 10 章 评测：一个分数永远不够",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "10.3 固定集、切片和统计不确定性",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "10.4 从指标回到失败样例",
+            "y1": 207.9
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 386.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 493.6
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 32,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1062,
+        "text_blocks": 28,
+        "image_blocks": 1,
+        "occupied_ratio": 0.2743,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 11 章 模型压缩与部署：从 checkpoint 到设备",
+            "y1": 168.0
+          },
+          {
+            "level": 2,
+            "title": "11.1 三种压缩思路",
+            "y1": 293.8
+          },
+          {
+            "level": 2,
+            "title": "11.2 量化不是按一个按钮",
+            "y1": 405.6
+          },
+          {
+            "level": 2,
+            "title": "11.3 ONNX、TensorRT 与 Triton 的分工",
+            "y1": 592.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 33,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 667,
+        "text_blocks": 14,
+        "image_blocks": 2,
+        "occupied_ratio": 0.5105,
+        "headings": [
+          {
+            "level": 2,
+            "title": "11.4 ARM、DSP 与 NPU",
+            "y1": 323.5
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 34,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 716,
+        "text_blocks": 21,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2282,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 163.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 270.6
+          },
+          {
+            "level": 1,
+            "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+            "y1": 419.4
+          },
+          {
+            "level": 2,
+            "title": "12.1 事件和版本链",
+            "y1": 545.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 35,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 624,
+        "text_blocks": 15,
+        "image_blocks": 2,
+        "occupied_ratio": 0.4834,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "12.2 云端、端侧和故障回退",
+            "y1": 619.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 36,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 931,
+        "text_blocks": 28,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2048,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 12 章 生产系统与职业交付：把算法变成可维护的能力",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "12.3 研究、专利和沟通",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "12.4 一份可面试、可交付的作品",
+            "y1": 244.3
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 483.7
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 590.8
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 37,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1244,
+        "text_blocks": 29,
+        "image_blocks": 0,
+        "occupied_ratio": 0.3003,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 126.4
+          },
+          {
+            "level": 2,
+            "title": "13.1 二次开发先从可回放基线开始",
+            "y1": 271.7
+          },
+          {
+            "level": 2,
+            "title": "13.2 ASR 与 LLM：校对员不能改写录音证据",
+            "y1": 541.5
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 38,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 517,
+        "text_blocks": 14,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3133,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "13.3 TTS、全双工与打断是一套状态协议",
+            "y1": 480.2
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 39,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1014,
+        "text_blocks": 23,
+        "image_blocks": 1,
+        "occupied_ratio": 0.4199,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "13.4 情绪、音频事件与多模态不要共用一个结论",
+            "y1": 520.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 40,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 635,
+        "text_blocks": 20,
+        "image_blocks": 0,
+        "occupied_ratio": 0.1381,
+        "headings": [
+          {
+            "level": 1,
+            "title": "第 13 章 语音大模型与全双工交互：让扩展能力受证据约束",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 198.3
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 346.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 41,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1000,
+        "text_blocks": 28,
+        "image_blocks": 1,
+        "occupied_ratio": 0.3504,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 A 24 周学习路线",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "附录 A 24 周学习路线",
+            "y1": 168.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 42,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1122,
+        "text_blocks": 32,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2778,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 B 开源工具包怎么选",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "三条分叉路线",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 238.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 322.9
+          },
+          {
+            "level": 1,
+            "title": "附录 B 开源工具包怎么选",
+            "y1": 449.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 43,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1176,
+        "text_blocks": 33,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2635,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 C 数据集、模型与许可检查",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 180.9
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 265.3
+          },
+          {
+            "level": 1,
+            "title": "附录 C 数据集、模型与许可检查",
+            "y1": 391.4
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 44,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1332,
+        "text_blocks": 42,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2646,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 D 五份岗位要求的能力映射",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "固定数据的最小结构",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 171.5
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 255.9
+          },
+          {
+            "level": 1,
+            "title": "附录 D 五份岗位要求的能力映射",
+            "y1": 382.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 45,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1047,
+        "text_blocks": 28,
+        "image_blocks": 0,
+        "occupied_ratio": 0.1791,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 D 五份岗位要求的能力映射",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "面试题的四层回答法",
+            "y1": 188.3
+          },
+          {
+            "level": 2,
+            "title": "评分 rubric",
+            "y1": 378.9
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 564.9
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 649.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 46,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 895,
+        "text_blocks": 27,
+        "image_blocks": 0,
+        "occupied_ratio": 0.206,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 E 实验记录模板与指标词典",
+            "y1": 35.1
+          },
+          {
+            "level": 1,
+            "title": "附录 E 实验记录模板与指标词典",
+            "y1": 126.4
+          },
+          {
+            "level": 2,
+            "title": "E.1 实验记录模板",
+            "y1": 202.7
+          },
+          {
+            "level": 2,
+            "title": "E.2 常用指标的边界",
+            "y1": 471.7
+          },
+          {
+            "level": 2,
+            "title": "E.3 一页评测声明",
+            "y1": 665.1
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 47,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 989,
+        "text_blocks": 27,
+        "image_blocks": 0,
+        "occupied_ratio": 0.2563,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 F 数学按需补给",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 156.1
+          },
+          {
+            "level": 1,
+            "title": "附录 F 数学按需补给",
+            "y1": 282.2
+          },
+          {
+            "level": 2,
+            "title": "F.1 能量和对数",
+            "y1": 358.5
+          },
+          {
+            "level": 2,
+            "title": "F.2 卷积和相关",
+            "y1": 433.9
+          },
+          {
+            "level": 2,
+            "title": "F.3 概率与搜索",
+            "y1": 509.3
+          },
+          {
+            "level": 2,
+            "title": "F.4 矩阵与复杂度",
+            "y1": 602.9
+          },
+          {
+            "level": 2,
+            "title": "F.5 统计与置信区间",
+            "y1": 678.3
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 48,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1268,
+        "text_blocks": 32,
+        "image_blocks": 0,
+        "occupied_ratio": 0.3231,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 G 网上调研与参考资料",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "本章小结",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "思考题",
+            "y1": 156.1
+          },
+          {
+            "level": 1,
+            "title": "附录 G 网上调研与参考资料",
+            "y1": 282.2
+          },
+          {
+            "level": 2,
+            "title": "论文与数据",
+            "y1": 378.0
+          }
+        ],
+        "low_density": false
+      },
+      {
+        "page": 49,
+        "width_pt": 595.28,
+        "height_pt": 841.89,
+        "characters": 1231,
+        "text_blocks": 27,
+        "image_blocks": 0,
+        "occupied_ratio": 0.216,
+        "headings": [
+          {
+            "level": 1,
+            "title": "附录 G 网上调研与参考资料",
+            "y1": 35.1
+          },
+          {
+            "level": 2,
+            "title": "官方工程文档",
+            "y1": 71.7
+          },
+          {
+            "level": 2,
+            "title": "课程组织参考（未实时打开核验）",
+            "y1": 392.5
+          },
+          {
+            "level": 2,
+            "title": "资料使用声明",
+            "y1": 504.3
+          }
+        ],
+        "low_density": false
+      }
+    ]
+  },
+  "render": {},
+  "findings": [],
+  "errors": 0,
+  "warnings": 0
+}

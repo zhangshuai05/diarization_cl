@@ -1,0 +1,160 @@
+{
+  "c1": {
+    "method": "claude-a2-v4-c1",
+    "file": "Note20260803111855.wav",
+    "elapsed": 17.3,
+    "diag": {
+      "n_segments": 23,
+      "n_clusters": 2
+    },
+    "verdict": "reliable",
+    "sentence_info": [
+      {
+        "start": 0.0,
+        "end": 3.52,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 3.52,
+        "end": 6.67,
+        "spk": 1,
+        "text": "呃 欢 迎 光 临 请 问 想 喝 点 什 么"
+      },
+      {
+        "start": 6.67,
+        "end": 7.12,
+        "spk": 0,
+        "text": "两 个"
+      },
+      {
+        "start": 7.12,
+        "end": 7.27,
+        "spk": 1,
+        "text": ""
+      },
+      {
+        "start": 7.27,
+        "end": 8.1,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 10.2,
+        "end": 11.62,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 11.62,
+        "end": 14.93,
+        "spk": 1,
+        "text": "收 到 玉 泥 波 包 鲜 在 要 什 么 冰 甜 度"
+      },
+      {
+        "start": 14.93,
+        "end": 15.38,
+        "spk": 0,
+        "text": "就 这 样"
+      },
+      {
+        "start": 15.38,
+        "end": 15.68,
+        "spk": 1,
+        "text": "等 一 下"
+      },
+      {
+        "start": 15.68,
+        "end": 17.55,
+        "spk": 0,
+        "text": "啊 你 们 怎 么 了"
+      },
+      {
+        "start": 17.85,
+        "end": 18.97,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 18.97,
+        "end": 22.57,
+        "spk": 1,
+        "text": "需 不 需 要 额 外 加 料 一 斤 波 波 可 以 再 加 一 份 波 波"
+      },
+      {
+        "start": 22.57,
+        "end": 23.62,
+        "spk": 0,
+        "text": "不 用"
+      },
+      {
+        "start": 23.62,
+        "end": 26.03,
+        "spk": 1,
+        "text": "两 杯 合 计 二 十 八 元 微 信 还 是 支 付 宝"
+      },
+      {
+        "start": 26.03,
+        "end": 27.07,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 27.07,
+        "end": 29.32,
+        "spk": 1,
+        "text": "麻 烦 周 四 付 款 吧"
+      },
+      {
+        "start": 29.32,
+        "end": 29.47,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 29.47,
+        "end": 33.52,
+        "spk": 1,
+        "text": "收 到 了 小 片 哦 拿 好 麻 烦 旁 边 等 候 取 餐"
+      },
+      {
+        "start": 33.52,
+        "end": 34.72,
+        "spk": 0,
+        "text": ""
+      },
+      {
+        "start": 34.72,
+        "end": 36.97,
+        "spk": 1,
+        "text": "你 好 两 杯 饮 品 做 好 了"
+      },
+      {
+        "start": 36.97,
+        "end": 37.72,
+        "spk": 0,
+        "text": "十 八 钱"
+      },
+      {
+        "start": 37.72,
+        "end": 39.38,
+        "spk": 1,
+        "text": "范 总 期 待 下 次 光 临"
+      },
+      {
+        "start": 39.38,
+        "end": 39.9,
+        "spk": 0,
+        "text": ""
+      }
+    ],
+    "env": {
+      "snr_db": 42.9,
+      "noise_db": -51.0,
+      "speech_db": -8.1,
+      "verdict": "嘈杂",
+      "method": "vad+percentile",
+      "n_vad_frames": 3437
+    }
+  }
+}

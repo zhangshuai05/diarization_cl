@@ -1,0 +1,23 @@
+flowchart TD
+    START[九月主线目标<br/>说话人分离 · 首个 DER 评测基线] --> PH1[阶段1 设备布放实测 · 第1周<br/>桌面/佩戴方案评估<br/>距离 · 信噪比 · 安全性<br/>现场支持：算法实习生]
+    PH1 --> CHK1{多设备可行?<br/>拾音清晰度 · 设备安全}
+    CHK1 -- 是 --> ALIGN[统一命名与时间戳对齐<br/>东八区时间标准<br/>多录音卡模拟阵列拾音]
+    CHK1 -- 否 --> NOTE1[记录适用场景<br/>作为边界说明]
+    ALIGN --> PH2[阶段2 分离算法优化 · 第2-3周<br/>典型过分割案例<br/>时间连续性约束<br/>代码复检与优化]
+    PH2 --> PH3[阶段3 DER 基线评测 · 第3-4周<br/>接入评测链路<br/>输出首个 DER 数字<br/>评测辅助：算法实习生]
+    PH3 --> PROD[九月产出<br/>DER 基线数字 + 场景适用性说明]
+
+    PAR[并行 · 交付收尾<br/>算法实习生协助<br/>九月前两周清零]
+    RF[并行 · 回流机制（占位）<br/>完整前后端流程核心<br/>方案待与王总讨论细化]
+    POST[并行 · 数据后处理<br/>aac转wav · VAD 更新<br/>用户带教 · 算法实习生]
+    REV[并行 · 代码复检与优化<br/>用户主导 · 算法实习生]
+
+    START -.-> PAR
+    START -.-> RF
+    START -.-> POST
+    START -.-> REV
+
+    classDef main fill:#E8F0FE,stroke:#1F4E79,color:#1F4E79;
+    classDef para fill:#FFF4E5,stroke:#E08A00,color:#8A5200;
+    class START,PH1,CHK1,ALIGN,NOTE1,PH2,PH3,PROD main;
+    class PAR,RF,POST,REV para;

@@ -1,0 +1,713 @@
+{
+  "schema": "v13-rules-vad-gate-v1",
+  "rows": [
+    {
+      "rule": "现状 v11（无门，cap4）",
+      "mode": "objective",
+      "cap": 4,
+      "min_win": 4,
+      "min_share": 0.015,
+      "sliver_out": false,
+      "core": false,
+      "dev": 0.259075,
+      "holdout": 0.16565,
+      "all": 0.22170499999999999,
+      "median": 0.19255,
+      "worst": 0.7163,
+      "frame": 0.7591249999999999,
+      "mean_k": 2.5,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.7163,
+          "frame": 0.2691,
+          "k": 1
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.4313,
+          "frame": 0.4114,
+          "k": 2
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.3201,
+          "frame": 0.6234,
+          "k": 3
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.1309,
+          "frame": 0.9332,
+          "k": 4
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.0815,
+          "frame": 0.7223,
+          "k": 2
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1224,
+          "frame": 0.6905,
+          "k": 2
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.3135,
+          "frame": 0.6816,
+          "k": 2
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.586,
+          "frame": 0.3029,
+          "k": 2
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.2454,
+          "frame": 0.8677,
+          "k": 4
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.039,
+          "frame": 0.9818,
+          "k": 2
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0291,
+          "frame": 0.982,
+          "k": 2
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.0934,
+          "frame": 0.9265,
+          "k": 2
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.2006,
+          "frame": 0.7954,
+          "k": 4
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.2247,
+          "frame": 0.7878,
+          "k": 2
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.2981,
+          "frame": 0.6707,
+          "k": 2
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.2649,
+          "frame": 0.8247,
+          "k": 2
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0456,
+          "frame": 0.9797,
+          "k": 3
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0482,
+          "frame": 0.9751,
+          "k": 4
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.1845,
+          "frame": 0.8474,
+          "k": 2
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0586,
+          "frame": 0.9093,
+          "k": 3
+        }
+      }
+    },
+    {
+      "rule": "cap8 + sliver_out",
+      "mode": "objective",
+      "cap": 8,
+      "min_win": 2,
+      "min_share": 0.0,
+      "sliver_out": true,
+      "core": true,
+      "dev": 0.13430833333333328,
+      "holdout": 0.1215625,
+      "all": 0.12921000000000002,
+      "median": 0.10515,
+      "worst": 0.3201,
+      "frame": 0.844665,
+      "mean_k": 3.3,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.1169,
+          "frame": 0.801,
+          "k": 5
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.1485,
+          "frame": 0.6422,
+          "k": 5
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.3201,
+          "frame": 0.6234,
+          "k": 3
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.1309,
+          "frame": 0.9332,
+          "k": 4
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.0815,
+          "frame": 0.7223,
+          "k": 2
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1224,
+          "frame": 0.6905,
+          "k": 2
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.3135,
+          "frame": 0.6816,
+          "k": 2
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.0704,
+          "frame": 0.8031,
+          "k": 5
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.146,
+          "frame": 0.9647,
+          "k": 5
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.039,
+          "frame": 0.9818,
+          "k": 2
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0291,
+          "frame": 0.982,
+          "k": 2
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.0934,
+          "frame": 0.9265,
+          "k": 2
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.2006,
+          "frame": 0.7954,
+          "k": 4
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.2247,
+          "frame": 0.7878,
+          "k": 2
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.0749,
+          "frame": 0.8908,
+          "k": 5
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.2649,
+          "frame": 0.8247,
+          "k": 2
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0456,
+          "frame": 0.9797,
+          "k": 3
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0482,
+          "frame": 0.9751,
+          "k": 4
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.055,
+          "frame": 0.9782,
+          "k": 4
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0586,
+          "frame": 0.9093,
+          "k": 3
+        }
+      }
+    },
+    {
+      "rule": "cap10 + sliver_out",
+      "mode": "objective",
+      "cap": 10,
+      "min_win": 2,
+      "min_share": 0.0,
+      "sliver_out": true,
+      "core": true,
+      "dev": 0.13430833333333328,
+      "holdout": 0.1215625,
+      "all": 0.12921000000000002,
+      "median": 0.10515,
+      "worst": 0.3201,
+      "frame": 0.844665,
+      "mean_k": 3.3,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.1169,
+          "frame": 0.801,
+          "k": 5
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.1485,
+          "frame": 0.6422,
+          "k": 5
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.3201,
+          "frame": 0.6234,
+          "k": 3
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.1309,
+          "frame": 0.9332,
+          "k": 4
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.0815,
+          "frame": 0.7223,
+          "k": 2
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1224,
+          "frame": 0.6905,
+          "k": 2
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.3135,
+          "frame": 0.6816,
+          "k": 2
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.0704,
+          "frame": 0.8031,
+          "k": 5
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.146,
+          "frame": 0.9647,
+          "k": 5
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.039,
+          "frame": 0.9818,
+          "k": 2
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0291,
+          "frame": 0.982,
+          "k": 2
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.0934,
+          "frame": 0.9265,
+          "k": 2
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.2006,
+          "frame": 0.7954,
+          "k": 4
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.2247,
+          "frame": 0.7878,
+          "k": 2
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.0749,
+          "frame": 0.8908,
+          "k": 5
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.2649,
+          "frame": 0.8247,
+          "k": 2
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0456,
+          "frame": 0.9797,
+          "k": 3
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0482,
+          "frame": 0.9751,
+          "k": 4
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.055,
+          "frame": 0.9782,
+          "k": 4
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0586,
+          "frame": 0.9093,
+          "k": 3
+        }
+      }
+    },
+    {
+      "rule": "cap8，取最大**合格**k",
+      "mode": "largest_eligible",
+      "cap": 8,
+      "min_win": 2,
+      "min_share": 0.0,
+      "sliver_out": true,
+      "core": true,
+      "dev": 0.11909166666666669,
+      "holdout": 0.08515,
+      "all": 0.10551499999999998,
+      "median": 0.10414999999999999,
+      "worst": 0.2111,
+      "frame": 0.8741999999999999,
+      "mean_k": 8.0,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.1232,
+          "frame": 0.7895,
+          "k": 8
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.2111,
+          "frame": 0.5947,
+          "k": 8
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.0924,
+          "frame": 0.7889,
+          "k": 8
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.1377,
+          "frame": 0.931,
+          "k": 8
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.1298,
+          "frame": 0.7061,
+          "k": 8
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1166,
+          "frame": 0.7303,
+          "k": 8
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.1713,
+          "frame": 0.8583,
+          "k": 8
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.1057,
+          "frame": 0.7938,
+          "k": 8
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.1651,
+          "frame": 0.9434,
+          "k": 8
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.0399,
+          "frame": 0.9887,
+          "k": 8
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0337,
+          "frame": 0.9842,
+          "k": 8
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.1026,
+          "frame": 0.9196,
+          "k": 8
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.1341,
+          "frame": 0.8639,
+          "k": 8
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.0835,
+          "frame": 0.9307,
+          "k": 8
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.0934,
+          "frame": 0.8795,
+          "k": 8
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.1411,
+          "frame": 0.9415,
+          "k": 8
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0452,
+          "frame": 0.9799,
+          "k": 8
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0599,
+          "frame": 0.9727,
+          "k": 8
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.0601,
+          "frame": 0.977,
+          "k": 8
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0639,
+          "frame": 0.9103,
+          "k": 8
+        }
+      }
+    },
+    {
+      "rule": "cap8，取最大 k（无门）",
+      "mode": "largest",
+      "cap": 8,
+      "min_win": 2,
+      "min_share": 0.0,
+      "sliver_out": true,
+      "core": true,
+      "dev": 0.11909166666666669,
+      "holdout": 0.08515,
+      "all": 0.10551499999999998,
+      "median": 0.10414999999999999,
+      "worst": 0.2111,
+      "frame": 0.8741999999999999,
+      "mean_k": 8.0,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.1232,
+          "frame": 0.7895,
+          "k": 8
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.2111,
+          "frame": 0.5947,
+          "k": 8
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.0924,
+          "frame": 0.7889,
+          "k": 8
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.1377,
+          "frame": 0.931,
+          "k": 8
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.1298,
+          "frame": 0.7061,
+          "k": 8
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1166,
+          "frame": 0.7303,
+          "k": 8
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.1713,
+          "frame": 0.8583,
+          "k": 8
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.1057,
+          "frame": 0.7938,
+          "k": 8
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.1651,
+          "frame": 0.9434,
+          "k": 8
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.0399,
+          "frame": 0.9887,
+          "k": 8
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0337,
+          "frame": 0.9842,
+          "k": 8
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.1026,
+          "frame": 0.9196,
+          "k": 8
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.1341,
+          "frame": 0.8639,
+          "k": 8
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.0835,
+          "frame": 0.9307,
+          "k": 8
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.0934,
+          "frame": 0.8795,
+          "k": 8
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.1411,
+          "frame": 0.9415,
+          "k": 8
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0452,
+          "frame": 0.9799,
+          "k": 8
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0599,
+          "frame": 0.9727,
+          "k": 8
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.0601,
+          "frame": 0.977,
+          "k": 8
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0639,
+          "frame": 0.9103,
+          "k": 8
+        }
+      }
+    },
+    {
+      "rule": "cap10，取最大 k（无门）",
+      "mode": "largest",
+      "cap": 10,
+      "min_win": 2,
+      "min_share": 0.0,
+      "sliver_out": true,
+      "core": true,
+      "dev": 0.13486666666666666,
+      "holdout": 0.09603750000000001,
+      "all": 0.119335,
+      "median": 0.12190000000000001,
+      "worst": 0.2125,
+      "frame": 0.8640749999999999,
+      "mean_k": 10.0,
+      "per_meeting": {
+        "dev/L_R003S01C02": {
+          "der": 0.1445,
+          "frame": 0.7769,
+          "k": 10
+        },
+        "dev/L_R003S02C02": {
+          "der": 0.2111,
+          "frame": 0.5933,
+          "k": 10
+        },
+        "dev/L_R003S03C02": {
+          "der": 0.112,
+          "frame": 0.7801,
+          "k": 10
+        },
+        "dev/L_R003S04C02": {
+          "der": 0.2125,
+          "frame": 0.8584,
+          "k": 10
+        },
+        "dev/M_R003S01C01": {
+          "der": 0.1326,
+          "frame": 0.7043,
+          "k": 10
+        },
+        "dev/M_R003S02C01": {
+          "der": 0.1233,
+          "frame": 0.7203,
+          "k": 10
+        },
+        "dev/M_R003S04C01": {
+          "der": 0.1816,
+          "frame": 0.8543,
+          "k": 10
+        },
+        "dev/M_R003S05C01": {
+          "der": 0.1124,
+          "frame": 0.7902,
+          "k": 10
+        },
+        "dev/S_R004S01C01": {
+          "der": 0.1697,
+          "frame": 0.9401,
+          "k": 10
+        },
+        "dev/S_R004S02C01": {
+          "der": 0.0527,
+          "frame": 0.9832,
+          "k": 10
+        },
+        "dev/S_R004S03C01": {
+          "der": 0.0455,
+          "frame": 0.9757,
+          "k": 10
+        },
+        "dev/S_R004S04C01": {
+          "der": 0.1205,
+          "frame": 0.9002,
+          "k": 10
+        },
+        "holdout/L_R004S01C01": {
+          "der": 0.1572,
+          "frame": 0.8416,
+          "k": 10
+        },
+        "holdout/L_R004S02C01": {
+          "der": 0.0862,
+          "frame": 0.9415,
+          "k": 10
+        },
+        "holdout/L_R004S03C01": {
+          "der": 0.1259,
+          "frame": 0.8541,
+          "k": 10
+        },
+        "holdout/L_R004S06C01": {
+          "der": 0.1458,
+          "frame": 0.9405,
+          "k": 10
+        },
+        "holdout/S_R003S01C01": {
+          "der": 0.0547,
+          "frame": 0.9757,
+          "k": 10
+        },
+        "holdout/S_R003S02C01": {
+          "der": 0.0619,
+          "frame": 0.9727,
+          "k": 10
+        },
+        "holdout/S_R003S03C01": {
+          "der": 0.0698,
+          "frame": 0.9698,
+          "k": 10
+        },
+        "holdout/S_R003S04C01": {
+          "der": 0.0668,
+          "frame": 0.9086,
+          "k": 10
+        }
+      }
+    }
+  ]
+}

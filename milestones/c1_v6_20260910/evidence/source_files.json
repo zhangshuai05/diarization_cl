@@ -1,0 +1,30 @@
+{
+  "a2_v2.py": {
+    "sha256": "9cdcfb2bcc24f0c28e84a3aa8889d216e02446a68b72d9948a211d0136ae2ae2",
+    "source": "C:\\Users\\EDY\\Desktop\\new\\a2_v2.py"
+  },
+  "claude_a2.py": {
+    "sha256": "57856a7b05ac666d9e31394ce8744af4dfbaa6314f3f1550abdecd750641cf7c",
+    "source": "C:\\Users\\EDY\\Desktop\\new\\claude_a2.py"
+  },
+  "test_c1_refinement.py": {
+    "sha256": "744b3d7352689ce33d3fadead60521f2e2e7863e040524116387c49ef84c8142",
+    "source": "C:\\Users\\EDY\\Desktop\\new\\test_c1_refinement.py"
+  },
+  "compare_c1.py": {
+    "sha256": "f5f3c6cb2a3c7c69f223a4ca54c5079ceb3fd95935098a8a07d340b91a98410a",
+    "source": "C:\\Users\\EDY\\Desktop\\new\\compare_c1.py"
+  },
+  "local_eval.py": {
+    "sha256": "cdb1733315730fab4022b06176f2905df8e083552fcc63d242c8277dc9718f5d",
+    "source": "C:\\Users\\EDY\\Desktop\\new\\local_eval.py"
+  },
+  "denoise_frcrn.py": {
+    "sha256": "218cc908d76e5133e33b022089cd78e7a467ba74847228459af080492afdf1aa",
+    "source": "c1_v4_20260908 archive"
+  },
+  "env_detect.py": {
+    "sha256": "6290d584883f55d289a9197bd5bf5d99d283c281309770ab80d8d0f4fc420584",
+    "source": "c1_v4_20260908 archive"
+  }
+}

@@ -1,0 +1,18 @@
+语音算法工程师教学 PDF 质检报告
+生成时间（UTC）: 2026-08-19T09:43:50+00:00
+PDF: output/pdf/语音算法工程师教学-全图重制版.pdf
+页数: 49
+书签/目录条目数: 126
+正文字符数: 59440
+嵌入图块数: 40
+坏字符页数: 0
+越界图/文字块数: 0
+低密度页数（警告）: 0
+标题/表题孤立候选数（警告）: 0
+错误: 0  警告: 0
+
+源文件资源审计:
+{"markdown_files": 21, "image_references": 20, "equation_references": 19, "unique_images": 20, "unique_equations": 19, "missing_assets": 0, "malformed_blocks": 0}
+
+发现:
+无发现。

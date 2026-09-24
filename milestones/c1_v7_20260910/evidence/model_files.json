@@ -1,0 +1,52 @@
+{
+    "vad":  {
+                ".gitattributes":  "f3d04437c926962476701a7939d22f21400b4eb0bdd31a15f0012576f2d00932",
+                "am.mvn":  "6820fef9687708c4fc3fab2530179c8fcea6262daa25514380056cd8f6eb1754",
+                "config.yaml":  "86c77f4324827afe19ab0a4884cdd65f3de213b3c3cd35bf1850088d03e6468a",
+                "configuration.json":  "7bce8867e37d55c3dd8f672695ced18077a2be199ea529a5d432d5350fc0acba",
+                "model.pt":  "b3be75be477f0780277f3bae0fe489f48718f585f3a6e45d7dd1fbb1a4255fc5",
+                "README.md":  "42377011603a186fc2bae41a5cc5e548ebf98d8ec307bbae9dd405f82567f543",
+                "example/vad_example.wav":  "a7431f0169ef76ef630c945a1d2c3675d8c8c2df2ae4a6b16f8a88ba1bccfbbb",
+                "fig/struct.png":  "c745bcc2fd4952fb1fe5a0f7f9fdabda510c3771e7a47dd22be605e26db4ee2c"
+            },
+    "spk":  {
+                ".gitattributes":  "f3d04437c926962476701a7939d22f21400b4eb0bdd31a15f0012576f2d00932",
+                "campplus_cn_common.bin":  "3388cf5fd3493c9ac9c69851d8e7a8badcfb4f3dc631020c4961371646d5ada8",
+                "config.yaml":  "17342041bd5b22f6fd7e32f6e7a267b0bf65f018c0a721bada6547e3d28fbfc9",
+                "configuration.json":  "6f7acaf1e81ca121f4a3c71b6ddb66beec24350a3ef330e2c846f17829176a8f",
+                "ding.png":  "f351dc222490a12cadbaa654343cccfce23d7d4f0208fb91d9701e2191bcfaff",
+                "quickstart.md":  "e16e6134b030b7fea46f6729246b18c2945d755b4070ab78b513fe4fab38b6e3",
+                "README.md":  "85e7f149c9d5910da9dbdd4ab5206e33db85e9763107d439a09ef40b004e2f4c",
+                "requirements.txt":  "c6d1bd9fd0c46b2cd29a6dab9859d99355e8c621dd726d4cde5c1d650c8faca0",
+                "structure.png":  "1ff916275cbfe40e1e5584ef66f81b776ef992e9997d8658328394d023dba1b8",
+                "examples/speaker1_a_cn_16k.wav":  "5f20ce0ddc378ca3239d3ce864b1142726a46a1221ae553912e4e142045df58b",
+                "examples/speaker1_b_cn_16k.wav":  "20745dc08a4281894d146140b99b9ef7417ac681119b7f7202f553cdf1a85f65",
+                "examples/speaker2_a_cn_16k.wav":  "8a6cffa452df32ef10503f7992f22ffcdd7f16c4e0273d13311bc5cdcb13abf4"
+            },
+    "asr":  {
+                ".gitattributes":  "250c7e711fdc0cb21d71417b4dd84fe42790c67f6e34003b9e53795b2655983b",
+                "am.mvn":  "29b3c740a2c0cfc6b308126d31d7f265fa2be74f3bb095cd2f143ea970896ae5",
+                "asr_example_hotword.wav":  "51792bc95be33075c1a8abb9afb76ad9f72943e84cd723cc8825b2678799b004",
+                "config.yaml":  "6602efa95e4c7248e1d1030f7ff454a3c9af0f57c335ed87f35260cd7faec35d",
+                "configuration.json":  "1acac324430b5a4680ef5ee2947575443ab2039a92c8a0551665f6bc9a606b41",
+                "model.pt":  "3d491689244ec5dfbf9170ef3827c358aa10f1f20e42a7c59e15e688647946d1",
+                "README.md":  "c92fa06ad63cc9962b9515eb23872f8ed8052fecb4f2df90ec7d0cdbaf916b9f",
+                "seg_dict":  "59a2ef803a3f1648ad03a2e1480db1c1ee0c0d7dc4ef4dbd16cea33944329022",
+                "tokens.json":  "2b20c2b12572d682afff84ce1c8d560f67b8b32a4c1f21567411d141ed352127",
+                "example/asr_example.wav":  "2ffa478de2cd570dd54e8762008cd6bbde9871fd79757f1cdbbec7d6b7b49274",
+                "example/hotword.txt":  "c16dbde81120bb4be3a3a0838ec692da0ab4f0b6503aea9348bf318186e5a452",
+                "fig/res.png":  "1f59ebc6a86733896b2b84110e2aae5625754382762bf1324e017d89a152c2fb",
+                "fig/seaco.png":  "6886864eb6bcc6487a17111b5e3353bd72e7c78fda98c27cf47faa35eafbdcaf"
+            },
+    "frcrn":  {
+                  ".gitattributes":  "40e650854e43f5d4a0efaa68f487161e1226e22bc5480bd0effa0a8dadb5b848",
+                  "configuration.json":  "bbf0257214a6a5171a0e20b978fcc1d3646ecfb0e3b50b8062b5b6502b641d70",
+                  "faq.md":  "3466e1f74e5ee1dabb2f128e758c95b00e9df3a07de47d0722dbf52955d28e41",
+                  "pytorch_model.bin":  "477a2f82019b0a2b5bdd51541405d7e585a1f0355e162f3b46bf5c20d79fd612",
+                  "README.md":  "1980b467e1425d0f71ebe65f16d5b09f0d58af798e49ec5c54a55414b67f6919",
+                  "description/matrix.png":  "7948d604f6830ad6aa42524c997b9e39ae1ab88d2607cff705576439299a5b1f",
+                  "description/model.png":  "c59604ab98710417753a41753291b047ac48fd35057b2aa23702189dd3c04896",
+                  "examples/speech_with_noise.wav":  "9354345a6297f4522e690d337546aa9a686a7e61eefcd935478a2141b924db8f",
+                  "examples/speech_with_noise1.wav":  "0b2882d3bcd9e8f8f9531ac34ac09c0208d86500b910d3e1ca34c022caa9be62"
+              }
+}

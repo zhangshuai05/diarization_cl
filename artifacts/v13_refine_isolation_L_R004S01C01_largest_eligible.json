@@ -1,0 +1,58 @@
+{
+  "schema": "v13-refine-isolation-v1",
+  "split": "holdout",
+  "mode": "largest_eligible",
+  "cap": 8,
+  "min_win": 2,
+  "rows": [
+    {
+      "meeting": "L_R004S01C01",
+      "eff_k": 5,
+      "on": {
+        "total_frames": 45130,
+        "missed": 20,
+        "false_alarm": 3971,
+        "confusion": 6162,
+        "miss_rate": 0.0004,
+        "false_alarm_rate": 0.088,
+        "confusion_rate": 0.1365,
+        "der": 0.225,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 8,
+        "mapping": {
+          "v_4": "001-M",
+          "v_5": "005-F",
+          "v_1": "002-M",
+          "v_7": "006-F",
+          "v_0": "004-M",
+          "v_3": "007-M"
+        },
+        "k": 8,
+        "level": "refined"
+      },
+      "off": {
+        "total_frames": 45130,
+        "missed": 75,
+        "false_alarm": 3971,
+        "confusion": 4854,
+        "miss_rate": 0.0017,
+        "false_alarm_rate": 0.088,
+        "confusion_rate": 0.1076,
+        "der": 0.1972,
+        "n_ref_speakers": 7,
+        "n_pred_speakers": 8,
+        "mapping": {
+          "v_4": "001-M",
+          "v_5": "005-F",
+          "v_1": "002-M",
+          "v_7": "006-F",
+          "v_3": "007-M",
+          "v_2": "004-M"
+        },
+        "k": 8,
+        "level": "2s-only"
+      }
+    }
+  ],
+  "note": "由早期默认名另存；新脚本默认名为 v13_refine_isolation_<meeting>_<mode>.json"
+}

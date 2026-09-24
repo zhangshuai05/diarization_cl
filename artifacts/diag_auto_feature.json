@@ -1,0 +1,209 @@
+[
+  {
+    "file": "Call20260718210228.wav",
+    "env": "嘈杂",
+    "switches": 2,
+    "dom": 0.9714285714285714,
+    "seg_gap": 0.111491028968706,
+    "nseg": 35,
+    "best": "seg"
+  },
+  {
+    "file": "Call20260718210454.wav",
+    "env": "嘈杂",
+    "switches": 14,
+    "dom": 0.6190476190476191,
+    "seg_gap": 0.025278575505695344,
+    "nseg": 21,
+    "best": "tie"
+  },
+  {
+    "file": "Call20260718210657.wav",
+    "env": "嘈杂",
+    "switches": 2,
+    "dom": 0.9333333333333333,
+    "seg_gap": 0.01984046805373041,
+    "nseg": 15,
+    "best": "tie"
+  },
+  {
+    "file": "Call20260718210836.wav",
+    "env": "嘈杂",
+    "switches": 2,
+    "dom": 0.9375,
+    "seg_gap": 0.08617843058116548,
+    "nseg": 16,
+    "best": "window"
+  },
+  {
+    "file": "Call20260718210948.wav",
+    "env": "嘈杂",
+    "switches": 3,
+    "dom": 0.7777777777777778,
+    "seg_gap": 0.03281485917883953,
+    "nseg": 9,
+    "best": "seg"
+  },
+  {
+    "file": "Call20260718211031.wav",
+    "env": "嘈杂",
+    "switches": 6,
+    "dom": 0.6,
+    "seg_gap": 0.13521779927469457,
+    "nseg": 10,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803111143.wav",
+    "env": "嘈杂",
+    "switches": 2,
+    "dom": 0.9615384615384616,
+    "seg_gap": 0.11387930815771452,
+    "nseg": 26,
+    "best": "seg"
+  },
+  {
+    "file": "Note20260803111436.wav",
+    "env": "嘈杂",
+    "switches": 6,
+    "dom": 0.625,
+    "seg_gap": 0.08157168556067795,
+    "nseg": 8,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803111605.wav",
+    "env": "嘈杂",
+    "switches": 4,
+    "dom": 0.7222222222222222,
+    "seg_gap": 0.05684137235188502,
+    "nseg": 18,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803111741.wav",
+    "env": "嘈杂",
+    "switches": 5,
+    "dom": 0.7272727272727273,
+    "seg_gap": 0.03007400797500359,
+    "nseg": 11,
+    "best": "seg"
+  },
+  {
+    "file": "Note20260803111855.wav",
+    "env": "嘈杂",
+    "switches": 3,
+    "dom": 0.5,
+    "seg_gap": 0.13355109654531316,
+    "nseg": 8,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803111943.wav",
+    "env": "嘈杂",
+    "switches": 3,
+    "dom": 0.8,
+    "seg_gap": 0.1270665256731346,
+    "nseg": 10,
+    "best": "tie"
+  },
+  {
+    "file": "Call20260718211423.wav",
+    "env": "安静",
+    "switches": 1,
+    "dom": 0.9230769230769231,
+    "seg_gap": 0.0959166024248902,
+    "nseg": 13,
+    "best": "window"
+  },
+  {
+    "file": "Call20260718211506.wav",
+    "env": "安静",
+    "switches": 2,
+    "dom": 0.9230769230769231,
+    "seg_gap": 0.12075247550264612,
+    "nseg": 13,
+    "best": "window"
+  },
+  {
+    "file": "Call20260718211745.wav",
+    "env": "安静",
+    "switches": 4,
+    "dom": 0.8,
+    "seg_gap": 0.08720004396653525,
+    "nseg": 10,
+    "best": "window"
+  },
+  {
+    "file": "Call20260718211842.wav",
+    "env": "安静",
+    "switches": 1,
+    "dom": 0.9166666666666666,
+    "seg_gap": 0.17539966286517095,
+    "nseg": 12,
+    "best": "tie"
+  },
+  {
+    "file": "Call20260718211938.wav",
+    "env": "安静",
+    "switches": 10,
+    "dom": 0.5,
+    "seg_gap": 0.18020595878673906,
+    "nseg": 12,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112220.wav",
+    "env": "嘈杂",
+    "switches": 8,
+    "dom": 0.6923076923076923,
+    "seg_gap": 0.07986981215811906,
+    "nseg": 13,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112329.wav",
+    "env": "安静",
+    "switches": 8,
+    "dom": 0.6,
+    "seg_gap": 0.026637760096206775,
+    "nseg": 10,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112415.wav",
+    "env": "安静",
+    "switches": 6,
+    "dom": 0.6,
+    "seg_gap": 0.05888916197734184,
+    "nseg": 10,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112655.wav",
+    "env": "安静",
+    "switches": 2,
+    "dom": 0.9,
+    "seg_gap": 0.24425449222312712,
+    "nseg": 10,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112752.wav",
+    "env": "安静",
+    "switches": 4,
+    "dom": 0.5,
+    "seg_gap": 0.0812252768255437,
+    "nseg": 8,
+    "best": "tie"
+  },
+  {
+    "file": "Note20260803112841.wav",
+    "env": "安静",
+    "switches": 6,
+    "dom": 0.6,
+    "seg_gap": 0.13800487129698147,
+    "nseg": 10,
+    "best": "tie"
+  }
+]

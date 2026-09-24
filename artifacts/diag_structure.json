@@ -1,0 +1,186 @@
+[
+  {
+    "file": "Call20260718210228.wav",
+    "env": "嘈杂",
+    "window_nseg": 44,
+    "window_nspk": 2,
+    "segment_nseg": 36,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718210454.wav",
+    "env": "嘈杂",
+    "window_nseg": 17,
+    "window_nspk": 2,
+    "segment_nseg": 24,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718210657.wav",
+    "env": "嘈杂",
+    "window_nseg": 12,
+    "window_nspk": 2,
+    "segment_nseg": 14,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718210836.wav",
+    "env": "嘈杂",
+    "window_nseg": 23,
+    "window_nspk": 2,
+    "segment_nseg": 17,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718210948.wav",
+    "env": "嘈杂",
+    "window_nseg": 3,
+    "window_nspk": 2,
+    "segment_nseg": 9,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211031.wav",
+    "env": "嘈杂",
+    "window_nseg": 3,
+    "window_nspk": 2,
+    "segment_nseg": 11,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111143.wav",
+    "env": "嘈杂",
+    "window_nseg": 9,
+    "window_nspk": 2,
+    "segment_nseg": 30,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111436.wav",
+    "env": "嘈杂",
+    "window_nseg": 13,
+    "window_nspk": 2,
+    "segment_nseg": 10,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111605.wav",
+    "env": "嘈杂",
+    "window_nseg": 7,
+    "window_nspk": 2,
+    "segment_nseg": 15,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111741.wav",
+    "env": "嘈杂",
+    "window_nseg": 19,
+    "window_nspk": 2,
+    "segment_nseg": 15,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111855.wav",
+    "env": "嘈杂",
+    "window_nseg": 8,
+    "window_nspk": 2,
+    "segment_nseg": 10,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803111943.wav",
+    "env": "嘈杂",
+    "window_nseg": 8,
+    "window_nspk": 2,
+    "segment_nseg": 9,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211423.wav",
+    "env": "安静",
+    "window_nseg": 15,
+    "window_nspk": 2,
+    "segment_nseg": 16,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211506.wav",
+    "env": "安静",
+    "window_nseg": 15,
+    "window_nspk": 2,
+    "segment_nseg": 11,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211745.wav",
+    "env": "安静",
+    "window_nseg": 15,
+    "window_nspk": 2,
+    "segment_nseg": 12,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211842.wav",
+    "env": "安静",
+    "window_nseg": 2,
+    "window_nspk": 2,
+    "segment_nseg": 11,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Call20260718211938.wav",
+    "env": "安静",
+    "window_nseg": 14,
+    "window_nspk": 2,
+    "segment_nseg": 13,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112220.wav",
+    "env": "嘈杂",
+    "window_nseg": 16,
+    "window_nspk": 2,
+    "segment_nseg": 15,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112329.wav",
+    "env": "安静",
+    "window_nseg": 6,
+    "window_nspk": 2,
+    "segment_nseg": 11,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112415.wav",
+    "env": "安静",
+    "window_nseg": 11,
+    "window_nspk": 2,
+    "segment_nseg": 9,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112655.wav",
+    "env": "安静",
+    "window_nseg": 13,
+    "window_nspk": 2,
+    "segment_nseg": 16,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112752.wav",
+    "env": "安静",
+    "window_nseg": 7,
+    "window_nspk": 2,
+    "segment_nseg": 8,
+    "segment_nspk": 2
+  },
+  {
+    "file": "Note20260803112841.wav",
+    "env": "安静",
+    "window_nseg": 10,
+    "window_nspk": 2,
+    "segment_nseg": 13,
+    "segment_nspk": 2
+  }
+]

@@ -1,0 +1,385 @@
+{
+  "generated_at": "2026-08-07T07:37:04.143375+00:00",
+  "math_type_dll": "C:\\Program Files (x86)\\MathType\\System\\64\\MT6.dll",
+  "backend": "Equation.DSMT4 IDataObject -> MTEF -> MTXFormEqn",
+  "formulas": {
+    "cer": {
+      "source_type": "tex",
+      "source": "\\mathrm{CER} = \\frac{S + D + I}{N}",
+      "mtef_bytes": 360,
+      "gif": "voice_book/math/assets/cer.gif",
+      "png": "voice_book/math/assets/cer.png",
+      "wmf": "voice_book/math/assets/cer.wmf",
+      "png_size": [
+        452,
+        164
+      ],
+      "source_gif_size": [
+        113,
+        41
+      ],
+      "png_scale": 4,
+      "sha256": "870e91ce83ca637d9f404a031b43a3d3b4b8211c6f97ad751d92dc1138466c4b"
+    },
+    "pre_emphasis": {
+      "source_type": "tex",
+      "source": "y_{n} = x_{n} - 0.97 x_{n-1}",
+      "mtef_bytes": 414,
+      "gif": "voice_book/math/assets/pre_emphasis.gif",
+      "png": "voice_book/math/assets/pre_emphasis.png",
+      "wmf": "voice_book/math/assets/pre_emphasis.wmf",
+      "png_size": [
+        456,
+        96
+      ],
+      "source_gif_size": [
+        114,
+        24
+      ],
+      "png_scale": 4,
+      "sha256": "b6e73d11b98247ca2b20c6c2e575bbb37356921b09f1ac67b3e5989324491c5f"
+    },
+    "mel": {
+      "source_type": "tex",
+      "source": "m = 2595 \\log_{10}(1 + f/700)",
+      "mtef_bytes": 405,
+      "gif": "voice_book/math/assets/mel.gif",
+      "png": "voice_book/math/assets/mel.png",
+      "wmf": "voice_book/math/assets/mel.wmf",
+      "png_size": [
+        692,
+        96
+      ],
+      "source_gif_size": [
+        173,
+        24
+      ],
+      "png_scale": 4,
+      "sha256": "6827d313d8f887005b3fc0bdc21e9de9f74fe4dca693d898a006a4cb8a9cbb54"
+    },
+    "ctc_path": {
+      "source_type": "tex",
+      "source": "P(y|x) = \\sum_{\\pi \\in B^{-1}(y)} \\prod_{t=1}^{T} P(\\pi_t|x)",
+      "mtef_bytes": 553,
+      "gif": "voice_book/math/assets/ctc_path.gif",
+      "png": "voice_book/math/assets/ctc_path.png",
+      "wmf": "voice_book/math/assets/ctc_path.wmf",
+      "png_size": [
+        740,
+        192
+      ],
+      "source_gif_size": [
+        185,
+        48
+      ],
+      "png_scale": 4,
+      "sha256": "bedad9f04b13d732a44e81ade1e0efc6a3525ef4a05b246180172a338fa36e6a"
+    },
+    "der": {
+      "source_type": "tex",
+      "source": "\\mathrm{DER} = \\frac{T_{miss} + T_{false} + T_{conf}}{T_{ref}}",
+      "mtef_bytes": 545,
+      "gif": "voice_book/math/assets/der.gif",
+      "png": "voice_book/math/assets/der.png",
+      "wmf": "voice_book/math/assets/der.wmf",
+      "png_size": [
+        660,
+        196
+      ],
+      "source_gif_size": [
+        165,
+        49
+      ],
+      "png_scale": 4,
+      "sha256": "0317f451f03a1a0015ff579dc2e9ffb73e718e4da743f3e420e4aa6054625f5e"
+    },
+    "fraunhofer": {
+      "source_type": "tex",
+      "source": "r > \\frac{2D^2}{\\lambda}",
+      "mtef_bytes": 346,
+      "gif": "voice_book/math/assets/fraunhofer.gif",
+      "png": "voice_book/math/assets/fraunhofer.png",
+      "wmf": "voice_book/math/assets/fraunhofer.wmf",
+      "png_size": [
+        232,
+        176
+      ],
+      "source_gif_size": [
+        58,
+        44
+      ],
+      "png_scale": 4,
+      "sha256": "9bcb897327dbda60b8becadc489e3f57ab49476f144a4d6cb2a0368d42aa77bc"
+    },
+    "alias_limit": {
+      "source_type": "tex",
+      "source": "f < \\frac{c}{2d}",
+      "mtef_bytes": 315,
+      "gif": "voice_book/math/assets/alias_limit.gif",
+      "png": "voice_book/math/assets/alias_limit.png",
+      "wmf": "voice_book/math/assets/alias_limit.wmf",
+      "png_size": [
+        208,
+        164
+      ],
+      "source_gif_size": [
+        52,
+        41
+      ],
+      "png_scale": 4,
+      "sha256": "7506e26354d8feb54dd6d609f85f6d1f1dfdcaef4d3db8dfe80d3b66eb592a26"
+    },
+    "rms": {
+      "source_type": "tex",
+      "source": "\\mathrm{RMS} = \\sqrt{\\frac{1}{N} \\sum_{n=0}^{N-1} x_n^2}",
+      "mtef_bytes": 478,
+      "gif": "voice_book/math/assets/rms.gif",
+      "png": "voice_book/math/assets/rms.png",
+      "wmf": "voice_book/math/assets/rms.wmf",
+      "png_size": [
+        472,
+        200
+      ],
+      "source_gif_size": [
+        118,
+        50
+      ],
+      "png_scale": 4,
+      "sha256": "13254e76ef9a418dc55daae38232c4e233390f8cc2999a8108d2ef662e083572"
+    },
+    "dbfs": {
+      "source_type": "tex",
+      "source": "\\mathrm{dBFS} = 20 \\log_{10}(\\mathrm{RMS})",
+      "mtef_bytes": 402,
+      "gif": "voice_book/math/assets/dbfs.gif",
+      "png": "voice_book/math/assets/dbfs.png",
+      "wmf": "voice_book/math/assets/dbfs.wmf",
+      "png_size": [
+        600,
+        96
+      ],
+      "source_gif_size": [
+        150,
+        24
+      ],
+      "png_scale": 4,
+      "sha256": "641c5b257d4a3ec7b8119e4e90faed5b3f8a6d8d68654134e4c20d8643c71452"
+    },
+    "snr": {
+      "source_type": "tex",
+      "source": "\\mathrm{SNR} = 10 \\log_{10} \\frac{P_{signal}}{P_{noise}}",
+      "mtef_bytes": 506,
+      "gif": "voice_book/math/assets/snr.gif",
+      "png": "voice_book/math/assets/snr.png",
+      "wmf": "voice_book/math/assets/snr.wmf",
+      "png_size": [
+        548,
+        192
+      ],
+      "source_gif_size": [
+        137,
+        48
+      ],
+      "png_scale": 4,
+      "sha256": "df59e85968858f481d5ee058be92b0ad5f64e64588845c211794098e00a8c9bb"
+    },
+    "attention_prob": {
+      "source_type": "tex",
+      "source": "P(y_i \\mid y_1, \\ldots, y_{i-1}, H)",
+      "mtef_bytes": 438,
+      "gif": "voice_book/math/assets/attention_prob.gif",
+      "png": "voice_book/math/assets/attention_prob.png",
+      "wmf": "voice_book/math/assets/attention_prob.wmf",
+      "png_size": [
+        516,
+        96
+      ],
+      "source_gif_size": [
+        129,
+        24
+      ],
+      "png_scale": 4,
+      "sha256": "0f21e1d73de03a83d1e6fe15e9f5acc7d9a394c80f48b62c0c65a0cbb384e329"
+    },
+    "posterior_fusion": {
+      "source_type": "tex",
+      "source": "S(s \\mid x) = \\lambda_v f_{voice}(s,x) + \\lambda_d f_{doa}(s,x) + \\lambda_t f_{time}(s,x) + \\lambda_a f_{active}(s,x)",
+      "mtef_bytes": 846,
+      "gif": "voice_book/math/assets/posterior_fusion.gif",
+      "png": "voice_book/math/assets/posterior_fusion.png",
+      "wmf": "voice_book/math/assets/posterior_fusion.wmf",
+      "png_size": [
+        1608,
+        96
+      ],
+      "source_gif_size": [
+        402,
+        24
+      ],
+      "png_scale": 4,
+      "sha256": "bce377d15127f9588a9f9f0e54eb45ef63857e671bacaffb2b4b32047d90a74d"
+    },
+    "core_ascii": {
+      "source_type": "tex",
+      "source": "\\mathrm{Audio} + \\mathrm{Model} + \\mathrm{Evaluation}",
+      "mtef_bytes": 418,
+      "gif": "voice_book/math/assets/core_ascii.gif",
+      "png": "voice_book/math/assets/core_ascii.png",
+      "wmf": "voice_book/math/assets/core_ascii.wmf",
+      "png_size": [
+        740,
+        72
+      ],
+      "source_gif_size": [
+        185,
+        18
+      ],
+      "png_scale": 4,
+      "sha256": "35efe74629c0df6fe1ed27210efe2777dd1d7a81556b98cb7441bfe11d824bd2"
+    },
+    "engineer_core": {
+      "source_type": "tex",
+      "source": "\\mathrm{Evidence} + \\mathrm{Model} + \\mathrm{Constraints} + \\mathrm{Evaluation}",
+      "mtef_bytes": 520,
+      "gif": "voice_book/math/assets/engineer_core.gif",
+      "png": "voice_book/math/assets/engineer_core.png",
+      "wmf": "voice_book/math/assets/engineer_core.wmf",
+      "png_size": [
+        1160,
+        72
+      ],
+      "source_gif_size": [
+        290,
+        18
+      ],
+      "png_scale": 4,
+      "sha256": "dc87c071f72867e01cd59db0cdc240e09584434cfa7c863f1c3321118eb12bb3"
+    },
+    "erle": {
+      "source_type": "tex",
+      "source": "\\mathrm{ERLE} = 10 \\log_{10} \\frac{P_{echo}}{P_{residual}}",
+      "mtef_bytes": 518,
+      "gif": "voice_book/math/assets/erle.gif",
+      "png": "voice_book/math/assets/erle.png",
+      "wmf": "voice_book/math/assets/erle.wmf",
+      "png_size": [
+        612,
+        180
+      ],
+      "source_gif_size": [
+        153,
+        45
+      ],
+      "png_scale": 4,
+      "sha256": "10e2e8f08ef33741ad27d7a133aee2aea63dff3866bac9647b4d79b53914de3e"
+    },
+    "si_sdr": {
+      "source_type": "tex",
+      "source": "\\alpha = \\frac{\\langle \\hat{s},s \\rangle}{\\|s\\|^2},\\quad s_{target}=\\alpha s,\\quad e_{res}=\\hat{s}-s_{target},\\quad \\mathrm{SI} - \\mathrm{SDR}=10\\log_{10}\\frac{\\|s_{target}\\|^2}{\\|e_{res}\\|^2}",
+      "mtef_bytes": 1051,
+      "gif": "voice_book/math/assets/si_sdr.gif",
+      "png": "voice_book/math/assets/si_sdr.png",
+      "wmf": "voice_book/math/assets/si_sdr.wmf",
+      "png_size": [
+        1812,
+        196
+      ],
+      "source_gif_size": [
+        453,
+        49
+      ],
+      "png_scale": 4,
+      "sha256": "03d5f3c1540338cd047fd9df879385bd698a94c810ec6f76b28ff6056cf617ea"
+    },
+    "rtf": {
+      "source_type": "tex",
+      "source": "\\mathrm{RTF} = \\frac{t_{compute}}{t_{audio}}",
+      "mtef_bytes": 443,
+      "gif": "voice_book/math/assets/rtf.gif",
+      "png": "voice_book/math/assets/rtf.png",
+      "wmf": "voice_book/math/assets/rtf.wmf",
+      "png_size": [
+        360,
+        192
+      ],
+      "source_gif_size": [
+        90,
+        48
+      ],
+      "png_scale": 4,
+      "sha256": "a6d280aa67a7b60e4fd4f332f1e3fd62e705940062da0ef3fdcf8c1383110db5"
+    },
+    "latency_budget": {
+      "source_type": "tex",
+      "source": "L_{e2e}=L_{capture}+L_{frame}+L_{frontend}+L_{model}+L_{decode}+L_{queue}+L_{network}+L_{stabilize}+L_{present}",
+      "mtef_bytes": 985,
+      "gif": "voice_book/math/assets/latency_budget.gif",
+      "png": "voice_book/math/assets/latency_budget.png",
+      "wmf": "voice_book/math/assets/latency_budget.wmf",
+      "png_size": [
+        2000,
+        100
+      ],
+      "source_gif_size": [
+        500,
+        25
+      ],
+      "png_scale": 4,
+      "sha256": "acb0c88a235ba20bc83cc0cad0f816a0d79359bc8898f06356ece3cd0d0f002c"
+    },
+    "quantization": {
+      "source_type": "tex",
+      "source": "x_{fp32} \\approx s(q - z)",
+      "mtef_bytes": 361,
+      "gif": "voice_book/math/assets/quantization.gif",
+      "png": "voice_book/math/assets/quantization.png",
+      "wmf": "voice_book/math/assets/quantization.wmf",
+      "png_size": [
+        388,
+        100
+      ],
+      "source_gif_size": [
+        97,
+        25
+      ],
+      "png_scale": 4,
+      "sha256": "789b134bfd5dae419d014d81b06219b380ce36eea8767bd7d8ca0479b863be94"
+    },
+    "beamformer": {
+      "source_type": "tex",
+      "source": "y(t) = \\sum_{m=1}^{M} w_m x_m(t - \\tau_m)",
+      "mtef_bytes": 486,
+      "gif": "voice_book/math/assets/beamformer.gif",
+      "png": "voice_book/math/assets/beamformer.png",
+      "wmf": "voice_book/math/assets/beamformer.wmf",
+      "png_size": [
+        580,
+        180
+      ],
+      "source_gif_size": [
+        145,
+        45
+      ],
+      "png_scale": 4,
+      "sha256": "b597839677487d9b089fb17b65caf3dea4be6ac3a35125e5b1642ce41340274d"
+    },
+    "kws_far": {
+      "source_type": "tex",
+      "source": "\\mathrm{FAR} = \\frac{N_{false\\ alarm}}{T_{non\\ target}}",
+      "mtef_bytes": 507,
+      "gif": "voice_book/math/assets/kws_far.gif",
+      "png": "voice_book/math/assets/kws_far.png",
+      "wmf": "voice_book/math/assets/kws_far.wmf",
+      "png_size": [
+        452,
+        200
+      ],
+      "source_gif_size": [
+        113,
+        50
+      ],
+      "png_scale": 4,
+      "sha256": "74e83ced849bc0d348da7e199eacd97ec6bb1c29364a85b129ade9772a407b63"
+    }
+  }
+}
