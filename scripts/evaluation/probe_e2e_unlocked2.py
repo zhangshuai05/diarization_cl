@@ -44,7 +44,11 @@ def score(reference, result):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", choices=("dev", "holdout"), default="dev")
+    ap.add_argument("--split", choices=("dev", "holdout", "all"), default="dev",
+                    help="all = 该 root 下全部 rttm，不经身份组分组（train_L 的 id 带日期前缀，"
+                         "分组函数会抛异常）")
+    ap.add_argument("--root", default=str(ROOT_DATA), help="数据根，默认 test 划分")
+    ap.add_argument("--limit", type=int, default=0, help="只跑前 N 场（0 = 全部）")
     ap.add_argument("--seconds", type=float, default=SECONDS)
     ap.add_argument("--min-win", type=int, default=MIN_WIN)
     ap.add_argument("--cap", type=int, default=CAP)
@@ -58,11 +62,18 @@ def main():
     models = get_models(lambda m: None, need_stream=False, need_offline=False)
 
     rows = []
-    print("min_win=%d cap=%d mode=%s  分=%s"
-          % (args.min_win, args.cap, args.mode, args.split), flush=True)
+    root = Path(args.root)
+    if args.split == "all":
+        meetings = sorted(p.stem for p in (root / "TextGrid").glob("*.rttm"))
+    else:
+        meetings = split_meetings(root, args.split)
+    if args.limit:
+        meetings = meetings[:args.limit]
+    print("min_win=%d cap=%d mode=%s  分=%s  root=%s  场次=%d"
+          % (args.min_win, args.cap, args.mode, args.split, root, len(meetings)), flush=True)
     print("%-16s%5s | %-30s | %-30s | %7s" % ("会议", "真K", "基线 k/DER/conf", "解锁 k/DER/conf", "ΔDER"))
-    for meeting in split_meetings(ROOT_DATA, args.split):
-        reference = [s for s in read_rttm(ROOT_DATA / "TextGrid" / ("%s.rttm" % meeting))
+    for meeting in meetings:
+        reference = [s for s in read_rttm(root / "TextGrid" / ("%s.rttm" % meeting))
                      if s["start"] < args.seconds]
         reference = [{"start": s["start"], "end": min(s["end"], args.seconds),
                       "speaker": s["speaker"]} for s in reference]
@@ -72,7 +83,7 @@ def main():
         grand = sum(duration.values()) or 1.0
         effective = sum(1 for v in duration.values() if v / grand >= 0.05)
 
-        wav = str(ROOT_DATA / "wav" / ("%s.flac" % meeting))
+        wav = str(root / "wav" / ("%s.flac" % meeting))
         base = v12.diarize(wav, models, max_seconds=args.seconds)
         with unlocked(min_win=args.min_win, cap=args.cap, mode=args.mode):
             fixed = v12.diarize(wav, models, max_seconds=args.seconds)
@@ -103,7 +114,8 @@ def main():
     output = ROOT / "artifacts" / (
         "v13_e2e_unlocked2_%s_mw%d_%s.json" % (args.split, args.min_win, args.mode))
     output.write_text(json.dumps({"schema": "v13-e2e-unlocked2-v1",
-                                  "split": args.split, "min_win": args.min_win,
+                                  "split": args.split, "root": str(root),
+                                  "min_win": args.min_win,
                                   "cap": args.cap, "mode": args.mode, "rows": rows},
                                  ensure_ascii=False, indent=2), encoding="utf-8")
     print("写入 %s" % output)
