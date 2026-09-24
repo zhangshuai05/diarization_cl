@@ -1,0 +1,113 @@
+{
+  "schema": "v13-v12-composition-v1",
+  "rows": [
+    {
+      "meeting": "L_R003S01C02",
+      "k": 1,
+      "der": 0.7153,
+      "miss": 0.0015,
+      "fa": 0.0536,
+      "conf": 0.6602,
+      "level": "2s-only"
+    },
+    {
+      "meeting": "L_R003S02C02",
+      "k": 4,
+      "der": 0.1974,
+      "miss": 0.0004,
+      "fa": 0.0936,
+      "conf": 0.1034,
+      "level": "refined"
+    },
+    {
+      "meeting": "L_R003S03C02",
+      "k": 3,
+      "der": 0.3395,
+      "miss": 0.0004,
+      "fa": 0.062,
+      "conf": 0.2771,
+      "level": "refined"
+    },
+    {
+      "meeting": "L_R003S04C02",
+      "k": 4,
+      "der": 0.1864,
+      "miss": 0.0004,
+      "fa": 0.1094,
+      "conf": 0.0766,
+      "level": "refined"
+    },
+    {
+      "meeting": "M_R003S01C01",
+      "k": 2,
+      "der": 0.0715,
+      "miss": 0.0004,
+      "fa": 0.0394,
+      "conf": 0.0316,
+      "level": "refined"
+    },
+    {
+      "meeting": "M_R003S02C01",
+      "k": 2,
+      "der": 0.1086,
+      "miss": 0.0004,
+      "fa": 0.0281,
+      "conf": 0.0801,
+      "level": "refined"
+    },
+    {
+      "meeting": "M_R003S04C01",
+      "k": 2,
+      "der": 0.3093,
+      "miss": 0.0,
+      "fa": 0.0386,
+      "conf": 0.2707,
+      "level": "refined"
+    },
+    {
+      "meeting": "M_R003S05C01",
+      "k": 2,
+      "der": 0.5874,
+      "miss": 0.0004,
+      "fa": 0.0597,
+      "conf": 0.5273,
+      "level": "refined"
+    },
+    {
+      "meeting": "S_R004S01C01",
+      "k": 4,
+      "der": 0.2482,
+      "miss": 0.0004,
+      "fa": 0.1271,
+      "conf": 0.1206,
+      "level": "refined"
+    },
+    {
+      "meeting": "S_R004S02C01",
+      "k": 2,
+      "der": 0.0379,
+      "miss": 0.0,
+      "fa": 0.0252,
+      "conf": 0.0127,
+      "level": "refined"
+    },
+    {
+      "meeting": "S_R004S03C01",
+      "k": 2,
+      "der": 0.0308,
+      "miss": 0.0004,
+      "fa": 0.0216,
+      "conf": 0.0089,
+      "level": "refined"
+    },
+    {
+      "meeting": "S_R004S04C01",
+      "k": 2,
+      "der": 0.0897,
+      "miss": 0.0004,
+      "fa": 0.0191,
+      "conf": 0.0703,
+      "level": "refined"
+    }
+  ]
+}

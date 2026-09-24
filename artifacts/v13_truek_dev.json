@@ -1,0 +1,1177 @@
+{
+  "schema": "v13-truek-purity-v1",
+  "meetings": [
+    {
+      "meeting": "L_R003S01C02",
+      "seconds": 600.0,
+      "n_windows": 422,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "002-F",
+        "004-M",
+        "005-M",
+        "006-M"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9535,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 121,
+          "majority": "004-M",
+          "purity": 0.9587,
+          "speakers": {
+            "004-M": 116,
+            "002-F": 2,
+            "006-M": 2,
+            "007-M": 1
+          },
+          "span_sec": [
+            15.0,
+            507.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 70,
+          "majority": "002-F",
+          "purity": 0.7857,
+          "speakers": {
+            "002-F": 55,
+            "006-M": 9,
+            "005-M": 3,
+            "004-M": 2,
+            "003-F": 1
+          },
+          "span_sec": [
+            5.0,
+            544.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 230,
+          "majority": "006-M",
+          "purity": 0.5435,
+          "speakers": {
+            "006-M": 125,
+            "005-M": 105
+          },
+          "span_sec": [
+            13.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 1,
+          "majority": "005-M",
+          "purity": 1.0,
+          "speakers": {
+            "005-M": 1
+          },
+          "span_sec": [
+            211.0,
+            211.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "002-F": {
+          "windows": 57,
+          "home_cluster": 1,
+          "share_in_home": 0.9649
+        },
+        "003-F": {
+          "windows": 1,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 118,
+          "home_cluster": 0,
+          "share_in_home": 0.9831
+        },
+        "005-M": {
+          "windows": 109,
+          "home_cluster": 2,
+          "share_in_home": 0.9633
+        },
+        "006-M": {
+          "windows": 136,
+          "home_cluster": 2,
+          "share_in_home": 0.9191
+        },
+        "007-M": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 1,
+      "worst_cluster_purity": 0.5435,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "L_R003S02C02",
+      "seconds": 600.0,
+      "n_windows": 281,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "005-M",
+        "006-M",
+        "007-M"
+      ],
+      "true_k": 3,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9822,
+      "window_purity_lt_50pct": 3,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 8,
+          "majority": "002-F",
+          "purity": 0.5,
+          "speakers": {
+            "002-F": 4,
+            "003-F": 2,
+            "004-M": 2
+          },
+          "span_sec": [
+            7.0,
+            368.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 10,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 10
+          },
+          "span_sec": [
+            21.0,
+            38.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 263,
+          "majority": "006-M",
+          "purity": 0.6274,
+          "speakers": {
+            "006-M": 165,
+            "005-M": 90,
+            "007-M": 8
+          },
+          "span_sec": [
+            14.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "002-F": {
+          "windows": 4,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-M": {
+          "windows": 90,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "006-M": {
+          "windows": 165,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 18,
+          "home_cluster": 1,
+          "share_in_home": 0.5556
+        }
+      },
+      "min_cluster_windows": 8,
+      "worst_cluster_purity": 0.5,
+      "speakers_with_own_cluster": 3
+    },
+    {
+      "meeting": "L_R003S03C02",
+      "seconds": 600.0,
+      "n_windows": 387,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "003-F",
+        "005-M",
+        "006-M"
+      ],
+      "true_k": 3,
+      "effective_without_window": [],
+      "window_purity_mean": 0.98,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 9,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 9
+          },
+          "span_sec": [
+            10.0,
+            39.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 254,
+          "majority": "006-M",
+          "purity": 0.7008,
+          "speakers": {
+            "006-M": 178,
+            "005-M": 76
+          },
+          "span_sec": [
+            18.0,
+            455.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 124,
+          "majority": "003-F",
+          "purity": 0.9435,
+          "speakers": {
+            "003-F": 117,
+            "002-F": 5,
+            "004-M": 2
+          },
+          "span_sec": [
+            11.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "002-F": {
+          "windows": 5,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 117,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "005-M": {
+          "windows": 76,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "006-M": {
+          "windows": 178,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 9,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 9,
+      "worst_cluster_purity": 0.7008,
+      "speakers_with_own_cluster": 3
+    },
+    {
+      "meeting": "L_R003S04C02",
+      "seconds": 600.0,
+      "n_windows": 485,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "005-M",
+        "006-M"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9726,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 12,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 12
+          },
+          "span_sec": [
+            9.0,
+            39.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 473,
+          "majority": "006-M",
+          "purity": 0.6321,
+          "speakers": {
+            "006-M": 299,
+            "005-M": 160,
+            "002-F": 10,
+            "003-F": 2,
+            "004-M": 2
+          },
+          "span_sec": [
+            10.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "002-F": {
+          "windows": 10,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-M": {
+          "windows": 160,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "006-M": {
+          "windows": 299,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 12,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 12,
+      "worst_cluster_purity": 0.6321,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "M_R003S01C01",
+      "seconds": 600.0,
+      "n_windows": 367,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "006-F"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9882,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 230,
+          "majority": "006-F",
+          "purity": 0.9696,
+          "speakers": {
+            "006-F": 223,
+            "002-M": 2,
+            "003-F": 2,
+            "004-F": 1,
+            "005-F": 1
+          },
+          "span_sec": [
+            6.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 137,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 137
+          },
+          "span_sec": [
+            4.0,
+            488.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 138,
+          "home_cluster": 1,
+          "share_in_home": 0.9928
+        },
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 223,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 137,
+      "worst_cluster_purity": 0.9696,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "M_R003S02C01",
+      "seconds": 600.0,
+      "n_windows": 373,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "006-F"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9449,
+      "window_purity_lt_50pct": 4,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 247,
+          "majority": "006-F",
+          "purity": 0.8583,
+          "speakers": {
+            "006-F": 212,
+            "001-M": 15,
+            "005-F": 11,
+            "004-F": 5,
+            "002-M": 2
+          },
+          "span_sec": [
+            7.0,
+            562.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 126,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 126
+          },
+          "span_sec": [
+            4.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 141,
+          "home_cluster": 1,
+          "share_in_home": 0.8936
+        },
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 5,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 11,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 212,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 126,
+      "worst_cluster_purity": 0.8583,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "M_R003S04C01",
+      "seconds": 600.0,
+      "n_windows": 556,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "004-F",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "window_purity_mean": 0.8915,
+      "window_purity_lt_50pct": 6,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 2,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 2
+          },
+          "span_sec": [
+            367.0,
+            368.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 269,
+          "majority": "001-M",
+          "purity": 0.9926,
+          "speakers": {
+            "001-M": 267,
+            "006-F": 2
+          },
+          "span_sec": [
+            5.0,
+            584.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 2,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 2
+          },
+          "span_sec": [
+            7.0,
+            8.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 283,
+          "majority": "004-F",
+          "purity": 0.5018,
+          "speakers": {
+            "004-F": 142,
+            "006-F": 77,
+            "005-F": 48,
+            "001-M": 16
+          },
+          "span_sec": [
+            10.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 285,
+          "home_cluster": 1,
+          "share_in_home": 0.9368
+        },
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 142,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 48,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 79,
+          "home_cluster": 3,
+          "share_in_home": 0.9747
+        }
+      },
+      "min_cluster_windows": 2,
+      "worst_cluster_purity": 0.5018,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "M_R003S05C01",
+      "seconds": 600.0,
+      "n_windows": 408,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "004-F",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9946,
+      "window_purity_lt_50pct": 3,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 13,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 13
+          },
+          "span_sec": [
+            8.0,
+            71.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 14,
+          "majority": "003-F",
+          "purity": 1.0,
+          "speakers": {
+            "003-F": 14
+          },
+          "span_sec": [
+            581.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 2,
+          "majority": "002-M",
+          "purity": 0.5,
+          "speakers": {
+            "002-M": 1,
+            "003-F": 1
+          },
+          "span_sec": [
+            9.0,
+            10.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 379,
+          "majority": "004-F",
+          "purity": 0.3931,
+          "speakers": {
+            "004-F": 149,
+            "006-F": 132,
+            "005-F": 98
+          },
+          "span_sec": [
+            11.0,
+            574.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 13,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 1,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 15,
+          "home_cluster": 1,
+          "share_in_home": 0.9333
+        },
+        "004-F": {
+          "windows": 149,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 98,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 132,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 2,
+      "worst_cluster_purity": 0.3931,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "S_R004S01C01",
+      "seconds": 600.0,
+      "n_windows": 513,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 5,
+      "effective": [
+        "001-M",
+        "002-F",
+        "003-F",
+        "004-F",
+        "005-F"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9838,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 123,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 123
+          },
+          "span_sec": [
+            13.0,
+            239.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 93,
+          "majority": "003-F",
+          "purity": 1.0,
+          "speakers": {
+            "003-F": 93
+          },
+          "span_sec": [
+            11.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 53,
+          "majority": "002-F",
+          "purity": 0.9811,
+          "speakers": {
+            "002-F": 52,
+            "001-M": 1
+          },
+          "span_sec": [
+            9.0,
+            500.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 119,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 119
+          },
+          "span_sec": [
+            14.0,
+            426.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 125,
+          "majority": "001-M",
+          "purity": 0.992,
+          "speakers": {
+            "001-M": 124,
+            "005-F": 1
+          },
+          "span_sec": [
+            5.0,
+            505.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 125,
+          "home_cluster": 4,
+          "share_in_home": 0.992
+        },
+        "002-F": {
+          "windows": 52,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 93,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 123,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 120,
+          "home_cluster": 3,
+          "share_in_home": 0.9917
+        }
+      },
+      "min_cluster_windows": 53,
+      "worst_cluster_purity": 0.9811,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "S_R004S02C01",
+      "seconds": 600.0,
+      "n_windows": 578,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 5,
+      "effective": [
+        "001-M",
+        "004-F"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9974,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 147,
+          "majority": "001-M",
+          "purity": 0.9864,
+          "speakers": {
+            "001-M": 145,
+            "005-F": 2
+          },
+          "span_sec": [
+            8.0,
+            172.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 431,
+          "majority": "004-F",
+          "purity": 0.9861,
+          "speakers": {
+            "004-F": 425,
+            "003-F": 4,
+            "002-F": 2
+          },
+          "span_sec": [
+            12.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 145,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "002-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 4,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 425,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 147,
+      "worst_cluster_purity": 0.9861,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "S_R004S03C01",
+      "seconds": 600.0,
+      "n_windows": 570,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 5,
+      "effective": [
+        "001-M",
+        "004-F"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9975,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 324,
+          "majority": "004-F",
+          "purity": 0.9877,
+          "speakers": {
+            "004-F": 320,
+            "005-F": 2,
+            "002-F": 1,
+            "003-F": 1
+          },
+          "span_sec": [
+            13.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 246,
+          "majority": "001-M",
+          "purity": 0.9959,
+          "speakers": {
+            "001-M": 245,
+            "002-F": 1
+          },
+          "span_sec": [
+            6.0,
+            279.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 245,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "002-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 0.5
+        },
+        "003-F": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 320,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 246,
+      "worst_cluster_purity": 0.9877,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "S_R004S04C01",
+      "seconds": 600.0,
+      "n_windows": 585,
+      "embedding_errors": 0,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 5,
+      "effective": [
+        "001-M",
+        "004-F"
+      ],
+      "true_k": 2,
+      "effective_without_window": [],
+      "window_purity_mean": 0.9922,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 2,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 169,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 169
+          },
+          "span_sec": [
+            5.0,
+            186.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 416,
+          "majority": "004-F",
+          "purity": 0.9014,
+          "speakers": {
+            "004-F": 375,
+            "001-M": 36,
+            "002-F": 2,
+            "003-F": 2,
+            "005-F": 1
+          },
+          "span_sec": [
+            8.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 205,
+          "home_cluster": 0,
+          "share_in_home": 0.8244
+        },
+        "002-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "003-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 375,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 1,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 169,
+      "worst_cluster_purity": 0.9014,
+      "speakers_with_own_cluster": 2
+    }
+  ]
+}

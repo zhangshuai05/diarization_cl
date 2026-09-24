@@ -16,8 +16,9 @@ python -u -B scripts/evaluation/probe_fullref_truncation.py --skip-v12
 # 3) 真实路径端到端（加载模型，约 30 分钟跑 12 场）
 python -u -B scripts/evaluation/probe_e2e_unlocked2.py --split dev --min-win 2
 
-# 4) 测试
-python -B -m pytest -q
+# 4) 测试（必须在 streaming_asr/ 里跑：那里有 pytest.ini 设 testpaths/pythonpath；
+#    在仓库根跑会把 milestones/ 与 backups/ 下的同名测试一起收集，报 import file mismatch）
+cd streaming_asr && python -B -m pytest -q
 ```
 
 ## 当前结论（2026-09-24）
