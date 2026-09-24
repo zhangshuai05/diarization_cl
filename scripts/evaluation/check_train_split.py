@@ -14,6 +14,13 @@
   3. **标注布局是否同构**：`<dir>/TextGrid/<meeting>.rttm` 能否被 `der.read_rttm`
      直接读、`speaker_id` 是否形如 `001-M`。不同构则要走 `sd/scripts/` 的转换。
 
+⚠ **前提（未经证实）**：本脚本按 test 的布局假设 train 也是
+`wav/<meeting>.flac` + `TextGrid/<meeting>.rttm`。这个假设**没有 train 侧来源**——
+`DATA_SPEC.md` §6.6 明写"当前只有测试集"，train 三个包从未下载过。
+**train_L.tar.gz 一解开就先 `tar tzf | head -50` 看真实布局**，别让本脚本的假设
+变成"核验过"的假象。布局不符时下面会直接报"找不到 TextGrid"，那是**真结论**，
+不是脚本坏了。
+
     python -u -B scripts/evaluation/check_train_split.py --dir D:\\yinp\\AISHELL-4\\data\\train_L
 """
 import argparse
