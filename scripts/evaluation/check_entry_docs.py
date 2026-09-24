@@ -21,7 +21,8 @@ ROOT = Path(__file__).resolve().parents[2]
 DOCS = [("README.md", ROOT / "README.md"),
         ("发现记录", ROOT / "artifacts/v13_会话发现_20260923.md"),
         ("交付合并表", ROOT / "artifacts/v13_交付合并表.md"),
-        ("交接文档", ROOT / "交接文档_0923.md")]
+        ("交接文档0924", ROOT / "交接文档_0924.md"),
+        ("交接文档0923", ROOT / "交接文档_0923.md")]
 
 # 被推翻的旧说法 -> 允许它们出现的语境标记
 STALE = {
@@ -36,7 +37,9 @@ CONTEXT = re.compile(r"已解|更正|推翻|错的|作废|过期|已复现|口�
 
 # 同一主张必须一致的数值
 CLAIMS = [("dev 基线", "24.4%"), ("dev 解锁", "14.8%"),
-          ("holdout 基线", "19.8%"), ("holdout 解锁", "10.2%")]
+          ("holdout 基线", "19.8%"), ("holdout 解锁", "10.2%"),
+          ("train_L 基线", "56.4%"), ("train_L 解锁", "48.7%"),
+          ("train_L 改善计数", "11 / 0 / 19")]
 
 # 仓库内的路径前缀。D:\ 下的数据/模型目录不入库，一律放行。
 IN_REPO = ("artifacts/", "scripts/", "docs/", "streaming_asr/", "milestones/")
