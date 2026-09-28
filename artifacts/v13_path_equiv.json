@@ -1,0 +1,677 @@
+{
+  "schema": "v13-path-equiv-v2",
+  "seconds": 600.0,
+  "note": "v2：段标签统一为 str（v1 用 int 比对，n_prefix_mismatch 恒等于 n_prefix_compared，逐段比较失效）；新增逐句比较字段。v1 的段级数字作废。",
+  "reports": {
+    "L_R003S01C02": {
+      "path": "rescue",
+      "note": "base k=1，探针差异 1 直接命中",
+      "base": {
+        "k": 1,
+        "refined": false,
+        "rescued": false,
+        "n_segments": 68
+      },
+      "self_check_identical": true,
+      "self_check_sent_identical": true,
+      "n_sentences": 102,
+      "cases": {
+        "2": {
+          "diarize": {
+            "n_segments": 132,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2820,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 132,
+          "n_prefix_compared": 132,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "3": {
+          "diarize": {
+            "n_segments": 231,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2721,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 230,
+          "n_prefix_compared": 231,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "4": {
+          "diarize": {
+            "n_segments": 291,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2661,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 290,
+          "n_prefix_compared": 291,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "5": {
+          "diarize": {
+            "n_segments": 286,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2666,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 286,
+          "n_prefix_compared": 286,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "6": {
+          "diarize": {
+            "n_segments": 349,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2603,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 349,
+          "n_prefix_compared": 349,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "7": {
+          "diarize": {
+            "n_segments": 394,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2558,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 394,
+          "n_prefix_compared": 394,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "8": {
+          "diarize": {
+            "n_segments": 405,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2547,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 405,
+          "n_prefix_compared": 405,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "9": {
+          "diarize": {
+            "n_segments": 425,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2527,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 425,
+          "n_prefix_compared": 425,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "10": {
+          "diarize": {
+            "n_segments": 457,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2952,
+            "level": "refined"
+          },
+          "n_segments_diff": 2495,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 457,
+          "n_prefix_compared": 457,
+          "segments_equal": false,
+          "n_sentences": 102,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        }
+      }
+    },
+    "L_R003S03C02": {
+      "path": "refine",
+      "note": "base k=3，走细化主路径",
+      "base": {
+        "k": 3,
+        "refined": true,
+        "rescued": false,
+        "n_segments": 216
+      },
+      "self_check_identical": true,
+      "self_check_sent_identical": true,
+      "n_sentences": 83,
+      "cases": {
+        "2": {
+          "diarize": {
+            "n_segments": 173,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2543,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 173,
+          "n_prefix_compared": 173,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "4": {
+          "diarize": {
+            "n_segments": 230,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2486,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 230,
+          "n_prefix_compared": 230,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "5": {
+          "diarize": {
+            "n_segments": 257,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2459,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 257,
+          "n_prefix_compared": 257,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "6": {
+          "diarize": {
+            "n_segments": 259,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2457,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 259,
+          "n_prefix_compared": 259,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "7": {
+          "diarize": {
+            "n_segments": 270,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2446,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 270,
+          "n_prefix_compared": 270,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "8": {
+          "diarize": {
+            "n_segments": 275,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2441,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 275,
+          "n_prefix_compared": 275,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "9": {
+          "diarize": {
+            "n_segments": 290,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2426,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 290,
+          "n_prefix_compared": 290,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        },
+        "10": {
+          "diarize": {
+            "n_segments": 317,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 2716,
+            "level": "refined"
+          },
+          "n_segments_diff": 2399,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 317,
+          "n_prefix_compared": 317,
+          "segments_equal": false,
+          "n_sentences": 83,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 3,
+          "sentence_preds_equal": true
+        }
+      }
+    },
+    "L_R003S04C02": {
+      "path": "refine",
+      "note": "A@0.6 回归 -9.24 点，反例对照",
+      "base": {
+        "k": 4,
+        "refined": true,
+        "rescued": false,
+        "n_segments": 373
+      },
+      "self_check_identical": true,
+      "self_check_sent_identical": true,
+      "n_sentences": 119,
+      "cases": {
+        "2": {
+          "diarize": {
+            "n_segments": 221,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 3001,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 221,
+          "n_prefix_compared": 221,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "3": {
+          "diarize": {
+            "n_segments": 313,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2909,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 313,
+          "n_prefix_compared": 313,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "5": {
+          "diarize": {
+            "n_segments": 405,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2817,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 405,
+          "n_prefix_compared": 405,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "6": {
+          "diarize": {
+            "n_segments": 512,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2710,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 512,
+          "n_prefix_compared": 512,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "7": {
+          "diarize": {
+            "n_segments": 515,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2707,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 515,
+          "n_prefix_compared": 515,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "8": {
+          "diarize": {
+            "n_segments": 526,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2696,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 526,
+          "n_prefix_compared": 526,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "9": {
+          "diarize": {
+            "n_segments": 538,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2684,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 538,
+          "n_prefix_compared": 538,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        },
+        "10": {
+          "diarize": {
+            "n_segments": 597,
+            "window_seconds": 0.6,
+            "refined": true,
+            "rescued": false,
+            "calls": [
+              "main",
+              "refine"
+            ]
+          },
+          "probe": {
+            "n_segments": 3222,
+            "level": "refined"
+          },
+          "n_segments_diff": 2625,
+          "granularity_mismatch": true,
+          "n_prefix_mismatch": 597,
+          "n_prefix_compared": 597,
+          "segments_equal": false,
+          "n_sentences": 119,
+          "n_sentence_diff": 0,
+          "n_sentence_abstain_diarize": 1,
+          "sentence_preds_equal": true
+        }
+      }
+    }
+  }
+}
