@@ -1,0 +1,670 @@
+{
+ "schema": "v13-step-a-baseline-v1",
+ "rows": [
+  {
+   "meeting": "L_R003S01C02",
+   "diarize": {
+    "k": 1,
+    "level": "2s-only",
+    "refined": false,
+    "rescued": false,
+    "n_segments": 68,
+    "n_windows_final": 422,
+    "n_windows_main": 422,
+    "window_seconds": 2.0,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [],
+    "calls": [
+     "main",
+     "rescue"
+    ],
+    "per_sentence": 0.2745,
+    "duration_weighted": 0.3347,
+    "abstain": 0.0196,
+    "unmapped": 0.0,
+    "n": 102,
+    "n_sentences": 102
+   },
+   "probe_base": {
+    "k": 1,
+    "level": "2s-only",
+    "sizes": [
+     422
+    ],
+    "per_sentence": 0.2745,
+    "duration_weighted": 0.3347,
+    "abstain": 0.0196,
+    "unmapped": 0.0,
+    "n": 102,
+    "n_sentences": 102
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "L_R003S02C02",
+   "diarize": {
+    "k": 4,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 264,
+    "n_windows_final": 2256,
+    "n_windows_main": 281,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2,
+     3,
+     4
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.8824,
+    "duration_weighted": 0.9463,
+    "abstain": 0.0235,
+    "unmapped": 0.0,
+    "n": 85,
+    "n_sentences": 85
+   },
+   "probe_base": {
+    "k": 4,
+    "level": "refined",
+    "sizes": [
+     173,
+     90,
+     10,
+     8
+    ],
+    "per_sentence": 0.8824,
+    "duration_weighted": 0.9463,
+    "abstain": 0.0235,
+    "unmapped": 0.0,
+    "n": 85,
+    "n_sentences": 85
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "L_R003S03C02",
+   "diarize": {
+    "k": 3,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 216,
+    "n_windows_final": 2716,
+    "n_windows_main": 387,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2,
+     3
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.6024,
+    "duration_weighted": 0.7326,
+    "abstain": 0.0361,
+    "unmapped": 0.0,
+    "n": 83,
+    "n_sentences": 83
+   },
+   "probe_base": {
+    "k": 3,
+    "level": "refined",
+    "sizes": [
+     254,
+     124,
+     9
+    ],
+    "per_sentence": 0.6024,
+    "duration_weighted": 0.7326,
+    "abstain": 0.0361,
+    "unmapped": 0.0,
+    "n": 83,
+    "n_sentences": 83
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "L_R003S04C02",
+   "diarize": {
+    "k": 4,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 373,
+    "n_windows_final": 3222,
+    "n_windows_main": 485,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2,
+     3,
+     4
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.8403,
+    "duration_weighted": 0.9693,
+    "abstain": 0.0084,
+    "unmapped": 0.0,
+    "n": 119,
+    "n_sentences": 119
+   },
+   "probe_base": {
+    "k": 4,
+    "level": "refined",
+    "sizes": [
+     304,
+     160,
+     12,
+     9
+    ],
+    "per_sentence": 0.8403,
+    "duration_weighted": 0.9693,
+    "abstain": 0.0084,
+    "unmapped": 0.0,
+    "n": 119,
+    "n_sentences": 119
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "M_R003S01C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 129,
+    "n_windows_final": 2636,
+    "n_windows_main": 367,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.8072,
+    "duration_weighted": 0.9497,
+    "abstain": 0.0964,
+    "unmapped": 0.0,
+    "n": 83,
+    "n_sentences": 83
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     230,
+     137
+    ],
+    "per_sentence": 0.8072,
+    "duration_weighted": 0.9497,
+    "abstain": 0.0964,
+    "unmapped": 0.0,
+    "n": 83,
+    "n_sentences": 83
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "M_R003S02C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 198,
+    "n_windows_final": 2634,
+    "n_windows_main": 373,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.7191,
+    "duration_weighted": 0.8858,
+    "abstain": 0.0225,
+    "unmapped": 0.0,
+    "n": 89,
+    "n_sentences": 89
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     247,
+     126
+    ],
+    "per_sentence": 0.7191,
+    "duration_weighted": 0.8858,
+    "abstain": 0.0225,
+    "unmapped": 0.0,
+    "n": 89,
+    "n_sentences": 89
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "M_R003S04C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 148,
+    "n_windows_final": 3614,
+    "n_windows_main": 556,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.5825,
+    "duration_weighted": 0.7034,
+    "abstain": 0.0049,
+    "unmapped": 0.0,
+    "n": 206,
+    "n_sentences": 206
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     285,
+     271
+    ],
+    "per_sentence": 0.5825,
+    "duration_weighted": 0.7034,
+    "abstain": 0.0049,
+    "unmapped": 0.0,
+    "n": 206,
+    "n_sentences": 206
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "M_R003S05C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 112,
+    "n_windows_final": 2832,
+    "n_windows_main": 408,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2,
+     3
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.4211,
+    "duration_weighted": 0.4756,
+    "abstain": 0.0351,
+    "unmapped": 0.0,
+    "n": 57,
+    "n_sentences": 57
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     395,
+     13
+    ],
+    "per_sentence": 0.4211,
+    "duration_weighted": 0.4756,
+    "abstain": 0.0351,
+    "unmapped": 0.0,
+    "n": 57,
+    "n_sentences": 57
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "S_R004S01C01",
+   "diarize": {
+    "k": 5,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 128,
+    "n_windows_final": 3409,
+    "n_windows_main": 513,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2,
+     3,
+     4,
+     5
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.9067,
+    "duration_weighted": 0.9884,
+    "abstain": 0.0133,
+    "unmapped": 0.0,
+    "n": 75,
+    "n_sentences": 75
+   },
+   "probe_base": {
+    "k": 4,
+    "level": "refined",
+    "sizes": [
+     146,
+     125,
+     123,
+     119
+    ],
+    "per_sentence": 0.7867,
+    "duration_weighted": 0.8871,
+    "abstain": 0.0133,
+    "unmapped": 0.0,
+    "n": 75,
+    "n_sentences": 75
+   },
+   "verdict": "★ 有差异",
+   "notes": [
+    "k 不同：生产 5 vs 探针 4",
+    "per_sentence 不同：0.9067 vs 0.7867（差 +12.00 pts）",
+    "duration_weighted 不同：0.9884 vs 0.8871（差 +10.13 pts）"
+   ]
+  },
+  {
+   "meeting": "S_R004S02C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 53,
+    "n_windows_final": 3823,
+    "n_windows_main": 578,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.9636,
+    "duration_weighted": 0.9888,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 110,
+    "n_sentences": 110
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     431,
+     147
+    ],
+    "per_sentence": 0.9636,
+    "duration_weighted": 0.9888,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 110,
+    "n_sentences": 110
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "S_R004S03C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 62,
+    "n_windows_final": 3756,
+    "n_windows_main": 570,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.9474,
+    "duration_weighted": 0.9931,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 57,
+    "n_sentences": 57
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     324,
+     246
+    ],
+    "per_sentence": 0.9474,
+    "duration_weighted": 0.9931,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 57,
+    "n_sentences": 57
+   },
+   "verdict": "行为保持",
+   "notes": []
+  },
+  {
+   "meeting": "S_R004S04C01",
+   "diarize": {
+    "k": 2,
+    "level": "refined",
+    "refined": true,
+    "rescued": false,
+    "n_segments": 48,
+    "n_windows_final": 3874,
+    "n_windows_main": 585,
+    "window_seconds": 0.6,
+    "candidate_ks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "eligible_ks": [
+     2
+    ],
+    "calls": [
+     "main",
+     "refine"
+    ],
+    "per_sentence": 0.9286,
+    "duration_weighted": 0.9311,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 84,
+    "n_sentences": 84
+   },
+   "probe_base": {
+    "k": 2,
+    "level": "refined",
+    "sizes": [
+     416,
+     169
+    ],
+    "per_sentence": 0.9286,
+    "duration_weighted": 0.9311,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n": 84,
+    "n_sentences": 84
+   },
+   "verdict": "行为保持",
+   "notes": []
+  }
+ ]
+}
