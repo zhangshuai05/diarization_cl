@@ -180,7 +180,10 @@ def diarize(wav, models, progress=None, max_seconds=0.0):
                     "refined": False, "rescued": False, "k": 0, "candidates": [],
                     "times": times, "labels": np.asarray([]), "margins": np.asarray([]),
                     "embedding_errors": embedding_errors}
-        candidates, _ = v11._candidate_clusters(E)
+        # max_speakers 必须显式传：v11 里它是**默认参数**，在 def 时就绑定成 v11.MAX_SPEAKERS
+        # 的值（4），`_v11_window_params` 改模块变量**不影响已绑定的默认值**。
+        # 不传的后果是候选只剩 k=1..4，且 k>4 的 forced_k 会静默回退到 k=1（见 test_k_cap_dispatch）。
+        candidates, _ = v11._candidate_clusters(E, max_speakers=MAX_SPEAKERS)
         selected = v11._select_candidate(candidates)
         labels = selected["labels"].copy()
 
@@ -206,7 +209,7 @@ def diarize(wav, models, progress=None, max_seconds=0.0):
         with _v11_window_params(REFINE_WIN_S, REFINE_HOP_S, MAX_SPEAKERS):
             rE, rtimes, rescue_errors = v11._extract_windows(
                 audio, rate, vad_segments, models["spk"])
-            rcandidates, _ = v11._candidate_clusters(rE)
+            rcandidates, _ = v11._candidate_clusters(rE, max_speakers=MAX_SPEAKERS)
             rselected = v11._select_candidate(rcandidates) if len(rE) >= 2 else None
         if rselected is not None and rselected["k"] > 1:
             E, times, labels = rE, rtimes, rselected["labels"].copy()
