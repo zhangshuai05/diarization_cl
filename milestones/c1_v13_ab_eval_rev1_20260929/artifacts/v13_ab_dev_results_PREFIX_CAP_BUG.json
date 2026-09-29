@@ -1,0 +1,3009 @@
+{
+  "schema": "v13-ab-dev-v1",
+  "spec": "v13_ab_dev_spec_rev1_20260924.md",
+  "split": "dev",
+  "seconds": 600.0,
+  "b_cap": 10,
+  "a_thresholds": [
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0,
+    1.1,
+    1.2
+  ],
+  "results": [
+    {
+      "meeting": "L_R003S01C02",
+      "insufficient": false,
+      "n_windows": 422,
+      "n_dense": 2952,
+      "n_sentences": 102,
+      "candidates": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "sizes": [
+            422
+          ],
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.6293015779165095,
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 345,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            117,
+            115,
+            105,
+            51,
+            15,
+            10,
+            4,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7549,
+          "duration_weighted": 0.9052,
+          "abstain": 0.0294,
+          "unmapped": 0.1078,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 236,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            117,
+            115,
+            105,
+            51,
+            15,
+            10,
+            4,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7549,
+          "duration_weighted": 0.9052,
+          "abstain": 0.0294,
+          "unmapped": 0.1078,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 111,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            117,
+            115,
+            105,
+            51,
+            15,
+            10,
+            4,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7549,
+          "duration_weighted": 0.9052,
+          "abstain": 0.0294,
+          "unmapped": 0.1078,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 35,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            117,
+            115,
+            105,
+            51,
+            15,
+            10,
+            4,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7549,
+          "duration_weighted": 0.9052,
+          "abstain": 0.0294,
+          "unmapped": 0.1078,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.6": {
+          "k": 10,
+          "raw_k_before_cap": 13,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            117,
+            115,
+            105,
+            51,
+            15,
+            10,
+            4,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7549,
+          "duration_weighted": 0.9052,
+          "abstain": 0.0294,
+          "unmapped": 0.1078,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.7": {
+          "k": 4,
+          "raw_k_before_cap": 4,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            230,
+            121,
+            70,
+            1
+          ],
+          "per_sentence": 0.5882,
+          "duration_weighted": 0.6646,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.8": {
+          "k": 3,
+          "raw_k_before_cap": 3,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            300,
+            121,
+            1
+          ],
+          "per_sentence": 0.451,
+          "duration_weighted": 0.5406,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            422
+          ],
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            422
+          ],
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            422
+          ],
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            422
+          ],
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102
+        }
+      },
+      "elapsed_s": 102.1
+    },
+    {
+      "meeting": "L_R003S02C02",
+      "insufficient": false,
+      "n_windows": 281,
+      "n_dense": 2256,
+      "n_sentences": 85,
+      "candidates": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "sizes": [
+            173,
+            90,
+            10,
+            8
+          ],
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.717010698019498,
+          "per_sentence": 0.5412,
+          "duration_weighted": 0.6315,
+          "abstain": 0.0471,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 222,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            151,
+            90,
+            18,
+            10,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+          ],
+          "per_sentence": 0.8235,
+          "duration_weighted": 0.8837,
+          "abstain": 0.0235,
+          "unmapped": 0.0824,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 161,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            151,
+            90,
+            18,
+            10,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+          ],
+          "per_sentence": 0.8235,
+          "duration_weighted": 0.8837,
+          "abstain": 0.0235,
+          "unmapped": 0.0824,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 74,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            151,
+            90,
+            18,
+            10,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+          ],
+          "per_sentence": 0.8235,
+          "duration_weighted": 0.8837,
+          "abstain": 0.0235,
+          "unmapped": 0.0824,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 25,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            151,
+            90,
+            18,
+            10,
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+          ],
+          "per_sentence": 0.8235,
+          "duration_weighted": 0.8837,
+          "abstain": 0.0235,
+          "unmapped": 0.0824,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.6": {
+          "k": 9,
+          "raw_k_before_cap": 9,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            151,
+            90,
+            18,
+            10,
+            3,
+            3,
+            3,
+            2,
+            1
+          ],
+          "per_sentence": 0.8353,
+          "duration_weighted": 0.8868,
+          "abstain": 0.0235,
+          "unmapped": 0.0706,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.7": {
+          "k": 5,
+          "raw_k_before_cap": 5,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            173,
+            90,
+            10,
+            5,
+            3
+          ],
+          "per_sentence": 0.8941,
+          "duration_weighted": 0.9482,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            273,
+            8
+          ],
+          "per_sentence": 0.5765,
+          "duration_weighted": 0.6548,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            281
+          ],
+          "per_sentence": 0.5412,
+          "duration_weighted": 0.6315,
+          "abstain": 0.0471,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            281
+          ],
+          "per_sentence": 0.5412,
+          "duration_weighted": 0.6315,
+          "abstain": 0.0471,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            281
+          ],
+          "per_sentence": 0.5412,
+          "duration_weighted": 0.6315,
+          "abstain": 0.0471,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            281
+          ],
+          "per_sentence": 0.5412,
+          "duration_weighted": 0.6315,
+          "abstain": 0.0471,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85
+        }
+      },
+      "elapsed_s": 73.2
+    },
+    {
+      "meeting": "L_R003S03C02",
+      "insufficient": false,
+      "n_windows": 387,
+      "n_dense": 2716,
+      "n_sentences": 83,
+      "candidates": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "sizes": [
+            254,
+            124,
+            9
+          ],
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.625940230730131,
+          "per_sentence": 0.3614,
+          "duration_weighted": 0.4522,
+          "abstain": 0.0241,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 283,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            71,
+            9,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8313,
+          "duration_weighted": 0.957,
+          "abstain": 0.0361,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 193,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            71,
+            9,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8313,
+          "duration_weighted": 0.957,
+          "abstain": 0.0361,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 80,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            71,
+            9,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8313,
+          "duration_weighted": 0.957,
+          "abstain": 0.0361,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 23,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            71,
+            9,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8313,
+          "duration_weighted": 0.957,
+          "abstain": 0.0361,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.6": {
+          "k": 9,
+          "raw_k_before_cap": 9,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            74,
+            9,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8313,
+          "duration_weighted": 0.957,
+          "abstain": 0.0361,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.7": {
+          "k": 6,
+          "raw_k_before_cap": 6,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            176,
+            117,
+            78,
+            9,
+            4,
+            3
+          ],
+          "per_sentence": 0.8554,
+          "duration_weighted": 0.974,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            378,
+            9
+          ],
+          "per_sentence": 0.3976,
+          "duration_weighted": 0.4889,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            387
+          ],
+          "per_sentence": 0.3614,
+          "duration_weighted": 0.4522,
+          "abstain": 0.0241,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            387
+          ],
+          "per_sentence": 0.3614,
+          "duration_weighted": 0.4522,
+          "abstain": 0.0241,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            387
+          ],
+          "per_sentence": 0.3614,
+          "duration_weighted": 0.4522,
+          "abstain": 0.0241,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            387
+          ],
+          "per_sentence": 0.3614,
+          "duration_weighted": 0.4522,
+          "abstain": 0.0241,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        }
+      },
+      "elapsed_s": 86.2
+    },
+    {
+      "meeting": "L_R003S04C02",
+      "insufficient": false,
+      "n_windows": 485,
+      "n_dense": 3222,
+      "n_sentences": 119,
+      "candidates": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "sizes": [
+            304,
+            160,
+            12,
+            9
+          ],
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.769091490375938,
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 374,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            260,
+            159,
+            37,
+            12,
+            8,
+            5,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7479,
+          "duration_weighted": 0.8727,
+          "abstain": 0.0084,
+          "unmapped": 0.0672,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 281,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            260,
+            159,
+            37,
+            12,
+            8,
+            5,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7479,
+          "duration_weighted": 0.8727,
+          "abstain": 0.0084,
+          "unmapped": 0.0672,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 141,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            260,
+            159,
+            37,
+            12,
+            8,
+            5,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7479,
+          "duration_weighted": 0.8727,
+          "abstain": 0.0084,
+          "unmapped": 0.0672,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 44,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            260,
+            159,
+            37,
+            12,
+            8,
+            5,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7479,
+          "duration_weighted": 0.8727,
+          "abstain": 0.0084,
+          "unmapped": 0.0672,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.6": {
+          "k": 10,
+          "raw_k_before_cap": 14,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            260,
+            159,
+            37,
+            12,
+            8,
+            5,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7479,
+          "duration_weighted": 0.8727,
+          "abstain": 0.0084,
+          "unmapped": 0.0672,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.7": {
+          "k": 4,
+          "raw_k_before_cap": 4,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            304,
+            160,
+            12,
+            9
+          ],
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.8": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            485
+          ],
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            485
+          ],
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            485
+          ],
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            485
+          ],
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            485
+          ],
+          "per_sentence": 0.4538,
+          "duration_weighted": 0.5589,
+          "abstain": 0.0252,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119
+        }
+      },
+      "elapsed_s": 110.5
+    },
+    {
+      "meeting": "M_R003S01C01",
+      "insufficient": false,
+      "n_windows": 367,
+      "n_dense": 2636,
+      "n_sentences": 83,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            230,
+            137
+          ],
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.47949644928243074,
+          "per_sentence": 0.4578,
+          "duration_weighted": 0.56,
+          "abstain": 0.1687,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 262,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            222,
+            126,
+            8,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7831,
+          "duration_weighted": 0.9211,
+          "abstain": 0.0964,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 141,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            222,
+            126,
+            8,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7831,
+          "duration_weighted": 0.9211,
+          "abstain": 0.0964,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 43,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            222,
+            126,
+            8,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7831,
+          "duration_weighted": 0.9211,
+          "abstain": 0.0964,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 13,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            222,
+            126,
+            8,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7831,
+          "duration_weighted": 0.9211,
+          "abstain": 0.0964,
+          "unmapped": 0.0482,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.6": {
+          "k": 8,
+          "raw_k_before_cap": 8,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            222,
+            134,
+            4,
+            3,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9512,
+          "abstain": 0.0964,
+          "unmapped": 0.0361,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.7": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            230,
+            137
+          ],
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            230,
+            137
+          ],
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            367
+          ],
+          "per_sentence": 0.4578,
+          "duration_weighted": 0.56,
+          "abstain": 0.1687,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            367
+          ],
+          "per_sentence": 0.4578,
+          "duration_weighted": 0.56,
+          "abstain": 0.1687,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            367
+          ],
+          "per_sentence": 0.4578,
+          "duration_weighted": 0.56,
+          "abstain": 0.1687,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            367
+          ],
+          "per_sentence": 0.4578,
+          "duration_weighted": 0.56,
+          "abstain": 0.1687,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83
+        }
+      },
+      "elapsed_s": 84.7
+    },
+    {
+      "meeting": "M_R003S02C01",
+      "insufficient": false,
+      "n_windows": 373,
+      "n_dense": 2634,
+      "n_sentences": 89,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            247,
+            126
+          ],
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.5256448809479017,
+          "per_sentence": 0.4607,
+          "duration_weighted": 0.5249,
+          "abstain": 0.0449,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 267,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            211,
+            120,
+            27,
+            5,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7753,
+          "duration_weighted": 0.9401,
+          "abstain": 0.0225,
+          "unmapped": 0.0449,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 164,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            211,
+            120,
+            27,
+            5,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7753,
+          "duration_weighted": 0.9401,
+          "abstain": 0.0225,
+          "unmapped": 0.0449,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 58,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            211,
+            120,
+            27,
+            5,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7753,
+          "duration_weighted": 0.9401,
+          "abstain": 0.0225,
+          "unmapped": 0.0449,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 18,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            211,
+            120,
+            27,
+            5,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7753,
+          "duration_weighted": 0.9401,
+          "abstain": 0.0225,
+          "unmapped": 0.0449,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.6": {
+          "k": 10,
+          "raw_k_before_cap": 10,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            211,
+            120,
+            27,
+            5,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.7753,
+          "duration_weighted": 0.9401,
+          "abstain": 0.0225,
+          "unmapped": 0.0449,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.7": {
+          "k": 3,
+          "raw_k_before_cap": 3,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            247,
+            125,
+            1
+          ],
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            247,
+            126
+          ],
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            373
+          ],
+          "per_sentence": 0.4607,
+          "duration_weighted": 0.5249,
+          "abstain": 0.0449,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            373
+          ],
+          "per_sentence": 0.4607,
+          "duration_weighted": 0.5249,
+          "abstain": 0.0449,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            373
+          ],
+          "per_sentence": 0.4607,
+          "duration_weighted": 0.5249,
+          "abstain": 0.0449,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            373
+          ],
+          "per_sentence": 0.4607,
+          "duration_weighted": 0.5249,
+          "abstain": 0.0449,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89
+        }
+      },
+      "elapsed_s": 82.8
+    },
+    {
+      "meeting": "M_R003S04C01",
+      "insufficient": false,
+      "n_windows": 556,
+      "n_dense": 3614,
+      "n_sentences": 206,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            285,
+            271
+          ],
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.6751068338801149,
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 417,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            263,
+            167,
+            62,
+            43,
+            11,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7379,
+          "duration_weighted": 0.8989,
+          "abstain": 0.0049,
+          "unmapped": 0.0388,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 268,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            263,
+            167,
+            62,
+            43,
+            11,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7379,
+          "duration_weighted": 0.8989,
+          "abstain": 0.0049,
+          "unmapped": 0.0388,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 101,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            263,
+            167,
+            62,
+            43,
+            11,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7379,
+          "duration_weighted": 0.8989,
+          "abstain": 0.0049,
+          "unmapped": 0.0388,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 26,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            263,
+            167,
+            62,
+            43,
+            11,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.7379,
+          "duration_weighted": 0.8989,
+          "abstain": 0.0049,
+          "unmapped": 0.0388,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.6": {
+          "k": 8,
+          "raw_k_before_cap": 8,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            266,
+            167,
+            62,
+            43,
+            11,
+            3,
+            2,
+            2
+          ],
+          "per_sentence": 0.7427,
+          "duration_weighted": 0.9002,
+          "abstain": 0.0049,
+          "unmapped": 0.034,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.7": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            285,
+            271
+          ],
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.8": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            556
+          ],
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            556
+          ],
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            556
+          ],
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            556
+          ],
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            556
+          ],
+          "per_sentence": 0.3738,
+          "duration_weighted": 0.4785,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206
+        }
+      },
+      "elapsed_s": 106.5
+    },
+    {
+      "meeting": "M_R003S05C01",
+      "insufficient": false,
+      "n_windows": 408,
+      "n_dense": 2832,
+      "n_sentences": 57,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            395,
+            13
+          ],
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.756654300100678,
+          "per_sentence": 0.2982,
+          "duration_weighted": 0.3643,
+          "abstain": 0.0702,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 281,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            146,
+            132,
+            97,
+            14,
+            9,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.8772,
+          "duration_weighted": 0.9673,
+          "abstain": 0.0351,
+          "unmapped": 0.0702,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 147,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            146,
+            132,
+            97,
+            14,
+            9,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.8772,
+          "duration_weighted": 0.9673,
+          "abstain": 0.0351,
+          "unmapped": 0.0702,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 37,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            146,
+            132,
+            97,
+            14,
+            9,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.8772,
+          "duration_weighted": 0.9673,
+          "abstain": 0.0351,
+          "unmapped": 0.0702,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 10,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            146,
+            132,
+            97,
+            14,
+            9,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "per_sentence": 0.8772,
+          "duration_weighted": 0.9673,
+          "abstain": 0.0351,
+          "unmapped": 0.0702,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.6": {
+          "k": 7,
+          "raw_k_before_cap": 7,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            150,
+            132,
+            97,
+            14,
+            12,
+            2,
+            1
+          ],
+          "per_sentence": 0.9298,
+          "duration_weighted": 0.9927,
+          "abstain": 0.0351,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.7": {
+          "k": 4,
+          "raw_k_before_cap": 4,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            379,
+            14,
+            13,
+            2
+          ],
+          "per_sentence": 0.4737,
+          "duration_weighted": 0.5122,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            395,
+            13
+          ],
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            408
+          ],
+          "per_sentence": 0.2982,
+          "duration_weighted": 0.3643,
+          "abstain": 0.0702,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            408
+          ],
+          "per_sentence": 0.2982,
+          "duration_weighted": 0.3643,
+          "abstain": 0.0702,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            408
+          ],
+          "per_sentence": 0.2982,
+          "duration_weighted": 0.3643,
+          "abstain": 0.0702,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            408
+          ],
+          "per_sentence": 0.2982,
+          "duration_weighted": 0.3643,
+          "abstain": 0.0702,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        }
+      },
+      "elapsed_s": 87.4
+    },
+    {
+      "meeting": "S_R004S01C01",
+      "insufficient": false,
+      "n_windows": 513,
+      "n_dense": 3409,
+      "n_sentences": 75,
+      "candidates": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "sizes": [
+            146,
+            125,
+            123,
+            119
+          ],
+          "per_sentence": 0.7867,
+          "duration_weighted": 0.8871,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.596744382782924,
+          "per_sentence": 0.28,
+          "duration_weighted": 0.248,
+          "abstain": 0.0533,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 335,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            123,
+            117,
+            113,
+            93,
+            49,
+            10,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8133,
+          "duration_weighted": 0.9548,
+          "abstain": 0.0133,
+          "unmapped": 0.1067,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 171,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            123,
+            117,
+            113,
+            93,
+            49,
+            10,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8133,
+          "duration_weighted": 0.9548,
+          "abstain": 0.0133,
+          "unmapped": 0.1067,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 53,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            123,
+            117,
+            113,
+            93,
+            49,
+            10,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8133,
+          "duration_weighted": 0.9548,
+          "abstain": 0.0133,
+          "unmapped": 0.1067,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 20,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            123,
+            117,
+            113,
+            93,
+            49,
+            10,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.8133,
+          "duration_weighted": 0.9548,
+          "abstain": 0.0133,
+          "unmapped": 0.1067,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.6": {
+          "k": 6,
+          "raw_k_before_cap": 6,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            125,
+            123,
+            119,
+            93,
+            51,
+            2
+          ],
+          "per_sentence": 0.88,
+          "duration_weighted": 0.9851,
+          "abstain": 0.0133,
+          "unmapped": 0.0267,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.7": {
+          "k": 5,
+          "raw_k_before_cap": 5,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            125,
+            123,
+            119,
+            93,
+            53
+          ],
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            269,
+            244
+          ],
+          "per_sentence": 0.4267,
+          "duration_weighted": 0.4803,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            513
+          ],
+          "per_sentence": 0.28,
+          "duration_weighted": 0.248,
+          "abstain": 0.0533,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            513
+          ],
+          "per_sentence": 0.28,
+          "duration_weighted": 0.248,
+          "abstain": 0.0533,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            513
+          ],
+          "per_sentence": 0.28,
+          "duration_weighted": 0.248,
+          "abstain": 0.0533,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            513
+          ],
+          "per_sentence": 0.28,
+          "duration_weighted": 0.248,
+          "abstain": 0.0533,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75
+        }
+      },
+      "elapsed_s": 115.6
+    },
+    {
+      "meeting": "S_R004S02C01",
+      "insufficient": false,
+      "n_windows": 578,
+      "n_dense": 3823,
+      "n_sentences": 110,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            431,
+            147
+          ],
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "B": {
+          "k": 2,
+          "level": "refined",
+          "spectral_k": 2,
+          "gap_ratio": 0.4799664878629026,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 369,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            415,
+            143,
+            6,
+            5,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9891,
+          "abstain": 0.0,
+          "unmapped": 0.0182,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 190,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            415,
+            143,
+            6,
+            5,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9891,
+          "abstain": 0.0,
+          "unmapped": 0.0182,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 56,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            415,
+            143,
+            6,
+            5,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9891,
+          "abstain": 0.0,
+          "unmapped": 0.0182,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 18,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            415,
+            143,
+            6,
+            5,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9891,
+          "abstain": 0.0,
+          "unmapped": 0.0182,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.6": {
+          "k": 9,
+          "raw_k_before_cap": 9,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            420,
+            143,
+            6,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9891,
+          "abstain": 0.0,
+          "unmapped": 0.0182,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.7": {
+          "k": 5,
+          "raw_k_before_cap": 5,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            422,
+            143,
+            8,
+            4,
+            1
+          ],
+          "per_sentence": 0.9727,
+          "duration_weighted": 0.9901,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            431,
+            147
+          ],
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            578
+          ],
+          "per_sentence": 0.6636,
+          "duration_weighted": 0.7328,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            578
+          ],
+          "per_sentence": 0.6636,
+          "duration_weighted": 0.7328,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            578
+          ],
+          "per_sentence": 0.6636,
+          "duration_weighted": 0.7328,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            578
+          ],
+          "per_sentence": 0.6636,
+          "duration_weighted": 0.7328,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110
+        }
+      },
+      "elapsed_s": 116.9
+    },
+    {
+      "meeting": "S_R004S03C01",
+      "insufficient": false,
+      "n_windows": 570,
+      "n_dense": 3756,
+      "n_sentences": 57,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            324,
+            246
+          ],
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "B": {
+          "k": 2,
+          "level": "refined",
+          "spectral_k": 2,
+          "gap_ratio": 0.5523397558421174,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 354,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            316,
+            243,
+            3,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9941,
+          "abstain": 0.0,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 163,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            316,
+            243,
+            3,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9941,
+          "abstain": 0.0,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 44,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            316,
+            243,
+            3,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9941,
+          "abstain": 0.0,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 17,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            316,
+            243,
+            3,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9941,
+          "abstain": 0.0,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.6": {
+          "k": 8,
+          "raw_k_before_cap": 8,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            317,
+            243,
+            3,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9941,
+          "abstain": 0.0,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.7": {
+          "k": 5,
+          "raw_k_before_cap": 5,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            317,
+            245,
+            5,
+            2,
+            1
+          ],
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9957,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            324,
+            246
+          ],
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            570
+          ],
+          "per_sentence": 0.5263,
+          "duration_weighted": 0.5477,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            570
+          ],
+          "per_sentence": 0.5263,
+          "duration_weighted": 0.5477,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            570
+          ],
+          "per_sentence": 0.5263,
+          "duration_weighted": 0.5477,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            570
+          ],
+          "per_sentence": 0.5263,
+          "duration_weighted": 0.5477,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57
+        }
+      },
+      "elapsed_s": 112.6
+    },
+    {
+      "meeting": "S_R004S04C01",
+      "insufficient": false,
+      "n_windows": 585,
+      "n_dense": 3874,
+      "n_sentences": 84,
+      "candidates": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "sizes": [
+            416,
+            169
+          ],
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "B": {
+          "k": 1,
+          "level": "2s-only",
+          "spectral_k": 1,
+          "gap_ratio": 0.5033246808381594,
+          "per_sentence": 0.5714,
+          "duration_weighted": 0.6402,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.2": {
+          "k": 10,
+          "raw_k_before_cap": 388,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            399,
+            166,
+            5,
+            3,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.9048,
+          "duration_weighted": 0.9191,
+          "abstain": 0.0,
+          "unmapped": 0.0476,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.3": {
+          "k": 10,
+          "raw_k_before_cap": 187,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            399,
+            166,
+            5,
+            3,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.9048,
+          "duration_weighted": 0.9191,
+          "abstain": 0.0,
+          "unmapped": 0.0476,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.4": {
+          "k": 10,
+          "raw_k_before_cap": 57,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            399,
+            166,
+            5,
+            3,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.9048,
+          "duration_weighted": 0.9191,
+          "abstain": 0.0,
+          "unmapped": 0.0476,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.5": {
+          "k": 10,
+          "raw_k_before_cap": 14,
+          "capped": true,
+          "level": "refined",
+          "sizes": [
+            399,
+            166,
+            5,
+            3,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.9048,
+          "duration_weighted": 0.9191,
+          "abstain": 0.0,
+          "unmapped": 0.0476,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.6": {
+          "k": 7,
+          "raw_k_before_cap": 7,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            408,
+            166,
+            3,
+            2,
+            2,
+            2,
+            2
+          ],
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9288,
+          "abstain": 0.0,
+          "unmapped": 0.0238,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.7": {
+          "k": 3,
+          "raw_k_before_cap": 3,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            412,
+            169,
+            4
+          ],
+          "per_sentence": 0.9405,
+          "duration_weighted": 0.9336,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.8": {
+          "k": 2,
+          "raw_k_before_cap": 2,
+          "capped": false,
+          "level": "refined",
+          "sizes": [
+            416,
+            169
+          ],
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@0.9": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            585
+          ],
+          "per_sentence": 0.5714,
+          "duration_weighted": 0.6402,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@1.0": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            585
+          ],
+          "per_sentence": 0.5714,
+          "duration_weighted": 0.6402,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@1.1": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            585
+          ],
+          "per_sentence": 0.5714,
+          "duration_weighted": 0.6402,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        },
+        "A@1.2": {
+          "k": 1,
+          "raw_k_before_cap": 1,
+          "capped": false,
+          "level": "2s-only",
+          "sizes": [
+            585
+          ],
+          "per_sentence": 0.5714,
+          "duration_weighted": 0.6402,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84
+        }
+      },
+      "elapsed_s": 116.4
+    }
+  ],
+  "failed": []
+}

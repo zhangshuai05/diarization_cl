@@ -126,10 +126,19 @@ def run_meeting(meeting, models, do_a=True):
 
     tree = linkage(E, method="average", metric="cosine")
     out = {"meeting": meeting, "insufficient": False, "n_windows": int(len(E)),
-           "n_dense": int(len(rE)), "n_sentences": len(sentences), "candidates": {}}
+           "n_dense": int(len(rE)), "n_sentences": len(sentences), "candidates": {},
+           # 三个分支的 K 上限必须**显式记录**：它们此前并不相同
+           # （base 4 / A 10 / B 10），而"公平比较"的前提是同一个候选空间。
+           # 记录在案，后续若再出现不一致，产物本身就能看出来。
+           "caps": {"base": v12.MAX_SPEAKERS, "A": v12.MAX_SPEAKERS, "B": B_CAP}}
 
     # ── 基线（现状 v12 的选 K）
-    candidates, _ = v11._candidate_clusters(E)
+    # ⚠️ 必须显式传 `max_speakers`：v11 里它是**默认参数**，在 def 时绑成
+    # `v11.MAX_SPEAKERS`=4，而 `_v11_window_params` 改模块变量改不动它。
+    # 漏传的后果：base 的候选空间只有 1..4，而 A（`n_clusters_cap=v12.MAX_SPEAKERS`）
+    # 与 B（`B_CAP`）都是 10 —— **base vs A/B 不是公平比较**。
+    # 生产 `diarize` 同样显式传参（见 `claude_a2_v12.py:186/212`），这里与之对齐。
+    candidates, _ = v11._candidate_clusters(E, max_speakers=v12.MAX_SPEAKERS)
     selected = v11._select_candidate(candidates)
     labels = selected["labels"].copy()
     flabels, ftimes, level = real_path_labels(labels, E, times, rE, rtimes)
