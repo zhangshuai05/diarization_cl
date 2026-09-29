@@ -34,12 +34,15 @@ MIN_VAD_FRACTION = 0.5
 MAX_SPEAKERS = 10
 # ⚠️ 10 是**候选搜索上限**，不是"会议最多 10 人"的事实声明，也不是已证明的最优上限。
 # 依据：test 的 TextGrid 说话人层数最高 7，train_L 同为 7，故 4 明显不够；
-# 且实测最优候选出现过 k=10——即使真人只有 7 个，K 也可能同时承担**边界锚点**作用，
-# 所以不能把上限直接降到 7。cap=7 与 cap=10 孰优待路径与基线修正后回归比较。
+# 且 `S_R004S01C01` 实测 k=5 合格并被选中（base 归属率 78.7% -> 90.7%，+12.0 pts），
+# 说明 k>4 的候选确实会被用到，不能把上限直接降到 7。
+# cap=7 与 cap=10 孰优待路径与基线修正后回归比较。
 # 回归：本常量若被改回 4 或从 `_candidate_clusters` 调用点丢失，
 # `tests/test_k_cap_dispatch.py` 必须报红。
-MIN_CLUSTER_WINDOWS = 3
-MIN_CLUSTER_SHARE = 0.02
+# ⚠️ 本模块**不再**定义 `MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE`：它们曾是死值
+# （`_candidate_clusters` 在 v11 里，读的是 v11 的 4 / 0.015，而这里写的是 3 / 0.02，
+#  从未被读过）。同名不同值极易被误当作生效配置，故删除。
+# 真正的簇门限在 `claude_a2_v11.MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE`。
 MULTI_K_PENALTY = 0.015
 MAX_ASR_SECONDS = 8.0
 SCENE_GAP_SECONDS = 2.0

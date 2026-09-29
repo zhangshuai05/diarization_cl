@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 """v13 Step 0：在 v12 **真实产出路径**上取 K 的候选表与口径事实。
 
-v12 的 K 判据整套继承自 v11（cap 绑死 4、门读 v11 常量），v12 自己的
-MAX_SPEAKERS=10 / MIN_CLUSTER_WINDOWS=3 / MIN_CLUSTER_SHARE=0.02 是死值。
+v12 的 K 判据整套继承自 v11，门限读 v11 的常量
+（`MIN_CLUSTER_WINDOWS=4` / `MIN_CLUSTER_SHARE=0.015`）。
+
+历史（2026-09-28 前）：`MAX_SPEAKERS` 曾是**死值**——`_candidate_clusters` 的
+默认参数在 def 时绑成 `v11.MAX_SPEAKERS=4`，改模块变量无效，故 cap 实际恒为 4。
+该 bug 已修（`diarize` 显式传参，见 `977fc6b` 与 `tests/test_k_cap_dispatch.py`）。
+`MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE` 在 v12 里也定义过（3 / 0.02），
+与 v11 的值不同且从未被读到；那两份死常量已删除。
+
 这个探针只读不动：跑 `v12.diarize()`，把它内部真实用到的候选表打出来，
 外加判定它走的是哪条出口（细化 / 救援 / 裸长窗）。
 
