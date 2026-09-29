@@ -482,27 +482,24 @@
     "n_sentences": 75
    },
    "probe_base": {
-    "k": 4,
+    "k": 5,
     "level": "refined",
     "sizes": [
-     146,
      125,
      123,
-     119
+     119,
+     93,
+     53
     ],
-    "per_sentence": 0.7867,
-    "duration_weighted": 0.8871,
+    "per_sentence": 0.9067,
+    "duration_weighted": 0.9884,
     "abstain": 0.0133,
     "unmapped": 0.0,
     "n": 75,
     "n_sentences": 75
    },
-   "verdict": "★ 有差异",
-   "notes": [
-    "k 不同：生产 5 vs 探针 4",
-    "per_sentence 不同：0.9067 vs 0.7867（差 +12.00 pts）",
-    "duration_weighted 不同：0.9884 vs 0.8871（差 +10.13 pts）"
-   ]
+   "verdict": "行为保持",
+   "notes": []
   },
   {
    "meeting": "S_R004S02C01",

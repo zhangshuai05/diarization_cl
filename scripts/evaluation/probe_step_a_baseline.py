@@ -28,8 +28,6 @@ import json
 import sys
 from pathlib import Path
 
-import numpy as np
-
 ROOT = Path(__file__).resolve().parents[2]
 for _p in (str(ROOT / "streaming_asr"), str(Path(__file__).resolve().parent)):
     if _p not in sys.path:
@@ -37,7 +35,6 @@ for _p in (str(ROOT / "streaming_asr"), str(Path(__file__).resolve().parent)):
 
 import probe_path_equiv as E  # noqa: E402
 import probe_ab_dev as ab  # noqa: E402
-import probe_sentence_attribution as P  # noqa: E402
 
 AB_RESULTS = ROOT / "artifacts" / "v13_ab_dev_results.json"
 
@@ -57,10 +54,6 @@ def run_one(meeting):
     """跑修复后的生产 `diarize`，返回与探针 base 可比的量。"""
     result, calls = E.run_diarize(meeting)
     sentences = E.load_sentences(meeting)
-    pred = E._sentence_preds(
-        sentences,
-        P.segment_map(result["times"], result["labels"],
-                      np.full(len(result["labels"]), result["window_seconds"]), 1e9))
     scored = ab.score(sentences, result["labels"], result["times"],
                       result["window_seconds"])
     # 主窗数（探针 `n_windows` 的同义量）：两边必须相同，否则是窗集不同源，
@@ -81,7 +74,6 @@ def run_one(meeting):
         "eligible_ks": sorted(int(c["k"]) for c in result["candidates"]
                               if c["eligible"] and c["k"] >= 2),
         "calls": calls,
-        "pred": pred.tolist(),
         **scored,
     }
 
@@ -150,7 +142,7 @@ def main():
         diag = run_one(meeting)
         probe_base = (ab_rows[meeting].get("candidates") or {}).get("base")
         verdict, notes = compare(meeting, diag, probe_base, ab_rows[meeting])
-        row = {"meeting": meeting, "diarize": {k: v for k, v in diag.items() if k != "pred"},
+        row = {"meeting": meeting, "diarize": diag,
                "probe_base": probe_base, "verdict": verdict, "notes": notes}
         rows.append(row)
         if verdict.startswith("★ 窗集"):
