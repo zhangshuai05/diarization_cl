@@ -1,0 +1,761 @@
+{
+  "metric_note": "Text similarity >=0.35; speaker_matched uses one-to-one speaker label mapping. This is a text proxy, not DER. Ground-truth turns can match the same output segment.",
+  "raw": [
+    {
+      "file": "Call20260718210228.wav",
+      "group": "noisy 1m",
+      "web_old": {
+        "matched": 1,
+        "speaker_matched": 1,
+        "gt": 28,
+        "segments": 3,
+        "longest": 73.8
+      },
+      "offline_old": {
+        "matched": 22,
+        "speaker_matched": 13,
+        "gt": 28,
+        "segments": 36,
+        "longest": 10.8
+      },
+      "final": {
+        "matched": 22,
+        "speaker_matched": 13,
+        "gt": 28,
+        "segments": 36,
+        "longest": 10.8
+      }
+    },
+    {
+      "file": "Call20260718210454.wav",
+      "group": "noisy 1.5m",
+      "web_old": {
+        "matched": 11,
+        "speaker_matched": 9,
+        "gt": 21,
+        "segments": 17,
+        "longest": 18.0
+      },
+      "offline_old": {
+        "matched": 12,
+        "speaker_matched": 9,
+        "gt": 21,
+        "segments": 24,
+        "longest": 9.6
+      },
+      "final": {
+        "matched": 14,
+        "speaker_matched": 11,
+        "gt": 21,
+        "segments": 76,
+        "longest": 4.35
+      }
+    },
+    {
+      "file": "Call20260718210657.wav",
+      "group": "noisy 2m",
+      "web_old": {
+        "matched": 9,
+        "speaker_matched": 5,
+        "gt": 15,
+        "segments": 42,
+        "longest": 11.1
+      },
+      "offline_old": {
+        "matched": 9,
+        "speaker_matched": 5,
+        "gt": 15,
+        "segments": 42,
+        "longest": 11.1
+      },
+      "final": {
+        "matched": 9,
+        "speaker_matched": 5,
+        "gt": 15,
+        "segments": 42,
+        "longest": 11.1
+      }
+    },
+    {
+      "file": "Call20260718210836.wav",
+      "group": "noisy 1m",
+      "web_old": {
+        "matched": 15,
+        "speaker_matched": 14,
+        "gt": 18,
+        "segments": 65,
+        "longest": 4.35
+      },
+      "offline_old": {
+        "matched": 15,
+        "speaker_matched": 14,
+        "gt": 18,
+        "segments": 65,
+        "longest": 4.35
+      },
+      "final": {
+        "matched": 15,
+        "speaker_matched": 14,
+        "gt": 18,
+        "segments": 65,
+        "longest": 4.35
+      }
+    },
+    {
+      "file": "Call20260718210948.wav",
+      "group": "noisy 1.5m",
+      "web_old": {
+        "matched": 4,
+        "speaker_matched": 4,
+        "gt": 13,
+        "segments": 35,
+        "longest": 7.05
+      },
+      "offline_old": {
+        "matched": 4,
+        "speaker_matched": 4,
+        "gt": 13,
+        "segments": 35,
+        "longest": 7.05
+      },
+      "final": {
+        "matched": 4,
+        "speaker_matched": 4,
+        "gt": 13,
+        "segments": 35,
+        "longest": 7.05
+      }
+    },
+    {
+      "file": "Call20260718211031.wav",
+      "group": "noisy 2m",
+      "web_old": {
+        "matched": 6,
+        "speaker_matched": 3,
+        "gt": 14,
+        "segments": 7,
+        "longest": 12.0
+      },
+      "offline_old": {
+        "matched": 6,
+        "speaker_matched": 4,
+        "gt": 14,
+        "segments": 11,
+        "longest": 9.6
+      },
+      "final": {
+        "matched": 6,
+        "speaker_matched": 5,
+        "gt": 14,
+        "segments": 46,
+        "longest": 4.35
+      }
+    },
+    {
+      "file": "Note20260803111143.wav",
+      "group": "noisy 1m",
+      "web_old": {
+        "matched": 1,
+        "speaker_matched": 1,
+        "gt": 27,
+        "segments": 3,
+        "longest": 81.0
+      },
+      "offline_old": {
+        "matched": 19,
+        "speaker_matched": 12,
+        "gt": 27,
+        "segments": 30,
+        "longest": 18.0
+      },
+      "final": {
+        "matched": 19,
+        "speaker_matched": 12,
+        "gt": 27,
+        "segments": 30,
+        "longest": 18.0
+      }
+    },
+    {
+      "file": "Note20260803111436.wav",
+      "group": "noisy 1.5m",
+      "web_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 16,
+        "segments": 10,
+        "longest": 16.8
+      },
+      "offline_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 16,
+        "segments": 10,
+        "longest": 16.8
+      },
+      "final": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 16,
+        "segments": 32,
+        "longest": 4.35
+      }
+    },
+    {
+      "file": "Note20260803111605.wav",
+      "group": "noisy 2m",
+      "web_old": {
+        "matched": 4,
+        "speaker_matched": 2,
+        "gt": 15,
+        "segments": 7,
+        "longest": 26.4
+      },
+      "offline_old": {
+        "matched": 9,
+        "speaker_matched": 8,
+        "gt": 15,
+        "segments": 15,
+        "longest": 8.4
+      },
+      "final": {
+        "matched": 9,
+        "speaker_matched": 8,
+        "gt": 15,
+        "segments": 18,
+        "longest": 7.35
+      }
+    },
+    {
+      "file": "Note20260803111741.wav",
+      "group": "noisy 1m",
+      "web_old": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      },
+      "offline_old": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      },
+      "final": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      }
+    },
+    {
+      "file": "Note20260803111855.wav",
+      "group": "noisy 1.5m",
+      "web_old": {
+        "matched": 4,
+        "speaker_matched": 4,
+        "gt": 13,
+        "segments": 6,
+        "longest": 16.8
+      },
+      "offline_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 13,
+        "segments": 10,
+        "longest": 9.0
+      },
+      "final": {
+        "matched": 9,
+        "speaker_matched": 9,
+        "gt": 13,
+        "segments": 22,
+        "longest": 6.75
+      }
+    },
+    {
+      "file": "Note20260803111943.wav",
+      "group": "noisy 2m",
+      "web_old": {
+        "matched": 5,
+        "speaker_matched": 3,
+        "gt": 14,
+        "segments": 6,
+        "longest": 16.8
+      },
+      "offline_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 14,
+        "segments": 9,
+        "longest": 9.6
+      },
+      "final": {
+        "matched": 9,
+        "speaker_matched": 8,
+        "gt": 14,
+        "segments": 27,
+        "longest": 4.8
+      }
+    },
+    {
+      "file": "Call20260718211423.wav",
+      "group": "quiet 1.5m",
+      "web_old": {
+        "matched": 12,
+        "speaker_matched": 12,
+        "gt": 14,
+        "segments": 17,
+        "longest": 5.85
+      },
+      "offline_old": {
+        "matched": 12,
+        "speaker_matched": 12,
+        "gt": 14,
+        "segments": 17,
+        "longest": 5.85
+      },
+      "final": {
+        "matched": 12,
+        "speaker_matched": 12,
+        "gt": 14,
+        "segments": 17,
+        "longest": 5.85
+      }
+    },
+    {
+      "file": "Call20260718211506.wav",
+      "group": "quiet 2m",
+      "web_old": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 27,
+        "longest": 4.8
+      },
+      "offline_old": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 27,
+        "longest": 4.8
+      },
+      "final": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 27,
+        "longest": 4.8
+      }
+    },
+    {
+      "file": "Call20260718211745.wav",
+      "group": "quiet 1m",
+      "web_old": {
+        "matched": 15,
+        "speaker_matched": 15,
+        "gt": 17,
+        "segments": 15,
+        "longest": 11.55
+      },
+      "offline_old": {
+        "matched": 15,
+        "speaker_matched": 15,
+        "gt": 17,
+        "segments": 15,
+        "longest": 11.55
+      },
+      "final": {
+        "matched": 15,
+        "speaker_matched": 15,
+        "gt": 17,
+        "segments": 15,
+        "longest": 11.55
+      }
+    },
+    {
+      "file": "Call20260718211842.wav",
+      "group": "quiet 1.5m",
+      "web_old": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 11,
+        "longest": 8.4
+      },
+      "offline_old": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 11,
+        "longest": 8.4
+      },
+      "final": {
+        "matched": 14,
+        "speaker_matched": 14,
+        "gt": 14,
+        "segments": 20,
+        "longest": 3.83
+      }
+    },
+    {
+      "file": "Call20260718211938.wav",
+      "group": "quiet 2m",
+      "web_old": {
+        "matched": 12,
+        "speaker_matched": 11,
+        "gt": 14,
+        "segments": 11,
+        "longest": 6.0
+      },
+      "offline_old": {
+        "matched": 12,
+        "speaker_matched": 11,
+        "gt": 14,
+        "segments": 13,
+        "longest": 6.0
+      },
+      "final": {
+        "matched": 11,
+        "speaker_matched": 10,
+        "gt": 14,
+        "segments": 20,
+        "longest": 4.65
+      }
+    },
+    {
+      "file": "Note20260803112220.wav",
+      "group": "quiet 1m",
+      "web_old": {
+        "matched": 9,
+        "speaker_matched": 9,
+        "gt": 16,
+        "segments": 10,
+        "longest": 18.0
+      },
+      "offline_old": {
+        "matched": 14,
+        "speaker_matched": 13,
+        "gt": 16,
+        "segments": 15,
+        "longest": 10.8
+      },
+      "final": {
+        "matched": 15,
+        "speaker_matched": 15,
+        "gt": 16,
+        "segments": 20,
+        "longest": 9.0
+      }
+    },
+    {
+      "file": "Note20260803112329.wav",
+      "group": "quiet 1.5m",
+      "web_old": {
+        "matched": 9,
+        "speaker_matched": 9,
+        "gt": 13,
+        "segments": 10,
+        "longest": 11.4
+      },
+      "offline_old": {
+        "matched": 10,
+        "speaker_matched": 10,
+        "gt": 13,
+        "segments": 11,
+        "longest": 10.2
+      },
+      "final": {
+        "matched": 12,
+        "speaker_matched": 12,
+        "gt": 13,
+        "segments": 15,
+        "longest": 5.7
+      }
+    },
+    {
+      "file": "Note20260803112415.wav",
+      "group": "quiet 2m",
+      "web_old": {
+        "matched": 6,
+        "speaker_matched": 6,
+        "gt": 15,
+        "segments": 5,
+        "longest": 21.6
+      },
+      "offline_old": {
+        "matched": 9,
+        "speaker_matched": 9,
+        "gt": 15,
+        "segments": 9,
+        "longest": 10.2
+      },
+      "final": {
+        "matched": 12,
+        "speaker_matched": 12,
+        "gt": 15,
+        "segments": 20,
+        "longest": 3.9
+      }
+    },
+    {
+      "file": "Note20260803112655.wav",
+      "group": "quiet 1m",
+      "web_old": {
+        "matched": 16,
+        "speaker_matched": 16,
+        "gt": 17,
+        "segments": 13,
+        "longest": 8.4
+      },
+      "offline_old": {
+        "matched": 16,
+        "speaker_matched": 16,
+        "gt": 17,
+        "segments": 16,
+        "longest": 7.8
+      },
+      "final": {
+        "matched": 15,
+        "speaker_matched": 15,
+        "gt": 17,
+        "segments": 20,
+        "longest": 6.6
+      }
+    },
+    {
+      "file": "Note20260803112752.wav",
+      "group": "quiet 1.5m",
+      "web_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 14,
+        "segments": 7,
+        "longest": 14.4
+      },
+      "offline_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 14,
+        "segments": 8,
+        "longest": 14.4
+      },
+      "final": {
+        "matched": 14,
+        "speaker_matched": 14,
+        "gt": 14,
+        "segments": 18,
+        "longest": 3.75
+      }
+    },
+    {
+      "file": "Note20260803112841.wav",
+      "group": "quiet 2m",
+      "web_old": {
+        "matched": 8,
+        "speaker_matched": 8,
+        "gt": 14,
+        "segments": 10,
+        "longest": 12.0
+      },
+      "offline_old": {
+        "matched": 9,
+        "speaker_matched": 9,
+        "gt": 14,
+        "segments": 13,
+        "longest": 7.2
+      },
+      "final": {
+        "matched": 11,
+        "speaker_matched": 11,
+        "gt": 14,
+        "segments": 17,
+        "longest": 5.1
+      }
+    }
+  ],
+  "enhanced": [
+    {
+      "file": "Note20260803111741.wav",
+      "group": "noisy 1m",
+      "web_old": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      },
+      "offline_old": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      },
+      "final": {
+        "matched": 13,
+        "speaker_matched": 11,
+        "gt": 17,
+        "segments": 33,
+        "longest": 7.2
+      }
+    },
+    {
+      "file": "Note20260803111855.wav",
+      "group": "noisy 1.5m",
+      "web_old": {
+        "matched": 5,
+        "speaker_matched": 5,
+        "gt": 13,
+        "segments": 8,
+        "longest": 13.2
+      },
+      "offline_old": {
+        "matched": 7,
+        "speaker_matched": 7,
+        "gt": 13,
+        "segments": 11,
+        "longest": 9.0
+      },
+      "final": {
+        "matched": 8,
+        "speaker_matched": 8,
+        "gt": 13,
+        "segments": 23,
+        "longest": 4.2
+      }
+    },
+    {
+      "file": "Note20260803111943.wav",
+      "group": "noisy 2m",
+      "web_old": {
+        "matched": 5,
+        "speaker_matched": 3,
+        "gt": 14,
+        "segments": 6,
+        "longest": 16.8
+      },
+      "offline_old": {
+        "matched": 8,
+        "speaker_matched": 8,
+        "gt": 14,
+        "segments": 9,
+        "longest": 9.6
+      },
+      "final": {
+        "matched": 9,
+        "speaker_matched": 8,
+        "gt": 14,
+        "segments": 21,
+        "longest": 5.1
+      }
+    }
+  ],
+  "groups": {
+    "noisy 1m": {
+      "web_old": [
+        30,
+        27,
+        90
+      ],
+      "offline_old": [
+        69,
+        50,
+        90
+      ],
+      "final": [
+        69,
+        50,
+        90
+      ]
+    },
+    "noisy 1.5m": {
+      "web_old": [
+        26,
+        24,
+        63
+      ],
+      "offline_old": [
+        30,
+        27,
+        63
+      ],
+      "final": [
+        38,
+        34,
+        63
+      ]
+    },
+    "noisy 2m": {
+      "web_old": [
+        24,
+        13,
+        58
+      ],
+      "offline_old": [
+        31,
+        24,
+        58
+      ],
+      "final": [
+        33,
+        26,
+        58
+      ]
+    },
+    "quiet 1.5m": {
+      "web_old": [
+        39,
+        38,
+        55
+      ],
+      "offline_old": [
+        40,
+        39,
+        55
+      ],
+      "final": [
+        52,
+        52,
+        55
+      ]
+    },
+    "quiet 2m": {
+      "web_old": [
+        37,
+        35,
+        57
+      ],
+      "offline_old": [
+        41,
+        39,
+        57
+      ],
+      "final": [
+        45,
+        43,
+        57
+      ]
+    },
+    "quiet 1m": {
+      "web_old": [
+        40,
+        40,
+        50
+      ],
+      "offline_old": [
+        45,
+        44,
+        50
+      ],
+      "final": [
+        45,
+        45,
+        50
+      ]
+    }
+  }
+}
