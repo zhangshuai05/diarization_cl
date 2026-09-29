@@ -1,0 +1,1810 @@
+{
+  "schema": "v13-sentence-attribution-v2",
+  "win": 2.0,
+  "hop": 1.0,
+  "seconds": 600.0,
+  "mode": "objective",
+  "unit": "single-tier-mark",
+  "reports": {
+    "L_R003S01C02": {
+      "1": {
+        "overall": {
+          "n": 99,
+          "seconds": 573.8,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 19,
+          "seconds": 59.6,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 80,
+          "seconds": 514.3,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 102,
+        "n_sentences_scored": 99,
+        "n_dropped_short": 3,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          418
+        ],
+        "n_windows": 418,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 99,
+          "seconds": 573.8,
+          "duration_weighted": 0.2251,
+          "per_sentence": 0.1919,
+          "abstain": 0.7071
+        },
+        "overlap": {
+          "n": 19,
+          "seconds": 59.6,
+          "duration_weighted": 0.1728,
+          "per_sentence": 0.1053,
+          "abstain": 0.7368
+        },
+        "clean": {
+          "n": 80,
+          "seconds": 514.3,
+          "duration_weighted": 0.2312,
+          "per_sentence": 0.2125,
+          "abstain": 0.7
+        },
+        "n_sentences_all": 102,
+        "n_sentences_scored": 99,
+        "n_dropped_short": 3,
+        "n_wrong": 10,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          296,
+          121,
+          1
+        ],
+        "n_windows": 418,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 99,
+          "seconds": 573.8,
+          "duration_weighted": 0.6724,
+          "per_sentence": 0.5859,
+          "abstain": 0.2828
+        },
+        "overlap": {
+          "n": 19,
+          "seconds": 59.6,
+          "duration_weighted": 0.7318,
+          "per_sentence": 0.4211,
+          "abstain": 0.2105
+        },
+        "clean": {
+          "n": 80,
+          "seconds": 514.3,
+          "duration_weighted": 0.6655,
+          "per_sentence": 0.625,
+          "abstain": 0.3
+        },
+        "n_sentences_all": 102,
+        "n_sentences_scored": 99,
+        "n_dropped_short": 3,
+        "n_wrong": 13,
+        "n_mapped_unused": 4,
+        "k": 5,
+        "sizes": [
+          105,
+          121,
+          125,
+          1,
+          66
+        ],
+        "n_windows": 418,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 99,
+          "seconds": 573.8,
+          "duration_weighted": 0.6632,
+          "per_sentence": 0.5758,
+          "abstain": 0.2828
+        },
+        "overlap": {
+          "n": 19,
+          "seconds": 59.6,
+          "duration_weighted": 0.6254,
+          "per_sentence": 0.3158,
+          "abstain": 0.2105
+        },
+        "clean": {
+          "n": 80,
+          "seconds": 514.3,
+          "duration_weighted": 0.6676,
+          "per_sentence": 0.6375,
+          "abstain": 0.3
+        },
+        "n_sentences_all": 102,
+        "n_sentences_scored": 99,
+        "n_dropped_short": 3,
+        "n_wrong": 14,
+        "n_mapped_unused": 6,
+        "k": 7,
+        "sizes": [
+          105,
+          2,
+          125,
+          119,
+          1,
+          51,
+          15
+        ],
+        "n_windows": 418,
+        "n_pred_speakers": 7
+      }
+    },
+    "L_R003S02C02": {
+      "1": {
+        "overall": {
+          "n": 85,
+          "seconds": 530.7,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 6,
+          "seconds": 13.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 79,
+          "seconds": 517.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 85,
+        "n_sentences_scored": 85,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          278
+        ],
+        "n_windows": 278,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 85,
+          "seconds": 530.7,
+          "duration_weighted": 0.6352,
+          "per_sentence": 0.5529,
+          "abstain": 0.0706
+        },
+        "overlap": {
+          "n": 6,
+          "seconds": 13.4,
+          "duration_weighted": 0.4604,
+          "per_sentence": 0.1667,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 79,
+          "seconds": 517.4,
+          "duration_weighted": 0.6397,
+          "per_sentence": 0.5823,
+          "abstain": 0.0759
+        },
+        "n_sentences_all": 85,
+        "n_sentences_scored": 85,
+        "n_dropped_short": 0,
+        "n_wrong": 32,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          3,
+          2,
+          273
+        ],
+        "n_windows": 278,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 85,
+          "seconds": 530.7,
+          "duration_weighted": 0.9142,
+          "per_sentence": 0.8235,
+          "abstain": 0.0706
+        },
+        "overlap": {
+          "n": 6,
+          "seconds": 13.4,
+          "duration_weighted": 0.4604,
+          "per_sentence": 0.1667,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 79,
+          "seconds": 517.4,
+          "duration_weighted": 0.926,
+          "per_sentence": 0.8734,
+          "abstain": 0.0759
+        },
+        "n_sentences_all": 85,
+        "n_sentences_scored": 85,
+        "n_dropped_short": 0,
+        "n_wrong": 9,
+        "n_mapped_unused": 4,
+        "k": 5,
+        "sizes": [
+          3,
+          2,
+          90,
+          173,
+          10
+        ],
+        "n_windows": 278,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 85,
+          "seconds": 530.7,
+          "duration_weighted": 0.8654,
+          "per_sentence": 0.7647,
+          "abstain": 0.1294
+        },
+        "overlap": {
+          "n": 6,
+          "seconds": 13.4,
+          "duration_weighted": 0.4604,
+          "per_sentence": 0.1667,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 79,
+          "seconds": 517.4,
+          "duration_weighted": 0.8758,
+          "per_sentence": 0.8101,
+          "abstain": 0.1392
+        },
+        "n_sentences_all": 85,
+        "n_sentences_scored": 85,
+        "n_dropped_short": 0,
+        "n_wrong": 9,
+        "n_mapped_unused": 4,
+        "k": 7,
+        "sizes": [
+          3,
+          2,
+          90,
+          3,
+          10,
+          18,
+          152
+        ],
+        "n_windows": 278,
+        "n_pred_speakers": 7
+      }
+    },
+    "L_R003S03C02": {
+      "1": {
+        "overall": {
+          "n": 83,
+          "seconds": 555.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 11,
+          "seconds": 18.3,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 72,
+          "seconds": 536.8,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          387
+        ],
+        "n_windows": 387,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 83,
+          "seconds": 555.1,
+          "duration_weighted": 0.6975,
+          "per_sentence": 0.5663,
+          "abstain": 0.0482
+        },
+        "overlap": {
+          "n": 11,
+          "seconds": 18.3,
+          "duration_weighted": 0.5084,
+          "per_sentence": 0.2727,
+          "abstain": 0.0909
+        },
+        "clean": {
+          "n": 72,
+          "seconds": 536.8,
+          "duration_weighted": 0.7039,
+          "per_sentence": 0.6111,
+          "abstain": 0.0417
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 32,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          9,
+          124,
+          254
+        ],
+        "n_windows": 387,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 83,
+          "seconds": 555.1,
+          "duration_weighted": 0.7049,
+          "per_sentence": 0.5904,
+          "abstain": 0.0482
+        },
+        "overlap": {
+          "n": 11,
+          "seconds": 18.3,
+          "duration_weighted": 0.4007,
+          "per_sentence": 0.1818,
+          "abstain": 0.0909
+        },
+        "clean": {
+          "n": 72,
+          "seconds": 536.8,
+          "duration_weighted": 0.7153,
+          "per_sentence": 0.6528,
+          "abstain": 0.0417
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 30,
+        "n_mapped_unused": 4,
+        "k": 5,
+        "sizes": [
+          9,
+          4,
+          117,
+          3,
+          254
+        ],
+        "n_windows": 387,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 83,
+          "seconds": 555.1,
+          "duration_weighted": 0.9353,
+          "per_sentence": 0.8072,
+          "abstain": 0.0602
+        },
+        "overlap": {
+          "n": 11,
+          "seconds": 18.3,
+          "duration_weighted": 0.4007,
+          "per_sentence": 0.1818,
+          "abstain": 0.0909
+        },
+        "clean": {
+          "n": 72,
+          "seconds": 536.8,
+          "duration_weighted": 0.9536,
+          "per_sentence": 0.9028,
+          "abstain": 0.0556
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 11,
+        "n_mapped_unused": 5,
+        "k": 7,
+        "sizes": [
+          9,
+          4,
+          117,
+          3,
+          76,
+          2,
+          176
+        ],
+        "n_windows": 387,
+        "n_pred_speakers": 7
+      }
+    },
+    "L_R003S04C02": {
+      "1": {
+        "overall": {
+          "n": 115,
+          "seconds": 517.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 4,
+          "seconds": 4.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 111,
+          "seconds": 512.7,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 119,
+        "n_sentences_scored": 115,
+        "n_dropped_short": 4,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          483
+        ],
+        "n_windows": 483,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 115,
+          "seconds": 517.1,
+          "duration_weighted": 0.5929,
+          "per_sentence": 0.5043,
+          "abstain": 0.0435
+        },
+        "overlap": {
+          "n": 4,
+          "seconds": 4.4,
+          "duration_weighted": 0.6302,
+          "per_sentence": 0.25,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 111,
+          "seconds": 512.7,
+          "duration_weighted": 0.5926,
+          "per_sentence": 0.5135,
+          "abstain": 0.045
+        },
+        "n_sentences_all": 119,
+        "n_sentences_scored": 115,
+        "n_dropped_short": 4,
+        "n_wrong": 52,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          9,
+          463,
+          11
+        ],
+        "n_windows": 483,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 115,
+          "seconds": 517.1,
+          "duration_weighted": 0.9432,
+          "per_sentence": 0.8087,
+          "abstain": 0.0435
+        },
+        "overlap": {
+          "n": 4,
+          "seconds": 4.4,
+          "duration_weighted": 0.6302,
+          "per_sentence": 0.25,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 111,
+          "seconds": 512.7,
+          "duration_weighted": 0.9459,
+          "per_sentence": 0.8288,
+          "abstain": 0.045
+        },
+        "n_sentences_all": 119,
+        "n_sentences_scored": 115,
+        "n_dropped_short": 4,
+        "n_wrong": 17,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          9,
+          303,
+          11,
+          159,
+          1
+        ],
+        "n_windows": 483,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 115,
+          "seconds": 517.1,
+          "duration_weighted": 0.9449,
+          "per_sentence": 0.8174,
+          "abstain": 0.0435
+        },
+        "overlap": {
+          "n": 4,
+          "seconds": 4.4,
+          "duration_weighted": 0.6302,
+          "per_sentence": 0.25,
+          "abstain": 0.0
+        },
+        "clean": {
+          "n": 111,
+          "seconds": 512.7,
+          "duration_weighted": 0.9477,
+          "per_sentence": 0.8378,
+          "abstain": 0.045
+        },
+        "n_sentences_all": 119,
+        "n_sentences_scored": 115,
+        "n_dropped_short": 4,
+        "n_wrong": 16,
+        "n_mapped_unused": 4,
+        "k": 7,
+        "sizes": [
+          9,
+          5,
+          11,
+          297,
+          1,
+          159,
+          1
+        ],
+        "n_windows": 483,
+        "n_pred_speakers": 7
+      }
+    },
+    "M_R003S01C01": {
+      "1": {
+        "overall": {
+          "n": 83,
+          "seconds": 574.2,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 7,
+          "seconds": 6.0,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 76,
+          "seconds": 568.2,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          361
+        ],
+        "n_windows": 361,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 83,
+          "seconds": 574.2,
+          "duration_weighted": 0.3488,
+          "per_sentence": 0.3133,
+          "abstain": 0.6386
+        },
+        "overlap": {
+          "n": 7,
+          "seconds": 6.0,
+          "duration_weighted": 0.1912,
+          "per_sentence": 0.1429,
+          "abstain": 0.5714
+        },
+        "clean": {
+          "n": 76,
+          "seconds": 568.2,
+          "duration_weighted": 0.3504,
+          "per_sentence": 0.3289,
+          "abstain": 0.6447
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 4,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          226,
+          134,
+          1
+        ],
+        "n_windows": 361,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 83,
+          "seconds": 574.2,
+          "duration_weighted": 0.9012,
+          "per_sentence": 0.7108,
+          "abstain": 0.253
+        },
+        "overlap": {
+          "n": 7,
+          "seconds": 6.0,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 0.7143
+        },
+        "clean": {
+          "n": 76,
+          "seconds": 568.2,
+          "duration_weighted": 0.9108,
+          "per_sentence": 0.7763,
+          "abstain": 0.2105
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 3,
+        "n_mapped_unused": 2,
+        "k": 5,
+        "sizes": [
+          3,
+          222,
+          134,
+          1,
+          1
+        ],
+        "n_windows": 361,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 83,
+          "seconds": 574.2,
+          "duration_weighted": 0.8868,
+          "per_sentence": 0.6988,
+          "abstain": 0.2651
+        },
+        "overlap": {
+          "n": 7,
+          "seconds": 6.0,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 0.7143
+        },
+        "clean": {
+          "n": 76,
+          "seconds": 568.2,
+          "duration_weighted": 0.8962,
+          "per_sentence": 0.7632,
+          "abstain": 0.2237
+        },
+        "n_sentences_all": 83,
+        "n_sentences_scored": 83,
+        "n_dropped_short": 0,
+        "n_wrong": 3,
+        "n_mapped_unused": 2,
+        "k": 7,
+        "sizes": [
+          3,
+          222,
+          1,
+          132,
+          1,
+          1,
+          1
+        ],
+        "n_windows": 361,
+        "n_pred_speakers": 7
+      }
+    },
+    "M_R003S02C01": {
+      "1": {
+        "overall": {
+          "n": 89,
+          "seconds": 604.8,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 26,
+          "seconds": 85.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 519.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 89,
+        "n_sentences_scored": 89,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          368
+        ],
+        "n_windows": 368,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 89,
+          "seconds": 604.8,
+          "duration_weighted": 0.3839,
+          "per_sentence": 0.3483,
+          "abstain": 0.4831
+        },
+        "overlap": {
+          "n": 26,
+          "seconds": 85.4,
+          "duration_weighted": 0.4158,
+          "per_sentence": 0.2308,
+          "abstain": 0.2692
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 519.4,
+          "duration_weighted": 0.3787,
+          "per_sentence": 0.3968,
+          "abstain": 0.5714
+        },
+        "n_sentences_all": 89,
+        "n_sentences_scored": 89,
+        "n_dropped_short": 0,
+        "n_wrong": 15,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          245,
+          122,
+          1
+        ],
+        "n_windows": 368,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 89,
+          "seconds": 604.8,
+          "duration_weighted": 0.8878,
+          "per_sentence": 0.6854,
+          "abstain": 0.1348
+        },
+        "overlap": {
+          "n": 26,
+          "seconds": 85.4,
+          "duration_weighted": 0.4821,
+          "per_sentence": 0.2692,
+          "abstain": 0.1538
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 519.4,
+          "duration_weighted": 0.9545,
+          "per_sentence": 0.8571,
+          "abstain": 0.127
+        },
+        "n_sentences_all": 89,
+        "n_sentences_scored": 89,
+        "n_dropped_short": 0,
+        "n_wrong": 16,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          34,
+          121,
+          1,
+          211,
+          1
+        ],
+        "n_windows": 368,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 89,
+          "seconds": 604.8,
+          "duration_weighted": 0.8982,
+          "per_sentence": 0.6966,
+          "abstain": 0.1124
+        },
+        "overlap": {
+          "n": 26,
+          "seconds": 85.4,
+          "duration_weighted": 0.4821,
+          "per_sentence": 0.2692,
+          "abstain": 0.1538
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 519.4,
+          "duration_weighted": 0.9666,
+          "per_sentence": 0.873,
+          "abstain": 0.0952
+        },
+        "n_sentences_all": 89,
+        "n_sentences_scored": 89,
+        "n_dropped_short": 0,
+        "n_wrong": 17,
+        "n_mapped_unused": 4,
+        "k": 7,
+        "sizes": [
+          29,
+          5,
+          120,
+          1,
+          211,
+          1,
+          1
+        ],
+        "n_windows": 368,
+        "n_pred_speakers": 7
+      }
+    },
+    "M_R003S04C01": {
+      "1": {
+        "overall": {
+          "n": 190,
+          "seconds": 608.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 78,
+          "seconds": 152.0,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 112,
+          "seconds": 456.4,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 206,
+        "n_sentences_scored": 190,
+        "n_dropped_short": 16,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          551
+        ],
+        "n_windows": 551,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 190,
+          "seconds": 608.4,
+          "duration_weighted": 0.4576,
+          "per_sentence": 0.3421,
+          "abstain": 0.4842
+        },
+        "overlap": {
+          "n": 78,
+          "seconds": 152.0,
+          "duration_weighted": 0.2115,
+          "per_sentence": 0.1282,
+          "abstain": 0.5897
+        },
+        "clean": {
+          "n": 112,
+          "seconds": 456.4,
+          "duration_weighted": 0.5396,
+          "per_sentence": 0.4911,
+          "abstain": 0.4107
+        },
+        "n_sentences_all": 206,
+        "n_sentences_scored": 190,
+        "n_dropped_short": 16,
+        "n_wrong": 33,
+        "n_mapped_unused": 1,
+        "k": 3,
+        "sizes": [
+          281,
+          268,
+          2
+        ],
+        "n_windows": 551,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 190,
+          "seconds": 608.4,
+          "duration_weighted": 0.5974,
+          "per_sentence": 0.4842,
+          "abstain": 0.2263
+        },
+        "overlap": {
+          "n": 78,
+          "seconds": 152.0,
+          "duration_weighted": 0.4051,
+          "per_sentence": 0.2821,
+          "abstain": 0.2692
+        },
+        "clean": {
+          "n": 112,
+          "seconds": 456.4,
+          "duration_weighted": 0.6615,
+          "per_sentence": 0.625,
+          "abstain": 0.1964
+        },
+        "n_sentences_all": 206,
+        "n_sentences_scored": 190,
+        "n_dropped_short": 16,
+        "n_wrong": 55,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          168,
+          113,
+          265,
+          3,
+          2
+        ],
+        "n_windows": 551,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 190,
+          "seconds": 608.4,
+          "duration_weighted": 0.6673,
+          "per_sentence": 0.5263,
+          "abstain": 0.2263
+        },
+        "overlap": {
+          "n": 78,
+          "seconds": 152.0,
+          "duration_weighted": 0.4612,
+          "per_sentence": 0.3077,
+          "abstain": 0.2692
+        },
+        "clean": {
+          "n": 112,
+          "seconds": 456.4,
+          "duration_weighted": 0.7359,
+          "per_sentence": 0.6786,
+          "abstain": 0.1964
+        },
+        "n_sentences_all": 206,
+        "n_sentences_scored": 190,
+        "n_dropped_short": 16,
+        "n_wrong": 47,
+        "n_mapped_unused": 4,
+        "k": 7,
+        "sizes": [
+          168,
+          43,
+          264,
+          70,
+          3,
+          2,
+          1
+        ],
+        "n_windows": 551,
+        "n_pred_speakers": 7
+      }
+    },
+    "M_R003S05C01": {
+      "1": {
+        "overall": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          406
+        ],
+        "n_windows": 406,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.1273,
+          "per_sentence": 0.1053,
+          "abstain": 0.8947
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.1273,
+          "per_sentence": 0.1053,
+          "abstain": 0.8947
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          380,
+          12,
+          14
+        ],
+        "n_windows": 406,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.6882,
+          "per_sentence": 0.5614,
+          "abstain": 0.4386
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.6882,
+          "per_sentence": 0.5614,
+          "abstain": 0.4386
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 4,
+        "k": 5,
+        "sizes": [
+          151,
+          12,
+          132,
+          97,
+          14
+        ],
+        "n_windows": 406,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.9688,
+          "per_sentence": 0.8246,
+          "abstain": 0.1754
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 552.7,
+          "duration_weighted": 0.9688,
+          "per_sentence": 0.8246,
+          "abstain": 0.1754
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 5,
+        "k": 7,
+        "sizes": [
+          1,
+          2,
+          12,
+          132,
+          97,
+          148,
+          14
+        ],
+        "n_windows": 406,
+        "n_pred_speakers": 7
+      }
+    },
+    "S_R004S01C01": {
+      "1": {
+        "overall": {
+          "n": 75,
+          "seconds": 525.8,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 12,
+          "seconds": 17.3,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 508.5,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 75,
+        "n_sentences_scored": 75,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          507
+        ],
+        "n_windows": 507,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 75,
+          "seconds": 525.8,
+          "duration_weighted": 0.465,
+          "per_sentence": 0.4267,
+          "abstain": 0.4533
+        },
+        "overlap": {
+          "n": 12,
+          "seconds": 17.3,
+          "duration_weighted": 0.5555,
+          "per_sentence": 0.3333,
+          "abstain": 0.25
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 508.5,
+          "duration_weighted": 0.462,
+          "per_sentence": 0.4444,
+          "abstain": 0.4921
+        },
+        "n_sentences_all": 75,
+        "n_sentences_scored": 75,
+        "n_dropped_short": 0,
+        "n_wrong": 9,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          268,
+          118,
+          121
+        ],
+        "n_windows": 507,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 75,
+          "seconds": 525.8,
+          "duration_weighted": 0.8745,
+          "per_sentence": 0.7067,
+          "abstain": 0.1733
+        },
+        "overlap": {
+          "n": 12,
+          "seconds": 17.3,
+          "duration_weighted": 0.5555,
+          "per_sentence": 0.3333,
+          "abstain": 0.0833
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 508.5,
+          "duration_weighted": 0.8854,
+          "per_sentence": 0.7778,
+          "abstain": 0.1905
+        },
+        "n_sentences_all": 75,
+        "n_sentences_scored": 75,
+        "n_dropped_short": 0,
+        "n_wrong": 9,
+        "n_mapped_unused": 4,
+        "k": 5,
+        "sizes": [
+          52,
+          93,
+          123,
+          118,
+          121
+        ],
+        "n_windows": 507,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 75,
+          "seconds": 525.8,
+          "duration_weighted": 0.97,
+          "per_sentence": 0.8,
+          "abstain": 0.0933
+        },
+        "overlap": {
+          "n": 12,
+          "seconds": 17.3,
+          "duration_weighted": 0.5555,
+          "per_sentence": 0.3333,
+          "abstain": 0.1667
+        },
+        "clean": {
+          "n": 63,
+          "seconds": 508.5,
+          "duration_weighted": 0.984,
+          "per_sentence": 0.8889,
+          "abstain": 0.0794
+        },
+        "n_sentences_all": 75,
+        "n_sentences_scored": 75,
+        "n_dropped_short": 0,
+        "n_wrong": 8,
+        "n_mapped_unused": 5,
+        "k": 7,
+        "sizes": [
+          2,
+          93,
+          123,
+          118,
+          121,
+          48,
+          2
+        ],
+        "n_windows": 507,
+        "n_pred_speakers": 7
+      }
+    },
+    "S_R004S02C01": {
+      "1": {
+        "overall": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 110,
+        "n_sentences_scored": 110,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          576
+        ],
+        "n_windows": 576,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9854,
+          "per_sentence": 0.9545,
+          "abstain": 0.0273
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9854,
+          "per_sentence": 0.9545,
+          "abstain": 0.0273
+        },
+        "n_sentences_all": 110,
+        "n_sentences_scored": 110,
+        "n_dropped_short": 0,
+        "n_wrong": 2,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          8,
+          425,
+          143
+        ],
+        "n_windows": 576,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9875,
+          "per_sentence": 0.9636,
+          "abstain": 0.0273
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9875,
+          "per_sentence": 0.9636,
+          "abstain": 0.0273
+        },
+        "n_sentences_all": 110,
+        "n_sentences_scored": 110,
+        "n_dropped_short": 0,
+        "n_wrong": 1,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          6,
+          424,
+          2,
+          143,
+          1
+        ],
+        "n_windows": 576,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9875,
+          "per_sentence": 0.9636,
+          "abstain": 0.0273
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 110,
+          "seconds": 572.1,
+          "duration_weighted": 0.9875,
+          "per_sentence": 0.9636,
+          "abstain": 0.0273
+        },
+        "n_sentences_all": 110,
+        "n_sentences_scored": 110,
+        "n_dropped_short": 0,
+        "n_wrong": 1,
+        "n_mapped_unused": 3,
+        "k": 7,
+        "sizes": [
+          6,
+          422,
+          2,
+          143,
+          1,
+          1,
+          1
+        ],
+        "n_windows": 576,
+        "n_pred_speakers": 7
+      }
+    },
+    "S_R004S03C01": {
+      "1": {
+        "overall": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          568
+        ],
+        "n_windows": 568,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9896,
+          "per_sentence": 0.9298,
+          "abstain": 0.0175
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9896,
+          "per_sentence": 0.9298,
+          "abstain": 0.0175
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 3,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          1,
+          323,
+          244
+        ],
+        "n_windows": 568,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9921,
+          "per_sentence": 0.9474,
+          "abstain": 0.0175
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9921,
+          "per_sentence": 0.9474,
+          "abstain": 0.0175
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 2,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          1,
+          2,
+          319,
+          244,
+          2
+        ],
+        "n_windows": 568,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9916,
+          "per_sentence": 0.9474,
+          "abstain": 0.0175
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 57,
+          "seconds": 580.3,
+          "duration_weighted": 0.9916,
+          "per_sentence": 0.9474,
+          "abstain": 0.0175
+        },
+        "n_sentences_all": 57,
+        "n_sentences_scored": 57,
+        "n_dropped_short": 0,
+        "n_wrong": 2,
+        "n_mapped_unused": 4,
+        "k": 7,
+        "sizes": [
+          1,
+          2,
+          2,
+          1,
+          243,
+          2,
+          317
+        ],
+        "n_windows": 568,
+        "n_pred_speakers": 7
+      }
+    },
+    "S_R004S04C01": {
+      "1": {
+        "overall": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.0,
+          "per_sentence": 0.0,
+          "abstain": 1.0
+        },
+        "n_sentences_all": 84,
+        "n_sentences_scored": 84,
+        "n_dropped_short": 0,
+        "n_wrong": 0,
+        "n_mapped_unused": 0,
+        "k": 1,
+        "sizes": [
+          580
+        ],
+        "n_windows": 580,
+        "n_pred_speakers": 1
+      },
+      "3": {
+        "overall": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9251,
+          "per_sentence": 0.9048,
+          "abstain": 0.0595
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9251,
+          "per_sentence": 0.9048,
+          "abstain": 0.0595
+        },
+        "n_sentences_all": 84,
+        "n_sentences_scored": 84,
+        "n_dropped_short": 0,
+        "n_wrong": 3,
+        "n_mapped_unused": 2,
+        "k": 3,
+        "sizes": [
+          4,
+          166,
+          410
+        ],
+        "n_windows": 580,
+        "n_pred_speakers": 3
+      },
+      "5": {
+        "overall": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9276,
+          "per_sentence": 0.9167,
+          "abstain": 0.0238
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9276,
+          "per_sentence": 0.9167,
+          "abstain": 0.0238
+        },
+        "n_sentences_all": 84,
+        "n_sentences_scored": 84,
+        "n_dropped_short": 0,
+        "n_wrong": 5,
+        "n_mapped_unused": 3,
+        "k": 5,
+        "sizes": [
+          2,
+          2,
+          166,
+          408,
+          2
+        ],
+        "n_windows": 580,
+        "n_pred_speakers": 5
+      },
+      "7": {
+        "overall": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9255,
+          "per_sentence": 0.9048,
+          "abstain": 0.0357
+        },
+        "overlap": {
+          "n": 0,
+          "seconds": 0,
+          "duration_weighted": null,
+          "per_sentence": null,
+          "abstain": null
+        },
+        "clean": {
+          "n": 84,
+          "seconds": 578.1,
+          "duration_weighted": 0.9255,
+          "per_sentence": 0.9048,
+          "abstain": 0.0357
+        },
+        "n_sentences_all": 84,
+        "n_sentences_scored": 84,
+        "n_dropped_short": 0,
+        "n_wrong": 5,
+        "n_mapped_unused": 3,
+        "k": 7,
+        "sizes": [
+          2,
+          2,
+          166,
+          401,
+          2,
+          5,
+          2
+        ],
+        "n_windows": 580,
+        "n_pred_speakers": 7
+      }
+    }
+  }
+}
