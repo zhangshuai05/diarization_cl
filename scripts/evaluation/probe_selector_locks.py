@@ -26,8 +26,10 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
+# 只插 `streaming_asr/` 与本地目录。**不要插仓库根**——那里有一份同名
+# `claude_a2.py`（DSH 测试台用），插进去会遮住 `streaming_asr/claude_a2.py`，
+# 连带毁掉 test_service 的导入。回归测试见 tests/test_evaluator_path_hygiene.py
 sys.path.insert(0, str(ROOT / "streaming_asr"))
-sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import claude_a2_v11 as v11  # noqa: E402
