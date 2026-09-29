@@ -100,10 +100,12 @@ def compare(meeting, diag, probe_base, probe_row):
     if diag["k"] != probe_base["k"]:
         notes.append(f"k 不同：生产 {diag['k']} vs 探针 {probe_base['k']}")
 
-    # 路径级别：探针没有 rescue，故 rescue 场次只报不比
+    # 路径级别：探针没有 rescue，故 rescue 场次只报不比。
+    # ⚠️ 已累积的 notes 必须随结论一起返回：只 return 一句硬编码说明会把
+    # "k 不同"整个丢掉（本场既跑了救援、k 又不同时，那才是真差异）。
     if diag["level"].startswith("rescue"):
-        return "探针无救援分支（已知差异）", [
-            f"生产 rescued=True，探针在 k<2 时不救援——结构上不可比"]
+        return "探针无救援分支（已知差异）", notes + [
+            "生产 rescued=True，探针在 k<2 时不救援——结构上不可比"]
 
     probe_level = probe_base.get("level")
     if diag["level"] != probe_level:
@@ -137,7 +139,7 @@ def main():
 
     print(f"{'会议':<16}{'生产 k':>6}{'探针 k':>6}{'生产级别':>12}{'探针级别':>10}"
           f"{'归属率':>9}{'结论':>16}")
-    rows, changed, rescue_only, uncomparable = [], [], [], []
+    rows, changed, rescue_only, uncomparable, no_reference = [], [], [], [], []
     for meeting in meetings:
         diag = run_one(meeting)
         probe_base = (ab_rows[meeting].get("candidates") or {}).get("base")
@@ -151,6 +153,9 @@ def main():
             changed.append(row)
         elif verdict.startswith("探针无"):
             rescue_only.append(row)
+        elif verdict.startswith("无探针参照"):
+            # 没跑过比对 ≠ 行为保持：不能让它混进"行为保持"的分子。
+            no_reference.append(row)
         pct = diag.get("per_sentence")
         print(f"{meeting:<16}{diag['k']:>6}{(probe_base or {}).get('k', '?'):>6}"
               f"{diag['level']:>12}{str((probe_base or {}).get('level')):>10}"
@@ -158,10 +163,11 @@ def main():
 
     n = len(rows)
     print(f"\n{'='*90}")
-    print(f"行为保持 {n - len(changed) - len(rescue_only) - len(uncomparable)}/{n}"
+    print(f"行为保持 {n - len(changed) - len(rescue_only) - len(uncomparable) - len(no_reference)}/{n}"
           f"   有差异 {len(changed)}/{n}"
           f"   窗集不同源 {len(uncomparable)}/{n}"
-          f"   探针无救援分支 {len(rescue_only)}/{n}")
+          f"   探针无救援分支 {len(rescue_only)}/{n}"
+          f"   无探针参照 {len(no_reference)}/{n}")
     if uncomparable:
         print("\n★ 窗集不同源（两边不是同一个窗集，本场不可比）：")
         for r in uncomparable:
@@ -173,6 +179,11 @@ def main():
     if rescue_only:
         print("\n以下场次生产走了救援、探针结构上没有该分支（**不算差异**）：")
         for r in rescue_only:
+            print(f"  - {r['meeting']}: {'; '.join(r['notes'])}")
+    if no_reference:
+        print("\n⚠️ 以下场次在 A/B 产物里没有 base，**未做任何比对**"
+              "（不是「行为保持」）：")
+        for r in no_reference:
             print(f"  - {r['meeting']}: {'; '.join(r['notes'])}")
 
     if args.out:

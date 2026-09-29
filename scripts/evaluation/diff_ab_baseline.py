@@ -89,21 +89,31 @@ def main():
         o, n = old[meeting], new[meeting]
         bo = (o.get("candidates") or {}).get("base") or {}
         bn = (n.get("candidates") or {}).get("base") or {}
-        notes = branch_diff(bo, bn, "base")
+        base_notes = branch_diff(bo, bn, "base")
+        notes = list(base_notes)
 
-        # A / B 分支**不应变化**——变了就是改动波及过广
-        for branch in sorted(set((o.get("candidates") or {})) &
-                             set((n.get("candidates") or {}))):
+        # A / B 分支**不应变化**——变了就是改动波及过广。
+        # ⚠️ 两轮分支集合取**并集**：只在一边出现的分支此前被静默跳过，
+        # 而"新产物多了一个分支"或"旧产物多了一个分支"本身就是需要排查的变化。
+        oc, nc = (o.get("candidates") or {}), (n.get("candidates") or {})
+        ab_notes = []
+        for branch in sorted(set(oc) | set(nc)):
             if branch == "base":
                 continue
-            notes += branch_diff(o["candidates"][branch], n["candidates"][branch],
-                                 branch)
-
-        if notes:
-            if any(x.startswith("base.") for x in notes):
-                base_changed.append((meeting, notes))
+            if branch not in oc:
+                ab_notes.append(f"{branch}: 只在**新**产物里存在")
+            elif branch not in nc:
+                ab_notes.append(f"{branch}: 只在**旧**产物里存在")
             else:
-                ab_changed.append((meeting, notes))
+                ab_notes += branch_diff(oc[branch], nc[branch], branch)
+        notes += ab_notes
+
+        # 两类分别入桶：此前只要 notes 含 base 差异就整条归入 base_changed，
+        # 于是同一场里的 A/B 回归**不会出现在** ab_changed 的报告里。
+        if base_notes:
+            base_changed.append((meeting, base_notes))
+        if ab_notes:
+            ab_changed.append((meeting, ab_notes))
 
         pct_o = bo.get("per_sentence")
         pct_n = bn.get("per_sentence")
@@ -132,7 +142,9 @@ def main():
         for meeting, notes in base_changed:
             print(f"  - {meeting}: {'; '.join(notes)}")
 
-    # caps 字段：新产物应有三处 cap 记录，且三者相同
+    # caps 字段：新产物应有三处 cap 记录，且三者相同。
+    # 分母是**新产物的场次数**，不是上面的交集 n —— 只在 new 里出现的场次
+    # 也会被计入 caps_seen，用 n 当分母会印出 "13/12" 这种越界分数。
     caps_seen = {}
     for meeting in sorted(new):
         caps = new[meeting].get("caps")
@@ -140,7 +152,7 @@ def main():
             caps_seen[meeting] = caps
     if caps_seen:
         distinct = {tuple(sorted(c.items())) for c in caps_seen.values()}
-        print(f"\ncaps 记录：{len(caps_seen)}/{n} 场有 | 取值组合 {len(distinct)} 种")
+        print(f"\ncaps 记录：{len(caps_seen)}/{len(new)} 场有 | 取值组合 {len(distinct)} 种")
         for combo in distinct:
             print(f"  {dict(combo)}")
         if any(len(set(c.values())) > 1 for c in caps_seen.values()):

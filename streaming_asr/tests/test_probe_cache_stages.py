@@ -103,9 +103,29 @@ def test_rescue_is_not_dispatched_to_refine(monkeypatch):
 
 
 def test_no_production_literals_duplicated(monkeypatch):
-    """生产改了常量，STAGES 必须跟着变（本模块不存字面量副本）。"""
+    """生产改了常量，STAGES 必须跟着变（本模块不存字面量副本）。
+
+    ⚠️ 还原必须写成 `monkeypatch.undo()` **之后**再 reload。`monkeypatch` 的 teardown
+    发生在测试函数**退出时**，所以函数体内的 `reload` 都仍在 patch 生效期间跑 ——
+    初版末行只写了一句 `importlib.reload(bpc)` 当"还原"，实际是把 `STAGES` 用
+    `REFINE_MIN_VAD=0.123` 又重建了一遍，跑完本测试后 gate 就留在 0.123
+    （下一条测试是它的回归）。
+    """
     monkeypatch.setattr(v12, "REFINE_MIN_VAD", 0.123)
     import importlib
     importlib.reload(bpc)
-    assert bpc.STAGES["refine"]["gate"] == 0.123
+    assert bpc.STAGES["refine"]["gate"] == 0.123, "STAGES 未跟随生产常量（存了字面量副本？）"
+    monkeypatch.undo()          # 先撤 patch，再 reload，才是真的还原
     importlib.reload(bpc)
+
+
+def test_refine_gate_restored_after_monkeypatch():
+    """紧邻上一条：跑完之后 `STAGES` 必须回到**生产值**，不得残留 0.123。
+
+    上一条初版以 `importlib.reload(bpc)`（在 patch 生效时）收尾，把 0.123 留在了
+    模块里；本测试是它的回归。依赖 pytest 按定义顺序收集。
+    """
+    assert v12.REFINE_MIN_VAD == 0.3, "REFINE_MIN_VAD 未还原"
+    assert bpc.STAGES["refine"]["gate"] == v12.REFINE_MIN_VAD, (
+        f"上一条测试把 STAGES 污染了：gate={bpc.STAGES['refine']['gate']} "
+        f"!= 生产值 {v12.REFINE_MIN_VAD}")

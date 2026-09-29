@@ -24,6 +24,7 @@
 import argparse
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -53,6 +54,36 @@ def score(sents, pred, by_count):
         P.hungarian_map = original
 
 
+def score_oracle(sents, pred):
+    """`per_sentence` 在**任意映射**下的上界：每个预测标签独立取它最常对应的真值。
+
+    与 `cnt_map_sent` 的关键区别：匈牙利求的是**双射**最优。过分割时两个簇同指
+    一人，双射只能把真值给其中一个、另一个必然判错；独立取最大则两个都能对上。
+    所以这个值是"映射层面的天花板"，用它区分**映射选错**与 **K 本身选错**。
+    平局按真值名取小，保证可复现。
+    """
+    original = P.hungarian_map
+
+    def best_map(p_, t_, _w):
+        counts = Counter()
+        for x, y in zip(p_, t_):
+            # 与 `hungarian_map` 同一条规则：显式判 None，别用真值判空（0 是 falsy）。
+            if x is None or x == "" or not y:
+                continue
+            counts[(str(x), str(y))] += 1
+        best = {}
+        for (px, ty), c in counts.items():
+            if px not in best or (c, ty) > (best[px][0], best[px][1]):
+                best[px] = (c, ty)
+        return {k: v[1] for k, v in best.items()}
+
+    P.hungarian_map = best_map
+    try:
+        return P.attribution(sents, pred)
+    finally:
+        P.hungarian_map = original
+
+
 def collect(grid_path, limit):
     grid = json.loads(grid_path.read_text(encoding="utf-8"))["reports"]
     meetings = sorted(grid) if not limit else sorted(grid)[:limit]
@@ -74,6 +105,7 @@ def collect(grid_path, limit):
             pred = P.sentence_dict_predictions(sents, segs)
             dur = score(sents, pred, by_count=False)
             cnt = score(sents, pred, by_count=True)
+            orc = score_oracle(sents, pred)
             rows.append({
                 "meeting": meeting, "k": k,
                 "keep": grid[meeting][str(k)]["overall"]["per_sentence"],  # 存档值，做一致性校验
@@ -81,6 +113,7 @@ def collect(grid_path, limit):
                 "dur_map_sent": dur["overall"]["per_sentence"],
                 "cnt_map_sent": cnt["overall"]["per_sentence"],
                 "cnt_map_dur": cnt["overall"]["duration_weighted"],
+                "oracle_sent": orc["overall"]["per_sentence"],
             })
     return rows
 
@@ -125,6 +158,13 @@ def report(rows):
         print(f"{meeting:<22}{kd['k']:>10}{kc['k']:>10}{note:>22}"
               f"   {100*kd['dur_map_sent']:.1f}% vs {100*kc['cnt_map_sent']:.1f}%")
     print(f"\n  ★ 选取的 k 发生翻转：{flips}/{len({r['meeting'] for r in rows})} 场")
+
+    # oracle：任意映射下 per_sentence 的上界。用来区分"映射选错"与"K 本身选错"。
+    gap = np.array([r["oracle_sent"] - r["dur_map_sent"] for r in rows])
+    print("\n映射层面的天花板（oracle_sent - 现行 dur_map_sent）：")
+    print(f"  均值 {100*gap.mean():+.2f} pts，最大 {100*gap.max():+.2f} pts，"
+          f"完全无余量 {int((gap <= 1e-9).sum())}/{len(rows)} 个单元")
+    print("  余量大 → 换映射还有空间；余量≈0 → 该单元的损失不在映射，在 K 或聚类本身")
 
 
 def main():

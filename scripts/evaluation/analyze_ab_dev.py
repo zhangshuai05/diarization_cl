@@ -51,8 +51,10 @@ def show_platform_analysis(results):
     for t in thresholds:
         ks, capped, vals = [], 0, []
         for r in results:
+            # 用 `is None` 而不是 `if not c`：空字典 `{}`（数据不完整）与
+            # 条目**不存在**（`None`）是两回事，后者该被看见而不是当"没这场"跳过。
             c = r["candidates"].get(f"A@{t}")
-            if not c:
+            if c is None:
                 continue
             ks.append(c["k"])
             capped += 1 if c.get("capped") else 0
@@ -60,9 +62,11 @@ def show_platform_analysis(results):
                 vals.append(c[MAIN])
         if not ks:
             continue
+        # 主指标可能整列为空（各场该阈值都缺 MAIN）：此时只印 k 分布，不印 nan%。
+        main_text = f"{100*np.mean(vals):>9.1f}%" if vals else f"{'—':>10}"
         print(f"{t:>6.1f}{sum(1 for x in ks if x == 1):>7}{capped:>9}"
               f"{int(np.median(ks)):>8}{f'{min(ks)}-{max(ks)}':>10}"
-              f"{100*np.mean(vals):>9.1f}%")
+              f"{main_text}")
 
 
 def main():
@@ -88,9 +92,15 @@ def main():
     print("=" * 100)
     print(f"{'阈值':>6}{'主指标均':>10}{'时长加权均':>11}")
     for t in sorted(scores):
+        if scores[t] is None:
+            # 该阈值在所有场次上都没有有效主指标（`pick_global_threshold` 会给
+            # None）。不判空就 `100*None` 抛 TypeError，整个报告打不出来。
+            print(f"{t:>6.1f}{'N/A':>10}{'N/A':>11}")
+            continue
         vals = [r["candidates"][f"A@{t}"][AUX] for r in results
                 if f"A@{t}" in r["candidates"] and r["candidates"][f"A@{t}"].get(AUX) is not None]
-        print(f"{t:>6.1f}{100*scores[t]:>9.1f}%{100*np.mean(vals):>10.1f}%")
+        aux = f"{100*np.mean(vals):>10.1f}%" if vals else f"{'N/A':>11}"
+        print(f"{t:>6.1f}{100*scores[t]:>9.1f}%{aux}")
 
     # ── 逐场主表
     print("\n" + "=" * 100)
@@ -105,15 +115,21 @@ def main():
     rows = []
     for r in results:
         c = r["candidates"]
-        a = c.get(f"A@{best_t}", {})
+        a = c.get(f"A@{best_t}")
         b = c["B"]
         base = c["base"]
         windows = f"{r['n_windows']}/{r['n_dense']}"
+        # ⚠️ 缺条目时用 `—` 而不是 0：本场**没有**这个阈值的数据，与
+        # "k=0 / 主指标 0.0%" 是两回事，用 0 会把缺数据伪装成一个成绩。
+        if a is None:
+            a_cols = f"{'—':>6}{'—':>7}{'—':>6}{'—':>6}"
+        else:
+            a_cols = (f"{a.get('k', 0):>6}{100*a.get(MAIN, 0):>6.1f}%"
+                      f"{100*a.get('abstain', 0):>5.1f}%{100*a.get('unmapped', 0):>5.1f}%")
         line = (f"{r['meeting']:<20}{windows:>10}"
                 f"{r['n_sentences']:>5}"
                 f"{base['k']:>8}{100*base[MAIN]:>7.1f}%"
-                f"{a.get('k', 0):>6}{100*a.get(MAIN, 0):>6.1f}%"
-                f"{100*a.get('abstain', 0):>5.1f}%{100*a.get('unmapped', 0):>5.1f}%"
+                f"{a_cols}"
                 f"{b['k']:>6}{100*b[MAIN]:>6.1f}%"
                 f"{100*b.get('abstain', 0):>5.1f}%{100*b.get('unmapped', 0):>5.1f}%")
         print(line)

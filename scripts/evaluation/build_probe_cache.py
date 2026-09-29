@@ -18,6 +18,12 @@
 ⚠️ **细化窗与救援窗长宽完全相同，只有门限不同**（0.18s vs 0.30s）。
 混用**不会报错**，只会让救援路径的窗集悄悄变成细化窗集。
 
+`STAGES` 里的 `gate` **只用于声明与记录**：真正生效的门限由生产函数**在调用时**
+读模块变量（`_extract_windows` 读 `v11.MIN_VAD_FRACTION`，`_refine_windows` 读
+`v12.REFINE_MIN_VAD`）。所以 `extract()` 断言"声明值 == 当前模块值"——若有人在本
+模块 import 之后改了那些常量，这里立刻报错，而不是把**导入时快照**写进 manifest、
+让人以为窗集是按记录的门限建的。
+
 ## VAD 用真模型，不读 `vad/*.json`
 
 `vad/*.json` 实测确实是真 FSMN VAD 的 600s 截断，但它存成了 **3 位小数**。
@@ -28,9 +34,15 @@
 
     主窗窗数   必须等于 `probe_ab_dev` 报的 `n_windows`
     细化窗窗数 必须等于 `probe_ab_dev` 报的 `n_dense`
+    场次必须存在于参照里（否则下面两条无从比对，也必须报）
 
 这两个数只由 音频 + VAD 区间 + 窗参数 决定，**与嵌入无关**，所以是标定门限的硬判据。
 （救援窗在 `probe_ab_dev` 里没有对应量——那条路径探针从未走过，故不设断言。）
+
+## 写入是**合并**，不是覆盖
+
+缺省 `--meetings` 时会带上既有 manifest 的全部场次（dev 12 场是逐次累加建成的），
+所以无参数运行不会把 manifest 缩回 `TARGET_MEETINGS` 那三场。
 
     python -u -B scripts/evaluation/build_probe_cache.py
     python -u -B scripts/evaluation/build_probe_cache.py --meetings L_R003S01C02
@@ -74,15 +86,39 @@ STAGES = {
 TARGET_MEETINGS = ["L_R003S01C02", "L_R003S03C02", "L_R003S04C02"]
 
 
-def live_vad(models, wav, seconds=SECONDS):
+def load_existing():
+    """既有 manifest 里已建过的场次与其条目（用于合并，不覆盖式重建）。
+
+    dev 12 场是**逐次累加**建出来的，而 `--meetings` 默认只列第 2 步那三场。
+    若每次都新建 manifest 直接覆盖，无参数跑一次就会让 manifest 从 12 场缩回
+    3 场，`probe_path_equiv` 随后读不到另外 9 场的 VAD 区间。
+    """
+    path = OUT / "manifest.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("meetings", {})
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def live_vad(models, wav, seconds=None):
     """生产口径的 VAD 区间：真 FSMN + `seconds` 截断（照抄 `probe_ab_dev:112-113`）。
 
-    ⚠️ `seconds` 必须**传进来**，不要读模块级 `SECONDS`：早先 `--seconds` 只写进
-    manifest、没有传下来，于是 `--seconds 300` 会记录 "300" 却按 600 实算——
-    manifest 元信息与实际窗集不一致，且自己也无法察觉这个偏移。
+    ⚠️ `seconds` **没有默认值**，必须显式传：早先 `--seconds` 只写进 manifest、
+    没有传下来，于是 `--seconds 300` 会记录 "300" 却按 600 实算——manifest 元信息
+    与实际窗集不一致，且自己也无法察觉这个偏移。用默认值 `=SECONDS` 会重新留下
+    同一个缺口（本项目已确认 bug 族的"看起来可配、实际配了不生效"），故不设。
     """
+    if seconds is None:
+        raise ValueError("seconds 必须显式传入（不要依赖模块级 SECONDS）")
     segments = v11._vad_segs(models["vad"], wav)
     return [(s, min(e, seconds)) for s, e in segments if s < seconds]
+
+
+def gate_in_effect(stage):
+    """该阶段**当前**真正生效的门限。门限由生产函数在调用时读模块变量。"""
+    return v12.REFINE_MIN_VAD if stage == "refine" else v11.MIN_VAD_FRACTION
 
 
 def extract(stage, audio, rate, vad_segments, models):
@@ -90,7 +126,13 @@ def extract(stage, audio, rate, vad_segments, models):
 
     主窗与救援窗共用 `v11._extract_windows`，靠 `_v11_window_params` 换常量区分；
     细化窗走 `v12._refine_windows`（它有自己的门限与 `REFINE_MIN_WINDOWS` 检查）。
+
+    断言声明门限 == 生效门限：两者不同时 manifest 记的门限就是**导入时快照**，
+    与实建窗集不符（本会话第 6 次"派发错但无人报错"的同族风险）。
     """
+    assert gate_in_effect(stage) == STAGES[stage]["gate"], (
+        f"{stage} 门限漂移：生效 {gate_in_effect(stage)} "
+        f"!= 声明 {STAGES[stage]['gate']}")
     if stage == "refine":
         emb, times = v12._refine_windows(audio, rate, vad_segments, models["spk"])
         return emb, times
@@ -101,9 +143,12 @@ def extract(stage, audio, rate, vad_segments, models):
     return emb, times
 
 
-def build_meeting(meeting, models, seconds=SECONDS):
+def build_meeting(meeting, models, seconds=None):
+    """与 `live_vad` 同规矩：`seconds` 必须显式传（理由见其 docstring）。"""
     import soundfile as sf
 
+    if seconds is None:
+        raise ValueError("seconds 必须显式传入（不要依赖模块级 SECONDS）")
     wav = str(DATA / "wav" / f"{meeting}.flac")
     info = sf.info(wav)
     stop = min(int(seconds * info.samplerate), info.frames)
@@ -135,9 +180,18 @@ def probe_reference():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--meetings", nargs="*", default=TARGET_MEETINGS)
+    ap.add_argument("--meetings", nargs="*", default=None,
+                    help="要建的场次；缺省 = 既有 manifest 的全部场次 ∪ TARGET_MEETINGS")
     ap.add_argument("--seconds", type=float, default=SECONDS)
     args = ap.parse_args()
+
+    # 合并而不是覆盖：缺省时把既有 manifest 的场次一并带上，避免无参数运行
+    # 把 12 场缩成 3 场（见 `load_existing` 的说明）。
+    existing = load_existing()
+    if args.meetings is None:
+        args.meetings = sorted(set(existing) | set(TARGET_MEETINGS))
+        print(f"未指定 --meetings：沿用既有 {len(existing)} 场 + 目标场，"
+              f"共 {len(args.meetings)} 场", flush=True)
 
     reference = probe_reference()
     if not reference:
@@ -159,7 +213,8 @@ def main():
                 "vad": "live FSMN（web_server 的 VAD_LOCAL），按 seconds 截断",
                 "metric": "cosine（CAM++ 归一化嵌入）",
                 "stages": {name: dict(cfg) for name, cfg in STAGES.items()},
-                "meetings": {}}
+                # 先并入既有条目：未重建的场次条目原样保留，不被这次运行抹掉。
+                "meetings": dict(existing)}
     failures = []
 
     for index, meeting in enumerate(args.meetings, 1):
@@ -171,6 +226,11 @@ def main():
               f"主 {counts['main']}  细化 {counts['refine']}  救援 {counts['rescue']}  "
               f"| 探针 主 {ref.get('n_windows')} 密 {ref.get('n_dense')}", flush=True)
 
+        if not ref:
+            # 该场不在探针参照里 ⇒ 下面的自检全都 `continue`，缓存照写却零验证。
+            # 必须显式记一笔，否则"有自检"是假的（同族：看起来有防护、实际没生效）。
+            failures.append(f"{meeting}: 不在 {PROBE_RESULTS.name} 的参照里，"
+                            "本场未做任何门限自检")
         for stage, key in (("main", "n_windows"), ("refine", "n_dense")):
             want = ref.get(key)
             got = counts[stage]

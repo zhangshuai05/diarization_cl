@@ -96,11 +96,23 @@ def main():
     print(f"{'会议':<20}{'B k':>5}{'B主':>8}{'同场base k':>11}{'base主':>8}{'差':>8}")
     for r in results:
         c = r["candidates"]
+        # 与问题 2 同款防护：B/base 缺条目或某个候选缺 MAIN 时显式跳过，
+        # 不要让 KeyError 半路中断整张表（本文件已有 `candidates` 非空但缺 `base`
+        # 的先例，见 `probe_ab_dev` 的 "base" not in c 分支）。
+        if "B" not in c or "base" not in c:
+            print(f"{r['meeting']:<20}{'—':>5}{'—':>8}{'—':>11}{'—':>8}{'—':>8}"
+                  f"   缺 B 或 base 条目，跳过")
+            continue
         b, base = c["B"], c["base"]
+        if b.get(MAIN) is None or base.get(MAIN) is None:
+            print(f"{r['meeting']:<20}{b.get('k', '?'):>5}{'—':>8}"
+                  f"{base.get('k', '?'):>11}{'—':>8}{'—':>8}   缺主指标，跳过")
+            continue
         print(f"{r['meeting']:<20}{b['k']:>5}{100*b[MAIN]:>7.1f}%"
               f"{base['k']:>11}{100*base[MAIN]:>7.1f}%"
               f"{100*(b[MAIN]-base[MAIN]):>7.1f}pt")
-    b_k1 = sum(1 for r in results if r["candidates"]["B"]["k"] == 1)
+    b_k1 = sum(1 for r in results
+               if r["candidates"].get("B", {}).get("k") == 1)
     print(f"\n  B 输出 k=1 的场次：{b_k1}/{len(results)}")
     print("  → 若 B 恒给 k=1，它就不是判据（与「取最大 k」同病：一个常数）。")
 

@@ -144,8 +144,13 @@ def test_rescue_branch_replaces_result_when_it_finds_multiple_speakers(tmp_path,
         assert seg["spk"] in (0, 1), f"段标签越界：{seg['spk']}"
 
     # 判据 6：candidates 也一并换成救援窗的候选表（否则下游读到的 k 与段表不符）
-    assert result["candidates"] is result["candidates"]
-    assert max(c["k"] for c in result["candidates"]) >= 2
+    # 主窗是**单簇**，任何 k>=2 的划分都会产生空簇 ⇒ 没有合格候选；
+    # 救援窗两簇均衡 ⇒ k=2 合格。故"存在合格的 k>=2"正是"候选表已被替换"的判据。
+    # （原先这里写 `result["candidates"] is result["candidates"]`——同对象取两次恒真，
+    #   对任何 payload 都成立，断言不了任何东西。）
+    assert any(c["k"] >= 2 and c.get("eligible") for c in result["candidates"]), \
+        f"候选表里没有合格的 k>=2 —— 说明 candidates 仍是主窗（单簇）那份，未被替换：" \
+        f"{[(c['k'], c.get('eligible')) for c in result['candidates']]}"
 
 
 def test_single_speaker_stays_unrescued_when_rescue_finds_nothing(tmp_path, monkeypatch):
@@ -168,3 +173,21 @@ def test_single_speaker_stays_unrescued_when_rescue_finds_nothing(tmp_path, monk
     assert seen == ["main", "rescue"], f"阶段序列异常：{seen}"
     assert result["rescued"] is False, "救援没分出多人却替换了"
     assert result["k"] == 1
+
+
+def test_candidates_criterion_distinguishes_main_from_rescue_table():
+    """反证判据 6 是**承重**的：主窗（单簇）那份候选表必须不满足它。
+
+    没有这条，判据 6 可以退化成对任何候选表都成立的恒真式 ——
+    初版就是 `result["candidates"] is result["candidates"]`（同对象取两次），
+    对任何 payload 都为真，断言不了"候选表已被替换"。
+    """
+    main_cands, _ = v11._candidate_clusters(_single_cluster(),
+                                            max_speakers=v12.MAX_SPEAKERS)
+    assert not any(c["k"] >= 2 and c.get("eligible") for c in main_cands), \
+        "主窗单簇竟存在合格的 k>=2 —— 判据 6 区分不了主窗表与救援窗表"
+
+    rescue_cands, _ = v11._candidate_clusters(_two_clusters(),
+                                              max_speakers=v12.MAX_SPEAKERS)
+    assert any(c["k"] >= 2 and c.get("eligible") for c in rescue_cands), \
+        "救援窗两簇均衡却无合格 k>=2 —— 判据 6 会误伤正确结果"

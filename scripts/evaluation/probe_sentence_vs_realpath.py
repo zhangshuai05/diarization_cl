@@ -87,8 +87,14 @@ def main():
         for name, pick in (("argmax", argmax), ("penalised", pen)):
             agree[name].append(pick == fk)
         mark = "✓" if pen == fk else ("≈" if abs(pen - fk) <= 1 else "✗")
+        # ⚠️ `acc.get(fk, nan)` 挡不住「fk 存在但值为 None」：`get` 的默认值只在
+        # **键缺失**时生效，而 `sweep` 明确允许 `acc[k] is None`（该 k 无结论）。
+        # `pen is None` 那条守卫只挡住"所有 k 都 None"，部分 k 为 None 时会放行，
+        # 随后 `100 * None` 抛 TypeError。
+        fk_pct = acc.get(fk)
+        fk_text = f"{100*fk_pct:>7.1f}%" if fk_pct is not None else f"{'—':>8}"
         print(f"{meeting:<20}{fk:>9}{dder*100:>9.1f}pts│"
-              f"{argmax:>8}{pen:>8}{100*acc.get(fk, float('nan')):>7.1f}%{mark:>7}")
+              f"{argmax:>8}{pen:>8}{fk_text}{mark:>7}")
 
     for name in ("argmax", "penalised"):
         n = sum(agree[name])
