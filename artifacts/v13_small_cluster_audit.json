@@ -1,0 +1,2863 @@
+[
+ {
+  "meeting": "L_R003S01C02",
+  "n_windows": 422,
+  "n_sentences": 102,
+  "k_prod": 1,
+  "k_all_best": 7,
+  "k_elig_best": null,
+  "eligible_ks": [],
+  "oracle_by_k": {
+   "1": 0.2745,
+   "2": 0.2745,
+   "3": 0.451,
+   "4": 0.5686,
+   "5": 0.7745,
+   "6": 0.7745,
+   "7": 0.7843,
+   "8": 0.7843,
+   "9": 0.7843,
+   "10": 0.7843
+  },
+  "prod_oracle": 0.2745,
+  "min_size_at_k_all": 1,
+  "n_clusters": 7,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 19,
+    "start": 5.0,
+    "end": 546.0,
+    "share": 0.045,
+    "dominant": "006-M",
+    "purity": 0.4211,
+    "truth_mix": {
+     "006-M": 8,
+     "002-F": 6,
+     "005-M": 3,
+     "004-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 125,
+    "dom_share_in_cluster": 0.42105263157894735
+   },
+   {
+    "cluster": 1,
+    "n_windows": 105,
+    "start": 13.0,
+    "end": 483.0,
+    "share": 0.2488,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 105
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 105,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 15.0,
+    "end": 470.0,
+    "share": 0.0047,
+    "dominant": "007-M",
+    "purity": 0.5,
+    "truth_mix": {
+     "007-M": 1,
+     "004-M": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 3,
+    "n_windows": 125,
+    "start": 23.0,
+    "end": 600.0,
+    "share": 0.2962,
+    "dominant": "006-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-M": 125
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 125,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 119,
+    "start": 108.0,
+    "end": 509.0,
+    "share": 0.282,
+    "dominant": "004-M",
+    "purity": 0.9664,
+    "truth_mix": {
+     "004-M": 115,
+     "002-F": 2,
+     "006-M": 2
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 119,
+    "dom_share_in_cluster": 0.9663865546218487
+   },
+   {
+    "cluster": 5,
+    "n_windows": 1,
+    "start": 211.0,
+    "end": 213.0,
+    "share": 0.0024,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 105,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 51,
+    "start": 343.0,
+    "end": 528.0,
+    "share": 0.1209,
+    "dominant": "002-F",
+    "purity": 0.9608,
+    "truth_mix": {
+     "002-F": 49,
+     "004-M": 1,
+     "006-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 51,
+    "dom_share_in_cluster": 0.9607843137254902
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 15.0,
+    "end": 470.0,
+    "share": 0.0047,
+    "dominant": "007-M",
+    "purity": 0.5,
+    "truth_mix": {
+     "007-M": 1,
+     "004-M": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 5,
+    "n_windows": 1,
+    "start": 211.0,
+    "end": 213.0,
+    "share": 0.0024,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 105,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 7,
+    "oracle": 0.7843,
+    "mapped": 0.7647,
+    "abstain": 0.0196,
+    "unmapped": 0.0,
+    "n_clusters": 7,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.7843,
+    "mapped": 0.7647,
+    "abstain": 0.0196,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 0
+   },
+   "C_删2窗": {
+    "oracle": 0.7745,
+    "mapped": 0.7549,
+    "abstain": 0.0294,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 1
+   },
+   "D_删<=2窗": {
+    "oracle": 0.7745,
+    "mapped": 0.7549,
+    "abstain": 0.0294,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 1
+   },
+   "E_吸收": {
+    "oracle": 0.7745,
+    "mapped": 0.7549,
+    "abstain": 0.0196,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 32
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S02C02",
+  "n_windows": 281,
+  "n_sentences": 85,
+  "k_prod": 4,
+  "k_all_best": 6,
+  "k_elig_best": 4,
+  "eligible_ks": [
+   2,
+   3,
+   4
+  ],
+  "oracle_by_k": {
+   "1": 0.5412,
+   "2": 0.5647,
+   "3": 0.6,
+   "4": 0.8353,
+   "5": 0.8353,
+   "6": 0.8588,
+   "7": 0.8588,
+   "8": 0.8588,
+   "9": 0.8588,
+   "10": 0.8588
+  },
+  "prod_oracle": 0.8353,
+  "min_size_at_k_all": 2,
+  "n_clusters": 6,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 3,
+    "start": 7.0,
+    "end": 11.0,
+    "share": 0.0107,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 3
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 3,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 3,
+    "start": 10.0,
+    "end": 370.0,
+    "share": 0.0107,
+    "dominant": "003-F",
+    "purity": 0.6667,
+    "truth_mix": {
+     "003-F": 2,
+     "002-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 3,
+    "dom_share_in_cluster": 0.6666666666666666
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 11.0,
+    "end": 14.0,
+    "share": 0.0071,
+    "dominant": "004-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 90,
+    "start": 14.0,
+    "end": 600.0,
+    "share": 0.3203,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 90
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 90,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 173,
+    "start": 17.0,
+    "end": 424.0,
+    "share": 0.6157,
+    "dominant": "006-M",
+    "purity": 0.9538,
+    "truth_mix": {
+     "006-M": 165,
+     "007-M": 8
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 173,
+    "dom_share_in_cluster": 0.953757225433526
+   },
+   {
+    "cluster": 5,
+    "n_windows": 10,
+    "start": 21.0,
+    "end": 40.0,
+    "share": 0.0356,
+    "dominant": "007-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "007-M": 10
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 10,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 11.0,
+    "end": 14.0,
+    "share": 0.0071,
+    "dominant": "004-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 6,
+    "oracle": 0.8588,
+    "mapped": 0.8588,
+    "abstain": 0.0471,
+    "unmapped": 0.0,
+    "n_clusters": 6,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.8588,
+    "mapped": 0.8588,
+    "abstain": 0.0471,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.8471,
+    "mapped": 0.8471,
+    "abstain": 0.0471,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 1
+   },
+   "D_删<=2窗": {
+    "oracle": 0.8471,
+    "mapped": 0.8471,
+    "abstain": 0.0471,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 1
+   },
+   "E_吸收": {
+    "oracle": 0.8353,
+    "mapped": 0.8353,
+    "abstain": 0.0471,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 77
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S03C02",
+  "n_windows": 387,
+  "n_sentences": 83,
+  "k_prod": 3,
+  "k_all_best": 7,
+  "k_elig_best": 3,
+  "eligible_ks": [
+   2,
+   3
+  ],
+  "oracle_by_k": {
+   "1": 0.3614,
+   "2": 0.3976,
+   "3": 0.6024,
+   "4": 0.6145,
+   "5": 0.6265,
+   "6": 0.8434,
+   "7": 0.8554,
+   "8": 0.8554,
+   "9": 0.8554,
+   "10": 0.8554
+  },
+  "prod_oracle": 0.6024,
+  "min_size_at_k_all": 2,
+  "n_clusters": 7,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 9,
+    "start": 10.0,
+    "end": 41.0,
+    "share": 0.0233,
+    "dominant": "007-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "007-M": 9
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 9,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 4,
+    "start": 11.0,
+    "end": 464.0,
+    "share": 0.0103,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 4
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 4,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 117,
+    "start": 13.0,
+    "end": 600.0,
+    "share": 0.3023,
+    "dominant": "003-F",
+    "purity": 0.9915,
+    "truth_mix": {
+     "003-F": 116,
+     "002-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 117,
+    "dom_share_in_cluster": 0.9914529914529915
+   },
+   {
+    "cluster": 3,
+    "n_windows": 3,
+    "start": 15.0,
+    "end": 19.0,
+    "share": 0.0078,
+    "dominant": "004-M",
+    "purity": 0.6667,
+    "truth_mix": {
+     "004-M": 2,
+     "003-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 3,
+    "dom_share_in_cluster": 0.6666666666666666
+   },
+   {
+    "cluster": 4,
+    "n_windows": 76,
+    "start": 18.0,
+    "end": 457.0,
+    "share": 0.1964,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 76
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 76,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 5,
+    "n_windows": 2,
+    "start": 20.0,
+    "end": 23.0,
+    "share": 0.0052,
+    "dominant": "006-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 176,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 176,
+    "start": 42.0,
+    "end": 302.0,
+    "share": 0.4548,
+    "dominant": "006-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-M": 176
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 176,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 5,
+    "n_windows": 2,
+    "start": 20.0,
+    "end": 23.0,
+    "share": 0.0052,
+    "dominant": "006-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 176,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 7,
+    "oracle": 0.8554,
+    "mapped": 0.8434,
+    "abstain": 0.0241,
+    "unmapped": 0.012,
+    "n_clusters": 7,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.8554,
+    "mapped": 0.8434,
+    "abstain": 0.0241,
+    "unmapped": 0.012,
+    "labels_k": 7,
+    "n_clusters": 7,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.8434,
+    "mapped": 0.8434,
+    "abstain": 0.0241,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 1
+   },
+   "D_删<=2窗": {
+    "oracle": 0.8434,
+    "mapped": 0.8434,
+    "abstain": 0.0241,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 1
+   },
+   "E_吸收": {
+    "oracle": 0.8434,
+    "mapped": 0.8434,
+    "abstain": 0.0241,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 37
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S04C02",
+  "n_windows": 485,
+  "n_sentences": 119,
+  "k_prod": 4,
+  "k_all_best": 6,
+  "k_elig_best": 4,
+  "eligible_ks": [
+   2,
+   3,
+   4
+  ],
+  "oracle_by_k": {
+   "1": 0.4538,
+   "2": 0.4958,
+   "3": 0.5042,
+   "4": 0.7983,
+   "5": 0.7983,
+   "6": 0.8067,
+   "7": 0.8067,
+   "8": 0.8067,
+   "9": 0.8067,
+   "10": 0.8067
+  },
+  "prod_oracle": 0.7983,
+  "min_size_at_k_all": 1,
+  "n_clusters": 6,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 12,
+    "start": 9.0,
+    "end": 41.0,
+    "share": 0.0247,
+    "dominant": "007-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "007-M": 12
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 12,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 9,
+    "start": 10.0,
+    "end": 172.0,
+    "share": 0.0186,
+    "dominant": "002-F",
+    "purity": 0.8889,
+    "truth_mix": {
+     "002-F": 8,
+     "006-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 9,
+    "dom_share_in_cluster": 0.8888888888888888
+   },
+   {
+    "cluster": 2,
+    "n_windows": 6,
+    "start": 13.0,
+    "end": 298.0,
+    "share": 0.0124,
+    "dominant": "006-M",
+    "purity": 0.5,
+    "truth_mix": {
+     "006-M": 3,
+     "004-M": 2,
+     "003-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 298,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 3,
+    "n_windows": 298,
+    "start": 43.0,
+    "end": 389.0,
+    "share": 0.6144,
+    "dominant": "006-M",
+    "purity": 0.9899,
+    "truth_mix": {
+     "006-M": 295,
+     "002-F": 2,
+     "003-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 298,
+    "dom_share_in_cluster": 0.9899328859060402
+   },
+   {
+    "cluster": 4,
+    "n_windows": 159,
+    "start": 388.0,
+    "end": 600.0,
+    "share": 0.3278,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 159
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 159,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 5,
+    "n_windows": 1,
+    "start": 554.0,
+    "end": 556.0,
+    "share": 0.0021,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 159,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 5,
+    "n_windows": 1,
+    "start": 554.0,
+    "end": 556.0,
+    "share": 0.0021,
+    "dominant": "005-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 159,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 6,
+    "oracle": 0.8067,
+    "mapped": 0.8067,
+    "abstain": 0.0252,
+    "unmapped": 0.0,
+    "n_clusters": 6,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.8067,
+    "mapped": 0.8067,
+    "abstain": 0.0252,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   },
+   "C_删2窗": {
+    "oracle": 0.8067,
+    "mapped": 0.8067,
+    "abstain": 0.0252,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "D_删<=2窗": {
+    "oracle": 0.8067,
+    "mapped": 0.8067,
+    "abstain": 0.0252,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   },
+   "E_吸收": {
+    "oracle": 0.8067,
+    "mapped": 0.8067,
+    "abstain": 0.0252,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S01C01",
+  "n_windows": 367,
+  "n_sentences": 83,
+  "k_prod": 2,
+  "k_all_best": 5,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.4578,
+   "2": 0.747,
+   "3": 0.747,
+   "4": 0.759,
+   "5": 0.7711,
+   "6": 0.7711,
+   "7": 0.7711,
+   "8": 0.7711,
+   "9": 0.7711,
+   "10": 0.7711
+  },
+  "prod_oracle": 0.747,
+  "min_size_at_k_all": 1,
+  "n_clusters": 5,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 136,
+    "start": 4.0,
+    "end": 490.0,
+    "share": 0.3706,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 136
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 136,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 3,
+    "start": 6.0,
+    "end": 10.0,
+    "share": 0.0082,
+    "dominant": "002-M",
+    "purity": 0.6667,
+    "truth_mix": {
+     "002-M": 2,
+     "003-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 3,
+    "dom_share_in_cluster": 0.6666666666666666
+   },
+   {
+    "cluster": 2,
+    "n_windows": 4,
+    "start": 9.0,
+    "end": 337.0,
+    "share": 0.0109,
+    "dominant": "003-F",
+    "purity": 0.25,
+    "truth_mix": {
+     "003-F": 1,
+     "004-F": 1,
+     "005-F": 1,
+     "006-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 4,
+    "dom_share_in_cluster": 0.25
+   },
+   {
+    "cluster": 3,
+    "n_windows": 223,
+    "start": 12.0,
+    "end": 600.0,
+    "share": 0.6076,
+    "dominant": "006-F",
+    "purity": 0.9955,
+    "truth_mix": {
+     "006-F": 222,
+     "001-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 223,
+    "dom_share_in_cluster": 0.9955156950672646
+   },
+   {
+    "cluster": 4,
+    "n_windows": 1,
+    "start": 444.0,
+    "end": 446.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 136,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 4,
+    "n_windows": 1,
+    "start": 444.0,
+    "end": 446.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 136,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 5,
+    "oracle": 0.7711,
+    "mapped": 0.759,
+    "abstain": 0.1687,
+    "unmapped": 0.0241,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.759,
+    "mapped": 0.759,
+    "abstain": 0.1807,
+    "unmapped": 0.0,
+    "labels_k": 4,
+    "n_clusters": 4,
+    "diff_sentences": 2
+   },
+   "C_删2窗": {
+    "oracle": 0.7711,
+    "mapped": 0.759,
+    "abstain": 0.1687,
+    "unmapped": 0.0241,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "D_删<=2窗": {
+    "oracle": 0.759,
+    "mapped": 0.759,
+    "abstain": 0.1807,
+    "unmapped": 0.0,
+    "labels_k": 4,
+    "n_clusters": 4,
+    "diff_sentences": 2
+   },
+   "E_吸收": {
+    "oracle": 0.7711,
+    "mapped": 0.7711,
+    "abstain": 0.1687,
+    "unmapped": 0.0,
+    "labels_k": 4,
+    "n_clusters": 4,
+    "diff_sentences": 2
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S02C01",
+  "n_windows": 373,
+  "n_sentences": 89,
+  "k_prod": 2,
+  "k_all_best": 10,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.4607,
+   "2": 0.6742,
+   "3": 0.6742,
+   "4": 0.6966,
+   "5": 0.6966,
+   "6": 0.7079,
+   "7": 0.7079,
+   "8": 0.7079,
+   "9": 0.7191,
+   "10": 0.7303
+  },
+  "prod_oracle": 0.6742,
+  "min_size_at_k_all": 1,
+  "n_clusters": 10,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 3,
+    "start": 4.0,
+    "end": 8.0,
+    "share": 0.008,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 3
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 7.0,
+    "end": 10.0,
+    "share": 0.0054,
+    "dominant": "002-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 9.0,
+    "end": 12.0,
+    "share": 0.0054,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 5,
+    "start": 11.0,
+    "end": 18.0,
+    "share": 0.0134,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 5
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 5,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 27,
+    "start": 18.0,
+    "end": 564.0,
+    "share": 0.0724,
+    "dominant": "001-M",
+    "purity": 0.5556,
+    "truth_mix": {
+     "001-M": 15,
+     "005-F": 11,
+     "006-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 0.5555555555555556
+   },
+   {
+    "cluster": 5,
+    "n_windows": 120,
+    "start": 25.0,
+    "end": 600.0,
+    "share": 0.3217,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 120
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 1,
+    "start": 158.0,
+    "end": 160.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 7,
+    "n_windows": 211,
+    "start": 183.0,
+    "end": 518.0,
+    "share": 0.5657,
+    "dominant": "006-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-F": 211
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 211,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 8,
+    "n_windows": 1,
+    "start": 498.0,
+    "end": 500.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 9,
+    "n_windows": 1,
+    "start": 547.0,
+    "end": 549.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 7.0,
+    "end": 10.0,
+    "share": 0.0054,
+    "dominant": "002-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 9.0,
+    "end": 12.0,
+    "share": 0.0054,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 1,
+    "start": 158.0,
+    "end": 160.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 8,
+    "n_windows": 1,
+    "start": 498.0,
+    "end": 500.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 9,
+    "n_windows": 1,
+    "start": 547.0,
+    "end": 549.0,
+    "share": 0.0027,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 120,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 10,
+    "oracle": 0.7303,
+    "mapped": 0.7191,
+    "abstain": 0.0449,
+    "unmapped": 0.0112,
+    "n_clusters": 10,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.7303,
+    "mapped": 0.7191,
+    "abstain": 0.0449,
+    "unmapped": 0.0112,
+    "labels_k": 7,
+    "n_clusters": 7,
+    "diff_sentences": 0
+   },
+   "C_删2窗": {
+    "oracle": 0.7079,
+    "mapped": 0.7079,
+    "abstain": 0.0449,
+    "unmapped": 0.0,
+    "labels_k": 8,
+    "n_clusters": 8,
+    "diff_sentences": 2
+   },
+   "D_删<=2窗": {
+    "oracle": 0.7079,
+    "mapped": 0.7079,
+    "abstain": 0.0449,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 2
+   },
+   "E_吸收": {
+    "oracle": 0.7079,
+    "mapped": 0.6966,
+    "abstain": 0.0449,
+    "unmapped": 0.0112,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 83
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S04C01",
+  "n_windows": 556,
+  "n_sentences": 206,
+  "k_prod": 2,
+  "k_all_best": 8,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.3738,
+   "2": 0.5728,
+   "3": 0.5777,
+   "4": 0.5777,
+   "5": 0.5777,
+   "6": 0.6165,
+   "7": 0.6748,
+   "8": 0.6796,
+   "9": 0.6796,
+   "10": 0.6796
+  },
+  "prod_oracle": 0.5728,
+  "min_size_at_k_all": 2,
+  "n_clusters": 8,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 266,
+    "start": 5.0,
+    "end": 586.0,
+    "share": 0.4784,
+    "dominant": "001-M",
+    "purity": 0.9925,
+    "truth_mix": {
+     "001-M": 264,
+     "006-F": 2
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 266,
+    "dom_share_in_cluster": 0.9924812030075187
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 7.0,
+    "end": 10.0,
+    "share": 0.0036,
+    "dominant": "002-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 167,
+    "start": 10.0,
+    "end": 597.0,
+    "share": 0.3004,
+    "dominant": "004-F",
+    "purity": 0.8323,
+    "truth_mix": {
+     "004-F": 139,
+     "001-M": 11,
+     "006-F": 11,
+     "005-F": 6
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 167,
+    "dom_share_in_cluster": 0.8323353293413174
+   },
+   {
+    "cluster": 3,
+    "n_windows": 43,
+    "start": 12.0,
+    "end": 600.0,
+    "share": 0.0773,
+    "dominant": "005-F",
+    "purity": 0.907,
+    "truth_mix": {
+     "005-F": 39,
+     "006-F": 2,
+     "004-F": 1,
+     "001-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 43,
+    "dom_share_in_cluster": 0.9069767441860465
+   },
+   {
+    "cluster": 4,
+    "n_windows": 62,
+    "start": 142.0,
+    "end": 588.0,
+    "share": 0.1115,
+    "dominant": "006-F",
+    "purity": 0.9516,
+    "truth_mix": {
+     "006-F": 59,
+     "005-F": 2,
+     "004-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 62,
+    "dom_share_in_cluster": 0.9516129032258065
+   },
+   {
+    "cluster": 5,
+    "n_windows": 11,
+    "start": 152.0,
+    "end": 552.0,
+    "share": 0.0198,
+    "dominant": "006-F",
+    "purity": 0.4545,
+    "truth_mix": {
+     "006-F": 5,
+     "001-M": 4,
+     "004-F": 1,
+     "005-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 62,
+    "dom_share_in_cluster": 0.45454545454545453
+   },
+   {
+    "cluster": 6,
+    "n_windows": 3,
+    "start": 166.0,
+    "end": 444.0,
+    "share": 0.0054,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 3
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 266,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 7,
+    "n_windows": 2,
+    "start": 367.0,
+    "end": 370.0,
+    "share": 0.0036,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 266,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 7.0,
+    "end": 10.0,
+    "share": 0.0036,
+    "dominant": "002-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 7,
+    "n_windows": 2,
+    "start": 367.0,
+    "end": 370.0,
+    "share": 0.0036,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 266,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 8,
+    "oracle": 0.6796,
+    "mapped": 0.665,
+    "abstain": 0.0049,
+    "unmapped": 0.0194,
+    "n_clusters": 8,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.6796,
+    "mapped": 0.665,
+    "abstain": 0.0049,
+    "unmapped": 0.0194,
+    "labels_k": 8,
+    "n_clusters": 8,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.6748,
+    "mapped": 0.665,
+    "abstain": 0.0049,
+    "unmapped": 0.0146,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 2
+   },
+   "D_删<=2窗": {
+    "oracle": 0.6748,
+    "mapped": 0.665,
+    "abstain": 0.0049,
+    "unmapped": 0.0146,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 2
+   },
+   "E_吸收": {
+    "oracle": 0.6748,
+    "mapped": 0.665,
+    "abstain": 0.0049,
+    "unmapped": 0.0146,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 31
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S05C01",
+  "n_windows": 408,
+  "n_sentences": 57,
+  "k_prod": 2,
+  "k_all_best": 6,
+  "k_elig_best": 3,
+  "eligible_ks": [
+   2,
+   3
+  ],
+  "oracle_by_k": {
+   "1": 0.2982,
+   "2": 0.386,
+   "3": 0.4211,
+   "4": 0.4386,
+   "5": 0.7018,
+   "6": 0.8772,
+   "7": 0.8772,
+   "8": 0.8772,
+   "9": 0.8772,
+   "10": 0.8772
+  },
+  "prod_oracle": 0.386,
+  "min_size_at_k_all": 2,
+  "n_clusters": 6,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 13,
+    "start": 8.0,
+    "end": 73.0,
+    "share": 0.0319,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 13
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 13,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 9.0,
+    "end": 12.0,
+    "share": 0.0049,
+    "dominant": "002-M",
+    "purity": 0.5,
+    "truth_mix": {
+     "002-M": 1,
+     "003-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 2,
+    "n_windows": 150,
+    "start": 11.0,
+    "end": 576.0,
+    "share": 0.3676,
+    "dominant": "004-F",
+    "purity": 0.9933,
+    "truth_mix": {
+     "004-F": 149,
+     "005-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 150,
+    "dom_share_in_cluster": 0.9933333333333333
+   },
+   {
+    "cluster": 3,
+    "n_windows": 132,
+    "start": 78.0,
+    "end": 280.0,
+    "share": 0.3235,
+    "dominant": "006-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "006-F": 132
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 132,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 97,
+    "start": 282.0,
+    "end": 404.0,
+    "share": 0.2377,
+    "dominant": "005-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-F": 97
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 97,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 5,
+    "n_windows": 14,
+    "start": 581.0,
+    "end": 600.0,
+    "share": 0.0343,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 14
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 14,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 9.0,
+    "end": 12.0,
+    "share": 0.0049,
+    "dominant": "002-M",
+    "purity": 0.5,
+    "truth_mix": {
+     "002-M": 1,
+     "003-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 6,
+    "oracle": 0.8772,
+    "mapped": 0.8772,
+    "abstain": 0.0702,
+    "unmapped": 0.0,
+    "n_clusters": 6,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.8772,
+    "mapped": 0.8772,
+    "abstain": 0.0702,
+    "unmapped": 0.0,
+    "labels_k": 6,
+    "n_clusters": 6,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.8596,
+    "mapped": 0.8596,
+    "abstain": 0.0702,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 2
+   },
+   "D_删<=2窗": {
+    "oracle": 0.8596,
+    "mapped": 0.8596,
+    "abstain": 0.0702,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 2
+   },
+   "E_吸收": {
+    "oracle": 0.8596,
+    "mapped": 0.8596,
+    "abstain": 0.0702,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 12
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S01C01",
+  "n_windows": 513,
+  "n_sentences": 75,
+  "k_prod": 5,
+  "k_all_best": 5,
+  "k_elig_best": 5,
+  "eligible_ks": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "oracle_by_k": {
+   "1": 0.28,
+   "2": 0.4133,
+   "3": 0.6,
+   "4": 0.72,
+   "5": 0.84,
+   "6": 0.84,
+   "7": 0.84,
+   "8": 0.84,
+   "9": 0.84,
+   "10": 0.84
+  },
+  "prod_oracle": 0.84,
+  "min_size_at_k_all": 53,
+  "n_clusters": 5,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 125,
+    "start": 5.0,
+    "end": 507.0,
+    "share": 0.2437,
+    "dominant": "001-M",
+    "purity": 0.992,
+    "truth_mix": {
+     "001-M": 124,
+     "005-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 125,
+    "dom_share_in_cluster": 0.992
+   },
+   {
+    "cluster": 1,
+    "n_windows": 53,
+    "start": 9.0,
+    "end": 502.0,
+    "share": 0.1033,
+    "dominant": "002-F",
+    "purity": 0.9811,
+    "truth_mix": {
+     "002-F": 52,
+     "001-M": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 53,
+    "dom_share_in_cluster": 0.9811320754716981
+   },
+   {
+    "cluster": 2,
+    "n_windows": 93,
+    "start": 11.0,
+    "end": 600.0,
+    "share": 0.1813,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 93
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 93,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 123,
+    "start": 13.0,
+    "end": 241.0,
+    "share": 0.2398,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 123
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 123,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 119,
+    "start": 14.0,
+    "end": 428.0,
+    "share": 0.232,
+    "dominant": "005-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-F": 119
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 119,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [],
+  "variants": {
+   "A_原始": {
+    "labels_k": 5,
+    "oracle": 0.84,
+    "mapped": 0.84,
+    "abstain": 0.0533,
+    "unmapped": 0.0,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.84,
+    "mapped": 0.84,
+    "abstain": 0.0533,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.84,
+    "mapped": 0.84,
+    "abstain": 0.0533,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "D_删<=2窗": {
+    "oracle": 0.84,
+    "mapped": 0.84,
+    "abstain": 0.0533,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "E_吸收": {
+    "oracle": 0.84,
+    "mapped": 0.84,
+    "abstain": 0.0533,
+    "unmapped": 0.0,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无 <=2 窗小簇，等同 A"
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S02C01",
+  "n_windows": 578,
+  "n_sentences": 110,
+  "k_prod": 2,
+  "k_all_best": 8,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.6636,
+   "2": 0.9636,
+   "3": 0.9727,
+   "4": 0.9727,
+   "5": 0.9727,
+   "6": 0.9818,
+   "7": 0.9818,
+   "8": 0.9909,
+   "9": 0.9909,
+   "10": 0.9909
+  },
+  "prod_oracle": 0.9636,
+  "min_size_at_k_all": 1,
+  "n_clusters": 8,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 2,
+    "start": 8.0,
+    "end": 11.0,
+    "share": 0.0035,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 143,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 12.0,
+    "end": 15.0,
+    "share": 0.0035,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "short",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 6,
+    "start": 14.0,
+    "end": 21.0,
+    "share": 0.0104,
+    "dominant": "003-F",
+    "purity": 0.6667,
+    "truth_mix": {
+     "003-F": 4,
+     "004-F": 2
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 6,
+    "dom_share_in_cluster": 0.6666666666666666
+   },
+   {
+    "cluster": 3,
+    "n_windows": 2,
+    "start": 20.0,
+    "end": 23.0,
+    "share": 0.0035,
+    "dominant": "005-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 4,
+    "n_windows": 143,
+    "start": 22.0,
+    "end": 174.0,
+    "share": 0.2474,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 143
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 143,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 5,
+    "n_windows": 420,
+    "start": 175.0,
+    "end": 600.0,
+    "share": 0.7266,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 420
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 420,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 2,
+    "start": 211.0,
+    "end": 399.0,
+    "share": 0.0035,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 420,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 7,
+    "n_windows": 1,
+    "start": 437.0,
+    "end": 439.0,
+    "share": 0.0017,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 420,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 2,
+    "start": 8.0,
+    "end": 11.0,
+    "share": 0.0035,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 143,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 12.0,
+    "end": 15.0,
+    "share": 0.0035,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "short",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 2,
+    "start": 20.0,
+    "end": 23.0,
+    "share": 0.0035,
+    "dominant": "005-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "005-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 6,
+    "n_windows": 2,
+    "start": 211.0,
+    "end": 399.0,
+    "share": 0.0035,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 420,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 7,
+    "n_windows": 1,
+    "start": 437.0,
+    "end": 439.0,
+    "share": 0.0017,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "dup",
+    "speaker_home_size": 420,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 8,
+    "oracle": 0.9909,
+    "mapped": 0.9818,
+    "abstain": 0.0,
+    "unmapped": 0.0091,
+    "n_clusters": 8,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.9909,
+    "mapped": 0.9818,
+    "abstain": 0.0,
+    "unmapped": 0.0091,
+    "labels_k": 7,
+    "n_clusters": 7,
+    "diff_sentences": 0
+   },
+   "C_删2窗": {
+    "oracle": 0.9636,
+    "mapped": 0.9636,
+    "abstain": 0.0091,
+    "unmapped": 0.0,
+    "labels_k": 4,
+    "n_clusters": 4,
+    "diff_sentences": 3
+   },
+   "D_删<=2窗": {
+    "oracle": 0.9636,
+    "mapped": 0.9636,
+    "abstain": 0.0091,
+    "unmapped": 0.0,
+    "labels_k": 3,
+    "n_clusters": 3,
+    "diff_sentences": 3
+   },
+   "E_吸收": {
+    "oracle": 0.9727,
+    "mapped": 0.9727,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "labels_k": 3,
+    "n_clusters": 3,
+    "diff_sentences": 108
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S03C01",
+  "n_windows": 570,
+  "n_sentences": 57,
+  "k_prod": 2,
+  "k_all_best": 6,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.5263,
+   "2": 0.9474,
+   "3": 0.9649,
+   "4": 0.9649,
+   "5": 0.9649,
+   "6": 0.9825,
+   "7": 0.9825,
+   "8": 0.9825,
+   "9": 0.9825,
+   "10": 0.9825
+  },
+  "prod_oracle": 0.9474,
+  "min_size_at_k_all": 1,
+  "n_clusters": 6,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 245,
+    "start": 6.0,
+    "end": 281.0,
+    "share": 0.4298,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 245
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 245,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 1,
+    "start": 12.0,
+    "end": 14.0,
+    "share": 0.0018,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "short",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 13.0,
+    "end": 16.0,
+    "share": 0.0035,
+    "dominant": "002-F",
+    "purity": 0.5,
+    "truth_mix": {
+     "002-F": 1,
+     "003-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 3,
+    "n_windows": 3,
+    "start": 17.0,
+    "end": 21.0,
+    "share": 0.0053,
+    "dominant": "005-F",
+    "purity": 0.6667,
+    "truth_mix": {
+     "005-F": 2,
+     "004-F": 1
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 3,
+    "dom_share_in_cluster": 0.6666666666666666
+   },
+   {
+    "cluster": 4,
+    "n_windows": 2,
+    "start": 280.0,
+    "end": 329.0,
+    "share": 0.0035,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 317,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 5,
+    "n_windows": 317,
+    "start": 281.0,
+    "end": 600.0,
+    "share": 0.5561,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 317
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "unknown",
+    "speaker_home_size": 317,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 1,
+    "n_windows": 1,
+    "start": 12.0,
+    "end": 14.0,
+    "share": 0.0018,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 1
+    },
+    "size_bucket": "1窗",
+    "on_boundary": false,
+    "in_overlap": false,
+    "kind": "short",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 13.0,
+    "end": 16.0,
+    "share": 0.0035,
+    "dominant": "002-F",
+    "purity": 0.5,
+    "truth_mix": {
+     "002-F": 1,
+     "003-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 4,
+    "n_windows": 2,
+    "start": 280.0,
+    "end": 329.0,
+    "share": 0.0035,
+    "dominant": "004-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "004-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 317,
+    "dom_share_in_cluster": 1.0
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 6,
+    "oracle": 0.9825,
+    "mapped": 0.9825,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n_clusters": 6,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.9649,
+    "mapped": 0.9649,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 1
+   },
+   "C_删2窗": {
+    "oracle": 0.9649,
+    "mapped": 0.9649,
+    "abstain": 0.0175,
+    "unmapped": 0.0,
+    "labels_k": 4,
+    "n_clusters": 4,
+    "diff_sentences": 1
+   },
+   "D_删<=2窗": {
+    "oracle": 0.9474,
+    "mapped": 0.9474,
+    "abstain": 0.0351,
+    "unmapped": 0.0,
+    "labels_k": 3,
+    "n_clusters": 3,
+    "diff_sentences": 2
+   },
+   "E_吸收": {
+    "oracle": 0.9474,
+    "mapped": 0.9474,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "labels_k": 3,
+    "n_clusters": 3,
+    "diff_sentences": 33
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S04C01",
+  "n_windows": 585,
+  "n_sentences": 84,
+  "k_prod": 2,
+  "k_all_best": 5,
+  "k_elig_best": 2,
+  "eligible_ks": [
+   2
+  ],
+  "oracle_by_k": {
+   "1": 0.5714,
+   "2": 0.9286,
+   "3": 0.9405,
+   "4": 0.9405,
+   "5": 0.9524,
+   "6": 0.9524,
+   "7": 0.9524,
+   "8": 0.9524,
+   "9": 0.9524,
+   "10": 0.9524
+  },
+  "prod_oracle": 0.9286,
+  "min_size_at_k_all": 2,
+  "n_clusters": 5,
+  "clusters": [
+   {
+    "cluster": 0,
+    "n_windows": 169,
+    "start": 5.0,
+    "end": 188.0,
+    "share": 0.2889,
+    "dominant": "001-M",
+    "purity": 1.0,
+    "truth_mix": {
+     "001-M": 169
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 169,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 8.0,
+    "end": 11.0,
+    "share": 0.0034,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 10.0,
+    "end": 13.0,
+    "share": 0.0034,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 2,
+    "start": 12.0,
+    "end": 15.0,
+    "share": 0.0034,
+    "dominant": "004-F",
+    "purity": 0.5,
+    "truth_mix": {
+     "004-F": 1,
+     "005-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 410,
+    "dom_share_in_cluster": 0.5
+   },
+   {
+    "cluster": 4,
+    "n_windows": 410,
+    "start": 189.0,
+    "end": 600.0,
+    "share": 0.7009,
+    "dominant": "004-F",
+    "purity": 0.9122,
+    "truth_mix": {
+     "004-F": 374,
+     "001-M": 36
+    },
+    "size_bucket": ">=3窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 410,
+    "dom_share_in_cluster": 0.9121951219512195
+   }
+  ],
+  "small_clusters": [
+   {
+    "cluster": 1,
+    "n_windows": 2,
+    "start": 8.0,
+    "end": 11.0,
+    "share": 0.0034,
+    "dominant": "002-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "002-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 2,
+    "n_windows": 2,
+    "start": 10.0,
+    "end": 13.0,
+    "share": 0.0034,
+    "dominant": "003-F",
+    "purity": 1.0,
+    "truth_mix": {
+     "003-F": 2
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": null,
+    "dom_share_in_cluster": 1.0
+   },
+   {
+    "cluster": 3,
+    "n_windows": 2,
+    "start": 12.0,
+    "end": 15.0,
+    "share": 0.0034,
+    "dominant": "004-F",
+    "purity": 0.5,
+    "truth_mix": {
+     "004-F": 1,
+     "005-F": 1
+    },
+    "size_bucket": "2窗",
+    "on_boundary": true,
+    "in_overlap": true,
+    "kind": "overlap",
+    "speaker_home_size": 410,
+    "dom_share_in_cluster": 0.5
+   }
+  ],
+  "variants": {
+   "A_原始": {
+    "labels_k": 5,
+    "oracle": 0.9524,
+    "mapped": 0.9524,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "n_clusters": 5,
+    "diff_sentences": 0
+   },
+   "B_删1窗": {
+    "oracle": 0.9524,
+    "mapped": 0.9524,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "labels_k": 5,
+    "n_clusters": 5,
+    "diff_sentences": 0,
+    "note": "无该尺寸小簇，等同 A"
+   },
+   "C_删2窗": {
+    "oracle": 0.9167,
+    "mapped": 0.9167,
+    "abstain": 0.0357,
+    "unmapped": 0.0,
+    "labels_k": 2,
+    "n_clusters": 2,
+    "diff_sentences": 4
+   },
+   "D_删<=2窗": {
+    "oracle": 0.9167,
+    "mapped": 0.9167,
+    "abstain": 0.0357,
+    "unmapped": 0.0,
+    "labels_k": 2,
+    "n_clusters": 2,
+    "diff_sentences": 4
+   },
+   "E_吸收": {
+    "oracle": 0.9286,
+    "mapped": 0.9286,
+    "abstain": 0.0,
+    "unmapped": 0.0,
+    "labels_k": 2,
+    "n_clusters": 2,
+    "diff_sentences": 54
+   }
+  }
+ }
+]

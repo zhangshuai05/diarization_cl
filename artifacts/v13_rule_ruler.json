@@ -1,0 +1,4393 @@
+[
+ {
+  "meeting": "L_R003S01C02",
+  "n_windows": 422,
+  "k_prod": 1,
+  "best_k": {
+   "oracle": 7,
+   "bijective": 5,
+   "merged": 5
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     422
+    ],
+    "eligible": true,
+    "oracle": 0.2745,
+    "bijective": 0.2745,
+    "merged": 0.2745,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     421,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.2745,
+    "bijective": 0.2745,
+    "merged": 0.2745,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     300,
+     121,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.451,
+    "bijective": 0.451,
+    "merged": 0.451,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     70,
+     230,
+     121,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.5686,
+    "bijective": 0.5686,
+    "merged": 0.5686,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     70,
+     105,
+     121,
+     125,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7745,
+    "bijective": 0.7745,
+    "merged": 0.7745,
+    "n_clusters": 5,
+    "n_dup": 1,
+    "n_merged_clusters": 4
+   },
+   "6": {
+    "sizes": [
+     19,
+     105,
+     121,
+     125,
+     1,
+     51
+    ],
+    "eligible": false,
+    "oracle": 0.7745,
+    "bijective": 0.7549,
+    "merged": 0.7549,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     19,
+     105,
+     2,
+     125,
+     119,
+     1,
+     51
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7647,
+    "merged": 0.7647,
+    "n_clusters": 7,
+    "n_dup": 2,
+    "n_merged_clusters": 5
+   },
+   "8": {
+    "sizes": [
+     19,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7549,
+    "merged": 0.7549,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7451,
+    "merged": 0.7647,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     115,
+     117,
+     1,
+     51,
+     2,
+     10
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7353,
+    "merged": 0.7647,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 1,
+    "why": "生产选择器",
+    "sizes": [
+     422
+    ],
+    "eligible": true,
+    "oracle": 0.2745,
+    "bijective": 0.2745,
+    "merged": 0.2745,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     422
+    ],
+    "eligible": true,
+    "oracle": 0.2745,
+    "bijective": 0.2745,
+    "merged": 0.2745,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     421,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.2745,
+    "bijective": 0.2745,
+    "merged": 0.2745,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     70,
+     230,
+     121,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.5686,
+    "bijective": 0.5686,
+    "merged": 0.5686,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     19,
+     105,
+     121,
+     125,
+     1,
+     51
+    ],
+    "eligible": false,
+    "oracle": 0.7745,
+    "bijective": 0.7549,
+    "merged": 0.7549,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     115,
+     117,
+     1,
+     51,
+     2,
+     10
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7353,
+    "merged": 0.7647,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 9,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7451,
+    "merged": 0.7647,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "no_gain": {
+    "k": 9,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7451,
+    "merged": 0.7647,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7451,
+    "merged": 0.7647,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     15,
+     4,
+     105,
+     2,
+     125,
+     117,
+     1,
+     51,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.7843,
+    "bijective": 0.7451,
+    "merged": 0.7647,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S02C02",
+  "n_windows": 281,
+  "k_prod": 4,
+  "best_k": {
+   "oracle": 6,
+   "bijective": 6,
+   "merged": 6
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     281
+    ],
+    "eligible": true,
+    "oracle": 0.5412,
+    "bijective": 0.5412,
+    "merged": 0.5412,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     8,
+     273
+    ],
+    "eligible": true,
+    "oracle": 0.5647,
+    "bijective": 0.5647,
+    "merged": 0.5647,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     8,
+     263,
+     10
+    ],
+    "eligible": true,
+    "oracle": 0.6,
+    "bijective": 0.6,
+    "merged": 0.6,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     8,
+     90,
+     173,
+     10
+    ],
+    "eligible": true,
+    "oracle": 0.8353,
+    "bijective": 0.8353,
+    "merged": 0.8353,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     5,
+     3,
+     90,
+     173,
+     10
+    ],
+    "eligible": false,
+    "oracle": 0.8353,
+    "bijective": 0.8353,
+    "merged": 0.8353,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "6": {
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     173,
+     10
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8588,
+    "merged": 0.8588,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "7": {
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     21,
+     10,
+     152
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 7,
+    "n_dup": 1,
+    "n_merged_clusters": 6
+   },
+   "8": {
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     3,
+     10,
+     18,
+     152
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 8,
+    "n_dup": 2,
+    "n_merged_clusters": 6
+   },
+   "9": {
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     3,
+     10,
+     18,
+     151,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 9,
+    "n_dup": 3,
+    "n_merged_clusters": 6
+   },
+   "10": {
+    "sizes": [
+     3,
+     1,
+     2,
+     90,
+     3,
+     10,
+     18,
+     151,
+     1,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.7882,
+    "merged": 0.8588,
+    "n_clusters": 10,
+    "n_dup": 4,
+    "n_merged_clusters": 6
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 4,
+    "why": "生产选择器",
+    "sizes": [
+     8,
+     90,
+     173,
+     10
+    ],
+    "eligible": true,
+    "oracle": 0.8353,
+    "bijective": 0.8353,
+    "merged": 0.8353,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     281
+    ],
+    "eligible": true,
+    "oracle": 0.5412,
+    "bijective": 0.5412,
+    "merged": 0.5412,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     8,
+     273
+    ],
+    "eligible": true,
+    "oracle": 0.5647,
+    "bijective": 0.5647,
+    "merged": 0.5647,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     8,
+     90,
+     173,
+     10
+    ],
+    "eligible": true,
+    "oracle": 0.8353,
+    "bijective": 0.8353,
+    "merged": 0.8353,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     173,
+     10
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8588,
+    "merged": 0.8588,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     3,
+     1,
+     2,
+     90,
+     3,
+     10,
+     18,
+     151,
+     1,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.7882,
+    "merged": 0.8588,
+    "n_clusters": 10,
+    "n_dup": 4,
+    "n_merged_clusters": 6
+   },
+   "four_criteria": {
+    "k": 7,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     21,
+     10,
+     152
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 7,
+    "n_dup": 1,
+    "n_merged_clusters": 6
+   },
+   "no_gain": {
+    "k": 7,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     21,
+     10,
+     152
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 7,
+    "n_dup": 1,
+    "n_merged_clusters": 6
+   },
+   "parent4_only": {
+    "k": 8,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     3,
+     10,
+     18,
+     152
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 8,
+    "n_dup": 2,
+    "n_merged_clusters": 6
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     3,
+     3,
+     2,
+     90,
+     3,
+     10,
+     18,
+     151,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8588,
+    "bijective": 0.8,
+    "merged": 0.8588,
+    "n_clusters": 9,
+    "n_dup": 3,
+    "n_merged_clusters": 6
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S03C02",
+  "n_windows": 387,
+  "k_prod": 3,
+  "best_k": {
+   "oracle": 7,
+   "bijective": 6,
+   "merged": 7
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     387
+    ],
+    "eligible": true,
+    "oracle": 0.3614,
+    "bijective": 0.3614,
+    "merged": 0.3614,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     9,
+     378
+    ],
+    "eligible": true,
+    "oracle": 0.3976,
+    "bijective": 0.3976,
+    "merged": 0.3976,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     9,
+     124,
+     254
+    ],
+    "eligible": true,
+    "oracle": 0.6024,
+    "bijective": 0.6024,
+    "merged": 0.6024,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     9,
+     4,
+     120,
+     254
+    ],
+    "eligible": false,
+    "oracle": 0.6145,
+    "bijective": 0.6145,
+    "merged": 0.6145,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     254
+    ],
+    "eligible": false,
+    "oracle": 0.6265,
+    "bijective": 0.6265,
+    "merged": 0.6265,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "6": {
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     78,
+     176
+    ],
+    "eligible": false,
+    "oracle": 0.8434,
+    "bijective": 0.8434,
+    "merged": 0.8434,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "7": {
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     76,
+     2,
+     176
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8434,
+    "merged": 0.8554,
+    "n_clusters": 7,
+    "n_dup": 1,
+    "n_merged_clusters": 6
+   },
+   "8": {
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     76,
+     2,
+     176,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8313,
+    "merged": 0.8554,
+    "n_clusters": 8,
+    "n_dup": 1,
+    "n_merged_clusters": 7
+   },
+   "9": {
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     74,
+     2,
+     176,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged": 0.8554,
+    "n_clusters": 9,
+    "n_dup": 2,
+    "n_merged_clusters": 7
+   },
+   "10": {
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     71,
+     2,
+     176,
+     2,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged": 0.8554,
+    "n_clusters": 10,
+    "n_dup": 3,
+    "n_merged_clusters": 7
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 3,
+    "why": "生产选择器",
+    "sizes": [
+     9,
+     124,
+     254
+    ],
+    "eligible": true,
+    "oracle": 0.6024,
+    "bijective": 0.6024,
+    "merged": 0.6024,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     387
+    ],
+    "eligible": true,
+    "oracle": 0.3614,
+    "bijective": 0.3614,
+    "merged": 0.3614,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     9,
+     378
+    ],
+    "eligible": true,
+    "oracle": 0.3976,
+    "bijective": 0.3976,
+    "merged": 0.3976,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     9,
+     4,
+     120,
+     254
+    ],
+    "eligible": false,
+    "oracle": 0.6145,
+    "bijective": 0.6145,
+    "merged": 0.6145,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     78,
+     176
+    ],
+    "eligible": false,
+    "oracle": 0.8434,
+    "bijective": 0.8434,
+    "merged": 0.8434,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     71,
+     2,
+     176,
+     2,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged": 0.8554,
+    "n_clusters": 10,
+    "n_dup": 3,
+    "n_merged_clusters": 7
+   },
+   "four_criteria": {
+    "k": 5,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     254
+    ],
+    "eligible": false,
+    "oracle": 0.6265,
+    "bijective": 0.6265,
+    "merged": 0.6265,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "no_gain": {
+    "k": 5,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     9,
+     4,
+     117,
+     3,
+     254
+    ],
+    "eligible": false,
+    "oracle": 0.6265,
+    "bijective": 0.6265,
+    "merged": 0.6265,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     74,
+     2,
+     176,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged": 0.8554,
+    "n_clusters": 9,
+    "n_dup": 2,
+    "n_merged_clusters": 7
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     9,
+     2,
+     117,
+     3,
+     74,
+     2,
+     176,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged": 0.8554,
+    "n_clusters": 9,
+    "n_dup": 2,
+    "n_merged_clusters": 7
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S04C02",
+  "n_windows": 485,
+  "k_prod": 4,
+  "best_k": {
+   "oracle": 6,
+   "bijective": 6,
+   "merged": 7
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     485
+    ],
+    "eligible": true,
+    "oracle": 0.4538,
+    "bijective": 0.4538,
+    "merged": 0.4538,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     12,
+     473
+    ],
+    "eligible": true,
+    "oracle": 0.4958,
+    "bijective": 0.4958,
+    "merged": 0.4958,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     12,
+     9,
+     464
+    ],
+    "eligible": true,
+    "oracle": 0.5042,
+    "bijective": 0.5042,
+    "merged": 0.5042,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     12,
+     9,
+     304,
+     160
+    ],
+    "eligible": true,
+    "oracle": 0.7983,
+    "bijective": 0.7983,
+    "merged": 0.7983,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     12,
+     9,
+     304,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7983,
+    "bijective": 0.7983,
+    "merged": 0.7983,
+    "n_clusters": 5,
+    "n_dup": 1,
+    "n_merged_clusters": 4
+   },
+   "6": {
+    "sizes": [
+     12,
+     9,
+     6,
+     298,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.8067,
+    "merged": 0.7983,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     12,
+     9,
+     5,
+     298,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.8067,
+    "merged": 0.8067,
+    "n_clusters": 7,
+    "n_dup": 2,
+    "n_merged_clusters": 5
+   },
+   "8": {
+    "sizes": [
+     12,
+     1,
+     5,
+     298,
+     1,
+     8,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     12,
+     1,
+     5,
+     297,
+     1,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     12,
+     1,
+     5,
+     37,
+     1,
+     260,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7395,
+    "merged": 0.8067,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 4,
+    "why": "生产选择器",
+    "sizes": [
+     12,
+     9,
+     304,
+     160
+    ],
+    "eligible": true,
+    "oracle": 0.7983,
+    "bijective": 0.7983,
+    "merged": 0.7983,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     485
+    ],
+    "eligible": true,
+    "oracle": 0.4538,
+    "bijective": 0.4538,
+    "merged": 0.4538,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     12,
+     473
+    ],
+    "eligible": true,
+    "oracle": 0.4958,
+    "bijective": 0.4958,
+    "merged": 0.4958,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     12,
+     9,
+     304,
+     160
+    ],
+    "eligible": true,
+    "oracle": 0.7983,
+    "bijective": 0.7983,
+    "merged": 0.7983,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     12,
+     9,
+     6,
+     298,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.8067,
+    "merged": 0.7983,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     12,
+     1,
+     5,
+     37,
+     1,
+     260,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7395,
+    "merged": 0.8067,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 9,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     12,
+     1,
+     5,
+     297,
+     1,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "no_gain": {
+    "k": 9,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     12,
+     1,
+     5,
+     297,
+     1,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     12,
+     1,
+     5,
+     297,
+     1,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     12,
+     1,
+     5,
+     297,
+     1,
+     8,
+     1,
+     159,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.8067,
+    "bijective": 0.7983,
+    "merged": 0.8067,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S01C01",
+  "n_windows": 367,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 5,
+   "bijective": 5,
+   "merged": 5
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     367
+    ],
+    "eligible": true,
+    "oracle": 0.4578,
+    "bijective": 0.4578,
+    "merged": 0.4578,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     137,
+     230
+    ],
+    "eligible": true,
+    "oracle": 0.747,
+    "bijective": 0.747,
+    "merged": 0.747,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     136,
+     230,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.747,
+    "bijective": 0.7349,
+    "merged": 0.747,
+    "n_clusters": 3,
+    "n_dup": 1,
+    "n_merged_clusters": 2
+   },
+   "4": {
+    "sizes": [
+     136,
+     7,
+     223,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.759,
+    "bijective": 0.747,
+    "merged": 0.759,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "5": {
+    "sizes": [
+     136,
+     3,
+     4,
+     223,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.759,
+    "merged": 0.7711,
+    "n_clusters": 5,
+    "n_dup": 1,
+    "n_merged_clusters": 4
+   },
+   "6": {
+    "sizes": [
+     136,
+     3,
+     4,
+     222,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.747,
+    "merged": 0.759,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     135,
+     3,
+     4,
+     222,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7349,
+    "merged": 0.759,
+    "n_clusters": 7,
+    "n_dup": 3,
+    "n_merged_clusters": 4
+   },
+   "8": {
+    "sizes": [
+     134,
+     3,
+     4,
+     222,
+     1,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7349,
+    "merged": 0.759,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "9": {
+    "sizes": [
+     8,
+     3,
+     4,
+     222,
+     1,
+     126,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged": 0.759,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "10": {
+    "sizes": [
+     8,
+     3,
+     3,
+     222,
+     1,
+     126,
+     1,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged": 0.759,
+    "n_clusters": 10,
+    "n_dup": 6,
+    "n_merged_clusters": 4
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     137,
+     230
+    ],
+    "eligible": true,
+    "oracle": 0.747,
+    "bijective": 0.747,
+    "merged": 0.747,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     367
+    ],
+    "eligible": true,
+    "oracle": 0.4578,
+    "bijective": 0.4578,
+    "merged": 0.4578,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     137,
+     230
+    ],
+    "eligible": true,
+    "oracle": 0.747,
+    "bijective": 0.747,
+    "merged": 0.747,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     136,
+     7,
+     223,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.759,
+    "bijective": 0.747,
+    "merged": 0.759,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     136,
+     3,
+     4,
+     222,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.747,
+    "merged": 0.759,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     8,
+     3,
+     3,
+     222,
+     1,
+     126,
+     1,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged": 0.759,
+    "n_clusters": 10,
+    "n_dup": 6,
+    "n_merged_clusters": 4
+   },
+   "four_criteria": {
+    "k": 8,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     134,
+     3,
+     4,
+     222,
+     1,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7349,
+    "merged": 0.759,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "no_gain": {
+    "k": 8,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     134,
+     3,
+     4,
+     222,
+     1,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7349,
+    "merged": 0.759,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     8,
+     3,
+     4,
+     222,
+     1,
+     126,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged": 0.759,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     8,
+     3,
+     4,
+     222,
+     1,
+     126,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged": 0.759,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S02C01",
+  "n_windows": 373,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 10,
+   "bijective": 10,
+   "merged": 10
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     373
+    ],
+    "eligible": true,
+    "oracle": 0.4607,
+    "bijective": 0.4607,
+    "merged": 0.4607,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     126,
+     247
+    ],
+    "eligible": true,
+    "oracle": 0.6742,
+    "bijective": 0.6742,
+    "merged": 0.6742,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     125,
+     247,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6742,
+    "bijective": 0.6742,
+    "merged": 0.6742,
+    "n_clusters": 3,
+    "n_dup": 1,
+    "n_merged_clusters": 2
+   },
+   "4": {
+    "sizes": [
+     125,
+     36,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6966,
+    "bijective": 0.6966,
+    "merged": 0.6966,
+    "n_clusters": 4,
+    "n_dup": 2,
+    "n_merged_clusters": 2
+   },
+   "5": {
+    "sizes": [
+     3,
+     36,
+     122,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6966,
+    "bijective": 0.6854,
+    "merged": 0.6966,
+    "n_clusters": 5,
+    "n_dup": 3,
+    "n_merged_clusters": 2
+   },
+   "6": {
+    "sizes": [
+     3,
+     4,
+     32,
+     122,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 6,
+    "n_dup": 3,
+    "n_merged_clusters": 3
+   },
+   "7": {
+    "sizes": [
+     3,
+     4,
+     32,
+     121,
+     1,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 7,
+    "n_dup": 4,
+    "n_merged_clusters": 3
+   },
+   "8": {
+    "sizes": [
+     3,
+     4,
+     32,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 8,
+    "n_dup": 5,
+    "n_merged_clusters": 3
+   },
+   "9": {
+    "sizes": [
+     3,
+     4,
+     5,
+     27,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7191,
+    "bijective": 0.7079,
+    "merged": 0.7191,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "10": {
+    "sizes": [
+     3,
+     2,
+     2,
+     5,
+     27,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7303,
+    "bijective": 0.7191,
+    "merged": 0.7303,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     126,
+     247
+    ],
+    "eligible": true,
+    "oracle": 0.6742,
+    "bijective": 0.6742,
+    "merged": 0.6742,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     373
+    ],
+    "eligible": true,
+    "oracle": 0.4607,
+    "bijective": 0.4607,
+    "merged": 0.4607,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     126,
+     247
+    ],
+    "eligible": true,
+    "oracle": 0.6742,
+    "bijective": 0.6742,
+    "merged": 0.6742,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     125,
+     36,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6966,
+    "bijective": 0.6966,
+    "merged": 0.6966,
+    "n_clusters": 4,
+    "n_dup": 2,
+    "n_merged_clusters": 2
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     3,
+     4,
+     32,
+     122,
+     211,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 6,
+    "n_dup": 3,
+    "n_merged_clusters": 3
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     3,
+     2,
+     2,
+     5,
+     27,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7303,
+    "bijective": 0.7191,
+    "merged": 0.7303,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 8,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     3,
+     4,
+     32,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 8,
+    "n_dup": 5,
+    "n_merged_clusters": 3
+   },
+   "no_gain": {
+    "k": 8,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     3,
+     4,
+     32,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged": 0.7079,
+    "n_clusters": 8,
+    "n_dup": 5,
+    "n_merged_clusters": 3
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     3,
+     4,
+     5,
+     27,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7191,
+    "bijective": 0.7079,
+    "merged": 0.7191,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     3,
+     4,
+     5,
+     27,
+     120,
+     1,
+     211,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.7191,
+    "bijective": 0.7079,
+    "merged": 0.7191,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S04C01",
+  "n_windows": 556,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 8,
+   "bijective": 7,
+   "merged": 7
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     556
+    ],
+    "eligible": true,
+    "oracle": 0.3738,
+    "bijective": 0.3738,
+    "merged": 0.3738,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     271,
+     285
+    ],
+    "eligible": true,
+    "oracle": 0.5728,
+    "bijective": 0.5728,
+    "merged": 0.5728,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     271,
+     2,
+     283
+    ],
+    "eligible": false,
+    "oracle": 0.5777,
+    "bijective": 0.5777,
+    "merged": 0.5777,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     269,
+     2,
+     283,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.5777,
+    "bijective": 0.5728,
+    "merged": 0.5777,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "5": {
+    "sizes": [
+     266,
+     2,
+     283,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.5777,
+    "bijective": 0.5728,
+    "merged": 0.5777,
+    "n_clusters": 5,
+    "n_dup": 2,
+    "n_merged_clusters": 3
+   },
+   "6": {
+    "sizes": [
+     266,
+     2,
+     240,
+     43,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6165,
+    "bijective": 0.6117,
+    "merged": 0.6165,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     266,
+     2,
+     167,
+     43,
+     73,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6748,
+    "bijective": 0.6699,
+    "merged": 0.6748,
+    "n_clusters": 7,
+    "n_dup": 2,
+    "n_merged_clusters": 5
+   },
+   "8": {
+    "sizes": [
+     266,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     265,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     263,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2,
+     1,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     271,
+     285
+    ],
+    "eligible": true,
+    "oracle": 0.5728,
+    "bijective": 0.5728,
+    "merged": 0.5728,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     556
+    ],
+    "eligible": true,
+    "oracle": 0.3738,
+    "bijective": 0.3738,
+    "merged": 0.3738,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     271,
+     285
+    ],
+    "eligible": true,
+    "oracle": 0.5728,
+    "bijective": 0.5728,
+    "merged": 0.5728,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     269,
+     2,
+     283,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.5777,
+    "bijective": 0.5728,
+    "merged": 0.5777,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     266,
+     2,
+     240,
+     43,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6165,
+    "bijective": 0.6117,
+    "merged": 0.6165,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     263,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2,
+     1,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 6,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     266,
+     2,
+     240,
+     43,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6165,
+    "bijective": 0.6117,
+    "merged": 0.6165,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "no_gain": {
+    "k": 6,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     266,
+     2,
+     240,
+     43,
+     3,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.6165,
+    "bijective": 0.6117,
+    "merged": 0.6165,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     265,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     265,
+     2,
+     167,
+     43,
+     62,
+     11,
+     3,
+     2,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged": 0.6748,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S05C01",
+  "n_windows": 408,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 6,
+   "bijective": 6,
+   "merged": 6
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     408
+    ],
+    "eligible": true,
+    "oracle": 0.2982,
+    "bijective": 0.2982,
+    "merged": 0.2982,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     13,
+     395
+    ],
+    "eligible": true,
+    "oracle": 0.386,
+    "bijective": 0.386,
+    "merged": 0.386,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     13,
+     381,
+     14
+    ],
+    "eligible": true,
+    "oracle": 0.4211,
+    "bijective": 0.4211,
+    "merged": 0.4211,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     13,
+     2,
+     379,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.4386,
+    "bijective": 0.4386,
+    "merged": 0.4386,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     13,
+     2,
+     247,
+     132,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.7018,
+    "bijective": 0.7018,
+    "merged": 0.7018,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "6": {
+    "sizes": [
+     13,
+     2,
+     150,
+     132,
+     97,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8772,
+    "merged": 0.8772,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "7": {
+    "sizes": [
+     1,
+     2,
+     150,
+     12,
+     132,
+     97,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8596,
+    "merged": 0.8772,
+    "n_clusters": 7,
+    "n_dup": 1,
+    "n_merged_clusters": 6
+   },
+   "8": {
+    "sizes": [
+     1,
+     2,
+     2,
+     12,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8421,
+    "merged": 0.8772,
+    "n_clusters": 8,
+    "n_dup": 2,
+    "n_merged_clusters": 6
+   },
+   "9": {
+    "sizes": [
+     1,
+     2,
+     2,
+     9,
+     3,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged": 0.8772,
+    "n_clusters": 9,
+    "n_dup": 3,
+    "n_merged_clusters": 6
+   },
+   "10": {
+    "sizes": [
+     1,
+     2,
+     2,
+     9,
+     3,
+     132,
+     97,
+     146,
+     2,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged": 0.8772,
+    "n_clusters": 10,
+    "n_dup": 4,
+    "n_merged_clusters": 6
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     13,
+     395
+    ],
+    "eligible": true,
+    "oracle": 0.386,
+    "bijective": 0.386,
+    "merged": 0.386,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     408
+    ],
+    "eligible": true,
+    "oracle": 0.2982,
+    "bijective": 0.2982,
+    "merged": 0.2982,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     13,
+     395
+    ],
+    "eligible": true,
+    "oracle": 0.386,
+    "bijective": 0.386,
+    "merged": 0.386,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     13,
+     2,
+     379,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.4386,
+    "bijective": 0.4386,
+    "merged": 0.4386,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     13,
+     2,
+     150,
+     132,
+     97,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8772,
+    "merged": 0.8772,
+    "n_clusters": 6,
+    "n_dup": 0,
+    "n_merged_clusters": 6
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     1,
+     2,
+     2,
+     9,
+     3,
+     132,
+     97,
+     146,
+     2,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged": 0.8772,
+    "n_clusters": 10,
+    "n_dup": 4,
+    "n_merged_clusters": 6
+   },
+   "four_criteria": {
+    "k": 8,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     1,
+     2,
+     2,
+     12,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8421,
+    "merged": 0.8772,
+    "n_clusters": 8,
+    "n_dup": 2,
+    "n_merged_clusters": 6
+   },
+   "no_gain": {
+    "k": 8,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     1,
+     2,
+     2,
+     12,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8421,
+    "merged": 0.8772,
+    "n_clusters": 8,
+    "n_dup": 2,
+    "n_merged_clusters": 6
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     1,
+     2,
+     2,
+     9,
+     3,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged": 0.8772,
+    "n_clusters": 9,
+    "n_dup": 3,
+    "n_merged_clusters": 6
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     1,
+     2,
+     2,
+     9,
+     3,
+     132,
+     97,
+     148,
+     14
+    ],
+    "eligible": false,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged": 0.8772,
+    "n_clusters": 9,
+    "n_dup": 3,
+    "n_merged_clusters": 6
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S01C01",
+  "n_windows": 513,
+  "k_prod": 5,
+  "best_k": {
+   "oracle": 5,
+   "bijective": 5,
+   "merged": 5
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     513
+    ],
+    "eligible": true,
+    "oracle": 0.28,
+    "bijective": 0.28,
+    "merged": 0.28,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     244,
+     269
+    ],
+    "eligible": true,
+    "oracle": 0.4133,
+    "bijective": 0.4,
+    "merged": 0.4133,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     125,
+     269,
+     119
+    ],
+    "eligible": true,
+    "oracle": 0.6,
+    "bijective": 0.6,
+    "merged": 0.6,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     125,
+     146,
+     123,
+     119
+    ],
+    "eligible": true,
+    "oracle": 0.72,
+    "bijective": 0.72,
+    "merged": 0.72,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "5": {
+    "sizes": [
+     125,
+     53,
+     93,
+     123,
+     119
+    ],
+    "eligible": true,
+    "oracle": 0.84,
+    "bijective": 0.84,
+    "merged": 0.84,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "6": {
+    "sizes": [
+     125,
+     51,
+     93,
+     123,
+     119,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.8267,
+    "merged": 0.84,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "7": {
+    "sizes": [
+     12,
+     51,
+     93,
+     123,
+     119,
+     113,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.7733,
+    "merged": 0.84,
+    "n_clusters": 7,
+    "n_dup": 2,
+    "n_merged_clusters": 5
+   },
+   "8": {
+    "sizes": [
+     12,
+     2,
+     93,
+     123,
+     119,
+     113,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     2,
+     2,
+     93,
+     123,
+     119,
+     113,
+     10,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     2,
+     2,
+     93,
+     123,
+     117,
+     113,
+     10,
+     2,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 5,
+    "why": "生产选择器",
+    "sizes": [
+     125,
+     53,
+     93,
+     123,
+     119
+    ],
+    "eligible": true,
+    "oracle": 0.84,
+    "bijective": 0.84,
+    "merged": 0.84,
+    "n_clusters": 5,
+    "n_dup": 0,
+    "n_merged_clusters": 5
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     513
+    ],
+    "eligible": true,
+    "oracle": 0.28,
+    "bijective": 0.28,
+    "merged": 0.28,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     244,
+     269
+    ],
+    "eligible": true,
+    "oracle": 0.4133,
+    "bijective": 0.4,
+    "merged": 0.4133,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     125,
+     146,
+     123,
+     119
+    ],
+    "eligible": true,
+    "oracle": 0.72,
+    "bijective": 0.72,
+    "merged": 0.72,
+    "n_clusters": 4,
+    "n_dup": 0,
+    "n_merged_clusters": 4
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     125,
+     51,
+     93,
+     123,
+     119,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.8267,
+    "merged": 0.84,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     2,
+     2,
+     93,
+     123,
+     117,
+     113,
+     10,
+     2,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 6,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     125,
+     51,
+     93,
+     123,
+     119,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.8267,
+    "merged": 0.84,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "no_gain": {
+    "k": 6,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     125,
+     51,
+     93,
+     123,
+     119,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.8267,
+    "merged": 0.84,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     2,
+     2,
+     93,
+     123,
+     119,
+     113,
+     10,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     2,
+     2,
+     93,
+     123,
+     119,
+     113,
+     10,
+     49,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged": 0.84,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S02C01",
+  "n_windows": 578,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 8,
+   "bijective": 6,
+   "merged": 8
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     578
+    ],
+    "eligible": true,
+    "oracle": 0.6636,
+    "bijective": 0.6636,
+    "merged": 0.6636,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     147,
+     431
+    ],
+    "eligible": true,
+    "oracle": 0.9636,
+    "bijective": 0.9636,
+    "merged": 0.9636,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     147,
+     8,
+     423
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     4,
+     8,
+     143,
+     423
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "5": {
+    "sizes": [
+     4,
+     8,
+     143,
+     422,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 5,
+    "n_dup": 2,
+    "n_merged_clusters": 3
+   },
+   "6": {
+    "sizes": [
+     4,
+     2,
+     6,
+     143,
+     422,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9818,
+    "bijective": 0.9818,
+    "merged": 0.9818,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     4,
+     2,
+     6,
+     143,
+     420,
+     2,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9818,
+    "bijective": 0.9818,
+    "merged": 0.9818,
+    "n_clusters": 7,
+    "n_dup": 3,
+    "n_merged_clusters": 4
+   },
+   "8": {
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     420,
+     2,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     420,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     415,
+     5,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     147,
+     431
+    ],
+    "eligible": true,
+    "oracle": 0.9636,
+    "bijective": 0.9636,
+    "merged": 0.9636,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     578
+    ],
+    "eligible": true,
+    "oracle": 0.6636,
+    "bijective": 0.6636,
+    "merged": 0.6636,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     147,
+     431
+    ],
+    "eligible": true,
+    "oracle": 0.9636,
+    "bijective": 0.9636,
+    "merged": 0.9636,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     4,
+     8,
+     143,
+     423
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     4,
+     2,
+     6,
+     143,
+     422,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9818,
+    "bijective": 0.9818,
+    "merged": 0.9818,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     415,
+     5,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 3,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     147,
+     8,
+     423
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "no_gain": {
+    "k": 3,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     147,
+     8,
+     423
+    ],
+    "eligible": false,
+    "oracle": 0.9727,
+    "bijective": 0.9727,
+    "merged": 0.9727,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     420,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     2,
+     2,
+     6,
+     2,
+     143,
+     420,
+     1,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged": 0.9909,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S03C01",
+  "n_windows": 570,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 6,
+   "bijective": 6,
+   "merged": 6
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     570
+    ],
+    "eligible": true,
+    "oracle": 0.5263,
+    "bijective": 0.5263,
+    "merged": 0.5263,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     246,
+     324
+    ],
+    "eligible": true,
+    "oracle": 0.9474,
+    "bijective": 0.9474,
+    "merged": 0.9474,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     245,
+     1,
+     324
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     245,
+     1,
+     322,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "5": {
+    "sizes": [
+     245,
+     1,
+     5,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 5,
+    "n_dup": 1,
+    "n_merged_clusters": 4
+   },
+   "6": {
+    "sizes": [
+     245,
+     1,
+     2,
+     3,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9825,
+    "merged": 0.9825,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "7": {
+    "sizes": [
+     244,
+     1,
+     2,
+     3,
+     1,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9825,
+    "merged": 0.9825,
+    "n_clusters": 7,
+    "n_dup": 2,
+    "n_merged_clusters": 5
+   },
+   "8": {
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "9": {
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     2,
+     316,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   },
+   "10": {
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     1,
+     316,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     246,
+     324
+    ],
+    "eligible": true,
+    "oracle": 0.9474,
+    "bijective": 0.9474,
+    "merged": 0.9474,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     570
+    ],
+    "eligible": true,
+    "oracle": 0.5263,
+    "bijective": 0.5263,
+    "merged": 0.5263,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     246,
+     324
+    ],
+    "eligible": true,
+    "oracle": 0.9474,
+    "bijective": 0.9474,
+    "merged": 0.9474,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     245,
+     1,
+     322,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     245,
+     1,
+     2,
+     3,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9825,
+    "merged": 0.9825,
+    "n_clusters": 6,
+    "n_dup": 1,
+    "n_merged_clusters": 5
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     1,
+     316,
+     1,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 10,
+    "n_dup": 5,
+    "n_merged_clusters": 5
+   },
+   "four_criteria": {
+    "k": 4,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     245,
+     1,
+     322,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "no_gain": {
+    "k": 4,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     245,
+     1,
+     322,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9649,
+    "bijective": 0.9649,
+    "merged": 0.9649,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "parent4_only": {
+    "k": 8,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     2,
+     317
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 8,
+    "n_dup": 3,
+    "n_merged_clusters": 5
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     1,
+     1,
+     2,
+     3,
+     1,
+     243,
+     2,
+     316,
+     1
+    ],
+    "eligible": false,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged": 0.9825,
+    "n_clusters": 9,
+    "n_dup": 4,
+    "n_merged_clusters": 5
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S04C01",
+  "n_windows": 585,
+  "k_prod": 2,
+  "best_k": {
+   "oracle": 5,
+   "bijective": 5,
+   "merged": 5
+  },
+  "by_k": {
+   "1": {
+    "sizes": [
+     585
+    ],
+    "eligible": true,
+    "oracle": 0.5714,
+    "bijective": 0.5714,
+    "merged": 0.5714,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "2": {
+    "sizes": [
+     169,
+     416
+    ],
+    "eligible": true,
+    "oracle": 0.9286,
+    "bijective": 0.9286,
+    "merged": 0.9286,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "3": {
+    "sizes": [
+     169,
+     4,
+     412
+    ],
+    "eligible": false,
+    "oracle": 0.9405,
+    "bijective": 0.9405,
+    "merged": 0.9405,
+    "n_clusters": 3,
+    "n_dup": 0,
+    "n_merged_clusters": 3
+   },
+   "4": {
+    "sizes": [
+     169,
+     4,
+     2,
+     410
+    ],
+    "eligible": false,
+    "oracle": 0.9405,
+    "bijective": 0.9405,
+    "merged": 0.9405,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "5": {
+    "sizes": [
+     169,
+     2,
+     2,
+     2,
+     410
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9524,
+    "merged": 0.9524,
+    "n_clusters": 5,
+    "n_dup": 1,
+    "n_merged_clusters": 4
+   },
+   "6": {
+    "sizes": [
+     169,
+     2,
+     2,
+     2,
+     408,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9524,
+    "merged": 0.9524,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "7": {
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     408,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9405,
+    "merged": 0.9524,
+    "n_clusters": 7,
+    "n_dup": 3,
+    "n_merged_clusters": 4
+   },
+   "8": {
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     406,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "9": {
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     399,
+     2,
+     7,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "10": {
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     399,
+     2,
+     5,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 10,
+    "n_dup": 6,
+    "n_merged_clusters": 4
+   }
+  },
+  "picks": {
+   "prod": {
+    "k": 2,
+    "why": "生产选择器",
+    "sizes": [
+     169,
+     416
+    ],
+    "eligible": true,
+    "oracle": 0.9286,
+    "bijective": 0.9286,
+    "merged": 0.9286,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_1": {
+    "k": 1,
+    "why": "恒选",
+    "sizes": [
+     585
+    ],
+    "eligible": true,
+    "oracle": 0.5714,
+    "bijective": 0.5714,
+    "merged": 0.5714,
+    "n_clusters": 1,
+    "n_dup": 0,
+    "n_merged_clusters": 1
+   },
+   "const_2": {
+    "k": 2,
+    "why": "恒选",
+    "sizes": [
+     169,
+     416
+    ],
+    "eligible": true,
+    "oracle": 0.9286,
+    "bijective": 0.9286,
+    "merged": 0.9286,
+    "n_clusters": 2,
+    "n_dup": 0,
+    "n_merged_clusters": 2
+   },
+   "const_4": {
+    "k": 4,
+    "why": "恒选",
+    "sizes": [
+     169,
+     4,
+     2,
+     410
+    ],
+    "eligible": false,
+    "oracle": 0.9405,
+    "bijective": 0.9405,
+    "merged": 0.9405,
+    "n_clusters": 4,
+    "n_dup": 1,
+    "n_merged_clusters": 3
+   },
+   "const_6": {
+    "k": 6,
+    "why": "恒选",
+    "sizes": [
+     169,
+     2,
+     2,
+     2,
+     408,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9524,
+    "merged": 0.9524,
+    "n_clusters": 6,
+    "n_dup": 2,
+    "n_merged_clusters": 4
+   },
+   "const_10": {
+    "k": 10,
+    "why": "恒选",
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     399,
+     2,
+     5,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 10,
+    "n_dup": 6,
+    "n_merged_clusters": 4
+   },
+   "four_criteria": {
+    "k": 8,
+    "why": "四项判据的最大 k",
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     406,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "no_gain": {
+    "k": 8,
+    "why": "四项判据去掉 gain>0",
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     406,
+     2,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 8,
+    "n_dup": 4,
+    "n_merged_clusters": 4
+   },
+   "parent4_only": {
+    "k": 9,
+    "why": "只留 parent_size>=4",
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     399,
+     2,
+     7,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   },
+   "max_level_k": {
+    "k": 9,
+    "why": "不加判据，取最大 level_k",
+    "sizes": [
+     3,
+     2,
+     2,
+     2,
+     166,
+     399,
+     2,
+     7,
+     2
+    ],
+    "eligible": false,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged": 0.9524,
+    "n_clusters": 9,
+    "n_dup": 5,
+    "n_merged_clusters": 4
+   }
+  }
+ }
+]

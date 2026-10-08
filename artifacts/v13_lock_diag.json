@@ -1,0 +1,2277 @@
+[
+ {
+  "meeting": "L_R003S01C02",
+  "n_windows": 422,
+  "n_sentences": 102,
+  "n_truth_speakers": 6,
+  "current_k": 1,
+  "current_reason": "无合格候选->k=1",
+  "eligible_ks": [],
+  "all_oracle_best": 7,
+  "elig_oracle_best": null,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 422,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.2745
+   },
+   {
+    "k": 2,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.0,
+    "score_gate_blocked": false,
+    "oracle": 0.2745
+   },
+   {
+    "k": 3,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.451
+   },
+   {
+    "k": 4,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.5686
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.7745
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.7745
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.7843
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.7843
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.7843
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.002369668246445498,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.7843
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 1,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "reason": "C回退(score<=0)->k=1",
+    "oracle": 0.2745
+   },
+   "去A+B": {
+    "selected_k": 5,
+    "silhouette": 0.2952,
+    "objective": 0.2502,
+    "reason": "A+B+C",
+    "oracle": 0.7745
+   },
+   "去A+B+C": {
+    "selected_k": 5,
+    "silhouette": 0.2952,
+    "objective": 0.2502,
+    "reason": "去A+B+C",
+    "oracle": 0.7745
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 1,
+    "oracle": 0.2745,
+    "regret": 0.5098,
+    "note": "无合格候选->k=1"
+   },
+   "全候选oracle最优": {
+    "k": 7,
+    "oracle": 0.7843,
+    "regret": 0.0,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 5,
+    "oracle": 0.7745,
+    "regret": 0.009800000000000031,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S02C02",
+  "n_windows": 281,
+  "n_sentences": 85,
+  "n_truth_speakers": 6,
+  "current_k": 4,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2,
+   3,
+   4
+  ],
+  "all_oracle_best": 6,
+  "elig_oracle_best": 4,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 281,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.5412
+   },
+   {
+    "k": 2,
+    "min_size": 8,
+    "min_share": 0.028469750889679714,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2561,
+    "objective": 0.2561,
+    "score_gate_blocked": false,
+    "oracle": 0.5647
+   },
+   {
+    "k": 3,
+    "min_size": 8,
+    "min_share": 0.028469750889679714,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2323,
+    "objective": 0.2173,
+    "score_gate_blocked": false,
+    "oracle": 0.6
+   },
+   {
+    "k": 4,
+    "min_size": 8,
+    "min_share": 0.028469750889679714,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.3234,
+    "objective": 0.2934,
+    "score_gate_blocked": false,
+    "oracle": 0.8353
+   },
+   {
+    "k": 5,
+    "min_size": 3,
+    "min_share": 0.010676156583629894,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.8353
+   },
+   {
+    "k": 6,
+    "min_size": 2,
+    "min_share": 0.0071174377224199285,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.8588
+   },
+   {
+    "k": 7,
+    "min_size": 2,
+    "min_share": 0.0071174377224199285,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.8588
+   },
+   {
+    "k": 8,
+    "min_size": 2,
+    "min_share": 0.0071174377224199285,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.8588
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0035587188612099642,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.8588
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0035587188612099642,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.8588
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 4,
+    "silhouette": 0.3234,
+    "objective": 0.2934,
+    "reason": "A+B+C",
+    "oracle": 0.8353
+   },
+   "去A+B": {
+    "selected_k": 4,
+    "silhouette": 0.3234,
+    "objective": 0.2934,
+    "reason": "A+B+C",
+    "oracle": 0.8353
+   },
+   "去A+B+C": {
+    "selected_k": 4,
+    "silhouette": 0.3234,
+    "objective": 0.2934,
+    "reason": "去A+B+C",
+    "oracle": 0.8353
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 4,
+    "oracle": 0.8353,
+    "regret": 0.023499999999999965,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 4,
+    "oracle": 0.8353,
+    "regret": 0.023499999999999965,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 6,
+    "oracle": 0.8588,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 4,
+    "oracle": 0.8353,
+    "regret": 0.023499999999999965,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 4,
+    "oracle": 0.8353,
+    "regret": 0.023499999999999965,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S03C02",
+  "n_windows": 387,
+  "n_sentences": 83,
+  "n_truth_speakers": 6,
+  "current_k": 3,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2,
+   3
+  ],
+  "all_oracle_best": 7,
+  "elig_oracle_best": 3,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 387,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.3614
+   },
+   {
+    "k": 2,
+    "min_size": 9,
+    "min_share": 0.023255813953488372,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2007,
+    "objective": 0.2007,
+    "score_gate_blocked": false,
+    "oracle": 0.3976
+   },
+   {
+    "k": 3,
+    "min_size": 9,
+    "min_share": 0.023255813953488372,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.3235,
+    "objective": 0.3085,
+    "score_gate_blocked": false,
+    "oracle": 0.6024
+   },
+   {
+    "k": 4,
+    "min_size": 4,
+    "min_share": 0.0103359173126615,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.6145
+   },
+   {
+    "k": 5,
+    "min_size": 3,
+    "min_share": 0.007751937984496124,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.6265
+   },
+   {
+    "k": 6,
+    "min_size": 3,
+    "min_share": 0.007751937984496124,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.8434
+   },
+   {
+    "k": 7,
+    "min_size": 2,
+    "min_share": 0.00516795865633075,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.8554
+   },
+   {
+    "k": 8,
+    "min_size": 2,
+    "min_share": 0.00516795865633075,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.8554
+   },
+   {
+    "k": 9,
+    "min_size": 2,
+    "min_share": 0.00516795865633075,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.8554
+   },
+   {
+    "k": 10,
+    "min_size": 2,
+    "min_share": 0.00516795865633075,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.8554
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 3,
+    "silhouette": 0.3235,
+    "objective": 0.3085,
+    "reason": "A+B+C",
+    "oracle": 0.6024
+   },
+   "去A+B": {
+    "selected_k": 3,
+    "silhouette": 0.3235,
+    "objective": 0.3085,
+    "reason": "A+B+C",
+    "oracle": 0.6024
+   },
+   "去A+B+C": {
+    "selected_k": 3,
+    "silhouette": 0.3235,
+    "objective": 0.3085,
+    "reason": "去A+B+C",
+    "oracle": 0.6024
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 3,
+    "oracle": 0.6024,
+    "regret": 0.253,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 3,
+    "oracle": 0.6024,
+    "regret": 0.253,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 7,
+    "oracle": 0.8554,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 3,
+    "oracle": 0.6024,
+    "regret": 0.253,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 3,
+    "oracle": 0.6024,
+    "regret": 0.253,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "L_R003S04C02",
+  "n_windows": 485,
+  "n_sentences": 119,
+  "n_truth_speakers": 6,
+  "current_k": 4,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2,
+   3,
+   4
+  ],
+  "all_oracle_best": 6,
+  "elig_oracle_best": 4,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 485,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.4538
+   },
+   {
+    "k": 2,
+    "min_size": 12,
+    "min_share": 0.024742268041237112,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2029,
+    "objective": 0.2029,
+    "score_gate_blocked": false,
+    "oracle": 0.4958
+   },
+   {
+    "k": 3,
+    "min_size": 9,
+    "min_share": 0.018556701030927835,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.1811,
+    "objective": 0.1661,
+    "score_gate_blocked": false,
+    "oracle": 0.5042
+   },
+   {
+    "k": 4,
+    "min_size": 9,
+    "min_share": 0.018556701030927835,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2505,
+    "objective": 0.2205,
+    "score_gate_blocked": false,
+    "oracle": 0.7983
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.7983
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.8067
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.8067
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.8067
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.8067
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.002061855670103093,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.8067
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 4,
+    "silhouette": 0.2505,
+    "objective": 0.2205,
+    "reason": "A+B+C",
+    "oracle": 0.7983
+   },
+   "去A+B": {
+    "selected_k": 4,
+    "silhouette": 0.2505,
+    "objective": 0.2205,
+    "reason": "A+B+C",
+    "oracle": 0.7983
+   },
+   "去A+B+C": {
+    "selected_k": 4,
+    "silhouette": 0.2505,
+    "objective": 0.2205,
+    "reason": "去A+B+C",
+    "oracle": 0.7983
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 4,
+    "oracle": 0.7983,
+    "regret": 0.008399999999999963,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 4,
+    "oracle": 0.7983,
+    "regret": 0.008399999999999963,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 6,
+    "oracle": 0.8067,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 4,
+    "oracle": 0.7983,
+    "regret": 0.008399999999999963,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 4,
+    "oracle": 0.7983,
+    "regret": 0.008399999999999963,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S01C01",
+  "n_windows": 367,
+  "n_sentences": 83,
+  "n_truth_speakers": 6,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 5,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 367,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.4578
+   },
+   {
+    "k": 2,
+    "min_size": 137,
+    "min_share": 0.37329700272479566,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.4759,
+    "objective": 0.4759,
+    "score_gate_blocked": false,
+    "oracle": 0.747
+   },
+   {
+    "k": 3,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.747
+   },
+   {
+    "k": 4,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.759
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0027247956403269754,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.7711
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.4759,
+    "objective": 0.4759,
+    "reason": "A+B+C",
+    "oracle": 0.747
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.4759,
+    "objective": 0.4759,
+    "reason": "A+B+C",
+    "oracle": 0.747
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.4759,
+    "objective": 0.4759,
+    "reason": "去A+B+C",
+    "oracle": 0.747
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.747,
+    "regret": 0.02410000000000001,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.747,
+    "regret": 0.02410000000000001,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 5,
+    "oracle": 0.7711,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.747,
+    "regret": 0.02410000000000001,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.747,
+    "regret": 0.02410000000000001,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S02C01",
+  "n_windows": 373,
+  "n_sentences": 89,
+  "n_truth_speakers": 6,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 10,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 373,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.4607
+   },
+   {
+    "k": 2,
+    "min_size": 126,
+    "min_share": 0.3378016085790885,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.3887,
+    "objective": 0.3887,
+    "score_gate_blocked": false,
+    "oracle": 0.6742
+   },
+   {
+    "k": 3,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.6742
+   },
+   {
+    "k": 4,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.6966
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.6966
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.7079
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.7079
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.7079
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.7191
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.002680965147453083,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.7303
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.3887,
+    "objective": 0.3887,
+    "reason": "A+B+C",
+    "oracle": 0.6742
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.3887,
+    "objective": 0.3887,
+    "reason": "A+B+C",
+    "oracle": 0.6742
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.3887,
+    "objective": 0.3887,
+    "reason": "去A+B+C",
+    "oracle": 0.6742
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.6742,
+    "regret": 0.05609999999999993,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.6742,
+    "regret": 0.05609999999999993,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 10,
+    "oracle": 0.7303,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.6742,
+    "regret": 0.05609999999999993,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.6742,
+    "regret": 0.05609999999999993,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S04C01",
+  "n_windows": 556,
+  "n_sentences": 206,
+  "n_truth_speakers": 6,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 8,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 556,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.3738
+   },
+   {
+    "k": 2,
+    "min_size": 271,
+    "min_share": 0.48741007194244607,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.3167,
+    "objective": 0.3167,
+    "score_gate_blocked": false,
+    "oracle": 0.5728
+   },
+   {
+    "k": 3,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.5777
+   },
+   {
+    "k": 4,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.5777
+   },
+   {
+    "k": 5,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.5777
+   },
+   {
+    "k": 6,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.6165
+   },
+   {
+    "k": 7,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.6748
+   },
+   {
+    "k": 8,
+    "min_size": 2,
+    "min_share": 0.0035971223021582736,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.6796
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0017985611510791368,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.6796
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0017985611510791368,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.6796
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.3167,
+    "objective": 0.3167,
+    "reason": "A+B+C",
+    "oracle": 0.5728
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.3164,
+    "objective": 0.3164,
+    "reason": "A+B+C",
+    "oracle": 0.5728
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.3164,
+    "objective": 0.3164,
+    "reason": "去A+B+C",
+    "oracle": 0.5728
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.5728,
+    "regret": 0.1068,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.5728,
+    "regret": 0.1068,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 8,
+    "oracle": 0.6796,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.5728,
+    "regret": 0.1068,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.5728,
+    "regret": 0.1068,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "M_R003S05C01",
+  "n_windows": 408,
+  "n_sentences": 57,
+  "n_truth_speakers": 6,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2,
+   3
+  ],
+  "all_oracle_best": 6,
+  "elig_oracle_best": 3,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 408,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.2982
+   },
+   {
+    "k": 2,
+    "min_size": 13,
+    "min_share": 0.031862745098039214,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2972,
+    "objective": 0.2972,
+    "score_gate_blocked": false,
+    "oracle": 0.386
+   },
+   {
+    "k": 3,
+    "min_size": 13,
+    "min_share": 0.031862745098039214,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2314,
+    "objective": 0.2164,
+    "score_gate_blocked": false,
+    "oracle": 0.4211
+   },
+   {
+    "k": 4,
+    "min_size": 2,
+    "min_share": 0.004901960784313725,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.4386
+   },
+   {
+    "k": 5,
+    "min_size": 2,
+    "min_share": 0.004901960784313725,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.7018
+   },
+   {
+    "k": 6,
+    "min_size": 2,
+    "min_share": 0.004901960784313725,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.8772
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.0024509803921568627,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.8772
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.0024509803921568627,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.8772
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0024509803921568627,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.8772
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0024509803921568627,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.8772
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 6,
+    "silhouette": 0.395,
+    "objective": 0.335,
+    "reason": "A+B+C",
+    "oracle": 0.8772
+   },
+   "去A+B": {
+    "selected_k": 6,
+    "silhouette": 0.395,
+    "objective": 0.335,
+    "reason": "A+B+C",
+    "oracle": 0.8772
+   },
+   "去A+B+C": {
+    "selected_k": 6,
+    "silhouette": 0.395,
+    "objective": 0.335,
+    "reason": "去A+B+C",
+    "oracle": 0.8772
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.386,
+    "regret": 0.49119999999999997,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 3,
+    "oracle": 0.4211,
+    "regret": 0.4561,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 6,
+    "oracle": 0.8772,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 3,
+    "oracle": 0.4211,
+    "regret": 0.4561,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 6,
+    "oracle": 0.8772,
+    "regret": 0.0,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S01C01",
+  "n_windows": 513,
+  "n_sentences": 75,
+  "n_truth_speakers": 5,
+  "current_k": 5,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "all_oracle_best": 5,
+  "elig_oracle_best": 5,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 513,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.28
+   },
+   {
+    "k": 2,
+    "min_size": 244,
+    "min_share": 0.4756335282651072,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.2622,
+    "objective": 0.2622,
+    "score_gate_blocked": false,
+    "oracle": 0.4133
+   },
+   {
+    "k": 3,
+    "min_size": 119,
+    "min_share": 0.23196881091617932,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.3324,
+    "objective": 0.3174,
+    "score_gate_blocked": false,
+    "oracle": 0.6
+   },
+   {
+    "k": 4,
+    "min_size": 119,
+    "min_share": 0.23196881091617932,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.396,
+    "objective": 0.366,
+    "score_gate_blocked": false,
+    "oracle": 0.72
+   },
+   {
+    "k": 5,
+    "min_size": 53,
+    "min_share": 0.10331384015594541,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.4373,
+    "objective": 0.3923,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   },
+   {
+    "k": 6,
+    "min_size": 2,
+    "min_share": 0.003898635477582846,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   },
+   {
+    "k": 7,
+    "min_size": 2,
+    "min_share": 0.003898635477582846,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   },
+   {
+    "k": 8,
+    "min_size": 2,
+    "min_share": 0.003898635477582846,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   },
+   {
+    "k": 9,
+    "min_size": 2,
+    "min_share": 0.003898635477582846,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   },
+   {
+    "k": 10,
+    "min_size": 2,
+    "min_share": 0.003898635477582846,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.84
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 5,
+    "silhouette": 0.4373,
+    "objective": 0.3923,
+    "reason": "A+B+C",
+    "oracle": 0.84
+   },
+   "去A+B": {
+    "selected_k": 5,
+    "silhouette": 0.4373,
+    "objective": 0.3923,
+    "reason": "A+B+C",
+    "oracle": 0.84
+   },
+   "去A+B+C": {
+    "selected_k": 5,
+    "silhouette": 0.4373,
+    "objective": 0.3923,
+    "reason": "去A+B+C",
+    "oracle": 0.84
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 5,
+    "oracle": 0.84,
+    "regret": 0.0,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 5,
+    "oracle": 0.84,
+    "regret": 0.0,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 5,
+    "oracle": 0.84,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 5,
+    "oracle": 0.84,
+    "regret": 0.0,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 5,
+    "oracle": 0.84,
+    "regret": 0.0,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S02C01",
+  "n_windows": 578,
+  "n_sentences": 110,
+  "n_truth_speakers": 5,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 8,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 578,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.6636
+   },
+   {
+    "k": 2,
+    "min_size": 147,
+    "min_share": 0.25432525951557095,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.4839,
+    "objective": 0.4839,
+    "score_gate_blocked": false,
+    "oracle": 0.9636
+   },
+   {
+    "k": 3,
+    "min_size": 8,
+    "min_share": 0.01384083044982699,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.9727
+   },
+   {
+    "k": 4,
+    "min_size": 4,
+    "min_share": 0.006920415224913495,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.9727
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.9727
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.9818
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.9818
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.9909
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.9909
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0017301038062283738,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.9909
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.4839,
+    "objective": 0.4839,
+    "reason": "A+B+C",
+    "oracle": 0.9636
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.4854,
+    "objective": 0.4854,
+    "reason": "A+B+C",
+    "oracle": 0.9636
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.4854,
+    "objective": 0.4854,
+    "reason": "去A+B+C",
+    "oracle": 0.9636
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.9636,
+    "regret": 0.02729999999999999,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.9636,
+    "regret": 0.02729999999999999,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 8,
+    "oracle": 0.9909,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.9636,
+    "regret": 0.02729999999999999,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.9636,
+    "regret": 0.02729999999999999,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S03C01",
+  "n_windows": 570,
+  "n_sentences": 57,
+  "n_truth_speakers": 5,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 6,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 570,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.5263
+   },
+   {
+    "k": 2,
+    "min_size": 246,
+    "min_share": 0.43157894736842106,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.5039,
+    "objective": 0.5039,
+    "score_gate_blocked": false,
+    "oracle": 0.9474
+   },
+   {
+    "k": 3,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.9649
+   },
+   {
+    "k": 4,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.9649
+   },
+   {
+    "k": 5,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.9649
+   },
+   {
+    "k": 6,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.9825
+   },
+   {
+    "k": 7,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.9825
+   },
+   {
+    "k": 8,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.9825
+   },
+   {
+    "k": 9,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.9825
+   },
+   {
+    "k": 10,
+    "min_size": 1,
+    "min_share": 0.0017543859649122807,
+    "has_orphan": true,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.9825
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.5039,
+    "objective": 0.5039,
+    "reason": "A+B+C",
+    "oracle": 0.9474
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.5034,
+    "objective": 0.5034,
+    "reason": "A+B+C",
+    "oracle": 0.9474
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.5034,
+    "objective": 0.5034,
+    "reason": "去A+B+C",
+    "oracle": 0.9474
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.9474,
+    "regret": 0.03510000000000002,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.9474,
+    "regret": 0.03510000000000002,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 6,
+    "oracle": 0.9825,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.9474,
+    "regret": 0.03510000000000002,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.9474,
+    "regret": 0.03510000000000002,
+    "note": "A+B+C"
+   }
+  }
+ },
+ {
+  "meeting": "S_R004S04C01",
+  "n_windows": 585,
+  "n_sentences": 84,
+  "n_truth_speakers": 5,
+  "current_k": 2,
+  "current_reason": "A+B+C",
+  "eligible_ks": [
+   2
+  ],
+  "all_oracle_best": 5,
+  "elig_oracle_best": 2,
+  "per_k": [
+   {
+    "k": 1,
+    "min_size": 585,
+    "min_share": 1.0,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.0,
+    "objective": 0.0,
+    "score_gate_blocked": false,
+    "oracle": 0.5714
+   },
+   {
+    "k": 2,
+    "min_size": 169,
+    "min_share": 0.28888888888888886,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": true,
+    "silhouette": 0.4858,
+    "objective": 0.4858,
+    "score_gate_blocked": false,
+    "oracle": 0.9286
+   },
+   {
+    "k": 3,
+    "min_size": 4,
+    "min_share": 0.006837606837606838,
+    "has_orphan": false,
+    "has_tiny2": false,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.015,
+    "score_gate_blocked": false,
+    "oracle": 0.9405
+   },
+   {
+    "k": 4,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.03,
+    "score_gate_blocked": false,
+    "oracle": 0.9405
+   },
+   {
+    "k": 5,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.045,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   },
+   {
+    "k": 6,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.06,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   },
+   {
+    "k": 7,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.075,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   },
+   {
+    "k": 8,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.09,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   },
+   {
+    "k": 9,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.105,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   },
+   {
+    "k": 10,
+    "min_size": 2,
+    "min_share": 0.003418803418803419,
+    "has_orphan": false,
+    "has_tiny2": true,
+    "eligible": false,
+    "silhouette": -1.0,
+    "objective": -1.12,
+    "score_gate_blocked": false,
+    "oracle": 0.9524
+   }
+  ],
+  "locks": {
+   "去A": {
+    "selected_k": 2,
+    "silhouette": 0.4858,
+    "objective": 0.4858,
+    "reason": "A+B+C",
+    "oracle": 0.9286
+   },
+   "去A+B": {
+    "selected_k": 2,
+    "silhouette": 0.4851,
+    "objective": 0.4851,
+    "reason": "A+B+C",
+    "oracle": 0.9286
+   },
+   "去A+B+C": {
+    "selected_k": 2,
+    "silhouette": 0.4851,
+    "objective": 0.4851,
+    "reason": "去A+B+C",
+    "oracle": 0.9286
+   }
+  },
+  "rules": {
+   "现行(silhouette/objective)": {
+    "k": 2,
+    "oracle": 0.9286,
+    "regret": 0.023800000000000043,
+    "note": "A+B+C"
+   },
+   "合格集内oracle最优": {
+    "k": 2,
+    "oracle": 0.9286,
+    "regret": 0.023800000000000043,
+    "note": ""
+   },
+   "全候选oracle最优": {
+    "k": 5,
+    "oracle": 0.9524,
+    "regret": 0.0,
+    "note": ""
+   },
+   "取最大合格k": {
+    "k": 2,
+    "oracle": 0.9286,
+    "regret": 0.023800000000000043,
+    "note": ""
+   },
+   "轮廓忽略孤窗(去A+B)": {
+    "k": 2,
+    "oracle": 0.9286,
+    "regret": 0.023800000000000043,
+    "note": "A+B+C"
+   }
+  }
+ }
+]

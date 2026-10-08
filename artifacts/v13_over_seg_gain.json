@@ -1,0 +1,2730 @@
+[
+ {
+  "meeting": "L_R003S01C02",
+  "n_windows": 422,
+  "n_sentences": 102,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 58,
+  "n_overlap_windows": 62,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.7745,
+    "bijective": 0.7549,
+    "merged_oracle": 0.7549,
+    "merged_bijective": 0.7549,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 19,
+      "dominant": "006-M",
+      "purity": 0.4211,
+      "truth_mix": {
+       "006-M": 8,
+       "002-F": 6,
+       "005-M": 3,
+       "004-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 125
+     },
+     {
+      "cluster": 1,
+      "n_windows": 105,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 105
+      },
+      "is_dup": false,
+      "speaker_home_size": 105
+     },
+     {
+      "cluster": 2,
+      "n_windows": 121,
+      "dominant": "004-M",
+      "purity": 0.9587,
+      "truth_mix": {
+       "004-M": 116,
+       "002-F": 2,
+       "006-M": 2,
+       "007-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 121
+     },
+     {
+      "cluster": 3,
+      "n_windows": 125,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 125
+      },
+      "is_dup": false,
+      "speaker_home_size": 125
+     },
+     {
+      "cluster": 4,
+      "n_windows": 1,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 105
+     },
+     {
+      "cluster": 5,
+      "n_windows": 51,
+      "dominant": "002-F",
+      "purity": 0.9608,
+      "truth_mix": {
+       "002-F": 49,
+       "004-M": 1,
+       "006-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 51
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.7843,
+    "bijective": 0.7353,
+    "merged_oracle": 0.7647,
+    "merged_bijective": 0.7647,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 15,
+      "dominant": "006-M",
+      "purity": 0.5333,
+      "truth_mix": {
+       "006-M": 8,
+       "002-F": 5,
+       "005-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 115
+     },
+     {
+      "cluster": 1,
+      "n_windows": 4,
+      "dominant": "002-F",
+      "purity": 0.25,
+      "truth_mix": {
+       "002-F": 1,
+       "004-M": 1,
+       "003-F": 1,
+       "005-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 51
+     },
+     {
+      "cluster": 2,
+      "n_windows": 105,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 105
+      },
+      "is_dup": false,
+      "speaker_home_size": 105
+     },
+     {
+      "cluster": 3,
+      "n_windows": 2,
+      "dominant": "007-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "007-M": 1,
+       "004-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 4,
+      "n_windows": 115,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 115
+      },
+      "is_dup": false,
+      "speaker_home_size": 115
+     },
+     {
+      "cluster": 5,
+      "n_windows": 117,
+      "dominant": "004-M",
+      "purity": 0.9829,
+      "truth_mix": {
+       "004-M": 115,
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 117
+     },
+     {
+      "cluster": 6,
+      "n_windows": 1,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 105
+     },
+     {
+      "cluster": 7,
+      "n_windows": 51,
+      "dominant": "002-F",
+      "purity": 0.9608,
+      "truth_mix": {
+       "002-F": 49,
+       "004-M": 1,
+       "006-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 51
+     },
+     {
+      "cluster": 8,
+      "n_windows": 2,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 115
+     },
+     {
+      "cluster": 9,
+      "n_windows": 10,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 10
+      },
+      "is_dup": true,
+      "speaker_home_size": 115
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0098,
+  "gain_bijective": -0.0196,
+  "gain_merged": -0.0098,
+  "new_speakers": [
+   "007-M"
+  ],
+  "lost_speakers": [],
+  "n_new_speakers": 1
+ },
+ {
+  "meeting": "L_R003S02C02",
+  "n_windows": 281,
+  "n_sentences": 85,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 18,
+  "n_overlap_windows": 18,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.8588,
+    "bijective": 0.8588,
+    "merged_oracle": 0.8588,
+    "merged_bijective": 0.8588,
+    "merged_clusters": 6,
+    "dup_clusters": 0,
+    "dup_share": 0.0,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 3,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 3
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 1,
+      "n_windows": 3,
+      "dominant": "003-F",
+      "purity": 0.6667,
+      "truth_mix": {
+       "003-F": 2,
+       "002-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "004-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 90,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 90
+      },
+      "is_dup": false,
+      "speaker_home_size": 90
+     },
+     {
+      "cluster": 4,
+      "n_windows": 173,
+      "dominant": "006-M",
+      "purity": 0.9538,
+      "truth_mix": {
+       "006-M": 165,
+       "007-M": 8
+      },
+      "is_dup": false,
+      "speaker_home_size": 173
+     },
+     {
+      "cluster": 5,
+      "n_windows": 10,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 10
+      },
+      "is_dup": false,
+      "speaker_home_size": 10
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.8588,
+    "bijective": 0.7882,
+    "merged_oracle": 0.8588,
+    "merged_bijective": 0.8588,
+    "merged_clusters": 6,
+    "dup_clusters": 4,
+    "dup_share": 0.4,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 3,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 3
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 1,
+      "n_windows": 1,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "004-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 90,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 90
+      },
+      "is_dup": false,
+      "speaker_home_size": 90
+     },
+     {
+      "cluster": 4,
+      "n_windows": 3,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 151
+     },
+     {
+      "cluster": 5,
+      "n_windows": 10,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 10
+      },
+      "is_dup": false,
+      "speaker_home_size": 10
+     },
+     {
+      "cluster": 6,
+      "n_windows": 18,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 18
+      },
+      "is_dup": true,
+      "speaker_home_size": 151
+     },
+     {
+      "cluster": 7,
+      "n_windows": 151,
+      "dominant": "006-M",
+      "purity": 0.947,
+      "truth_mix": {
+       "006-M": 143,
+       "007-M": 8
+      },
+      "is_dup": false,
+      "speaker_home_size": 151
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 151
+     },
+     {
+      "cluster": 9,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-F": 1,
+       "003-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 3
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0706,
+  "gain_merged": 0.0,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "L_R003S03C02",
+  "n_windows": 387,
+  "n_sentences": 83,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 32,
+  "n_overlap_windows": 32,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.8434,
+    "bijective": 0.8434,
+    "merged_oracle": 0.8434,
+    "merged_bijective": 0.8434,
+    "merged_clusters": 6,
+    "dup_clusters": 0,
+    "dup_share": 0.0,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 9,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 9
+      },
+      "is_dup": false,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 1,
+      "n_windows": 4,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 4
+      },
+      "is_dup": false,
+      "speaker_home_size": 4
+     },
+     {
+      "cluster": 2,
+      "n_windows": 117,
+      "dominant": "003-F",
+      "purity": 0.9915,
+      "truth_mix": {
+       "003-F": 116,
+       "002-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 117
+     },
+     {
+      "cluster": 3,
+      "n_windows": 3,
+      "dominant": "004-M",
+      "purity": 0.6667,
+      "truth_mix": {
+       "004-M": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 4,
+      "n_windows": 78,
+      "dominant": "005-M",
+      "purity": 0.9744,
+      "truth_mix": {
+       "005-M": 76,
+       "006-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 78
+     },
+     {
+      "cluster": 5,
+      "n_windows": 176,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 176
+      },
+      "is_dup": false,
+      "speaker_home_size": 176
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.8554,
+    "bijective": 0.8193,
+    "merged_oracle": 0.8554,
+    "merged_bijective": 0.8434,
+    "merged_clusters": 7,
+    "dup_clusters": 3,
+    "dup_share": 0.3,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 9,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 9
+      },
+      "is_dup": false,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 117,
+      "dominant": "003-F",
+      "purity": 0.9915,
+      "truth_mix": {
+       "003-F": 116,
+       "002-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 117
+     },
+     {
+      "cluster": 3,
+      "n_windows": 3,
+      "dominant": "004-M",
+      "purity": 0.6667,
+      "truth_mix": {
+       "004-M": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 4,
+      "n_windows": 71,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 71
+      },
+      "is_dup": false,
+      "speaker_home_size": 71
+     },
+     {
+      "cluster": 5,
+      "n_windows": 2,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 176
+     },
+     {
+      "cluster": 6,
+      "n_windows": 176,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 176
+      },
+      "is_dup": false,
+      "speaker_home_size": 176
+     },
+     {
+      "cluster": 7,
+      "n_windows": 2,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 71
+     },
+     {
+      "cluster": 8,
+      "n_windows": 3,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 71
+     },
+     {
+      "cluster": 9,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.012,
+  "gain_bijective": -0.0241,
+  "gain_merged": 0.012,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "L_R003S04C02",
+  "n_windows": 485,
+  "n_sentences": 119,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 48,
+  "n_overlap_windows": 48,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.8067,
+    "bijective": 0.8067,
+    "merged_oracle": 0.7983,
+    "merged_bijective": 0.7983,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 12,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 12
+      },
+      "is_dup": false,
+      "speaker_home_size": 12
+     },
+     {
+      "cluster": 1,
+      "n_windows": 9,
+      "dominant": "002-F",
+      "purity": 0.8889,
+      "truth_mix": {
+       "002-F": 8,
+       "006-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 2,
+      "n_windows": 6,
+      "dominant": "006-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "006-M": 3,
+       "004-M": 2,
+       "003-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 298
+     },
+     {
+      "cluster": 3,
+      "n_windows": 298,
+      "dominant": "006-M",
+      "purity": 0.9899,
+      "truth_mix": {
+       "006-M": 295,
+       "002-F": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 298
+     },
+     {
+      "cluster": 4,
+      "n_windows": 159,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 159
+      },
+      "is_dup": false,
+      "speaker_home_size": 159
+     },
+     {
+      "cluster": 5,
+      "n_windows": 1,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 159
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.8067,
+    "bijective": 0.7395,
+    "merged_oracle": 0.8067,
+    "merged_bijective": 0.8067,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 12,
+      "dominant": "007-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "007-M": 12
+      },
+      "is_dup": false,
+      "speaker_home_size": 12
+     },
+     {
+      "cluster": 1,
+      "n_windows": 1,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 8
+     },
+     {
+      "cluster": 2,
+      "n_windows": 5,
+      "dominant": "004-M",
+      "purity": 0.4,
+      "truth_mix": {
+       "004-M": 2,
+       "006-M": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 5
+     },
+     {
+      "cluster": 3,
+      "n_windows": 37,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 37
+      },
+      "is_dup": true,
+      "speaker_home_size": 260
+     },
+     {
+      "cluster": 4,
+      "n_windows": 1,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 260
+     },
+     {
+      "cluster": 5,
+      "n_windows": 260,
+      "dominant": "006-M",
+      "purity": 0.9885,
+      "truth_mix": {
+       "006-M": 257,
+       "002-F": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 260
+     },
+     {
+      "cluster": 6,
+      "n_windows": 8,
+      "dominant": "002-F",
+      "purity": 0.875,
+      "truth_mix": {
+       "002-F": 7,
+       "006-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 8
+     },
+     {
+      "cluster": 7,
+      "n_windows": 1,
+      "dominant": "006-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 260
+     },
+     {
+      "cluster": 8,
+      "n_windows": 159,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 159
+      },
+      "is_dup": false,
+      "speaker_home_size": 159
+     },
+     {
+      "cluster": 9,
+      "n_windows": 1,
+      "dominant": "005-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 159
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0672,
+  "gain_merged": 0.0,
+  "new_speakers": [
+   "004-M"
+  ],
+  "lost_speakers": [],
+  "n_new_speakers": 1
+ },
+ {
+  "meeting": "M_R003S01C01",
+  "n_windows": 367,
+  "n_sentences": 83,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 15,
+  "n_overlap_windows": 15,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.7711,
+    "bijective": 0.747,
+    "merged_oracle": 0.759,
+    "merged_bijective": 0.759,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 136,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 136
+      },
+      "is_dup": false,
+      "speaker_home_size": 136
+     },
+     {
+      "cluster": 1,
+      "n_windows": 3,
+      "dominant": "002-M",
+      "purity": 0.6667,
+      "truth_mix": {
+       "002-M": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 2,
+      "n_windows": 4,
+      "dominant": "003-F",
+      "purity": 0.25,
+      "truth_mix": {
+       "003-F": 1,
+       "004-F": 1,
+       "005-F": 1,
+       "006-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 4
+     },
+     {
+      "cluster": 3,
+      "n_windows": 222,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 222
+      },
+      "is_dup": false,
+      "speaker_home_size": 222
+     },
+     {
+      "cluster": 4,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 136
+     },
+     {
+      "cluster": 5,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 136
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.7711,
+    "bijective": 0.7108,
+    "merged_oracle": 0.759,
+    "merged_bijective": 0.759,
+    "merged_clusters": 4,
+    "dup_clusters": 6,
+    "dup_share": 0.6,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 8,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 8
+      },
+      "is_dup": true,
+      "speaker_home_size": 126
+     },
+     {
+      "cluster": 1,
+      "n_windows": 3,
+      "dominant": "002-M",
+      "purity": 0.6667,
+      "truth_mix": {
+       "002-M": 2,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 2,
+      "n_windows": 3,
+      "dominant": "003-F",
+      "purity": 0.3333,
+      "truth_mix": {
+       "003-F": 1,
+       "004-F": 1,
+       "005-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 3,
+      "n_windows": 222,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 222
+      },
+      "is_dup": false,
+      "speaker_home_size": 222
+     },
+     {
+      "cluster": 4,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 126
+     },
+     {
+      "cluster": 5,
+      "n_windows": 126,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 126
+      },
+      "is_dup": false,
+      "speaker_home_size": 126
+     },
+     {
+      "cluster": 6,
+      "n_windows": 1,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 222
+     },
+     {
+      "cluster": 7,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 126
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 126
+     },
+     {
+      "cluster": 9,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 126
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0362,
+  "gain_merged": -0.0121,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "M_R003S02C01",
+  "n_windows": 373,
+  "n_sentences": 89,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 47,
+  "n_overlap_windows": 58,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.7079,
+    "bijective": 0.6966,
+    "merged_oracle": 0.7079,
+    "merged_bijective": 0.7079,
+    "merged_clusters": 3,
+    "dup_clusters": 3,
+    "dup_share": 0.5,
+    "distinct_dominant": 3,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 122
+     },
+     {
+      "cluster": 1,
+      "n_windows": 4,
+      "dominant": "002-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-M": 2,
+       "003-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 4
+     },
+     {
+      "cluster": 2,
+      "n_windows": 32,
+      "dominant": "001-M",
+      "purity": 0.4688,
+      "truth_mix": {
+       "001-M": 15,
+       "005-F": 11,
+       "004-F": 5,
+       "006-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 122
+     },
+     {
+      "cluster": 3,
+      "n_windows": 122,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 122
+      },
+      "is_dup": false,
+      "speaker_home_size": 122
+     },
+     {
+      "cluster": 4,
+      "n_windows": 211,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 211
+      },
+      "is_dup": false,
+      "speaker_home_size": 211
+     },
+     {
+      "cluster": 5,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 122
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.7303,
+    "bijective": 0.7191,
+    "merged_oracle": 0.7303,
+    "merged_bijective": 0.7303,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 120
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 5,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 5
+      },
+      "is_dup": false,
+      "speaker_home_size": 5
+     },
+     {
+      "cluster": 4,
+      "n_windows": 27,
+      "dominant": "001-M",
+      "purity": 0.5556,
+      "truth_mix": {
+       "001-M": 15,
+       "005-F": 11,
+       "006-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 120
+     },
+     {
+      "cluster": 5,
+      "n_windows": 120,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 120
+      },
+      "is_dup": false,
+      "speaker_home_size": 120
+     },
+     {
+      "cluster": 6,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 120
+     },
+     {
+      "cluster": 7,
+      "n_windows": 211,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 211
+      },
+      "is_dup": false,
+      "speaker_home_size": 211
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 120
+     },
+     {
+      "cluster": 9,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 120
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0224,
+  "gain_bijective": 0.0225,
+  "gain_merged": 0.0224,
+  "new_speakers": [
+   "003-F",
+   "004-F"
+  ],
+  "lost_speakers": [],
+  "n_new_speakers": 2
+ },
+ {
+  "meeting": "M_R003S04C01",
+  "n_windows": 556,
+  "n_sentences": 206,
+  "truth_speakers": 6,
+  "visible_speakers": 5,
+  "n_boundary_windows": 192,
+  "n_overlap_windows": 194,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.6165,
+    "bijective": 0.6117,
+    "merged_oracle": 0.6165,
+    "merged_bijective": 0.6165,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 266,
+      "dominant": "001-M",
+      "purity": 0.9925,
+      "truth_mix": {
+       "001-M": 264,
+       "006-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 266
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 240,
+      "dominant": "004-F",
+      "purity": 0.5875,
+      "truth_mix": {
+       "004-F": 141,
+       "006-F": 75,
+       "001-M": 15,
+       "005-F": 9
+      },
+      "is_dup": false,
+      "speaker_home_size": 240
+     },
+     {
+      "cluster": 3,
+      "n_windows": 43,
+      "dominant": "005-F",
+      "purity": 0.907,
+      "truth_mix": {
+       "005-F": 39,
+       "006-F": 2,
+       "004-F": 1,
+       "001-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 43
+     },
+     {
+      "cluster": 4,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 266
+     },
+     {
+      "cluster": 5,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 266
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.6796,
+    "bijective": 0.665,
+    "merged_oracle": 0.6748,
+    "merged_bijective": 0.6748,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 263,
+      "dominant": "001-M",
+      "purity": 0.9924,
+      "truth_mix": {
+       "001-M": 261,
+       "006-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 263
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-M": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 167,
+      "dominant": "004-F",
+      "purity": 0.8323,
+      "truth_mix": {
+       "004-F": 139,
+       "001-M": 11,
+       "006-F": 11,
+       "005-F": 6
+      },
+      "is_dup": false,
+      "speaker_home_size": 167
+     },
+     {
+      "cluster": 3,
+      "n_windows": 43,
+      "dominant": "005-F",
+      "purity": 0.907,
+      "truth_mix": {
+       "005-F": 39,
+       "006-F": 2,
+       "004-F": 1,
+       "001-M": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 43
+     },
+     {
+      "cluster": 4,
+      "n_windows": 62,
+      "dominant": "006-F",
+      "purity": 0.9516,
+      "truth_mix": {
+       "006-F": 59,
+       "005-F": 2,
+       "004-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 62
+     },
+     {
+      "cluster": 5,
+      "n_windows": 11,
+      "dominant": "006-F",
+      "purity": 0.4545,
+      "truth_mix": {
+       "006-F": 5,
+       "001-M": 4,
+       "004-F": 1,
+       "005-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 62
+     },
+     {
+      "cluster": 6,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 263
+     },
+     {
+      "cluster": 7,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 263
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 263
+     },
+     {
+      "cluster": 9,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 263
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0631,
+  "gain_bijective": 0.0533,
+  "gain_merged": 0.0583,
+  "new_speakers": [
+   "006-F"
+  ],
+  "lost_speakers": [],
+  "n_new_speakers": 1
+ },
+ {
+  "meeting": "M_R003S05C01",
+  "n_windows": 408,
+  "n_sentences": 57,
+  "truth_speakers": 6,
+  "visible_speakers": 6,
+  "n_boundary_windows": 5,
+  "n_overlap_windows": 5,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.8772,
+    "bijective": 0.8772,
+    "merged_oracle": 0.8772,
+    "merged_bijective": 0.8772,
+    "merged_clusters": 6,
+    "dup_clusters": 0,
+    "dup_share": 0.0,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 13,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 13
+      },
+      "is_dup": false,
+      "speaker_home_size": 13
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-M": 1,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 150,
+      "dominant": "004-F",
+      "purity": 0.9933,
+      "truth_mix": {
+       "004-F": 149,
+       "005-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 150
+     },
+     {
+      "cluster": 3,
+      "n_windows": 132,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 132
+      },
+      "is_dup": false,
+      "speaker_home_size": 132
+     },
+     {
+      "cluster": 4,
+      "n_windows": 97,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 97
+      },
+      "is_dup": false,
+      "speaker_home_size": 97
+     },
+     {
+      "cluster": 5,
+      "n_windows": 14,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 14
+      },
+      "is_dup": false,
+      "speaker_home_size": 14
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.8772,
+    "bijective": 0.8246,
+    "merged_oracle": 0.8772,
+    "merged_bijective": 0.8772,
+    "merged_clusters": 6,
+    "dup_clusters": 4,
+    "dup_share": 0.4,
+    "distinct_dominant": 6,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-M": 1,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "004-F": 1,
+       "005-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 146
+     },
+     {
+      "cluster": 3,
+      "n_windows": 9,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 9
+      },
+      "is_dup": false,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 4,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 9
+     },
+     {
+      "cluster": 5,
+      "n_windows": 132,
+      "dominant": "006-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "006-F": 132
+      },
+      "is_dup": false,
+      "speaker_home_size": 132
+     },
+     {
+      "cluster": 6,
+      "n_windows": 97,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 97
+      },
+      "is_dup": false,
+      "speaker_home_size": 97
+     },
+     {
+      "cluster": 7,
+      "n_windows": 146,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 146
+      },
+      "is_dup": false,
+      "speaker_home_size": 146
+     },
+     {
+      "cluster": 8,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 146
+     },
+     {
+      "cluster": 9,
+      "n_windows": 14,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 14
+      },
+      "is_dup": false,
+      "speaker_home_size": 14
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0526,
+  "gain_merged": 0.0,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "S_R004S01C01",
+  "n_windows": 513,
+  "n_sentences": 75,
+  "truth_speakers": 5,
+  "visible_speakers": 5,
+  "n_boundary_windows": 28,
+  "n_overlap_windows": 28,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.84,
+    "bijective": 0.8267,
+    "merged_oracle": 0.84,
+    "merged_bijective": 0.84,
+    "merged_clusters": 5,
+    "dup_clusters": 1,
+    "dup_share": 0.1667,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 125,
+      "dominant": "001-M",
+      "purity": 0.992,
+      "truth_mix": {
+       "001-M": 124,
+       "005-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 125
+     },
+     {
+      "cluster": 1,
+      "n_windows": 51,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 51
+      },
+      "is_dup": false,
+      "speaker_home_size": 51
+     },
+     {
+      "cluster": 2,
+      "n_windows": 93,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 93
+      },
+      "is_dup": false,
+      "speaker_home_size": 93
+     },
+     {
+      "cluster": 3,
+      "n_windows": 123,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 123
+      },
+      "is_dup": false,
+      "speaker_home_size": 123
+     },
+     {
+      "cluster": 4,
+      "n_windows": 119,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 119
+      },
+      "is_dup": false,
+      "speaker_home_size": 119
+     },
+     {
+      "cluster": 5,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "001-M": 1,
+       "002-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 125
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.84,
+    "bijective": 0.76,
+    "merged_oracle": 0.84,
+    "merged_bijective": 0.84,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 113
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 49
+     },
+     {
+      "cluster": 2,
+      "n_windows": 93,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 93
+      },
+      "is_dup": false,
+      "speaker_home_size": 93
+     },
+     {
+      "cluster": 3,
+      "n_windows": 123,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 123
+      },
+      "is_dup": false,
+      "speaker_home_size": 123
+     },
+     {
+      "cluster": 4,
+      "n_windows": 117,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 117
+      },
+      "is_dup": false,
+      "speaker_home_size": 117
+     },
+     {
+      "cluster": 5,
+      "n_windows": 113,
+      "dominant": "001-M",
+      "purity": 0.9912,
+      "truth_mix": {
+       "001-M": 112,
+       "005-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 113
+     },
+     {
+      "cluster": 6,
+      "n_windows": 10,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 10
+      },
+      "is_dup": true,
+      "speaker_home_size": 113
+     },
+     {
+      "cluster": 7,
+      "n_windows": 2,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 117
+     },
+     {
+      "cluster": 8,
+      "n_windows": 49,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 49
+      },
+      "is_dup": false,
+      "speaker_home_size": 49
+     },
+     {
+      "cluster": 9,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "001-M": 1,
+       "002-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 113
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0667,
+  "gain_merged": 0.0,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "S_R004S02C01",
+  "n_windows": 578,
+  "n_sentences": 110,
+  "truth_speakers": 5,
+  "visible_speakers": 5,
+  "n_boundary_windows": 4,
+  "n_overlap_windows": 4,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.9818,
+    "bijective": 0.9818,
+    "merged_oracle": 0.9818,
+    "merged_bijective": 0.9818,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 4,
+      "dominant": "001-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "001-M": 2,
+       "005-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 143
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 6,
+      "dominant": "003-F",
+      "purity": 0.6667,
+      "truth_mix": {
+       "003-F": 4,
+       "004-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 6
+     },
+     {
+      "cluster": 3,
+      "n_windows": 143,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 143
+      },
+      "is_dup": false,
+      "speaker_home_size": 143
+     },
+     {
+      "cluster": 4,
+      "n_windows": 422,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 422
+      },
+      "is_dup": false,
+      "speaker_home_size": 422
+     },
+     {
+      "cluster": 5,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 422
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.9909,
+    "bijective": 0.9818,
+    "merged_oracle": 0.9909,
+    "merged_bijective": 0.9909,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 5,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 143
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 6,
+      "dominant": "003-F",
+      "purity": 0.6667,
+      "truth_mix": {
+       "003-F": 4,
+       "004-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": 6
+     },
+     {
+      "cluster": 3,
+      "n_windows": 2,
+      "dominant": "005-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "005-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 4,
+      "n_windows": 143,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 143
+      },
+      "is_dup": false,
+      "speaker_home_size": 143
+     },
+     {
+      "cluster": 5,
+      "n_windows": 415,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 415
+      },
+      "is_dup": false,
+      "speaker_home_size": 415
+     },
+     {
+      "cluster": 6,
+      "n_windows": 5,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 5
+      },
+      "is_dup": true,
+      "speaker_home_size": 415
+     },
+     {
+      "cluster": 7,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 415
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 415
+     },
+     {
+      "cluster": 9,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 415
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0091,
+  "gain_bijective": 0.0,
+  "gain_merged": 0.0091,
+  "new_speakers": [
+   "005-F"
+  ],
+  "lost_speakers": [],
+  "n_new_speakers": 1
+ },
+ {
+  "meeting": "S_R004S03C01",
+  "n_windows": 570,
+  "n_sentences": 57,
+  "truth_speakers": 5,
+  "visible_speakers": 5,
+  "n_boundary_windows": 4,
+  "n_overlap_windows": 4,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.9825,
+    "bijective": 0.9825,
+    "merged_oracle": 0.9825,
+    "merged_bijective": 0.9825,
+    "merged_clusters": 5,
+    "dup_clusters": 1,
+    "dup_share": 0.1667,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 245,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 245
+      },
+      "is_dup": false,
+      "speaker_home_size": 245
+     },
+     {
+      "cluster": 1,
+      "n_windows": 1,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-F": 1,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 3,
+      "dominant": "005-F",
+      "purity": 0.6667,
+      "truth_mix": {
+       "005-F": 2,
+       "004-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 4,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 317
+     },
+     {
+      "cluster": 5,
+      "n_windows": 317,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 317
+      },
+      "is_dup": false,
+      "speaker_home_size": 317
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.9825,
+    "bijective": 0.9649,
+    "merged_oracle": 0.9825,
+    "merged_bijective": 0.9825,
+    "merged_clusters": 5,
+    "dup_clusters": 5,
+    "dup_share": 0.5,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 243
+     },
+     {
+      "cluster": 1,
+      "n_windows": 1,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "002-F": 1,
+       "003-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 3,
+      "dominant": "005-F",
+      "purity": 0.6667,
+      "truth_mix": {
+       "005-F": 2,
+       "004-F": 1
+      },
+      "is_dup": false,
+      "speaker_home_size": 3
+     },
+     {
+      "cluster": 4,
+      "n_windows": 1,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 243
+     },
+     {
+      "cluster": 5,
+      "n_windows": 243,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 243
+      },
+      "is_dup": false,
+      "speaker_home_size": 243
+     },
+     {
+      "cluster": 6,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 316
+     },
+     {
+      "cluster": 7,
+      "n_windows": 316,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 316
+      },
+      "is_dup": false,
+      "speaker_home_size": 316
+     },
+     {
+      "cluster": 8,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 316
+     },
+     {
+      "cluster": 9,
+      "n_windows": 1,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 316
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0176,
+  "gain_merged": 0.0,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ },
+ {
+  "meeting": "S_R004S04C01",
+  "n_windows": 585,
+  "n_sentences": 84,
+  "truth_speakers": 5,
+  "visible_speakers": 5,
+  "n_boundary_windows": 17,
+  "n_overlap_windows": 17,
+  "per_k": {
+   "6": {
+    "n_clusters": 6,
+    "oracle": 0.9524,
+    "bijective": 0.9524,
+    "merged_oracle": 0.9524,
+    "merged_bijective": 0.9524,
+    "merged_clusters": 4,
+    "dup_clusters": 2,
+    "dup_share": 0.3333,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 169,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 169
+      },
+      "is_dup": false,
+      "speaker_home_size": 169
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "004-F": 1,
+       "005-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 408
+     },
+     {
+      "cluster": 4,
+      "n_windows": 408,
+      "dominant": "004-F",
+      "purity": 0.9142,
+      "truth_mix": {
+       "004-F": 373,
+       "001-M": 35
+      },
+      "is_dup": false,
+      "speaker_home_size": 408
+     },
+     {
+      "cluster": 5,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "001-M": 1,
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 169
+     }
+    ]
+   },
+   "10": {
+    "n_clusters": 10,
+    "oracle": 0.9524,
+    "bijective": 0.9286,
+    "merged_oracle": 0.9524,
+    "merged_bijective": 0.9524,
+    "merged_clusters": 4,
+    "dup_clusters": 6,
+    "dup_share": 0.6,
+    "distinct_dominant": 4,
+    "rows": [
+     {
+      "cluster": 0,
+      "n_windows": 3,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 3
+      },
+      "is_dup": true,
+      "speaker_home_size": 166
+     },
+     {
+      "cluster": 1,
+      "n_windows": 2,
+      "dominant": "002-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "002-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 2,
+      "n_windows": 2,
+      "dominant": "003-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "003-F": 2
+      },
+      "is_dup": false,
+      "speaker_home_size": null
+     },
+     {
+      "cluster": 3,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 0.5,
+      "truth_mix": {
+       "004-F": 1,
+       "005-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 399
+     },
+     {
+      "cluster": 4,
+      "n_windows": 166,
+      "dominant": "001-M",
+      "purity": 1.0,
+      "truth_mix": {
+       "001-M": 166
+      },
+      "is_dup": false,
+      "speaker_home_size": 166
+     },
+     {
+      "cluster": 5,
+      "n_windows": 399,
+      "dominant": "004-F",
+      "purity": 0.9123,
+      "truth_mix": {
+       "004-F": 364,
+       "001-M": 35
+      },
+      "is_dup": false,
+      "speaker_home_size": 399
+     },
+     {
+      "cluster": 6,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 399
+     },
+     {
+      "cluster": 7,
+      "n_windows": 5,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 5
+      },
+      "is_dup": true,
+      "speaker_home_size": 399
+     },
+     {
+      "cluster": 8,
+      "n_windows": 2,
+      "dominant": "004-F",
+      "purity": 1.0,
+      "truth_mix": {
+       "004-F": 2
+      },
+      "is_dup": true,
+      "speaker_home_size": 399
+     },
+     {
+      "cluster": 9,
+      "n_windows": 2,
+      "dominant": "001-M",
+      "purity": 0.5,
+      "truth_mix": {
+       "001-M": 1,
+       "004-F": 1
+      },
+      "is_dup": true,
+      "speaker_home_size": 166
+     }
+    ]
+   }
+  },
+  "gain_oracle": 0.0,
+  "gain_bijective": -0.0238,
+  "gain_merged": 0.0,
+  "new_speakers": [],
+  "lost_speakers": [],
+  "n_new_speakers": 0
+ }
+]

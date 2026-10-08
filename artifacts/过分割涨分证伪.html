@@ -1,0 +1,691 @@
+<title>过分割涨分证伪</title>
+<style>
+  /* Layout: single 68ch reading column, data tables break out full-bleed.
+     Color: cool-slate neutrals (instrument panel, not paper) + two semantic
+     axes — teal for "real split", amber for "over-segmentation cost".
+     Type:  IBM Plex Sans for prose, IBM Plex Mono for every number so
+            digits align in columns the way a score table needs. */
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --fg: #14181f;
+    --fg-mute: #5c6673;
+    --fg-faint: #8b95a3;
+    --rule: #dfe3e9;
+    --rule-soft: #eef1f4;
+    --real: #0f766e;
+    --real-bg: #e6f4f2;
+    --fake: #b45309;
+    --fake-bg: #fdf1e3;
+    --flat: #64748b;
+    --flat-bg: #eef1f5;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1319;
+      --surface: #161b22;
+      --fg: #e6eaf0;
+      --fg-mute: #9aa5b4;
+      --fg-faint: #6b7686;
+      --rule: #262c36;
+      --rule-soft: #1d232c;
+      --real: #5eead4;
+      --real-bg: #10312e;
+      --fake: #fbbf24;
+      --fake-bg: #33260c;
+      --flat: #94a3b8;
+      --flat-bg: #1e242d;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1319;
+    --surface: #161b22;
+    --fg: #e6eaf0;
+    --fg-mute: #9aa5b4;
+    --fg-faint: #6b7686;
+    --rule: #262c36;
+    --rule-soft: #1d232c;
+    --real: #5eead4;
+    --real-bg: #10312e;
+    --fake: #fbbf24;
+    --fake-bg: #33260c;
+    --flat: #94a3b8;
+    --flat-bg: #1e242d;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    padding-block: 0;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-block: 2.5rem 4rem;
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+  .col { max-width: 68ch; }
+
+  h1 {
+    font-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.3rem);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0 0 0.5rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+    margin: 0 0 0.75rem;
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-mute);
+    margin: 0 0 0.5rem;
+  }
+  p { margin: 0 0 0.85rem; }
+  p:last-child { margin-bottom: 0; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 0 0 0.9rem;
+  }
+  .lede { font-size: 1.04rem; color: var(--fg-mute); }
+  .lede strong { color: var(--fg); font-weight: 600; }
+
+  .verdict {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .vcell { background: var(--surface); padding: 1rem 1.15rem; min-width: 0; }
+  .vcell .n {
+    font-family: var(--mono);
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .vcell .lbl {
+    font-size: 0.78rem;
+    color: var(--fg-mute);
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+  .n.real { color: var(--real); }
+  .n.fake { color: var(--fake); }
+  .n.flat { color: var(--flat); }
+
+  .scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--fg-mute);
+    padding: 0.7rem 0.9rem 0;
+  }
+  th, td {
+    padding: 0.44rem 0.7rem;
+    text-align: right;
+    border-bottom: 1px solid var(--rule-soft);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--fg-mute);
+    border-bottom: 1px solid var(--rule);
+    vertical-align: bottom;
+  }
+  th:first-child, td:first-child { text-align: left; font-family: var(--mono); }
+  tbody tr:last-child td { border-bottom: none; }
+  td.pos { color: var(--real); }
+  td.neg { color: var(--fake); }
+  td.zero { color: var(--fg-faint); }
+  tfoot td {
+    font-weight: 600;
+    border-top: 1px solid var(--rule);
+    background: var(--rule-soft);
+  }
+  .m { font-family: var(--mono); }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    padding: 0.12rem 0.42rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .tag.real { background: var(--real-bg); color: var(--real); }
+  .tag.fake { background: var(--fake-bg); color: var(--fake); }
+  .tag.flat { background: var(--flat-bg); color: var(--flat); }
+
+  .callout {
+    border-left: 3px solid var(--fake);
+    background: var(--surface);
+    padding: 1rem 1.15rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .callout.real { border-left-color: var(--real); }
+  .callout p:first-child { margin-top: 0; }
+
+  ul { margin: 0 0 0.85rem; padding-left: 1.15rem; }
+  li { margin-bottom: 0.4rem; }
+  code {
+    font-family: var(--mono);
+    font-size: 0.86em;
+    background: var(--rule-soft);
+    padding: 0.1rem 0.32rem;
+    border-radius: 3px;
+  }
+  .kv { display: flex; flex-wrap: wrap; gap: 0 1.5rem; font-size: 0.82rem; color: var(--fg-mute); }
+  .kv span { font-family: var(--mono); color: var(--fg); }
+  hr { border: none; border-top: 1px solid var(--rule); margin: 0; }
+  .foot { font-size: 0.78rem; color: var(--fg-mute); }
+  .foot .m { color: var(--fg); }
+</style>
+
+<div class="wrap">
+
+  <header class="col">
+    <p class="eyebrow">AISHELL-4 · dev 12 场 · k=6 vs k=10 · 零模型</p>
+    <h1>过分割涨分证伪</h1>
+    <p class="lede">
+      HANDOFF 的阻塞项：<code>k_all_best</code> 究竟是「真的拆出了两个人」，还是
+      「评分口径对过分割不扣分」造出来的假象？<strong>答案是一半一半——
+      而换尺子重跑 §2.2 那张消融表之后，「大 k 就好」这个信号整个塌了。</strong>
+    </p>
+    <p class="foot" style="margin-top:.6rem">
+      核心读数：<span class="m">恒选 k=10</span> 在现行口径下 regret
+      <span class="m">+0.00</span>（12/12 场全 0），换双射口径后
+      <span class="m">+3.57</span>，10/12 场为正，最差 <span class="m">+8.00</span>。
+      最优 k 从 <span class="m">10</span> 挪到 <span class="m">6</span>。
+    </p>
+  </header>
+
+  <section class="col">
+    <h2>三口径结论</h2>
+    <div class="verdict">
+      <div class="vcell">
+        <div class="n real">4 / 12</div>
+        <div class="lbl">真实拆分。把重复簇并回主簇后，收益<b>仍然存在</b></div>
+      </div>
+      <div class="vcell">
+        <div class="n fake">1 / 12</div>
+        <div class="lbl">纯口径产物。合并后收益<b>完全消失</b></div>
+      </div>
+      <div class="vcell">
+        <div class="n flat">7 / 12</div>
+        <div class="lbl">k=10 相对 k=6 <b>零收益</b>，但双射口径下要付代价</div>
+      </div>
+      <div class="vcell">
+        <div class="n fake">−2.52</div>
+        <div class="lbl">Δbijective 均值（pts）。过分割的代价被现行口径<b>系统性掩盖</b></div>
+      </div>
+    </div>
+    <p class="foot" style="margin-top:.75rem">
+      三个口径：<span class="m">oracle</span> = 每簇独立取最常对应的真值人（多对一，现行口径）；
+      <span class="m">bijective</span> = 匈牙利双射；
+      <span class="m">merged</span> = 先把 dup 簇并回该真值人的主簇，再按 oracle 打分。
+    </p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>怀疑的机制成立，而且比预想的更严重</h2>
+    <p>
+      <code>score_oracle</code> 的 docstring 自己写明：每个预测簇<b>独立</b>取它最常对应的真值人，
+      是<b>多对一</b>。所以一个真人被切成 5 个簇，5 个簇仍全能映射回他，句级归属率不降。
+    </p>
+    <p>
+      k=10 在全部 12 场都真的产出 10 个簇，而真值只有 5–6 人。多出来的 4–5 个簇里，
+      k=10 的 <span class="m">dup</span> 比例（该真值人在别处另有更大主簇）是
+      <b>30%–60%</b>，12 场全部 > 0。
+    </p>
+    <div class="callout">
+      <p>
+        <b>最强的一条证据不在「涨分」，在「不涨分却受损」。</b>
+        有 <b>7/12</b> 场，Δoracle 恰好是 <span class="m">+0.00</span>——多出的那些簇
+        <b>没有任何</b>信息增益，纯粹是噪声。但在双射口径下，同一批场次损失
+        <span class="m">−1.76</span> 到 <span class="m">−7.06</span> 点。
+      </p>
+      <p>
+        换句话说：现行 oracle 口径看不见过分割的成本，它把「多切了几刀」记成了免费。
+      </p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3>逐场三口径</h3>
+    <div class="scroll">
+      <table>
+        <caption>
+          k=6 与 k=10 两个 partition，同一套生产门缓存。Δ 列单位 pts。
+          「判读」按 <span class="m">Δmerged</span> 是否 &gt; 0 分类。
+        </caption>
+        <thead>
+          <tr>
+            <th>会议</th><th>窗</th><th>真值人</th>
+            <th>oracle 6→10</th><th>Δoracle</th>
+            <th>双射 6→10</th><th>Δbij</th>
+            <th>Δmerged</th><th>dup%</th><th>判读</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>L_R003S01C02</td><td>422</td><td>6</td>
+            <td>77.5 → 78.4</td><td class="pos">+0.98</td>
+            <td>75.5 → 73.5</td><td class="neg">−1.96</td>
+            <td class="neg">−0.98</td><td>50</td>
+            <td><span class="tag fake">纯口径产物</span></td>
+          </tr>
+          <tr>
+            <td>L_R003S02C02</td><td>281</td><td>6</td>
+            <td>85.9 → 85.9</td><td class="zero">+0.00</td>
+            <td>85.9 → 78.8</td><td class="neg">−7.06</td>
+            <td class="zero">+0.00</td><td>40</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>L_R003S03C02</td><td>387</td><td>6</td>
+            <td>84.3 → 85.5</td><td class="pos">+1.20</td>
+            <td>84.3 → 81.9</td><td class="neg">−2.41</td>
+            <td class="pos">+1.20</td><td>30</td>
+            <td><span class="tag real">真实拆分</span></td>
+          </tr>
+          <tr>
+            <td>L_R003S04C02</td><td>485</td><td>6</td>
+            <td>80.7 → 80.7</td><td class="zero">+0.00</td>
+            <td>80.7 → 74.0</td><td class="neg">−6.72</td>
+            <td class="zero">+0.00</td><td>50</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>M_R003S01C01</td><td>367</td><td>6</td>
+            <td>77.1 → 77.1</td><td class="zero">+0.00</td>
+            <td>74.7 → 71.1</td><td class="neg">−3.62</td>
+            <td class="neg">−1.21</td><td>60</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>M_R003S02C01</td><td>373</td><td>6</td>
+            <td>70.8 → 73.0</td><td class="pos">+2.24</td>
+            <td>69.7 → 71.9</td><td class="pos">+2.25</td>
+            <td class="pos">+2.24</td><td>50</td>
+            <td><span class="tag real">真实拆分</span></td>
+          </tr>
+          <tr>
+            <td>M_R003S04C01</td><td>556</td><td>6</td>
+            <td>61.7 → 68.0</td><td class="pos">+6.31</td>
+            <td>61.2 → 66.5</td><td class="pos">+5.33</td>
+            <td class="pos">+5.83</td><td>50</td>
+            <td><span class="tag real">真实拆分</span></td>
+          </tr>
+          <tr>
+            <td>M_R003S05C01</td><td>408</td><td>6</td>
+            <td>87.7 → 87.7</td><td class="zero">+0.00</td>
+            <td>87.7 → 82.5</td><td class="neg">−5.26</td>
+            <td class="zero">+0.00</td><td>40</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>S_R004S01C01</td><td>513</td><td>5</td>
+            <td>84.0 → 84.0</td><td class="zero">+0.00</td>
+            <td>82.7 → 76.0</td><td class="neg">−6.67</td>
+            <td class="zero">+0.00</td><td>50</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>S_R004S02C01</td><td>578</td><td>5</td>
+            <td>98.2 → 99.1</td><td class="pos">+0.91</td>
+            <td>98.2 → 98.2</td><td class="zero">+0.00</td>
+            <td class="pos">+0.91</td><td>50</td>
+            <td><span class="tag real">真实拆分</span></td>
+          </tr>
+          <tr>
+            <td>S_R004S03C01</td><td>570</td><td>5</td>
+            <td>98.2 → 98.2</td><td class="zero">+0.00</td>
+            <td>98.2 → 96.5</td><td class="neg">−1.76</td>
+            <td class="zero">+0.00</td><td>50</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+          <tr>
+            <td>S_R004S04C01</td><td>585</td><td>5</td>
+            <td>95.2 → 95.2</td><td class="zero">+0.00</td>
+            <td>95.2 → 92.9</td><td class="neg">−2.38</td>
+            <td class="zero">+0.00</td><td>60</td>
+            <td><span class="tag flat">零收益／付代价</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>均值</td><td></td><td></td><td></td>
+            <td class="pos">+0.97</td><td></td><td class="neg">−2.52</td>
+            <td class="pos">+0.67</td><td>48</td><td>为正 4/12</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>为什么必须逐行核，不能读汇总</h2>
+    <p>
+      汇总行会把两个完全相反的故事压成一个数。Δoracle 均值 <span class="m">+0.97</span>
+      看着像「大 k 确实有点用」，但真实构成是：
+    </p>
+    <ul>
+      <li><b>4 场</b>真拆分（合并 dup 后收益仍在），其中 <span class="m">M_R003S04C01</span> 一场就贡献 <span class="m">+5.83</span>；</li>
+      <li><b>1 场</b>纯口径产物（<span class="m">L_R003S01C02</span>：oracle 涨 +0.98，合并后变成 <span class="m">−0.98</span>，符号翻转）；</li>
+      <li><b>7 场</b>零收益。</li>
+    </ul>
+    <p>
+      也就是说：<b>均值那 +0.97 点，几乎全部由一两场撑起来，而它们恰恰是过分割最轻的场次。</b>
+      这正是 HANDOFF §5「坑 8」警告过的读法错误——汇总列当逐场事实用。
+    </p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>一场真实拆分长什么样</h2>
+    <p>
+      <span class="m">M_R003S04C01</span>（真值 6 人，主窗 556）是收益最大的一场，
+      也是唯一能同时通过三个口径的场次。它的 k=6 主簇结构是这样：
+    </p>
+    <div class="scroll" style="margin-bottom:1rem">
+      <table>
+        <caption>k=6 与 k=10 的簇结构对比（只列相关簇）</caption>
+        <thead>
+          <tr><th>k</th><th>簇</th><th>窗数</th><th>主导</th><th>纯度</th><th>真值分布</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6</td><td>2</td><td>240</td><td>004-F</td><td class="neg">59%</td><td>004-F:141 · 006-F:75 · 001-M:15</td></tr>
+          <tr><td>10</td><td>2</td><td>167</td><td>004-F</td><td class="pos">83%</td><td>004-F:139 · 001-M:11 · 006-F:11</td></tr>
+          <tr><td>10</td><td>4</td><td>62</td><td>006-F</td><td class="pos">95%</td><td>006-F:59 · 005-F:2 · 004-F:1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      k=6 那个 240 窗的簇是 <b>004-F 与 006-F 混在一起</b>（59% 纯度）；k=10 把它
+      拆成 167 窗的 004-F（83%）与 62 窗的 006-F（<b>95%</b>）。
+      这是真的两个人被分开了——不是多切几刀，是把一个混合簇按身份切开。
+      所以它 Δmerged 仍有 <span class="m">+5.83</span>。
+    </p>
+    <div class="callout real">
+      <p>
+        <b>对比之下，纯口径产物那场（<span class="m">L_R003S01C02</span>）</b>
+        多出来的簇主导人全是同一个已存在的说话人，合并回主簇后收益直接变负。
+        同样都是「k=10 比 k=6 多 4 个簇」，性质完全相反——
+        <b>这就是为什么不能只看簇数或只看 Δoracle。</b>
+      </p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>对主线结论的影响</h2>
+    <p>
+      HANDOFF 原本的担忧是：「`k_all_best` 可能只是『过分割不扣分的那个 k』，
+      若是这样，上一份交接 §3 的『症结在候选有效性』这个定位需要重新评估。」
+    </p>
+    <p>现在可以给出分层的回答：</p>
+    <ul>
+      <li><b>机制上，担忧是对的。</b> 现行 oracle 确实对过分割不扣分，且代价真实存在（Δbijective 均值 <span class="m">−2.52</span>，7 场受害）。</li>
+      <li><b>但结论上，「候选有效性」这个定位没有被推翻。</b> 4 场存在非 dup 的真拆分，
+        且<b>11/12 场的生产 k 仍低于两口径的最优 k</b>——欠分割依旧是主因。</li>
+      <li><b>「大 k 就好」这个信号被证伪了。</b> §2.2 里「恒选 k=10，regret = 0.00」
+        在双射尺子下变成 <span class="m">+3.57</span>，而 <span class="m">const_6</span>
+        以 <span class="m">+1.05</span> 成为最便宜的非平凡规则。
+        方向（该选更大）没变，但<b>目标值从 10 挪到了 6</b>。</li>
+    </ul>
+    <div class="callout">
+      <p>
+        <b>最实际操作意义的一条：</b>
+        既然现行口径给过分割记零成本，那么任何<b>基于 Δoracle 调参</b>的探索
+        （包括上一轮的 gain 判据、四项判据规则）都天然偏向更大 k。
+        这不是那些判据「不够聪明」，是<b>它们用的尺子刻度不均匀</b>。
+        要往下做，尺子得先换——或者至少同时报 bijective 与 merged 两个口径。
+      </p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>换尺子重跑 §2.2 那张消融表</h2>
+    <p>
+      上一轮的核心读数是「<b>恒选 k=10，平均 regret = 0.00</b>」，据此推出
+      「判据规则唯一的作用是剔掉 k=1/k=2，真正的信号是 k 越大越好」。
+      同一批规则、同一个候选表，只换尺子：
+    </p>
+  </section>
+
+  <section>
+    <div class="scroll">
+      <table>
+        <caption>
+          平均 regret（pts，越低越好）。oracle 列逐行复现了 HANDOFF §2.2 的读数。
+        </caption>
+        <thead>
+          <tr>
+            <th>规则</th><th>oracle<br>（现行）</th><th>bijective<br>（双射）</th>
+            <th>merged<br>（并 dup 后）</th><th>换尺子后</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>prod（现行生产）</td><td>+12.99</td><td>+12.46</td><td>+12.87</td><td></td></tr>
+          <tr><td>const_1</td><td>+40.55</td><td>+40.02</td><td>+40.43</td><td></td></tr>
+          <tr><td>const_2</td><td>+23.03</td><td>+22.61</td><td>+22.91</td><td></td></tr>
+          <tr><td>const_4</td><td>+10.35</td><td>+9.96</td><td>+10.23</td><td></td></tr>
+          <tr><td>const_6</td><td>+0.97</td><td class="pos">+1.05</td><td>+1.18</td>
+            <td><span class="tag real">新最优</span></td></tr>
+          <tr><td><b>const_10</b></td><td class="zero"><b>+0.00</b></td>
+            <td class="neg"><b>+3.57</b></td><td>+0.18</td>
+            <td><span class="tag fake">第 1 名 → 第 4 名</span></td></tr>
+          <tr><td>four_criteria</td><td>+2.92</td><td>+4.31</td><td>+3.06</td><td></td></tr>
+          <tr><td>no_gain（去掉 gain&gt;0）</td><td>+2.92</td><td>+4.31</td><td>+3.06</td>
+            <td><span class="tag flat">仍与上一条全等</span></td></tr>
+          <tr><td>parent4_only</td><td>+0.09</td><td class="neg">+2.99</td><td>+0.28</td><td></td></tr>
+          <tr><td>max_level_k</td><td>+0.09</td><td class="neg">+2.99</td><td>+0.28</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="col" style="margin-top:1.25rem">
+    <p>
+      <b>「恒选 k=10」的 0.00 是尺子造的。</b>
+      逐场看，它在 oracle 下是 <b>12/12 全 0.00</b>——
+      完美得不真实；换到双射口径，同一批场次里 <b>10 场变成正 regret</b>，
+      最差 <span class="m">+8.00</span>（<span class="m">S_R004S01C01</span>）。
+      只有 2 场真正是 0.00。
+    </p>
+    <div class="callout">
+      <p>
+        <b>连带被推翻的还有 §2.2 的那句推论。</b>
+        「规则唯一的作用是剔掉 k=1/k=2，真正的信号是 k 越大越好」——
+        在新尺子下，<span class="m">const_6</span> 以 <span class="m">+1.05</span>
+        成为最便宜的非平凡规则，<span class="m">const_10</span> 反而要
+        <span class="m">+3.57</span>。<b>最优 k 不是"越大越好"，是 k≈6。"</b>
+      </p>
+      <p>
+        还有一个原样保住的结论：<span class="m">no_gain</span> 与
+        <span class="m">four_criteria</span> <b>三列全部逐位相同</b>。
+        也就是「去掉 <span class="m">gain&gt;0</span> 结果完全不变」这件事，
+        换尺子后依然成立——`gain` 作为判据确实是失效的。
+      </p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>merged 这个口径没有区分力（我原本预期错了）</h2>
+    <p>
+      我原以为「把 dup 簇并回主簇」是最干净的对照，结果它只把
+      <span class="m">const_10</span> 从 <span class="m">+0.00</span> 挪到
+      <span class="m">+0.18</span>，几乎不动。原因值得记下来：
+    </p>
+    <p>
+      一个 dup 簇被并回主簇后，主簇<b>本来就已经映射到同一个真值人</b>了。
+      oracle 的记账是每簇独立取最大，所以「两个簇都映射到甲」和「一个簇映射到甲」
+      在这句归属上常常给出<b>同一个结果</b>。合并改变的是<b>簇的几何形状</b>，
+      不是句级映射。
+    </p>
+    <p>
+      只有 <b>bijective</b> 是有效的新尺子——它的记账规则是「一个真值人只能被一个簇
+      占用」，才真正对过分割收费。merged 保留作旁证，不作主判据。
+    </p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>两个口径各自的最优 k</h2>
+    <p>
+      8/12 场两口径给出的最优 k 相同；不同的 4 场里，oracle 的最优 k
+      <b>一律不低于</b> bijective，偏高 0–2。
+    </p>
+    <div class="scroll" style="margin-top:.5rem">
+      <table>
+        <caption>每场的「全候选最优 k」与生产 k</caption>
+        <thead>
+          <tr><th>会议</th><th>生产 k</th><th>oracle 最优 k</th>
+              <th>bijective 最优 k</th><th>差距</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>L_R003S01C02</td><td>1</td><td>7</td><td class="pos">5</td><td>−2</td></tr>
+          <tr><td>L_R003S02C02</td><td>4</td><td>6</td><td>6</td><td>0</td></tr>
+          <tr><td>L_R003S03C02</td><td>3</td><td>7</td><td class="pos">6</td><td>−1</td></tr>
+          <tr><td>L_R003S04C02</td><td>4</td><td>6</td><td>6</td><td>0</td></tr>
+          <tr><td>M_R003S01C01</td><td>2</td><td>5</td><td>5</td><td>0</td></tr>
+          <tr><td>M_R003S02C01</td><td>2</td><td>10</td><td>10</td><td>0</td></tr>
+          <tr><td>M_R003S04C01</td><td>2</td><td>8</td><td class="pos">7</td><td>−1</td></tr>
+          <tr><td>M_R003S05C01</td><td>2</td><td>6</td><td>6</td><td>0</td></tr>
+          <tr><td>S_R004S01C01</td><td>5</td><td>5</td><td>5</td><td>0</td></tr>
+          <tr><td>S_R004S02C01</td><td>2</td><td>8</td><td class="pos">6</td><td>−2</td></tr>
+          <tr><td>S_R004S03C01</td><td>2</td><td>6</td><td>6</td><td>0</td></tr>
+          <tr><td>S_R004S04C01</td><td>2</td><td>5</td><td>5</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">
+      <b>11/12 场的生产 k 低于两个口径的最优 k</b>——欠分割依旧是主因，
+      这条没被推翻。尺子的修正只把「该选多大的 k」从 <span class="m">10</span>
+      挪到 <span class="m">6</span>，没有改变「该选得更大」这个方向。
+    </p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>尺度转换的样板：M_R003S04C01</h2>
+    <p>
+      这场把分歧展示得最清楚——oracle 在 k=8 就走平，bijective 在 k=7 见顶，
+      之后每加一刀都是免费涨分：
+    </p>
+    <div class="scroll" style="margin-top:.5rem">
+      <table>
+        <caption>同一场会议，逐 k 的两个口径与簇结构</caption>
+        <thead>
+          <tr><th>k</th><th>oracle</th><th>bijective</th><th>簇数</th>
+              <th>dup 簇</th><th>合并后簇数</th><th>诊断</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6</td><td>61.7%</td><td>61.2%</td><td>6</td><td>2</td><td>4</td><td></td></tr>
+          <tr><td>7</td><td>67.5%</td><td class="pos">67.0%</td><td>7</td><td>2</td><td>5</td>
+            <td><span class="tag real">双射见顶</span></td></tr>
+          <tr><td>8</td><td class="pos">68.0%</td><td>66.5%</td><td>8</td><td>3</td><td>5</td>
+            <td><span class="tag fake">oracle 见顶</span></td></tr>
+          <tr><td>9</td><td>68.0%</td><td>66.5%</td><td>9</td><td>4</td><td>5</td><td>走平</td></tr>
+          <tr><td>10</td><td>68.0%</td><td class="neg">66.5%</td><td>10</td><td>5</td><td>5</td>
+            <td>多 2 刀，白送 oracle</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem">
+      k=8→10 这段，oracle 一动不动（<span class="m">68.0%</span>），
+      bijective 反而从 <span class="m">67.0%</span> 掉到
+      <span class="m">66.5%</span>。合并后簇数始终是 5——而这场真值恰好 5 人可见。
+      <b>「合并后簇数」是个免费的、不依赖真值的诊断量</b>，值得留意。
+    </p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>证据与复现</h2>
+    <div class="kv">
+      <span>脚本</span> scripts/evaluation/probe_over_seg_gain.py
+    </div>
+    <div class="kv" style="margin-top:.4rem">
+      <span></span> scripts/evaluation/probe_rule_ruler.py
+    </div>
+    <div class="kv" style="margin-top:.4rem">
+      <span>产物</span> artifacts/v13_over_seg_gain.json
+    </div>
+    <div class="kv" style="margin-top:.4rem">
+      <span></span> artifacts/v13_rule_ruler.json
+    </div>
+    <p style="margin-top:1rem" class="foot">
+      零模型成本，只读生产门缓存
+      <span class="m">D:\yinp\AISHELL-4\_v13_spike\cache\probe\&lt;场次&gt;\main.npz</span>，
+      与 <span class="m">probe_path_equiv.cached_stage()</span> 同源。
+      <span class="m">probe_rule_ruler.py</span> 的 oracle 列**逐行复现了 HANDOFF §2.2 的读数**
+      （prod +12.99 / const_1 +40.55 / const_2 +23.03 / const_4 +10.35 /
+      const_6 +0.97 / const_10 +0.00 / four_criteria +2.92 / no_gain +2.92 /
+      parent4_only +0.09 / max_level_k +0.09），生产 k 与逐场 regret 也复现了 §2.3 全表，
+      所以这不是另一套口径算出来的新数。
+    </p>
+    <p class="foot">
+      <b>口径限定：</b>
+      本页只针对 <span class="m">dev 12 场 / 前 600 秒 / 生产门（MIN_VAD=0.5）</span>，
+      不外推 holdout 或 train_L。
+      「真实拆分」的判据是 Δmerged &gt; 0，即合并重复簇后收益仍存；
+      这<b>不等于</b>已验证「该拆分在真实生产路径上可用」——生产路径未跑，
+      且 HANDOFF §4 明确要求在此结论前不动生产代码。
+      bijective 与 merged 都是**诊断口径**，不是新的可部署判据。
+    </p>
+  </section>
+
+</div>
+
