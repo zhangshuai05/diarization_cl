@@ -83,15 +83,20 @@ cd streaming_asr && python -B -m pytest -q     # 154 passed
 
 | 文件 | 内容 |
 |---|---|
-| `交接文档_092902.md` | **最新**。OCR 复审第二轮：3 处静默失真 + 8 条 medium，含"明确不修的"及理由 |
-| `交接文档_0929.md` | K 上限修复的代价量化、A 的定位改写、六处被数据推翻的判断 |
-| `交接文档_0928.md` | K 上限 bug 的**发现过程**（含路径等价检查方法论） |
-| `交接文档_0924.md` | 句子级主指标的定义草案与三步计划 |
+| `docs/HANDOFF.md` | **最新**。大簇拆分收益诊断（指标失败 + "过分割涨分"未证伪） |
+| `docs/交接文档_0930.md` | 零模型诊断链：三道锁 / 小簇性质 / 候选有效性 |
+| `docs/交接文档_092902.md` | OCR 复审第二轮：3 处静默失真 + 8 条 medium，含"明确不修的"及理由 |
+| `docs/交接文档_0929.md` | K 上限修复的代价量化、A 的定位改写、六处被数据推翻的判断 |
+| `docs/交接文档_0928.md` | K 上限 bug 的**发现过程**（含路径等价检查方法论） |
+| `docs/交接文档_0924.md` | 句子级主指标的定义草案与三步计划 |
 | `artifacts/v13_交付合并表.md` | 交付数字 + 证据索引（含物理边界与未验证项） |
 | `artifacts/v13_会话发现_20260923.md` | 该会话实测记录 |
 | `docs/环境清单.md` | 绝对路径与本机未装的备选模型 |
 
-**新对话开场**：先读 `交接文档_092902.md` → `0929` → `0928`，**先复现再采信**：
+> 交接文档（`交接文档_09*.md` / `HANDOFF.md`）**自 2026-10-08 起统一在 `docs/`**，
+> 不再放仓库根。根目录只留 `README.md`。
+
+**新对话开场**：先读 `docs/HANDOFF.md`，再按 `交接文档_0930` → `092902` → `0929` → `0928` 上溯，**先复现再采信**：
 
 ```bash
 cd streaming_asr && python -B -m pytest -q                              # 154 passed
@@ -115,7 +120,7 @@ cd .. && python -u -B scripts/evaluation/probe_step_a_baseline.py       # 四口
 
 数据下载：OpenSLR SLR111 <https://www.openslr.org/111/>。
 
-⚠️ **生产门缓存与 RTTM 门缓存窗集不同、不可混用**（见 `交接文档_0928.md`）。
+⚠️ **生产门缓存与 RTTM 门缓存窗集不同、不可混用**（见 `docs/交接文档_0928.md`）。
 `build_probe_cache.py` **无参数 = 重建既有全部场次**（约 35 分钟）；只重建三场须显式传 `--meetings`。
 
 ### 模型（走 ModelScope 缓存，不入库）
@@ -139,9 +144,23 @@ cd .. && python -u -B scripts/evaluation/probe_step_a_baseline.py       # 四口
 | `scripts/evaluation/` | **评估、对照与验收脚本**（当前主战场，含 `unlocked_selector.py`、`build_probe_cache.py`、`probe_*.py`） |
 | `scripts/batch/`、`scripts/diagnostics/`、`scripts/audio/` | 批量推理、一次性诊断、音频处理 |
 | `artifacts/` | 实测记录、交付表与 JSON 产物 |
-| `docs/` | 历史计划、工作日志、环境清单 |
+| `docs/` | **交接文档**（`交接文档_09*.md` / `HANDOFF.md`）、音频位置与复现入口、历史计划、工作日志、环境清单 |
 | `milestones/` | 版本归档（**只读，勿改**） |
-| `交接文档_09*.md`（根目录） | 会话交接文档，越靠后优先级越高 |
+| `archive/` | 退役产物：`legacy_versions/`（c1 旧版 py）、`legacy_docs/`、`big_output/`（大体积 gitignore 产物） |
+| `dsh_line/` | DeepSeek 科研线的交接与脚本（**只读，勿改**） |
+| `eval_dsh/` | DSH 对比用的真值 `ground_truth.json`（**活引用**，多处脚本读它） |
+| `not_mind/` | 与本项目无关（**只读，勿改**） |
+
+**根目录只留 `README.md` 一份文档。** 其余平铺文档已收进 `docs/`（2026-10-08）。
+
+根目录的 `.py` 分两类，**不要合并**：
+
+| 文件 | 身份 |
+|---|---|
+| `claude_a2.py` | **c1 v4**（双人核心）。`run.py` 与 `cv_ss_test/*` 从**仓库根**加载它 |
+| `a2_v2.py` | c1 v4 的分段实现。`scripts/batch/` + `scripts/diagnostics/` 的 33 个脚本从**仓库根**加载它 |
+| `streaming_asr/claude_a2.py` | **同名但不同物**：v7–v12 泳道分发器，8735 测试台走这个 |
+| `denoise_frcrn.py` / `env_detect.py` | 根目录这份是 `run.py` 用的；`streaming_asr/` 里另有一份**更新的**（含 `_chunked_infer` 分块推理） |
 
 ---
 
