@@ -21,8 +21,8 @@ ROOT = Path(__file__).resolve().parents[2]
 DOCS = [("README.md", ROOT / "README.md"),
         ("发现记录", ROOT / "artifacts/v13_会话发现_20260923.md"),
         ("交付合并表", ROOT / "artifacts/v13_交付合并表.md"),
-        ("交接文档0924", ROOT / "交接文档_0924.md"),
-        ("交接文档0923", ROOT / "交接文档_0923.md")]
+        ("交接文档0924", ROOT / "docs/交接文档_0924.md"),
+        ("交接文档0923", ROOT / "docs/交接文档_0923.md")]
 
 # 被推翻的旧说法 -> 允许它们出现的语境标记
 STALE = {

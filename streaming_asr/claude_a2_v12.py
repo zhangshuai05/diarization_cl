@@ -30,7 +30,6 @@ import claude_a2_v11 as v11
 METHOD = "claude-a2-v12-meeting"
 WIN_S = 2.0
 HOP_S = 1.0
-MIN_VAD_FRACTION = 0.5
 MAX_SPEAKERS = 10
 # ⚠️ 10 是**候选搜索上限**，不是"会议最多 10 人"的事实声明，也不是已证明的最优上限。
 # 依据：test 的 TextGrid 说话人层数最高 7，train_L 同为 7，故 4 明显不够；
@@ -42,13 +41,17 @@ MAX_SPEAKERS = 10
 # 直接压到真实人数的理由之一。该假设见里程碑 README 的"待优先验证"一节。
 # 回归：本常量若被改回 4 或从 `_candidate_clusters` 调用点丢失，
 # `tests/test_k_cap_dispatch.py` 必须报红。
-# ⚠️ 本模块**不再**定义 `MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE`：它们曾是死值
-# （`_candidate_clusters` 在 v11 里，读的是 v11 的 4 / 0.015，而这里写的是 3 / 0.02，
-#  从未被读过）。同名不同值极易被误当作生效配置，故删除。
-# 真正的簇门限在 `claude_a2_v11.MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE`。
-MULTI_K_PENALTY = 0.015
+# ⚠️ 本模块**不**定义任何"看着像生效配置、实际读的是 v11 那份"的常量。
+# 曾经有 5 个这样的死值，全部删除：
+#   `MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE`（曾写 3 / 0.02，v11 读的是 4 / 0.015）
+#   `MIN_VAD_FRACTION`（v12 写 0.5，但提窗走 `v11._extract_windows`，读的是 v11 那份）
+#   `MULTI_K_PENALTY`（v12 写 0.015，实际读 `v11.MULTI_K_PENALTY`）
+#   `SCENE_GAP_SECONDS`（v12 写 2.0，场景汇总是 `v11._scene_summary`，读 v11 那份）
+# 同名不同值会被误当作生效配置——这正是本节存在的理由。
+# **真正生效的簇门限在 `claude_a2_v11`**：`MIN_CLUSTER_WINDOWS` / `MIN_CLUSTER_SHARE` /
+# `MULTI_K_PENALTY` / `MIN_VAD_FRACTION` / `SCENE_GAP_SECONDS`。
+# 下面这几个是 v12 自己真正读取的：
 MAX_ASR_SECONDS = 8.0
-SCENE_GAP_SECONDS = 2.0
 
 # 低于这个窗数的簇：标签只在一两个窗上出现，2.0 秒窗下更可能是离群窗而非真人。
 SLIVER_WINDOWS = 2
