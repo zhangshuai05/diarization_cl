@@ -410,6 +410,56 @@ def test_http_audio_ffmpeg_missing_from_path_is_500(http_server, tmp_path, monke
     assert "ffmpeg 不在 PATH" in json.loads(body.decode("utf-8"))["error"]
 
 
+def test_http_audio_ffmpeg_timeout_is_500_and_frees_the_lock(http_server, tmp_path, monkeypatch):
+    """ffmpeg 挂死（`subprocess.TimeoutExpired`）→ 500 + 可读错误、无残留、**锁已释放**。
+
+    `subprocess.run` 换成两段桩：第 1 次抛 `TimeoutExpired`（模拟挂到 `CLIP_TIMEOUT_S`），
+    第 2 次像真 ffmpeg 一样把 wav 写到 `-y` 指定的目标路径（不依赖真 ffmpeg 在 PATH）。
+    超时路径若忘了释放 `_CLIP_LOCK`，第二次请求会挂死在这里 —— T7 审查遗留项就是这个。
+    """
+    root = tmp_path / "data"
+    (root / "wav").mkdir(parents=True)
+    (root / "wav" / "M_HANG.flac").write_bytes(b"fake source, never read by the stub")
+    monkeypatch.setattr(server, "meetings", lambda: [{"id": "M_HANG"}])
+    monkeypatch.setattr(server, "truth_roots", lambda: (root,))
+    monkeypatch.setattr(server, "CLIP_DIR", tmp_path / "clips")
+
+    calls = []
+
+    def stub_run(cmd, **kwargs):
+        calls.append(list(cmd))
+        assert kwargs.get("timeout") == server.CLIP_TIMEOUT_S, kwargs  # 挂死上限真的传了
+        if len(calls) == 1:
+            raise subprocess.TimeoutExpired(cmd, server.CLIP_TIMEOUT_S)
+        sf.write(cmd[-1], np.zeros(16000, dtype="float32"), 16000, subtype="PCM_16")
+        return subprocess.CompletedProcess(cmd, 0)
+
+    monkeypatch.setattr(server.subprocess, "run", stub_run)
+
+    status, headers, body = request(http_server, "/api/audio?meeting=M_HANG&seconds=60")
+    assert status == 500, body
+    assert headers["Content-Type"].startswith("application/json")
+    assert headers["X-Clamped-Seconds"] == "60"
+    payload = json.loads(body.decode("utf-8"))
+    assert payload["t"] == "error"
+    assert "超过" in payload["error"] and str(server.CLIP_TIMEOUT_S) in payload["error"], payload
+    clips = tmp_path / "clips"
+    assert list(clips.glob("*.wav")) == [], "超时后不该有 wav 残留"
+    assert list(clips.glob("*.tmp.wav")) == [], "超时后不该有 .tmp.wav 残留"
+    assert server._CLIP_LOCK.locked() is False, "超时路径没释放 _CLIP_LOCK：后续请求会永久等待"
+
+    # 锁真释放了才可能走到这里：第二次请求成功（桩第 2 次写出 wav）
+    status, headers, body = request(http_server, "/api/audio?meeting=M_HANG&seconds=60")
+    assert len(calls) == 2, "第二次请求没再切片（缓存/桩状态不对）：%r" % (calls,)
+    assert status == 200, body
+    assert headers["Content-Type"] == "audio/wav"
+    assert headers["X-Clamped-Seconds"] == "60"
+    info = sf.info(io.BytesIO(body))
+    assert info.channels == 1 and info.samplerate == 16000
+    assert server._CLIP_LOCK.locked() is False
+    assert list(clips.glob("*.tmp.wav")) == []
+
+
 # ─────────────────────────── HTTP：分块写 ───────────────────────────
 
 def test_file_is_written_in_blocks_without_reading_it_whole(tmp_path, monkeypatch):
