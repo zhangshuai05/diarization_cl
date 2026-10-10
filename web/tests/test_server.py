@@ -130,6 +130,28 @@ def test_meetings_catalog_fields_and_has_ref(http_server):
     assert all(row["cohort"] == "dev" for row in rows if row["has_ref"])
 
 
+def test_n_windows_prefers_manifest_counts_over_npz(monkeypatch, tmp_path):
+    """主源（manifest `meetings.<id>.counts.main`）与兜底源（npz 形状）取值不同时，
+    必须返回**主源**的值 —— 只断言 `> 0` 抓不到「主源恒 miss、静默走兜底」。
+
+    桩：manifest 说 777，npz 形状是 4；旧实现在 entry 上直接取 `main`（恒 None），
+    会返回 4，本用例必红。
+    """
+    import numpy as np
+
+    meeting = "M_STUB"
+    (tmp_path / meeting).mkdir()
+    np.savez(tmp_path / meeting / "main.npz", emb=np.zeros((4, 2)))     # 兜底源 = 4
+    (tmp_path / "manifest.json").write_text(
+        json.dumps({"meetings": {meeting: {"counts": {"main": 777}}}}), encoding="utf-8")
+
+    monkeypatch.setattr(server, "_CATALOG", None)
+    monkeypatch.setattr(server.PE, "PROBE_CACHE", tmp_path)
+    rows = server.meetings()
+    assert len(rows) == 1 and rows[0]["id"] == meeting
+    assert rows[0]["n_windows"] == 777, "读到 4 说明 counts.main 恒 miss、走了 npz 兜底"
+
+
 # ─────────────────────────── /api/run：参数校验 ───────────────────────────
 
 def test_meeting_whitelist_rejects_traversal_and_unknown(http_server, fake_meetings):

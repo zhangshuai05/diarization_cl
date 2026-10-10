@@ -142,8 +142,8 @@ def _build_meetings():
     * `has_ref` **只**读 `artifacts/v13_ab_dev_results.json`（Ruling 5）——不用
       「der 是 None」这类推断：无参照是有真值文件但没进参照产物，两回事。
     * `gt_speakers` / `duration` 直接读 rttm 与 flac header，不解析 TextGrid。
-    * `n_windows` 取缓存 manifest 的 `counts.main`（与参照产物的 `n_windows` 同量，
-      dev 12 场逐场实测相等）；manifest 缺条目时退回读 `main.npz` 的形状。
+    * `n_windows` 取缓存 manifest 的 `meetings.<id>.counts.main`（与参照产物的 `n_windows`
+      同量，dev 12 场逐场实测相等）；manifest 缺条目时退回读 `main.npz` 的形状。
     """
     if not PE.PROBE_CACHE.is_dir():
         return []
@@ -169,7 +169,7 @@ def _build_meetings():
             flac = root / "wav" / ("%s.flac" % meeting)
             if duration is None and flac.is_file():
                 duration = round(sf.info(flac).duration, 1)
-        n_windows = (counts.get(meeting) or {}).get("main")
+        n_windows = ((counts.get(meeting) or {}).get("counts") or {}).get("main")
         if n_windows is None:
             n_windows = _n_windows_from_npz(entry / "main.npz")
         rows.append({"id": meeting, "cohort": _meeting_cohort(meeting),
