@@ -25,6 +25,13 @@ LANE_PAYLOAD_KEYS: tuple[str, ...] = (
     "segments",
 )
 
+# 事件层在 payload 之上多一份 `pairs`（映射表行：预测簇 → 最像的真值人 + 重叠/纯度/簇时长）。
+# 它**不在** `LANE_PAYLOAD_KEYS` 里：泳道 payload 由 `lanes.py`（冻结文件）产出、不带真值，
+# `pairs` 需要本场 rttm，由 `/api/run` 的编排层（`server.lane_event`）注入 ——
+# 所以「事件键」= payload 键 + `pairs`，页面与两端测试都按这两份名单走。
+PAIRS_KEY = "pairs"
+LANE_EVENT_KEYS: tuple[str, ...] = LANE_PAYLOAD_KEYS + (PAIRS_KEY,)
+
 # 「读真值」名单（页面必须给这些名字带徽标，不许写死在 app.js 里）：值由读真值算出，
 # 不是纯预测能拿到的分数。两种名字都算「暴露给页面」：
 #   * `merged_overall` / `merged_der` —— 字段名（在 `LANE_PAYLOAD_KEYS` 里），

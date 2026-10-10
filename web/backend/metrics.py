@@ -30,6 +30,9 @@
 三处 round 的取整误差会全落到错答头上（本仓库踩过，见 `probe_oracle_k_curve.leg`）。
 `clean` / `overlap` 两桶取自 `attribution` 的 4 位取整值（只用于展示，不参与恒等式）。
 
+`pairs` 是唯一的**列表**返回（映射表行：预测簇 → 最像的真值人），不是 payload 键——
+它由 `/api/run` 的编排层补进事件（`contract.LANE_EVENT_KEYS`），口径与 8736 逐行同源。
+
 分母为 0 时（一场没有句子）比率返回 `None`，与探针 `_empty()` 的惯例一致——
 T1 在窗数 < 2 时会返回自建 payload，这条路径必须能走通、不抛异常。
 """
@@ -121,6 +124,33 @@ def der_metrics(reference, segments):
     result = der(reference, _as_rttm(segments), collar=0.25)
     return {key: result[key]
             for key in ("der", "miss_rate", "false_alarm_rate", "confusion_rate")}
+
+
+def pairs(predicted, reference):
+    """每个预测簇最像哪个真值人：按区间重叠秒数取最大（8736 `bench_server.pairs` 逐行同源）。
+
+    * `predicted` / `reference` 都是 rttm 口径的段表（`{"start","end","speaker"}`）；
+      预测侧的簇名由 `server.lane_pairs` 转成 `#N`（与 8736 把 `spk` 转 `f"#{int(spk)}"`
+      再调这里一字不差）。
+    * 每行 = `{pred, ref, overlap, share, pred_seconds}`：`ref` 是与该簇**重叠秒数最大**的
+      真值人（并列时取集合迭代里先遇到的；与谁都无重叠则 `None`，不瞎配），
+      `share` = 重叠 / 该簇总时长（0–1），`overlap` / `pred_seconds` 1 位小数、`share` 3 位。
+    * 与 DER 的 collar 内映射、句级双射都不是一回事：只看谁占得最多。
+    """
+    out = []
+    for label in sorted({s["speaker"] for s in predicted}):
+        p = [s for s in predicted if s["speaker"] == label]
+        p_len = sum(s["end"] - s["start"] for s in p)
+        best, best_overlap = None, 0.0
+        for ref in {s["speaker"] for s in reference}:
+            overlap = sum(max(0.0, min(a["end"], b["end"]) - max(a["start"], b["start"]))
+                          for a in p for b in reference if b["speaker"] == ref)
+            if overlap > best_overlap:
+                best, best_overlap = ref, overlap
+        out.append({"pred": label, "ref": best, "overlap": round(best_overlap, 1),
+                    "pred_seconds": round(p_len, 1),
+                    "share": round(best_overlap / p_len, 3) if p_len else 0.0})
+    return out
 
 
 def with_merged(meeting, payload, sentences, reference):

@@ -194,6 +194,126 @@ def test_knobs_are_passed_verbatim(http_server, fake_meetings, monkeypatch):
     assert calls[-1] == ("M2", dict(server.KNOB_DEFAULTS, refine=True, pin_base=True))
 
 
+# ─────────────────────────── /api/truth ───────────────────────────
+
+def _write_rttm(root, meeting, rows):
+    """一行 RTTM：`SPEAKER <meeting> 1 <start> <dur> <NA> <NA> <speaker> <NA> <NA>`。"""
+    target = root / "TextGrid"
+    target.mkdir(parents=True, exist_ok=True)
+    body = "".join("SPEAKER %s 1 %.3f %.3f <NA> <NA> %s <NA> <NA>\n"
+                    % (meeting, start, end - start, speaker)
+                    for start, end, speaker in rows)
+    (target / (meeting + ".rttm")).write_text(body, encoding="utf-8")
+
+
+def test_truth_whitelist_is_the_same_as_run(http_server, fake_meetings):
+    """`meeting` 走同一套白名单：不在目录里（含路径式取值）一律 400，不读文件。"""
+    for path in ("/api/truth?meeting=../x", "/api/truth?meeting=..%2F..%2Fetc",
+                 "/api/truth?meeting=NOT_A_MEETING", "/api/truth", "/api/truth?meeting="):
+        status, _, payload = json_of(http_server, path)
+        assert status == 400, path
+        assert payload["t"] == "error" and payload["error"], path
+    status, _, payload = json_of(http_server, "/api/truth?meeting=M1", method="POST")
+    assert status == 405 and payload["t"] == "error"       # 和 /api/run 一样只 GET
+
+
+def test_truth_shape_reference_truncated_to_the_run_window(http_server, fake_meetings,
+                                                           monkeypatch, tmp_path):
+    """形状 = `{reference, gt_k, has_ref}`；段表按 /api/run 的 600 s 窗口截断。"""
+    root = tmp_path / "data"
+    _write_rttm(root, "M1", [(0.0, 5.0, "S01"), (599.0, 700.0, "S02"),
+                             (700.0, 720.0, "S03")])
+    monkeypatch.setattr(server, "truth_roots", lambda: (root,))
+    monkeypatch.setattr(server, "MEETINGS_ARTIFACT", tmp_path / "absent.json")
+
+    status, _, payload = json_of(http_server, "/api/truth?meeting=M1")
+    assert status == 200
+    assert set(payload) == {"reference", "gt_k", "has_ref"}
+    assert payload["reference"] == [
+        {"start": 0.0, "end": 5.0, "speaker": "S01"},
+        {"start": 599.0, "end": 600.0, "speaker": "S02"},   # 末端截到 600，不是 700
+    ]                                                          # 600 之后开的段整条丢弃
+    assert payload["gt_k"] == 2
+    assert payload["has_ref"] is False
+
+
+def test_truth_has_ref_reads_the_results_artifact(http_server, fake_meetings, monkeypatch,
+                                                  tmp_path):
+    """`has_ref` 与 /api/meetings 同一个源（`v13_ab_dev_results.json` 的 results）。"""
+    monkeypatch.setattr(server, "truth_roots", lambda: (tmp_path,))
+    artifact = tmp_path / "ab.json"
+    artifact.write_text(json.dumps({"results": [{"meeting": "M1"}]}), encoding="utf-8")
+    monkeypatch.setattr(server, "MEETINGS_ARTIFACT", artifact)
+
+    assert json_of(http_server, "/api/truth?meeting=M1")[2]["has_ref"] is True
+    assert json_of(http_server, "/api/truth?meeting=M2")[2]["has_ref"] is False
+    # 没有 rttm 的场次：空段表 + 0 人，不是 500
+    status, _, payload = json_of(http_server, "/api/truth?meeting=M1")
+    assert status == 200 and payload["reference"] == []
+
+
+@pytest.mark.skipif(not CACHE_PRESENT, reason="探针缓存不在（D:\\ 数据）")
+def test_truth_reference_equals_the_reference_api_run_uses(http_server):
+    """真值轨与 /api/run 的参照**同源同口径**（采样 3 场，逐段逐位相等）。
+
+    两边都读 `TextGrid/<meeting>.rttm` 并截到 600 s；`lanes.load_truth` 是 /api/run
+    实际用的那份，这里的断言就是「不许另造一套截断口径」的回归锚。
+    """
+    import lanes
+
+    for row in server.meetings()[:3]:
+        status, _, payload = json_of(http_server, "/api/truth?meeting=" + row["id"])
+        assert status == 200, row
+        _, reference = lanes.load_truth(row["id"])
+        assert payload["reference"] == reference, row
+        assert payload["gt_k"] == len({s["speaker"] for s in reference}), row
+        assert payload["gt_k"] == row["gt_speakers"], row
+
+
+# ─────────────────────────── /api/run：lane 事件的 pairs ───────────────────────────
+
+def test_lane_events_carry_pairs_from_the_meeting_reference(http_server, fake_meetings,
+                                                            monkeypatch):
+    """每条 lane 事件都带 `pairs`：口径 = 8736（`#N` + 最大重叠），不是前端自己算。"""
+    fake_lanes(monkeypatch, lanes=("base",))
+    monkeypatch.setattr(server, "reference_segments",
+                        lambda meeting: [{"start": 0.0, "end": 1.0, "speaker": "S01"},
+                                         {"start": 1.0, "end": 2.0, "speaker": "S02"}])
+
+    status, _, lines = ndjson_of(http_server, "/api/run?meeting=M1")
+    assert status == 200 and lines[-1]["t"] == "done"
+    lane = lines[0]
+    assert set(contract.LANE_EVENT_KEYS) <= set(lane)        # payload 16 键 + pairs
+    assert lane["pairs"] == [{"pred": "#0", "ref": "S01", "overlap": 1.0,
+                              "share": 1.0, "pred_seconds": 1.0}]
+    assert "pairs" not in lane["metrics"]                    # 读数子对象里不塞行表
+
+
+def test_lane_pairs_are_empty_without_reference_or_segments(http_server, fake_meetings,
+                                                            monkeypatch):
+    """无真值（50 场里 38 场）与 k=0（空段表）都要有 `pairs` 键，不是缺字段。"""
+    fake_lanes(monkeypatch, lanes=("base",))
+    monkeypatch.setattr(server, "reference_segments", lambda meeting: [])
+    lane = ndjson_of(http_server, "/api/run?meeting=M1")[2][0]
+    # 无真值：每簇一行、`ref` 为 None（页面靠它显示 —），不是空列表
+    assert lane["pairs"] == [{"pred": "#0", "ref": None, "overlap": 0.0,
+                              "share": 0.0, "pred_seconds": 1.0}]
+
+    empty = lane_payload("base", segments=[])
+    assert server.lane_event(empty, {"status": "missing"}, [])["pairs"] == []
+
+
+def test_lane_event_missing_contract_key_is_still_loud(fake_meetings):
+    """`pairs` 由编排层补，但 payload 缺真字段照样要抛（缺字段=bug，Ruling 6）。"""
+    payload = lane_payload("base")
+    payload.pop("der")
+    with pytest.raises(RuntimeError, match="der"):
+        server.lane_event(payload, {"status": "missing"}, [])
+    event = server.lane_event(lane_payload("base"), {"status": "missing"},
+                              [{"start": 0.0, "end": 1.0, "speaker": "S01"}])
+    assert event["pairs"][0]["pred"] == "#0"
+
+
 # ─────────────────────────── /api/audio：seconds 钳制 ───────────────────────────
 
 @pytest.mark.parametrize("raw,expected", [("1e9", 3600.0), ("3601", 3600.0), ("1", 30.0),

@@ -4,7 +4,10 @@
 算法一律在 `web/backend/`（T1–T4），本模块不重算任何指标：
 
 * `/api/meetings` —— 探针缓存目录（本机 50 场）+ 元信息（`has_ref` 读 `artifacts/v13_ab_dev_results.json`）。
-* `/api/run` —— `lanes.run_lanes(meeting, knobs)` 逐条推 ndjson（`lane` / `done` / `error`）。
+* `/api/truth` —— 本场真值段表（`reference` + `gt_k` + `has_ref`）：时间轴的真值轨与映射表的
+  分母；与 `/api/run` 的参照**同源同口径**（同一份 rttm、同一个 600 s 窗口）。
+* `/api/run` —— `lanes.run_lanes(meeting, knobs)` 逐条推 ndjson（`lane` / `done` / `error`）；
+  每条 `lane` 事件在 16 键 payload 之上带 `pairs`（映射表行，口径见 `metrics.pairs`）。
 * `/api/audio` —— `seconds` 钳到 `[30, 3600]` 且拒 `nan/inf`；切片本体是 T7 的 `clip_path`。
 * `/api/verify` —— `verify_der.parity_status()` 的**同步**回执（不在这里重跑 15 s 的对拍）。
 * `/`、`/app.js`、`/style.css` —— `web/` 下的静态文件，不存在就 404（页面文件是 T6 的交付物）。
@@ -33,6 +36,7 @@
 """
 import json
 import math
+import os
 import sys
 import threading
 import time
@@ -50,8 +54,11 @@ for _path in (_HERE / "backend", ROOT / "streaming_asr", ROOT / "scripts" / "eva
         sys.path.insert(0, str(_path))
 
 import contract  # noqa: E402
+import metrics  # noqa: E402
 import probe_path_equiv as PE  # noqa: E402
+import probe_sentence_attribution as P  # noqa: E402
 import verify_der  # noqa: E402
+from der import read_rttm  # noqa: E402
 from lanes import DATA_ROOTS, KNOB_DEFAULTS, run_lanes  # noqa: E402
 
 import v12_aishell4 as v12_aishell4  # noqa: E402
@@ -77,7 +84,7 @@ STATIC_TYPES = {
     ".ico": "image/x-icon",
 }
 
-KNOWN_API = ("/api/meetings", "/api/run", "/api/audio", "/api/verify")
+KNOWN_API = ("/api/meetings", "/api/run", "/api/truth", "/api/audio", "/api/verify")
 
 # 一次只准跑一个 run（Ruling 2）。`lanes._KNOB_LOCK` 不覆盖整条流，别混用。
 _RUN_LOCK = threading.Lock()
@@ -153,8 +160,7 @@ def _build_meetings():
 
     manifest = _read_json(PE.PROBE_CACHE / "manifest.json") or {}
     counts = manifest.get("meetings") or {}
-    artifact = _read_json(MEETINGS_ARTIFACT) or {}
-    referenced = {item.get("meeting") for item in artifact.get("results") or []}
+    referenced = referenced_meetings()
 
     rows = []
     for entry in sorted(PE.PROBE_CACHE.iterdir()):
@@ -162,7 +168,7 @@ def _build_meetings():
             continue
         meeting = entry.name
         gt_speakers, duration = None, None
-        for root in DATA_ROOTS:
+        for root in truth_roots():
             rttm = root / "TextGrid" / ("%s.rttm" % meeting)
             if gt_speakers is None and rttm.is_file():
                 gt_speakers = len({seg["speaker"] for seg in read_rttm(rttm)})
@@ -188,6 +194,58 @@ def meetings():
         if _CATALOG is None:
             _CATALOG = _build_meetings()
         return [dict(row) for row in _CATALOG]
+
+
+# ─────────────────────────── 真值段表（/api/truth 与 lane 的 pairs） ───────────────────────────
+
+# 真值窗口：与 `probe_sentence_attribution.SECONDS` 同值（600 s）；`lanes.load_truth` 的参照
+# 也是这么截的（`start < 600`、末端 min(end, 600)），这里不另造一套口径。
+TRUTH_SECONDS = P.SECONDS
+
+
+def truth_roots():
+    """真值根目录（`<root>/TextGrid/<meeting>.rttm`）= `/api/run` 的同一对根。
+
+    默认 = `lanes.DATA_ROOTS`（test + train_L，按 TextGrid 在哪定根）；`AISHELL4_TEST`
+    可覆盖 test 根（与 8736 同名同默认），train_L 跟随它的父目录。注意：覆盖只影响本服务的
+    真值读取（`/api/truth` 与 lane 的 `pairs`）——泳道指标走 `lanes`（冻结文件）的默认根。
+    """
+    override = os.environ.get("AISHELL4_TEST")
+    if not override:
+        return DATA_ROOTS
+    base = Path(override)
+    return (base, base.parent / "train_L")
+
+
+def reference_segments(meeting):
+    """本场真值段表（600 s 窗口）：`read_rttm` + 截断，与 `lanes.load_truth` 的参照同口径。
+
+    找不到 rttm 的场次返回空表——「无门限参照」是合法场次（50 场里 38 场如此），不是错误。
+    """
+    for root in truth_roots():
+        path = root / "TextGrid" / ("%s.rttm" % meeting)
+        if path.is_file():
+            return [{"start": s["start"], "end": min(s["end"], TRUTH_SECONDS),
+                     "speaker": s["speaker"]}
+                    for s in read_rttm(path) if s["start"] < TRUTH_SECONDS]
+    return []
+
+
+def referenced_meetings():
+    """`has_ref` 的唯一来源（Ruling 5）：参照产物的 results 场次名（与 `/api/meetings` 同源）。"""
+    artifact = _read_json(MEETINGS_ARTIFACT) or {}
+    return {item.get("meeting") for item in artifact.get("results") or []}
+
+
+def lane_pairs(segments, reference):
+    """T1 段表（`spk` 簇号）→ 映射表行（`metrics.pairs` 的输入口径）。
+
+    簇名用 `#N`：与 8736 `bench_server.run` 把 `spk` 转 `f"#{int(spk)}"` 后再调 `pairs()`
+    一字不差，行里的 `pred` 就是页面显示的那个名字。
+    """
+    predicted = [{"start": s["start"], "end": s["end"], "speaker": "#%d" % int(s["spk"])}
+                 for s in (segments or [])]
+    return metrics.pairs(predicted, reference or [])
 
 
 # ─────────────────────────── 参数校验 ───────────────────────────
@@ -292,12 +350,18 @@ def clip_path(meeting, seconds):
 
 # ─────────────────────────── 事件组装 ───────────────────────────
 
-def lane_event(payload, parity):
-    """`run_lanes` 的 payload → 页面事件。缺契约字段就抛（缺字段=bug，Ruling 6）。"""
-    missing = [key for key in contract.LANE_PAYLOAD_KEYS if key not in payload]
+def lane_event(payload, parity, reference):
+    """`run_lanes` 的 payload → 页面事件。缺契约字段就抛（缺字段=bug，Ruling 6）。
+
+    `pairs`（映射表行）由编排层在这里补：泳道 payload 只带预测段表与读数，真值在编排层
+    才注入——`lanes.py` 冻结、不产出 `pairs`，所以事件键 = payload 键 + `pairs`
+    （`contract.LANE_EVENT_KEYS`）；取值口径见 `lane_pairs`。
+    """
+    event = {"t": "lane", **payload, "pairs": lane_pairs(payload.get("segments"), reference),
+             "parity": parity}
+    missing = [key for key in contract.LANE_EVENT_KEYS if key not in event]
     if missing:
         raise RuntimeError("泳道 payload 缺契约字段：%s" % ", ".join(missing))
-    event = {"t": "lane", **payload, "parity": parity}
     # spec §5 的形状：`metrics` = 除 lane/segments 外的 14 个读数（与平铺的是同一份）
     event["metrics"] = {key: payload[key] for key in contract.LANE_PAYLOAD_KEYS
                         if key not in ("lane", "segments")}
@@ -342,6 +406,8 @@ class Handler(BaseHTTPRequestHandler):
                 self._json({"meetings": meetings()})
             elif path == "/api/run":
                 self._run(query)
+            elif path == "/api/truth":
+                self._truth(query)
             elif path == "/api/audio":
                 self._audio(query)
             elif path == "/api/verify":
@@ -375,13 +441,15 @@ class Handler(BaseHTTPRequestHandler):
 
         generator = None
         try:
+            # 真值段表读一次：/api/truth 与每条泳道的 pairs 用同一份（与 lanes 的参照同源）
+            reference = reference_segments(meeting)
             self._ndjson_headers()
             parity = verify_der.parity_status()        # 快照一次：本次流的每条事件共用
             started = time.time()
             lanes = 0
             generator = run_lanes(meeting, knobs)
             for payload in generator:
-                if not self._emit(lane_event(payload, parity)):
+                if not self._emit(lane_event(payload, parity, reference)):
                     break                              # 客户端走了：别再算、别写
                 lanes += 1
             else:
@@ -402,6 +470,22 @@ class Handler(BaseHTTPRequestHandler):
             _RUN_LOCK.release()
             if self._started:
                 self._finish()
+
+    def _truth(self, query):
+        """`{reference, gt_k, has_ref}`（spec §5，Ruling 12）。
+
+        `gt_k` = 返回的段表里**出现过的真值人**数（8736 同口径）——它与真值轨上看到的人一致；
+        50 场实测里等于 `/api/meetings` 的 `gt_speakers`（600 s 窗口没截掉任何人）。
+        """
+        try:
+            meeting = _parse_meeting(query)
+        except BadRequest as exc:
+            self._json({"t": "error", "error": str(exc)}, 400)
+            return
+        reference = reference_segments(meeting)
+        self._json({"reference": reference,
+                    "gt_k": len({segment["speaker"] for segment in reference}),
+                    "has_ref": meeting in referenced_meetings()})
 
     def _verify(self):
         try:

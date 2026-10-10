@@ -145,6 +145,71 @@ def test_der_charges_confusion_when_second_half_is_another_cluster():
                              + out["confusion_rate"])) < 1e-3
 
 
+# ───────────────────── pairs（映射表行）─────────────────────
+
+# 8736 口径：`pred` 是 `#N` 的簇名（`streaming_asr/bench/bench_server.py` 把 `spk` 转成
+# `f"#{int(spk)}"` 再调 `pairs()`），本模块照抄，不另造。
+def line(start, end, speaker):
+    return {"start": start, "end": end, "speaker": speaker}
+
+
+PAIR_PRED = [line(0.0, 4.0, "#0"), line(4.0, 10.0, "#0"),   # 簇 #0 两段共 10.0 s
+             line(10.0, 12.5, "#1")]                        # 簇 #1 只有 2.5 s
+PAIR_REF = [line(0.0, 3.0, "S01"), line(3.0, 8.0, "S02"), line(20.0, 21.0, "S03")]
+
+
+def test_pairs_picks_the_truth_speaker_with_max_overlap():
+    out = metrics.pairs(PAIR_PRED, PAIR_REF)
+    assert [row["pred"] for row in out] == ["#0", "#1"]        # 按簇号排序、每簇一行
+    first, second = out
+    # #0 与 S01 重叠 3.0 s、与 S02 重叠 5.0 s ⇒ 取 S02（按重叠秒数取最大）
+    assert first == {"pred": "#0", "ref": "S02", "overlap": 5.0, "share": 0.5,
+                     "pred_seconds": 10.0}
+    # #1 与任何真值人都没有重叠 ⇒ 没有匹配（ref = None），不是瞎配一个
+    assert second == {"pred": "#1", "ref": None, "overlap": 0.0, "share": 0.0,
+                      "pred_seconds": 2.5}
+
+
+def test_pairs_row_fields_and_rounding():
+    """字段名与取整位数：overlap/pred_seconds 1 位、share 3 位（8736 的 round 口径）。"""
+    (row,) = metrics.pairs([line(0.0, 1.2345, "#2")], [line(0.0, 0.6666, "S01")])
+    assert set(row) == {"pred", "ref", "overlap", "share", "pred_seconds"}
+    assert row["overlap"] == 0.7 and row["pred_seconds"] == 1.2
+    assert row["share"] == 0.54                     # round(0.6666 / 1.2345, 3)
+    assert 0.0 <= row["share"] <= 1.0
+
+
+def test_pairs_empty_inputs_are_empty_not_exception():
+    assert metrics.pairs([], PAIR_REF) == []          # 无段表（k=0）
+    assert metrics.pairs(PAIR_PRED, []) == [           # 无真值参照：全 None
+        {"pred": "#0", "ref": None, "overlap": 0.0, "share": 0.0, "pred_seconds": 10.0},
+        {"pred": "#1", "ref": None, "overlap": 0.0, "share": 0.0, "pred_seconds": 2.5},
+    ]
+
+
+def _bench_server_8736():
+    """按路径加载 8736 的 `bench_server`（模块级只有 stdlib import，加载安全）。"""
+    import importlib.util
+
+    path = (Path(__file__).resolve().parents[2] / "streaming_asr" / "bench"
+            / "bench_server.py")
+    spec = importlib.util.spec_from_file_location("bench_server_8736", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_pairs_matches_8736_bench_server_row_for_row():
+    """口径不许另造：与 8736 的 `pairs()` 在同一输入上逐行相等（含无真值/空段表）。"""
+    bench = _bench_server_8736()
+    cases = [(PAIR_PRED, PAIR_REF), (PAIR_PRED, []), ([], PAIR_REF),
+             ([line(0.0, 1.2345, "#7")], [line(0.0, 0.6666, "S01")]),
+             ([line(0.0, 5.0, "#0"), line(6.0, 7.0, "#1")],
+              [line(0.0, 4.0, "A"), line(4.0, 6.0, "B"), line(6.0, 7.0, "A")])]
+    for predicted, reference in cases:
+        assert metrics.pairs(predicted, reference) == bench.pairs(predicted, reference)
+
+
 # ───────────────────── 契约 ─────────────────────
 
 REQUIRED_LANE_KEYS = {

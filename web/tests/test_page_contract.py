@@ -12,6 +12,15 @@
 * `/api/audio` 现在只回 JSON 回执：页面读回执并降级，不把 JSON 塞给播放器；
 * 播放头 `left` 用**轨道自己的 rect** 换算（8736 有 72 px 错位的老 bug）；
 * 零构建、无外部资源、无动效 / 渐变 / 阴影装饰。
+
+Task 6b 追加（真值轨 + 映射表 + 四项可见缺陷）：
+
+* `LANE_EVENT_KEYS` = `LANE_PAYLOAD_KEYS` + `pairs`，与 `contract.LANE_EVENT_KEYS` 同名；
+* 时间轴第一条轨画 `/api/truth` 的 `reference`，映射表渲染选中泳道的 `pairs`；
+* 缺陷 a：换场次/重跑会让在飞 run 的 token 过期，旧流的事件一律丢弃（不许串台）；
+* 缺陷 b：服务端字符串全部走 `textContent` / `createElement`——`app.js` 里没有 `innerHTML`；
+* 缺陷 c：`?meeting=` 与按钮的 `data-id` 精确相等，且只有 `?run` 才自动开跑；
+* 缺陷 d：失败清单去重，同一项只写一次日志。
 """
 import re
 import sys
@@ -151,6 +160,95 @@ def test_playhead_uses_track_rect_not_layer_width():
     assert "getBoundingClientRect()" in body
     assert "trackRect.width" in body
     assert "layerRect.width" not in body      # 8736 的 72 px 错位根因
+
+
+# ──────────────── Task 6b：真值轨 / 映射表 / 四项缺陷 ────────────────
+
+def test_lane_event_keys_add_pairs_on_top_of_the_payload():
+    """`pairs` 是事件层字段：两端名单 = payload 键 + `pairs`，不许只在一边存在。"""
+    assert contract.PAIRS_KEY == "pairs"
+    assert contract.LANE_EVENT_KEYS == contract.LANE_PAYLOAD_KEYS + ("pairs",)
+    js = _read(APP)
+    match = re.search(r"const LANE_EVENT_KEYS = LANE_PAYLOAD_KEYS\.concat\(\[(.*?)\]\);",
+                      js, re.S)
+    assert match, "app.js 缺 LANE_EVENT_KEYS 字面量（必须由 payload 名单 + pairs 拼出）"
+    extra = tuple(re.findall(r'"([^"]+)"', match.group(1)))
+    assert extra == contract.LANE_EVENT_KEYS[len(contract.LANE_PAYLOAD_KEYS):]
+    assert "LANE_EVENT_KEYS" in _function_body(js, "acceptLane")      # 校验走事件名单
+
+
+def test_no_innerhtml_anywhere():
+    """缺陷 b：服务端来的字符串（场次名/说话人名/文本）不许拼进 `innerHTML`。
+
+    最硬的白名单就是“零 `innerHTML`”：全部用 `createElement` / `textContent`。"""
+    js = _read(APP)
+    assert "innerHTML" not in js, "app.js 里还有 innerHTML（服务端字符串会变成 XSS 面）"
+    for name in ("loadMeetings", "renderMetrics", "renderMapping", "renderTimeline"):
+        body = _function_body(js, name)
+        assert "innerHTML" not in body
+        assert "textContent" in body or "el(" in body
+
+
+def test_meetings_button_carries_the_exact_id():
+    body = _function_body(_read(APP), "loadMeetings")
+    assert "dataset.id" in body and "meeting.id" in body
+
+
+def test_deeplink_matches_meeting_id_exactly_and_only_run_autostarts():
+    """缺陷 c：`?meeting=` 与 `data-id` 精确相等（子串匹配会把 A 场开给 B 场）。"""
+    body = _function_body(_read(APP), "deepLink")
+    assert "dataset.id === wanted" in body
+    assert "includes(" not in body
+    assert 'query.has("run")' in body          # 只有 ?run 自动开跑，没新增自动行为
+
+
+def test_run_events_are_dropped_when_the_selection_changes():
+    """缺陷 a：事件与当前选择不匹配就丢弃——run 序号 + 场次双重判定，且在画之前。"""
+    js = _read(APP)
+    stale = _function_body(js, "runTokenStale")
+    assert "token.seq !== state.runSeq" in stale
+    assert "state.meeting.id !== token.meeting" in stale
+    run_body = _function_body(js, "run")
+    assert run_body.index("runTokenStale(token)") < run_body.index("acceptLane(event)")
+    assert "AbortError" in run_body               # 自己 abort 的 fetch 不当失败刷日志
+    assert "token.abort.signal" in run_body
+    assert "beginRun" in run_body
+    assert "invalidateRun" in _function_body(js, "selectMeeting")
+
+
+def test_failed_parity_list_is_logged_once():
+    """缺陷 d：失败态每次 render 重复整份清单 → 改成去重（同一项只写一次）。"""
+    js = _read(APP)
+    status = _function_body(js, "renderStatusBar")
+    once = _function_body(js, "logFailureOnce")
+    assert "logFailureOnce" in status
+    assert 'logLine("对拍未通过：' not in status       # 清单不再在 render 里直接打印
+    assert "has(" in once and "add(" in once and "return" in once
+
+
+def test_truth_track_comes_from_api_truth():
+    """时间轴第一条轨 = `/api/truth` 的真值段表；选中场次时就拉。"""
+    js = _read(APP)
+    load = _function_body(js, "loadTruth")
+    assert '"/api/truth?meeting="' in load
+    assert "reference" in load and "state.truth" in load
+    assert "invalidateRun" not in load                        # 拉真值不是开跑
+    assert "loadTruth" in _function_body(js, "selectMeeting")
+    track = _function_body(js, "renderTimeline")
+    assert "state.truth" in track and "segment.speaker" in track
+    assert "truthColor" in track
+    assert "truth-blk" not in track                           # 旧的假占位块已删
+
+
+def test_mapping_rows_come_from_pairs():
+    """映射表按选中泳道的 `pairs` 渲染：预测簇 / 真值人 / 重叠 / 纯度 / 簇时长。"""
+    body = _function_body(_read(APP), "renderMapping")
+    assert ".pairs" in body
+    for field in ("pred", "ref", "overlap", "share", "pred_seconds"):
+        assert field in body, field
+    assert "—" in body                                        # 无 pairs / 无匹配真值人 → —
+    assert "truthGtK" in body                                 # /api/truth 的 gt_k 是分母
+    assert "payload.segments" in body                         # 无 pairs 时退回簇列表
 
 
 # ─────────────────────────── 静态骨架与视觉 ───────────────────────────

@@ -24,6 +24,13 @@ const REFERENCE_WINDOW_S = 600;
 
 const PREDICTION_COLORS = ["--p0", "--p1", "--p2", "--p3", "--p4", "--p5", "--p6", "--p7"];
 
+/* 真值说话人一套配色（--s*），预测簇一套（--p*）：spec §6.2「真值一套、预测一套」。 */
+const TRUTH_COLORS = ["--s0", "--s1", "--s2", "--s3", "--s4", "--s5", "--s6", "--s7"];
+
+/* 事件层的键 = 泳道 payload 键 + pairs（映射表行）：pairs 由 /api/run 的编排层注入
+   （泳道 payload 本身不带真值），与 contract.LANE_EVENT_KEYS 同名同序。 */
+const LANE_EVENT_KEYS = LANE_PAYLOAD_KEYS.concat(["pairs"]);
+
 const $ = (id) => document.getElementById(id);
 
 const state = {
@@ -32,10 +39,15 @@ const state = {
   parity: null,
   lanes: [],
   mappingLane: null,
+  truth: null,                      // /api/truth 的 reference（当前场次；未选/未到为 null）
+  truthGtK: null,
+  truthLoading: false,
   total: REFERENCE_WINDOW_S,
   playheadS: 0,
   audioReady: false,
   audioHinted: false,
+  runSeq: 0,                        // 串台防护（缺陷 a）：在飞 run 的序号，换场次/重跑即作废
+  runAbort: null,
 };
 
 /* ── 指标显示（空值一律 —，DER 受 parity 门禁） ────────────── */
@@ -53,12 +65,12 @@ function derDisplay(value, parity) {
 }
 
 function derCell(payload) {
-  const der = derDisplay(payload.der, payload.parity);
+  const cell = el("td", "num", derDisplay(payload.der, payload.parity));
   if (!payload.parity || payload.parity.status === "pass") {
-    return der + ' <small>漏 ' + pctOrDash(payload.miss_rate, 1) + ' · 虚 '
-      + pctOrDash(payload.false_alarm_rate, 1) + ' · 混 ' + pctOrDash(payload.confusion_rate, 1) + '</small>';
+    cell.append(el("small", "", "漏 " + pctOrDash(payload.miss_rate, 1) + " · 虚 "
+      + pctOrDash(payload.false_alarm_rate, 1) + " · 混 " + pctOrDash(payload.confusion_rate, 1)));
   }
-  return der;
+  return cell;
 }
 
 function pinBaseText(pinned) {
@@ -76,13 +88,14 @@ function isTruthDerivedField(key) {
 }
 
 function laneBadge(lane) {
-  return isTruthDerivedLane(lane) ? ' <span class="badge truth">读真值</span>' : "";
+  return isTruthDerivedLane(lane) ? el("span", "badge truth", "读真值") : null;
 }
 
 function renderMergedHeader() {
   const mergedKeys = LANE_PAYLOAD_KEYS.filter(function (key) { return key.indexOf("merged") === 0; });
-  const badge = mergedKeys.some(isTruthDerivedField) ? ' <span class="badge truth">读真值</span>' : "";
-  $("merged-th").innerHTML = "merged" + badge;
+  const header = $("merged-th");
+  header.textContent = "merged";
+  if (mergedKeys.some(isTruthDerivedField)) header.append(el("span", "badge truth", "读真值"));
 }
 
 /* ── 状态条 ─────────────────────────────────────────────── */
@@ -111,8 +124,7 @@ function renderStatusBar() {
     badge.textContent = "DER 对拍未通过（" + parity.status + "）";
     badge.className = "badge bad";
     badge.title = parity.path || "";
-    const failed = parity.failed || [];
-    for (const item of failed) logLine("对拍未通过：" + JSON.stringify(item), "bad");
+    for (const item of parity.failed || []) logFailureOnce(item);   // 去重（缺陷 d）
   }
 
   const pinned = $("pin_base").checked;
@@ -155,6 +167,46 @@ function predictionColor(spk) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#94a3b8";
 }
 
+/* 真值说话人（/api/truth 的段表）：按首次出现顺序固定配色槽，同一个名字每次渲染同色。 */
+function truthSpeakers() {
+  const names = [];
+  for (const segment of state.truth || []) {
+    if (names.indexOf(segment.speaker) < 0) names.push(segment.speaker);
+  }
+  return names;
+}
+
+function truthColor(name) {
+  const index = truthSpeakers().indexOf(name);
+  // 不在真值轨里的名字（pairs 比段表先到）落到第 0 槽，不另造色。
+  const slot = TRUTH_COLORS[(index < 0 ? 0 : index) % TRUTH_COLORS.length];
+  return getComputedStyle(document.documentElement).getPropertyValue(slot).trim() || "#94a3b8";
+}
+
+/* `pairs[].pred` 是 `#N`（8736 口径）：配色槽按同一个 N 取，与时间轴的预测轨同色。 */
+function predIndex(pred) {
+  const value = Number(String(pred).replace("#", ""));
+  return Number.isFinite(value) ? Math.abs(value) : 0;
+}
+
+/* 单元格工具：`null`/`undefined` 一律 —（与 pctOrDash 的空值惯例一致）。 */
+function td(text, className) {
+  return el("td", className, text === null || text === undefined ? "—" : String(text));
+}
+
+/* 匹配真值人：带真值配色的小色块 + 人名；无匹配给 —（不是空单元格）。 */
+function refCell(name) {
+  const cell = el("td");
+  if (name === null || name === undefined) {
+    cell.append(el("span", "muted", "—"));
+    return cell;
+  }
+  const swatch = el("span", "swatch");
+  swatch.style.background = truthColor(name);
+  cell.append(swatch, String(name));
+  return cell;
+}
+
 function logLine(text, kind) {
   const list = $("log");
   if (!list) return;
@@ -164,6 +216,17 @@ function logLine(text, kind) {
   list.append(item);
   while (list.children.length > 200) list.firstChild.remove();
   list.scrollTop = list.scrollHeight;
+}
+
+/* 失败清单去重（缺陷 d）：parity 非 pass 时 renderStatusBar 会被反复调用，
+   同一项只写一次日志（换一批失败项才追加），不再每次 render 重刷整份清单。 */
+const loggedFailures = new Set();
+
+function logFailureOnce(item) {
+  const text = JSON.stringify(item);
+  if (loggedFailures.has(text)) return;
+  loggedFailures.add(text);
+  logLine("对拍未通过：" + text, "bad");
 }
 
 /* ── 场次列表 ───────────────────────────────────────────── */
@@ -179,11 +242,13 @@ async function loadMeetings() {
     const item = el("li");
     const button = el("button", "meeting");
     button.type = "button";
+    button.dataset.id = meeting.id;              // 深链按它精确匹配（缺陷 c）
     button.setAttribute("aria-pressed", "false");
-    button.innerHTML = '<span class="m-id">' + meeting.id + '</span>'
-      + '<span class="m-meta">' + meeting.cohort
+    // 服务端字符串一律 textContent / createElement（缺陷 b），不拼 HTML 字符串
+    button.append(el("span", "m-id", meeting.id));
+    button.append(el("span", "m-meta", meeting.cohort
       + (meeting.has_ref ? " · 有参照" : " · 无参照")
-      + " · " + meeting.gt_speakers + " 人 · " + fmtTime(meeting.duration) + '</span>';
+      + " · " + meeting.gt_speakers + " 人 · " + fmtTime(meeting.duration)));
     button.addEventListener("click", function () { selectMeeting(meeting, button); });
     item.append(button);
     list.append(item);
@@ -193,28 +258,68 @@ async function loadMeetings() {
 }
 
 function selectMeeting(meeting, button) {
+  invalidateRun();                             // 缺陷 a：在飞的 run 立即作废并断开
   state.meeting = meeting;
+  state.lanes = [];                            // 上一场的泳道不许留在新场次的时间轴上
+  state.mappingLane = null;
+  state.truth = null;                          // 真值轨等 /api/truth（按场次重取）
+  state.truthGtK = null;
+  state.truthLoading = true;
   for (const other of document.querySelectorAll(".meeting")) {
     other.setAttribute("aria-pressed", other === button ? "true" : "false");
   }
   $("run").disabled = false;
+  $("run").textContent = "运行";            // 旧 run 的 finally 不会再碰按钮（token 已过期）
   $("run-meta").textContent = meeting.id + " · 窗口 " + fmtTime(timelineTotal());
   logLine("选中 " + meeting.id + "（真值 " + meeting.gt_speakers + " 人 · "
     + (meeting.has_ref ? "有参照" : "无参照") + "）");
+  renderMetrics();
   renderTimeline();
+  renderMapping();
+  loadTruth(meeting);
 }
 
-/* 深链：/?meeting=<id>[&run=1] 打开即选中（可选即跑）——刷新/转发同一次运行。 */
+/* 真值轨与映射表的数据源（spec §5 的 /api/truth）：选中场次就拉。
+   回来时场次已经换了就丢弃（与 run 同一个串台思路，缺陷 a）。 */
+async function loadTruth(meeting) {
+  const requested = meeting.id;
+  try {
+    const response = await fetch("/api/truth?meeting=" + encodeURIComponent(requested));
+    const payload = await response.json().catch(function () { return null; });
+    if (!response.ok) {
+      throw new Error(payload && payload.error ? payload.error : "HTTP " + response.status);
+    }
+    if (!state.meeting || state.meeting.id !== requested) return;
+    state.truth = payload.reference || [];
+    state.truthGtK = payload.gt_k;
+    state.truthLoading = false;
+    logLine("真值段表就绪：" + state.truth.length + " 段 · " + payload.gt_k + " 人 · "
+      + (payload.has_ref ? "有参照" : "无参照"));
+  } catch (error) {
+    if (!state.meeting || state.meeting.id !== requested) return;
+    state.truth = [];
+    state.truthGtK = null;
+    state.truthLoading = false;
+    logLine("真值读取失败：" + (error.message || error), "warn");
+  }
+  if (state.meeting && state.meeting.id === requested) {
+    renderTimeline();
+    renderMapping();
+  }
+}
+
+/* 深链：/?meeting=<id>[&run=1] 打开即选中（可选即跑）——刷新/转发同一次运行。
+   `meeting` 与按钮上的 `data-id` **精确相等**（子串匹配会把 A 场开给 B 场，缺陷 c）。 */
 function deepLink() {
   const query = new URLSearchParams(location.search);
   const wanted = query.get("meeting");
   if (!wanted) return;
   const button = [].slice.call(document.querySelectorAll(".meeting")).find(function (item) {
-    return item.textContent.indexOf(wanted) >= 0;
+    return item.dataset.id === wanted;
   });
   if (!button) return;
   button.click();
-  if (query.has("run")) run();
+  if (query.has("run")) run();                 // 只认 ?run，不新增自动行为
 }
 
 /* ── 运行与 NDJSON ──────────────────────────────────────── */
@@ -252,7 +357,7 @@ async function* readNdjson(response) {
 }
 
 function acceptLane(event) {
-  const missing = LANE_PAYLOAD_KEYS.filter(function (key) { return !(key in event); });
+  const missing = LANE_EVENT_KEYS.filter(function (key) { return !(key in event); });
   if (missing.length) {
     logLine("泳道 " + event.lane + " 缺契约字段：" + missing.join(", "), "bad");
     return;
@@ -268,9 +373,35 @@ function acceptLane(event) {
     + " · DER " + derDisplay(event.der, event.parity));
 }
 
+/* ── 串台防护（缺陷 a） ─────────────────────────────────────
+   一次 run 领一个 (序号, 场次) token；换场次或重跑都会让旧 token 过期。旧流的事件在
+   `run()` 里**进 acceptLane 之前**丢弃，同时把在飞的 fetch abort 掉（服务端 `_emit`
+   看到写失败就提前收摊、还原 λ）。 */
+function beginRun(meetingId) {
+  if (state.runAbort) state.runAbort.abort();
+  state.runAbort = new AbortController();
+  state.runSeq += 1;
+  return { seq: state.runSeq, meeting: meetingId, abort: state.runAbort };
+}
+
+function invalidateRun() {
+  state.runSeq += 1;
+  if (state.runAbort) {
+    // 在飞的 run：记一行（这一场的结果不再要了），断掉 fetch，让服务端提前收摊
+    if (state.meeting) logLine("已丢弃 " + state.meeting.id + " 的在飞结果（已换场次或重跑）", "warn");
+    state.runAbort.abort();
+    state.runAbort = null;
+  }
+}
+
+function runTokenStale(token) {
+  return token.seq !== state.runSeq || !state.meeting || state.meeting.id !== token.meeting;
+}
+
 async function run() {
   if (!state.meeting) return;
   const meeting = state.meeting;
+  const token = beginRun(meeting.id);
   state.lanes = [];
   state.mappingLane = null;
   state.playheadS = 0;
@@ -283,12 +414,14 @@ async function run() {
   logLine("运行 " + meeting.id + "：" + knobsQuery());
   const started = performance.now();
   try {
-    const response = await fetch("/api/run?meeting=" + encodeURIComponent(meeting.id) + "&" + knobsQuery());
+    const response = await fetch("/api/run?meeting=" + encodeURIComponent(meeting.id) + "&" + knobsQuery(),
+      { signal: token.abort.signal });
     if (!response.ok) {
       const payload = await response.json().catch(function () { return null; });
       throw new Error(payload && payload.error ? payload.error : "HTTP " + response.status);
     }
     for await (const event of readNdjson(response)) {
+      if (runTokenStale(token)) return;   // 缺陷 a：旧流一律不画（作废时已记过日志）
       if (event.t === "lane") {
         acceptLane(event);
       } else if (event.t === "error") {
@@ -299,13 +432,17 @@ async function run() {
         logLine("完成：" + event.n_lanes + " 条泳道 · 服务端 " + event.elapsed_s + " s");
       }
     }
-    await loadAudio(meeting.id, state.total);
+    if (!runTokenStale(token)) await loadAudio(meeting.id, state.total);
   } catch (error) {
+    if (error && error.name === "AbortError") return;    // 自己断开的：静默收摊，不当失败
+    if (runTokenStale(token)) return;                    // 旧流的网络错误也不画、不刷日志
     logLine("运行失败：" + (error.message || error), "bad");
   } finally {
-    $("run").disabled = false;
-    $("run").textContent = "运行";
-    logLine("本次耗时 " + ((performance.now() - started) / 1000).toFixed(2) + " s（含网络与渲染）");
+    if (!runTokenStale(token)) {                         // 别把新 run 的按钮/耗时复位掉
+      $("run").disabled = false;
+      $("run").textContent = "运行";
+      logLine("本次耗时 " + ((performance.now() - started) / 1000).toFixed(2) + " s（含网络与渲染）");
+    }
   }
 }
 
@@ -315,9 +452,10 @@ function renderMetrics() {
   const body = $("metrics-body");
   body.textContent = "";
   if (!state.lanes.length) {
+    const cell = el("td", "muted", "运行后每条泳道一行；空读数（后端 null）显示 —。");
+    cell.colSpan = 13;
     const row = el("tr");
-    row.append(el("td", "muted", "运行后每条泳道一行；空读数（后端 null）显示 —。"));
-    row.firstChild.colSpan = 13;
+    row.append(cell);
     body.append(row);
     return;
   }
@@ -331,21 +469,24 @@ function renderMetrics() {
       renderMetrics();
       renderMapping();
     });
-    row.innerHTML =
-      '<td>' + lane.lane + laneBadge(lane.lane) + '</td>'
-      + '<td class="num">' + payload.k + '</td>'
-      + '<td class="num">' + gtK + '</td>'
-      + '<td class="num">' + visibleK + '</td>'
-      + '<td class="num">' + pctOrDash(payload.overall, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.clean, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.overlap, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.abstain, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.unmapped, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.wrong, 2) + '</td>'
-      + '<td class="num">' + pctOrDash(payload.merged_overall, 2) + ' / '
-      + derDisplay(payload.merged_der, payload.parity) + '</td>'
-      + '<td class="num">' + derCell(payload) + '</td>'
-      + '<td>' + payload.level + '</td>';
+    // 服务端字符串（泳道名）只走 textContent（缺陷 b）
+    const nameCell = el("td", "", lane.lane);
+    const badge = laneBadge(lane.lane);
+    if (badge) nameCell.append(" ", badge);
+    row.append(nameCell);
+    row.append(td(payload.k, "num"));
+    row.append(td(gtK, "num"));
+    row.append(td(visibleK, "num"));
+    row.append(td(pctOrDash(payload.overall, 2), "num"));
+    row.append(td(pctOrDash(payload.clean, 2), "num"));
+    row.append(td(pctOrDash(payload.overlap, 2), "num"));
+    row.append(td(pctOrDash(payload.abstain, 2), "num"));
+    row.append(td(pctOrDash(payload.unmapped, 2), "num"));
+    row.append(td(pctOrDash(payload.wrong, 2), "num"));
+    row.append(td(pctOrDash(payload.merged_overall, 2) + " / "
+      + derDisplay(payload.merged_der, payload.parity), "num"));
+    row.append(derCell(payload));
+    row.append(td(payload.level));
     body.append(row);
   }
 }
@@ -394,8 +535,10 @@ function renderTimeline() {
   }
   const total = timelineTotal();
   state.total = total;
+  const reference = state.truth || [];
+  const truthNames = truthSpeakers();
   $("timeline-meta").textContent = meeting.id + " · 参照窗口 " + fmtTime(total)
-    + " · 真值 " + meeting.gt_speakers + " 人";
+    + " · 真值 " + (state.truth ? truthNames.length : meeting.gt_speakers) + " 人";
 
   const rulerRow = el("div", "row ruler-row");
   rulerRow.append(el("span", "lane-label muted", "秒"));
@@ -404,16 +547,19 @@ function renderTimeline() {
   layer.append(rulerRow);
   drawRuler(ruler, total);
 
-  /* 真值轨：T5 的 /api/run 只下发预测 segments，真值段表没有随 API 下发；
-     这里不伪造段块，只标参照窗口，读数位置显示 —。 */
+  /* 真值轨（spec §6.1 的第一条轨）：段表来自 /api/truth，与各泳道同一把尺子、真值一套配色。 */
   const truthRow = el("div", "row");
   truthRow.append(el("span", "lane-label truth", "真值"));
   const truthTrack = el("div", "track");
-  const truthBlock = el("div", "blk truth-blk");
-  truthBlock.style.left = "0";
-  truthBlock.style.width = percent(Math.min(total, REFERENCE_WINDOW_S), total);
-  truthBlock.title = "真值段表未随 API 下发（T5 只发预测 segments）；这里只标参照窗口";
-  truthTrack.append(truthBlock);
+  truthTrack.dataset.lane = "truth";
+  for (const segment of reference) {
+    const piece = el("div", "blk");
+    piece.style.left = percent(segment.start, total);
+    piece.style.width = percent(Math.max(segment.end - segment.start, 0.001), total);
+    piece.style.background = truthColor(segment.speaker);
+    piece.title = segment.speaker + " · " + fmtTime(segment.start) + "–" + fmtTime(segment.end);
+    truthTrack.append(piece);
+  }
   truthRow.append(truthTrack);
   layer.append(truthRow);
 
@@ -427,7 +573,7 @@ function renderTimeline() {
       piece.style.left = percent(segment.start, total);
       piece.style.width = percent(Math.max(segment.end - segment.start, 0.001), total);
       piece.style.background = predictionColor(segment.spk);
-      piece.title = "spk " + segment.spk + " · " + fmtTime(segment.start) + "–" + fmtTime(segment.end);
+      piece.title = "#" + segment.spk + " · " + fmtTime(segment.start) + "–" + fmtTime(segment.end);
       track.append(piece);
     }
     row.append(track);
@@ -440,8 +586,13 @@ function renderTimeline() {
   const head = el("div", "playhead");
   head.hidden = true;
   layer.append(head);
-  $("timeline-note").textContent = "点击轨道定位（音频就绪时同步播放）；真值段表未随 API 下发，"
-    + "真值轨仅标参照窗口。预测每条泳道一条轨，不按真值人分组。";
+  const truthNote = state.truthLoading
+    ? "真值轨读取中（/api/truth）"
+    : (reference.length
+      ? "真值轨 " + reference.length + " 段 · " + truthNames.length + " 人"
+      : "该场无真值段表（/api/truth 返回空）");
+  $("timeline-note").textContent = "点击轨道定位（音频就绪时同步播放）；" + truthNote
+    + "，与泳道同一把尺子；预测每条泳道一条轨，不按真值人分组。";
 }
 
 function seekFromClick(event) {
@@ -507,30 +658,58 @@ function renderMapping() {
   body.textContent = "";
   const lane = currentLane();
   if (!lane) {
+    const cell = el("td", "muted", "运行后按泳道列出预测簇。");
+    cell.colSpan = 5;
     const row = el("tr");
-    row.append(el("td", "muted", "运行后按泳道列出预测簇。"));
-    row.firstChild.colSpan = 5;
+    row.append(cell);
     body.append(row);
     $("mapping-note").textContent = "运行后按选中泳道列出预测簇。";
     return;
   }
-  const clusters = new Map();
-  for (const segment of lane.payload.segments) {
-    if (!clusters.has(segment.spk)) clusters.set(segment.spk, { spk: segment.spk, seconds: 0 });
-    clusters.get(segment.spk).seconds += Math.max(0, segment.end - segment.start);
+  const truthK = state.truthGtK === null || state.truthGtK === undefined ? "—" : state.truthGtK;
+  const pairs = lane.payload.pairs || [];
+  let shown = pairs.length;
+  if (pairs.length) {
+    /* 服务端下发的映射表行（口径见 metrics.pairs）：一簇一行，值是最大重叠那份。 */
+    for (const pair of pairs) {
+      const row = el("tr");
+      const predCell = el("td");
+      const swatch = el("span", "swatch");
+      swatch.style.background = predictionColor(predIndex(pair.pred));
+      predCell.append(swatch, String(pair.pred));
+      row.append(predCell);
+      row.append(refCell(pair.ref));
+      const matched = pair.ref !== null && pair.ref !== undefined;
+      row.append(td(matched ? Number(pair.overlap).toFixed(1) + " s" : "—", "num"));
+      row.append(td(matched ? (Number(pair.share) * 100).toFixed(1) + "%" : "—", "num"));
+      row.append(td(Number(pair.pred_seconds).toFixed(1) + " s", "num"));
+      body.append(row);
+    }
+  } else {
+    /* 无 pairs（旧事件/真值未到）：仍按段表列簇与簇时长，真值三列记 —。 */
+    const clusters = new Map();
+    for (const segment of lane.payload.segments) {
+      if (!clusters.has(segment.spk)) clusters.set(segment.spk, { spk: segment.spk, seconds: 0 });
+      clusters.get(segment.spk).seconds += Math.max(0, segment.end - segment.start);
+    }
+    for (const cluster of clusters.values()) {
+      const row = el("tr");
+      const predCell = el("td");
+      const swatch = el("span", "swatch");
+      swatch.style.background = predictionColor(cluster.spk);
+      predCell.append(swatch, "#" + cluster.spk);
+      row.append(predCell);
+      row.append(td(null));
+      row.append(td(null, "num"));
+      row.append(td(null, "num"));
+      row.append(td(cluster.seconds.toFixed(1) + " s", "num"));
+      body.append(row);
+    }
+    shown = clusters.size;
   }
-  for (const cluster of clusters.values()) {
-    const row = el("tr");
-    row.innerHTML = '<td><span class="swatch" style="background:' + predictionColor(cluster.spk)
-      + '"></span>spk ' + cluster.spk + '</td>'
-      + '<td class="muted">—</td>'
-      + '<td class="num">—</td>'
-      + '<td class="num">—</td>'
-      + '<td class="num">' + cluster.seconds.toFixed(1) + ' s</td>';
-    body.append(row);
-  }
-  $("mapping-note").textContent = "泳道 " + lane.lane + "：共 " + clusters.size
-    + " 个预测簇；重叠/纯度/匹配真值人需要真值段表——T5 的 API 未下发，故标 —；簇时长由预测段表算出。";
+  $("mapping-note").textContent = "泳道 " + lane.lane + "：" + shown + " 个预测簇 / 真值 "
+    + truthK + " 人（gt_k）；匹配按重叠秒数取最大（与 DER 的 collar 口径不同），"
+    + "未匹配到真值人的簇记 —；簇时长由预测段表算出。";
 }
 
 /* ── 旋钮与初始化 ───────────────────────────────────────── */
