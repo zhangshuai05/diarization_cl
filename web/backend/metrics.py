@@ -12,6 +12,10 @@
   合并后**重走 T1 的生产段表**（`cache_path.segments_for`）再打分，
   不是只在标签上合并（口径见 spec §4.2）。
 
+`with_merged` **读真值**（dup 判定用的 `truth_coverage` 完全吃真值 RTTM），与 `oracle` 泳道同性质，
+不是纯预测能拿到的分数；页面据 `contract.TRUTH_DERIVED` 给这组名字（`oracle` / `merged_overall` /
+`merged_der`）标「读真值」徽标，不许写死在页面里。
+
 返回键是 `contract.LANE_PAYLOAD_KEYS` 的子集，不多不少：
 `sentence_metrics` 出 level/overall/clean/overlap/abstain/unmapped/wrong，
 `der_metrics` 出 der/miss_rate/false_alarm_rate/confusion_rate，

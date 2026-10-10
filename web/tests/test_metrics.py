@@ -159,6 +159,24 @@ def test_contract_covers_required_fields_without_duplicates():
     assert len(contract.LANE_PAYLOAD_KEYS) == len(set(contract.LANE_PAYLOAD_KEYS))
 
 
+def test_truth_derived_marks_oracle_lane_and_merged_fields():
+    """`TRUTH_DERIVED` = 页面必须标「读真值」徽标的名单（contract 是唯一来源）。
+
+    ① 恰好三项，不多不少不重复；
+    ② 三项都暴露给页面：`oracle` 走泳道名（`payload["lane"]` 的取值，由 `lane` 键承载），
+       `merged_overall` / `merged_der` 走字段名（直接在 `LANE_PAYLOAD_KEYS` 里）。
+    """
+    assert set(contract.TRUTH_DERIVED) == {"oracle", "merged_overall", "merged_der"}
+    assert len(contract.TRUTH_DERIVED) == 3                     # 无重复
+
+    keys = set(contract.LANE_PAYLOAD_KEYS)
+    assert set(contract.TRUTH_DERIVED) & keys == {"merged_overall", "merged_der"}
+    # `oracle` 是泳道名而非字段名：它经 `lane` 这个键暴露，别混进键名单本身
+    assert set(contract.TRUTH_DERIVED) - keys == {"oracle"}
+    assert "oracle" not in keys
+    assert "lane" in keys
+
+
 def test_returned_keys_are_in_contract():
     keys = set(contract.LANE_PAYLOAD_KEYS)
     payload = {"level": "2s-only", "k": 0, "times": np.array([1.0]),

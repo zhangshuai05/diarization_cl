@@ -24,3 +24,11 @@ LANE_PAYLOAD_KEYS: tuple[str, ...] = (
     "der", "miss_rate", "false_alarm_rate", "confusion_rate",
     "segments",
 )
+
+# 「读真值」名单（页面必须给这些名字带徽标，不许写死在 app.js 里）：值由读真值算出，
+# 不是纯预测能拿到的分数。两种名字都算「暴露给页面」：
+#   * `merged_overall` / `merged_der` —— 字段名（在 `LANE_PAYLOAD_KEYS` 里），
+#     由消重簇 recipe 经 `truth_coverage` 读真值算出（见 `metrics.with_merged`）；
+#   * `oracle` —— **泳道名**，经 `payload["lane"]`（键名 `lane`）暴露给页面。
+# 这条与 spec §6.2 同源，但把范围从 oracle 扩到 merged 两列（R1 审查发现）。
+TRUTH_DERIVED: tuple[str, ...] = ("oracle", "merged_overall", "merged_der")
