@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AISHELL-4 分离调试台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="statusbar">
+  <h1>AISHELL-4 分离调试台</h1>
+  <span class="badge" id="parity-badge">DER 对拍 读不到</span>
+  <span class="badge" id="pin-badge">base 已钉住（生产口径）</span>
+  <span class="badge" id="knob-badge">旋钮=生产值</span>
+  <span class="grow"></span>
+  <span class="meta" id="run-meta">未选场次</span>
+</header>
+
+<main>
+  <aside class="pane pane-left">
+    <div class="pane-head"><h2>场次</h2><span class="meta" id="meeting-count">—</span></div>
+    <ul class="meetings" id="meetings"></ul>
+  </aside>
+
+  <section class="pane stage">
+    <div class="knobs" id="knobs">
+      <label class="knob knob-lam">λ
+        <input type="range" id="lam" min="0" max="0.03" step="0.001" value="0.005">
+        <output id="lam-value">0.005</output>
+      </label>
+      <label class="knob">min_win
+        <select id="min_win">
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </label>
+      <label class="knob">cap
+        <select id="cap">
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10" selected>10</option>
+        </select>
+      </label>
+      <label class="knob">mode
+        <select id="mode">
+          <option value="objective" selected>objective</option>
+          <option value="largest_eligible">largest_eligible</option>
+        </select>
+      </label>
+      <label class="knob"><input type="checkbox" id="refine" checked> 细化</label>
+      <label class="knob"><input type="checkbox" id="oracle"> oracle</label>
+      <label class="knob"><input type="checkbox" id="pin_base" checked> 钉住 base</label>
+      <button id="run" type="button" disabled>运行</button>
+    </div>
+
+    <div class="block">
+      <h2>指标</h2>
+      <div class="tablewrap">
+        <table class="metrics">
+          <thead>
+            <tr>
+              <th>泳道</th>
+              <th class="num">k</th>
+              <th class="num">真K</th>
+              <th class="num">可见K</th>
+              <th class="num">overall</th>
+              <th class="num">clean</th>
+              <th class="num">overlap</th>
+              <th class="num">弃权</th>
+              <th class="num">未映射</th>
+              <th class="num">错答</th>
+              <th class="num" id="merged-th">merged</th>
+              <th class="num">DER</th>
+              <th>level</th>
+            </tr>
+          </thead>
+          <tbody id="metrics-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>时间轴 <span class="meta" id="timeline-meta"></span></h2>
+      <div class="tracklayer" id="tracklayer"></div>
+      <p class="note" id="timeline-note">—</p>
+      <audio id="audio" controls preload="none"></audio>
+    </div>
+  </section>
+
+  <aside class="pane pane-right">
+    <div class="block">
+      <h2>映射表</h2>
+      <table class="mapping">
+        <thead>
+          <tr>
+            <th>预测簇</th>
+            <th>匹配真值人</th>
+            <th class="num">重叠</th>
+            <th class="num">纯度</th>
+            <th class="num">簇时长</th>
+          </tr>
+        </thead>
+        <tbody id="mapping-body"></tbody>
+      </table>
+      <p class="note" id="mapping-note">运行后按选中泳道列出预测簇。</p>
+    </div>
+    <div class="block block-log">
+      <h2>进度</h2>
+      <ul class="log" id="log"></ul>
+    </div>
+  </aside>
+</main>
+
+<script src="app.js" defer></script>
+</body>
+</html>
