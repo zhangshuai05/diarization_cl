@@ -8,7 +8,8 @@
   分母；与 `/api/run` 的参照**同源同口径**（同一份 rttm、同一个 600 s 窗口）。
 * `/api/run` —— `lanes.run_lanes(meeting, knobs)` 逐条推 ndjson（`lane` / `done` / `error`）；
   每条 `lane` 事件在 16 键 payload 之上带 `pairs`（映射表行，口径见 `metrics.pairs`）。
-* `/api/audio` —— `seconds` 钳到 `[30, 3600]` 且拒 `nan/inf`；切片本体是 T7 的 `clip_path`。
+* `/api/audio` —— `seconds` 钳到 `[30, 3600]` 且拒 `nan/inf`（400）；切片走 `clip_path`：
+  ffmpeg `pan=mono|c0=c0` 取第 0 通道（**不是** `-ac 1`）、缓存到 `web/clips/`、分块回 `audio/wav`。
 * `/api/verify` —— `verify_der.parity_status()` 的**同步**回执（不在这里重跑 15 s 的对拍）。
 * `/`、`/app.js`、`/style.css` —— `web/` 下的静态文件，不存在就 404（页面文件是 T6 的交付物）。
 
@@ -37,6 +38,7 @@
 import json
 import math
 import os
+import subprocess
 import sys
 import threading
 import time
@@ -77,6 +79,12 @@ BOOL_WORDS = {"0": False, "1": True, "true": True, "false": False}
 AUDIO_SECONDS_DEFAULT = 600.0
 AUDIO_SECONDS_RANGE = (30.0, 3600.0)
 
+# 切片缓存与切法：`*.wav` 已被 .gitignore 忽略，不入库；一块 1 MiB 地回（大文件不整读）。
+CLIP_DIR = _HERE / "clips"
+CLIP_FFMPEG = "ffmpeg"
+FILE_CHUNK = 1 << 20
+_CLIP_LOCK = threading.Lock()               # 同一时刻只准一个切片进程（8736 同款）
+
 STATIC_TYPES = {
     ".html": "text/html; charset=utf-8",
     ".js": "text/javascript; charset=utf-8",
@@ -92,6 +100,13 @@ _RUN_LOCK = threading.Lock()
 
 class BadRequest(Exception):
     """参数不合法 → 400（消息直接回给页面，写清哪个参数、允许什么）。"""
+
+
+class ClipError(Exception):
+    """切片失败（源不在、ffmpeg 缺/非 0）→ `/api/audio` 回 500 + 可读错误。
+
+    绝不静默回 200 空文件：页面看到 500 会降级到「只有播放头」，比空音频诚实。
+    """
 
 
 def _dumps(payload):
@@ -208,7 +223,8 @@ def truth_roots():
 
     默认 = `lanes.DATA_ROOTS`（test + train_L，按 TextGrid 在哪定根）；`AISHELL4_TEST`
     可覆盖 test 根（与 8736 同名同默认），train_L 跟随它的父目录。注意：覆盖只影响本服务的
-    真值读取（`/api/truth` 与 lane 的 `pairs`）——泳道指标走 `lanes`（冻结文件）的默认根。
+    真值读取（`/api/truth` 与 lane 的 `pairs`）与**音频源**（`/api/audio`）——
+    泳道指标走 `lanes`（冻结文件）的默认根。
     """
     override = os.environ.get("AISHELL4_TEST")
     if not override:
@@ -339,13 +355,62 @@ def parse_seconds(raw):
     return seconds, min(high, max(low, seconds))
 
 
-def clip_path(meeting, seconds):
-    """浏览器播放用的音频切片（缓存到 `web/clips/`）——**T7 的交付物**。
-
-    未实现时返回 None，`/api/audio` 退化成校验回执（JSON + `X-Clamped-Seconds` 头），
-    不假装有音频；T7 把 ffmpeg 那段填进来后，同一个端点自动开始返回 `audio/wav`。
-    """
+def audio_source(meeting):
+    """本机这场会议的音频源 `<root>/wav/<meeting>.flac`（与真值同一对根）；没有 → None。"""
+    for root in truth_roots():
+        path = root / "wav" / ("%s.flac" % meeting)
+        if path.is_file():
+            return path
     return None
+
+
+def _ffmpeg_tail(exc):
+    """ffmpeg 的 stderr 收尾一行（失败原因在最后一行；太长就截断，别把整页日志回给页面）。"""
+    lines = (exc.stderr or b"").decode("utf-8", "replace").strip().splitlines()
+    return (lines[-1] if lines else "没有 stderr")[:300]
+
+
+def clip_path(meeting, seconds):
+    """浏览器播放用的音频切片 → `web/clips/<meeting>_<seconds>.wav`；失败抛 `ClipError`。
+
+    * **取第 0 通道**：`-af pan=mono|c0=c0`，不是 `-ac 1`——8 通道下混到单声道是另一条
+      信号（别的说话人也混进来），8736 的注释写明了，T7 的测试盯着这条。
+    * 缓存命中（含等锁期间别人切好了）直接回；未命中的在 `_CLIP_LOCK` 内切一次，
+      `os.replace` 原子落盘——并发同键不会看到半个 wav。
+    * 失败（源不在、ffmpeg 不在 PATH、ffmpeg 非 0）清掉 `.tmp.wav` 再抛：8736 漏了这个
+      临时文件（半截文件会留在缓存目录里），不要照抄。
+    """
+    source = audio_source(meeting)
+    if source is None:
+        raise ClipError("本机没有 %s 的音频源：%s（装上音频或设 AISHELL4_TEST 后重试）"
+                        % (meeting, "/".join(str(root / "wav") for root in truth_roots())))
+    CLIP_DIR.mkdir(parents=True, exist_ok=True)
+    target = CLIP_DIR / ("%s_%g.wav" % (meeting, seconds))
+    if target.is_file():
+        return target
+    with _CLIP_LOCK:
+        if target.is_file():                    # 等锁期间已经切好了：不用再起一个 ffmpeg
+            return target
+        temporary = target.with_suffix(".tmp.wav")
+        try:
+            try:
+                subprocess.run(
+                    [CLIP_FFMPEG, "-y", "-t", "%g" % seconds, "-i", str(source),
+                     "-af", "pan=mono|c0=c0", "-ar", "16000", str(temporary)],
+                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+            except FileNotFoundError:
+                raise ClipError("ffmpeg 不在 PATH：装好 ffmpeg 再切片（%s）" % CLIP_FFMPEG)
+            except subprocess.CalledProcessError as exc:
+                raise ClipError("ffmpeg 切 %s 前 %g 秒失败（退出码 %d）：%s"
+                                % (meeting, seconds, exc.returncode, _ffmpeg_tail(exc)))
+            os.replace(temporary, target)       # 原子：读者要么看到完整的 wav，要么没有
+        finally:
+            if temporary.exists():              # 成功时 replace 已经搬走，留下的都是半截
+                try:
+                    temporary.unlink()
+                except OSError:
+                    pass
+    return target
 
 
 # ─────────────────────────── 事件组装 ───────────────────────────
@@ -510,14 +575,22 @@ class Handler(BaseHTTPRequestHandler):
         except BadRequest as exc:
             self._json({"t": "error", "error": str(exc)}, 400)
             return
-        clip = clip_path(meeting, seconds)             # T7 之前恒 None
-        if clip is None:
+        headers = {"X-Clamped-Seconds": "%g" % seconds}
+        if audio_source(meeting) is None:
+            # 本机没有这场音频（如 train_L 未下载）：回可读回执，不假装有音频、也不回空 wav。
+            # 这是 /api/audio 唯一还允许的 JSON —— 非法参数 400 之外的降级路径。
+            # 页面（web/app.js，T6）见到 application/json 就走「只有播放头」分支。
             self._json({"meeting": meeting, "requested_seconds": requested,
                         "clamped_seconds": seconds, "clip": None,
-                        "note": "音频切片未实现（T7 的 clip_path）；这里只回校验结果"},
-                       200, headers={"X-Clamped-Seconds": "%g" % seconds})
+                        "note": "本机没有 %s 的音频源；切片未生成（时间轴仍可定位）" % meeting},
+                       200, headers=headers)
             return
-        self._file(Path(clip), "audio/wav", headers={"X-Clamped-Seconds": "%g" % seconds})
+        try:
+            clip = clip_path(meeting, seconds)
+        except ClipError as exc:
+            self._json({"t": "error", "error": str(exc)}, 500, headers=headers)
+            return
+        self._file(clip, "audio/wav", headers=headers)
 
     # --- 写回 -------------------------------------------------------------
 
@@ -568,17 +641,30 @@ class Handler(BaseHTTPRequestHandler):
         self._closed = True
 
     def _file(self, path, content_type, headers=None):
-        body = Path(path).read_bytes()
+        """分块写（`FILE_CHUNK` = 1 MiB/块）：3600 s 单声道 16 kHz 16-bit ≈ 115 MB，
+        `read_bytes()` 整读进内存没必要（T5 的既有缺陷，T7 改成分块）。
+
+        `Content-Length` 照旧给全量（文件是 `os.replace` 落盘的成品、不会再变），
+        所以 keep-alive 与浏览器进度条都不受影响。
+        """
+        path = Path(path)
+        size = path.stat().st_size                    # 先 stat：文件不在就还没发头，走 500
         self._started = True
         self.send_response(200)
         self.send_header("Content-Type", content_type)
-        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Content-Length", str(size))
         self.send_header("Cache-Control", "no-store")
         for key, value in (headers or {}).items():
             self.send_header(key, value)
         self.end_headers()
-        self.wfile.write(body)
-        self.wfile.flush()
+        try:
+            with path.open("rb") as handle:
+                for block in iter(lambda: handle.read(FILE_CHUNK), b""):
+                    self.wfile.write(block)
+            self.wfile.flush()
+        except OSError:
+            self._closed = True                     # 掉线：静默收摊（与 _emit 同纪律）
+            return
         self._closed = True
 
     def _static(self, path):
