@@ -19,7 +19,10 @@ MIN_VAD_FRACTION = 0.5
 MAX_SPEAKERS = 4
 MIN_CLUSTER_WINDOWS = 4
 MIN_CLUSTER_SHARE = 0.015
-MULTI_K_PENALTY = 0.015
+# 0.005：原生产值 0.015 比轮廓信号还大（网格跨度 0.099，惩罚走 8 步就是 0.12），平坦曲线上是常数在选 k。
+# 降 λ：train_L 30 场零回归、dev +10.9（in-sample）、holdout 非劣；λ≥0.03 两个 cohort 都翻车。
+# base 臂已实测：dev/holdout 逐场 k 不变，train_L 5/30 变且全为正。依据与限定见 docs/HANDOFF.md §4.12。
+MULTI_K_PENALTY = 0.005
 MAX_ASR_SECONDS = 8.0
 SCENE_GAP_SECONDS = 2.0
 BLOCK_GAP_SECONDS = 0.75
