@@ -82,6 +82,7 @@ AUDIO_SECONDS_RANGE = (30.0, 3600.0)
 # 切片缓存与切法：`*.wav` 已被 .gitignore 忽略，不入库；一块 1 MiB 地回（大文件不整读）。
 CLIP_DIR = _HERE / "clips"
 CLIP_FFMPEG = "ffmpeg"
+CLIP_TIMEOUT_S = 120                        # ffmpeg 挂死上限；超时按失败处理（清理临时文件）
 FILE_CHUNK = 1 << 20
 _CLIP_LOCK = threading.Lock()               # 同一时刻只准一个切片进程（8736 同款）
 
@@ -377,8 +378,9 @@ def clip_path(meeting, seconds):
       信号（别的说话人也混进来），8736 的注释写明了，T7 的测试盯着这条。
     * 缓存命中（含等锁期间别人切好了）直接回；未命中的在 `_CLIP_LOCK` 内切一次，
       `os.replace` 原子落盘——并发同键不会看到半个 wav。
-    * 失败（源不在、ffmpeg 不在 PATH、ffmpeg 非 0）清掉 `.tmp.wav` 再抛：8736 漏了这个
-      临时文件（半截文件会留在缓存目录里），不要照抄。
+    * 失败（源不在、ffmpeg 不在 PATH、ffmpeg 非 0、超时）清掉 `.tmp.wav` 再抛：8736 漏了
+      这个临时文件（半截文件会留在缓存目录里），不要照抄。`timeout=CLIP_TIMEOUT_S` 保证
+      ffmpeg 挂死时不会永久持有 `_CLIP_LOCK`（T7 审查遗留项）。
     """
     source = audio_source(meeting)
     if source is None:
@@ -397,9 +399,13 @@ def clip_path(meeting, seconds):
                 subprocess.run(
                     [CLIP_FFMPEG, "-y", "-t", "%g" % seconds, "-i", str(source),
                      "-af", "pan=mono|c0=c0", "-ar", "16000", str(temporary)],
-                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+                    timeout=CLIP_TIMEOUT_S)
             except FileNotFoundError:
                 raise ClipError("ffmpeg 不在 PATH：装好 ffmpeg 再切片（%s）" % CLIP_FFMPEG)
+            except subprocess.TimeoutExpired:
+                raise ClipError("ffmpeg 切 %s 前 %g 秒超过 %d 秒未完成：已中止，缓存未写入"
+                                % (meeting, seconds, CLIP_TIMEOUT_S))
             except subprocess.CalledProcessError as exc:
                 raise ClipError("ffmpeg 切 %s 前 %g 秒失败（退出码 %d）：%s"
                                 % (meeting, seconds, exc.returncode, _ffmpeg_tail(exc)))
