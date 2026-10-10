@@ -72,10 +72,11 @@ def _segments_from(times, labels, margins, hop_s):
 
 
 def _margins(E, labels):
-    """与 `v12.diarize` 同式：相对所选簇质心的余弦 margin（单簇时全 0）。
+    """与 `claude_a2_v12.py::diarize` 同式：相对所选簇质心的余弦 margin（单簇时全 0）。
 
-    生产把这几行写在 `diarize` 体内，没有可调用的函数；数值口径必须与它逐位一致，
-    所以这里照抄（见 README「复制来源」）。
+    生产把这几行写在 `diarize` 体内（`scores = E @ centroids.T` → 按行排序取最后两列之差），
+    没有可调用的函数；数值口径必须与它逐位一致，所以这里照抄。**改 `diarize` 的 margin 公式
+    必须同步这里**（spec §4.1：复制来的逻辑在源头记名，不另立 README 章节——源码符号指得准）。
     """
     centroids = v11._centroids(E, labels)
     scores = E @ centroids.T

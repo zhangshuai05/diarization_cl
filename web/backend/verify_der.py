@@ -40,13 +40,21 @@
 `summary.status == "pass"`。阈值只在 `compare` 的参数里，**没有**为了对上而放宽的余地：
 对不上就红，并把 `delta_detail_pts`（der/miss/FA/confusion 各自差多少点）逐行留下。
 
+**规模也是判定的一部分**（spec §4.4）：`compare` 要求恰好 `EXPECTED_ROWS = 12 场 × 2 臂`
+行、每场两臂齐全，不齐就 `status="fail"`，可读原因写进 `summary["shape_problems"]`——
+参照产物被裁小/手术过时「跑得少 ⇒ 过得多」必须红，不许静默变成 `2/2 pass`。参照行缺
+`base`/`fixed` 键也只记 fail：原来会 `KeyError` 崩栈退出，把盘上旧的 `pass` 留在原地冒充凭据。
+
 `parity_status()` 是给页面用的**只读**入口：缺文件 / 坏 JSON / `status != "pass"`
 一律返回 `{"status": "missing"|"fail", ...}`，**不抛异常**——页面拿不到对拍就画不了
-DER，那是显示问题，不是崩溃理由。
+DER，那是显示问题，不是崩溃理由。返回值另带 `stale`：报告记录的参照产物内容指纹
+（`reference.sha256`）与当前参照对不上（或报告太旧、没记指纹）即 `true`——盘上的 pass
+必须能说清「对着哪一版参照算的」才算凭据。
 
     python -m web.backend.verify_der          # 跑一次真实对拍（dev 12 场 × 2 臂）
 """
 import argparse
+import hashlib
 import json
 import sys
 import time
@@ -71,6 +79,11 @@ SCHEMA = "web-der-parity-v1"
 # 逐项阈值：百分点，**严格小于**（0.05 本身不算通过）。
 THRESHOLD_PTS = 0.05
 
+# 期望规模（spec §4.4：dev 12 场 × base/fixed 两臂）——判定的一部分，见模块 docstring。
+EXPECTED_MEETINGS = 12
+EXPECTED_ARMS = ("base", "fixed")
+EXPECTED_ROWS = EXPECTED_MEETINGS * len(EXPECTED_ARMS)
+
 REF_PATH = ROOT / "artifacts" / "v13_e2e_unlocked2_dev_mw2_objective.json"
 OUT_PATH = ROOT / "artifacts" / "web_der_parity.json"
 
@@ -92,11 +105,14 @@ DETAIL_KEYS = ("der", "miss_rate", "false_alarm_rate", "confusion_rate")
 
 # ───────────────────── 判定（纯函数） ─────────────────────
 
-def compare(rows, threshold_pts=THRESHOLD_PTS):
-    """逐行判 `|ours - ref| < threshold_pts`（百分点，严格小于）。
+def compare(rows, threshold_pts=THRESHOLD_PTS,
+            expected=(EXPECTED_MEETINGS, EXPECTED_ARMS)):
+    """逐行判 `|ours - ref| < threshold_pts`（百分点，严格小于），并断言期望规模。
 
     `rows` 里每项要有 `meeting` / `arm` / `ours` / `ref`（DER 取 0–1 小数）；
     `ours`/`ref` 缺失或非有限值时记 fail（原因写进 `reason`）——**不当 0 处理**。
+    `expected=(场数, 臂)` 是规模防线：行数 / 场数 / 每场臂不齐一律 fail，原因写进
+    `summary["shape_problems"]`（`expected=None` 只留给纯阈值单测）。
     不修改入参，返回 `{"rows": [...], "summary": {...}}`。
     """
     out = []
@@ -119,15 +135,39 @@ def compare(rows, threshold_pts=THRESHOLD_PTS):
                "delta_pts": entry["delta_pts"], "reason": entry["reason"]}
               for entry in out if not entry["pass"]]
     n_pass = sum(1 for entry in out if entry["pass"])
+    shape_problems = _shape_problems(out, expected)
     summary = {
         "n": len(out),
         "pass": n_pass,
         "max_delta_pts": max((abs(value) for value in deltas), default=None),
-        # 没有一项可比时不许报 pass（空对拍 != 对上了）。
-        "status": "pass" if out and n_pass == len(out) else "fail",
+        "expected_rows": None if expected is None else expected[0] * len(expected[1]),
+        # 没有一项可比时不许报 pass（空对拍 != 对上了）；规模不齐时同理（少跑 != 过了）。
+        "status": "pass" if out and n_pass == len(out) and not shape_problems else "fail",
         "failed": failed,
+        "shape_problems": shape_problems,
     }
     return {"rows": out, "summary": summary}
+
+
+def _shape_problems(entries, expected):
+    """规模防线的可读原因：行数 / 场数 / 每场两臂是否齐全。`expected=None` 即关掉断言。"""
+    if expected is None:
+        return []
+    n_meetings, arms = expected
+    problems = []
+    if len(entries) != n_meetings * len(arms):
+        problems.append("规模不符：期望 %d 行（%d 场 × %s 两臂），实得 %d 行"
+                        % (n_meetings * len(arms), n_meetings, "/".join(arms), len(entries)))
+    meetings = sorted({entry["meeting"] for entry in entries})
+    if len(meetings) != n_meetings:
+        problems.append("场次不符：期望 %d 场，实得 %d 场（%s）"
+                        % (n_meetings, len(meetings), "、".join(meetings) or "无"))
+    for meeting in meetings:
+        present = {entry["arm"] for entry in entries if entry["meeting"] == meeting}
+        missing = [arm for arm in arms if arm not in present]
+        if missing:
+            problems.append("%s 缺臂：%s" % (meeting, "/".join(missing)))
+    return problems
 
 
 def _finite(value):
@@ -148,10 +188,29 @@ def _read_ref(ref_path):
     rows = payload.get("rows")
     meta = {"path": str(path), "schema": payload.get("schema"),
             "split": payload.get("split"), "min_win": payload.get("min_win"),
-            "cap": payload.get("cap"), "mode": payload.get("mode")}
+            "cap": payload.get("cap"), "mode": payload.get("mode"),
+            "sha256": _fingerprint(payload)}
     if not isinstance(rows, list) or not rows:
         return {**meta, "error": "参照产物没有 rows"}, {}
-    return meta, {row["meeting"]: row for row in rows}
+    usable = [row for row in rows if isinstance(row, dict) and isinstance(row.get("meeting"), str)]
+    if len(usable) != len(rows):
+        meta["error"] = "参照产物有 %d 行不可用（不是对象或缺 meeting）" % (len(rows) - len(usable))
+    return meta, {row["meeting"]: row for row in usable}
+
+
+def _fingerprint(payload):
+    """参照产物的内容指纹（sha256 前 16 位）：排序键 + 紧凑分隔符，与换行/排版无关。"""
+    blob = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+
+
+def _ref_fingerprint(ref_path):
+    """盘上参照产物的指纹；不在 / 读不动（坏 JSON、编码、权限）一律给 None。"""
+    try:
+        payload = json.loads(Path(ref_path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    return _fingerprint(payload)
 
 
 def _lanes_for_meeting(meeting):
@@ -164,7 +223,12 @@ def _lanes_for_meeting(meeting):
 
 
 def _row(meeting, arm, payload, ref_row, threshold_pts):
-    """一条对拍记录：读数 + 段表指纹 + 逐项差（der/miss/FA/confusion，百分点）。"""
+    """一条对拍记录：读数 + 段表指纹 + 逐项差（der/miss/FA/confusion，百分点）。
+
+    `ref_row` 缺臂时为 `None`（参照没有该臂的键）：记 `ref=None` 交给 `compare` 判 fail，
+    **不抛 KeyError**——门禁崩栈会让盘上旧的 pass 继续冒充凭据。
+    """
+    ref_row = ref_row if isinstance(ref_row, dict) else {}
     ours, ref = payload.get("der"), ref_row.get("der")
     row = {
         "meeting": meeting, "arm": arm, "lane": payload.get("lane"),
@@ -206,7 +270,7 @@ def parity_report(ref_path=None, out_path=None):
         lanes = _lanes_for_meeting(meeting)
         lap_s = time.perf_counter() - lap
         for arm, lane in (("base", "base"), ("fixed", "unlocked")):
-            row = _row(meeting, arm, lanes[lane], ref_rows[meeting][arm], THRESHOLD_PTS)
+            row = _row(meeting, arm, lanes[lane], ref_rows[meeting].get(arm), THRESHOLD_PTS)
             row["lap_s"] = lap_s
             rows.append(row)
         print("  %-16s base k=%-2s der=%-8s | fixed k=%-2s der=%-8s (%.1fs)"
@@ -255,7 +319,9 @@ def parity_status(path=None):
     """页面用的只读入口：读 `artifacts/web_der_parity.json`，**任何情况都不抛异常**。
 
     返回值恒有 `status`：`"pass"`（对拍通过）/ `"fail"`（文件在但对拍没过，或文件读不动）
-    / `"missing"`（文件不在）。页面只在 `"pass"` 时渲染 DER 数字。
+    / `"missing"`（文件不在）。`stale=True` 表示这份报告不是对着**当前**参照产物算的
+    （指纹对不上，或报告太旧、没记指纹）——结论仍然成立，但不能再当这版参照的凭据。
+    页面只在 `"pass"` 时渲染 DER 数字，`stale` 另挂警告。
     """
     path = Path(path) if path is not None else OUT_PATH
     base = {"path": str(path)}
@@ -270,11 +336,18 @@ def parity_status(path=None):
     status = summary.get("status") if isinstance(summary, dict) else None
     if status not in ("pass", "fail"):
         return {**base, "status": "fail", "error": "报告缺 summary.status"}
+    reference = payload.get("reference")
+    reference = reference if isinstance(reference, dict) else {}
+    recorded = reference.get("sha256")
+    current = _ref_fingerprint(reference.get("path") or REF_PATH)
     return {**base, "status": status,
             "checked_at": payload.get("checked_at"),
             "threshold_pts": payload.get("threshold_pts"),
             "n_total": summary.get("n"), "n_pass": summary.get("pass"),
-            "failed": summary.get("failed") or []}
+            "failed": summary.get("failed") or [],
+            "reference_sha256": recorded,
+            # 没记指纹（旧报告）也算 stale：盘上的 pass 得能对上「哪一版参照」才算凭据。
+            "stale": recorded is None or recorded != current}
 
 
 def _pct(value):
@@ -298,6 +371,8 @@ def main(argv=None):
           % (summary["status"].upper(), summary["pass"], summary["n"],
              "—" if summary["max_delta_pts"] is None else "%.4f" % summary["max_delta_pts"],
              report["threshold_pts"], report["elapsed_s"]))
+    for problem in summary.get("shape_problems") or []:
+        print("  规模 %s" % problem)
     for entry in summary["failed"]:
         row = next(r for r in report["rows"]
                    if r["meeting"] == entry["meeting"] and r["arm"] == entry["arm"])

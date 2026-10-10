@@ -1,6 +1,6 @@
 {
   "schema": "web-der-parity-v1",
-  "checked_at": "2026-10-10T15:30:49",
+  "checked_at": "2026-10-10T16:44:37",
   "threshold_pts": 0.05,
   "segment_convention": "v12.diarize raw segments (before run_claude_lane SLIVER_WINDOWS filter)",
   "segment_convention_note": "二进制判别（L_R003S01C02 base 臂）：过滤前 68 段/DER 0.7153 = 参照 0.7153；过滤后 46 段/DER 0.7546，差 3.9 点。参照侧由 probe_e2e_unlocked2.score 直接吃 v12.diarize(...)[\"segments\"]，即过滤前那一份。",
@@ -31,9 +31,10 @@
     "split": "dev",
     "min_win": 2,
     "cap": 10,
-    "mode": "objective"
+    "mode": "objective",
+    "sha256": "0f437fa5aec84014"
   },
-  "elapsed_s": 15.067276599991601,
+  "elapsed_s": 22.822382999991532,
   "rows": [
     {
       "meeting": "L_R003S01C02",
@@ -56,7 +57,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.0581196999992244
+      "lap_s": 1.3008413000206929
     },
     {
       "meeting": "L_R003S01C02",
@@ -79,7 +80,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.0581196999992244
+      "lap_s": 1.3008413000206929
     },
     {
       "meeting": "L_R003S02C02",
@@ -102,7 +103,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 0.9388754999963567
+      "lap_s": 1.1343651000061072
     },
     {
       "meeting": "L_R003S02C02",
@@ -125,7 +126,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 0.9388754999963567
+      "lap_s": 1.1343651000061072
     },
     {
       "meeting": "L_R003S03C02",
@@ -148,7 +149,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.1214131000160705
+      "lap_s": 1.8714061999926344
     },
     {
       "meeting": "L_R003S03C02",
@@ -171,7 +172,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.1214131000160705
+      "lap_s": 1.8714061999926344
     },
     {
       "meeting": "L_R003S04C02",
@@ -194,7 +195,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.3535066999902483
+      "lap_s": 2.2707258999871556
     },
     {
       "meeting": "L_R003S04C02",
@@ -217,7 +218,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.3535066999902483
+      "lap_s": 2.2707258999871556
     },
     {
       "meeting": "M_R003S01C01",
@@ -240,7 +241,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.04084969998803
+      "lap_s": 1.6550410000199918
     },
     {
       "meeting": "M_R003S01C01",
@@ -263,7 +264,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.04084969998803
+      "lap_s": 1.6550410000199918
     },
     {
       "meeting": "M_R003S02C01",
@@ -286,7 +287,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.0108310999930836
+      "lap_s": 1.6634841999912169
     },
     {
       "meeting": "M_R003S02C01",
@@ -309,7 +310,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.0108310999930836
+      "lap_s": 1.6634841999912169
     },
     {
       "meeting": "M_R003S04C01",
@@ -332,7 +333,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.326634600001853
+      "lap_s": 2.2103703999891877
     },
     {
       "meeting": "M_R003S04C01",
@@ -355,7 +356,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.326634600001853
+      "lap_s": 2.2103703999891877
     },
     {
       "meeting": "M_R003S05C01",
@@ -378,7 +379,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.1966446999867912
+      "lap_s": 1.9239548000041395
     },
     {
       "meeting": "M_R003S05C01",
@@ -401,7 +402,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.1966446999867912
+      "lap_s": 1.9239548000041395
     },
     {
       "meeting": "S_R004S01C01",
@@ -424,7 +425,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.6216484000033233
+      "lap_s": 2.6006907999981195
     },
     {
       "meeting": "S_R004S01C01",
@@ -447,7 +448,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.6216484000033233
+      "lap_s": 2.6006907999981195
     },
     {
       "meeting": "S_R004S02C01",
@@ -470,7 +471,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.5061384000000544
+      "lap_s": 2.229527599993162
     },
     {
       "meeting": "S_R004S02C01",
@@ -493,7 +494,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.5061384000000544
+      "lap_s": 2.229527599993162
     },
     {
       "meeting": "S_R004S03C01",
@@ -516,7 +517,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.4196306000230834
+      "lap_s": 1.9773855000094045
     },
     {
       "meeting": "S_R004S03C01",
@@ -539,7 +540,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.4196306000230834
+      "lap_s": 1.9773855000094045
     },
     {
       "meeting": "S_R004S04C01",
@@ -562,7 +563,7 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.4723251000104938
+      "lap_s": 1.983861100015929
     },
     {
       "meeting": "S_R004S04C01",
@@ -585,14 +586,16 @@
         "false_alarm_rate": 0.0,
         "confusion_rate": 0.0
       },
-      "lap_s": 1.4723251000104938
+      "lap_s": 1.983861100015929
     }
   ],
   "summary": {
     "n": 24,
     "pass": 24,
     "max_delta_pts": 0.0,
+    "expected_rows": 24,
     "status": "pass",
-    "failed": []
+    "failed": [],
+    "shape_problems": []
   }
 }

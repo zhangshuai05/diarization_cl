@@ -363,22 +363,23 @@
         "total_frames": 47876,
         "missed": 20,
         "false_alarm": 6086,
-        "confusion": 5776,
+        "confusion": 1128,
         "miss_rate": 0.0004,
         "false_alarm_rate": 0.1271,
-        "confusion_rate": 0.1206,
-        "der": 0.2482,
+        "confusion_rate": 0.0236,
+        "der": 0.1511,
         "n_ref_speakers": 5,
-        "n_pred_speakers": 4,
+        "n_pred_speakers": 5,
         "mapping": {
           "v_0": "001-M",
-          "v_2": "004-F",
-          "v_3": "005-F",
-          "v_1": "003-F"
+          "v_3": "004-F",
+          "v_4": "005-F",
+          "v_2": "003-F",
+          "v_1": "002-F"
         },
-        "k": 4,
+        "k": 5,
         "level": "refined",
-        "n_segments": 119
+        "n_segments": 128
       },
       "fixed": {
         "total_frames": 47876,
@@ -529,5 +530,13 @@
         "n_segments": 48
       }
     }
-  ]
+  ],
+  "baseline_refresh": {
+    "date": "2026-10-09",
+    "meeting": "S_R004S01C01",
+    "source": "v13_e2e_unlocked2_dev_mw2_objective_meeting_S_R004S01C01.json",
+    "unchanged_rows": 11,
+    "fixed_arm_identical": true,
+    "scope": "Only the affected dev base arm rerun; 11 rows retained from prior artifact."
+  }
 }

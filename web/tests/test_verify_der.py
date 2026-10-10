@@ -33,13 +33,14 @@ def fake_rows(delta_pts, arm="base"):
 
 def test_threshold_and_status():
     """brief Step 1 原文：0.05 不算通过（严格小于）。"""
-    rep = verify_der.compare(fake_rows(delta_pts=[0.0, 0.04, 0.05]), threshold_pts=0.05)
+    rep = verify_der.compare(fake_rows(delta_pts=[0.0, 0.04, 0.05]), threshold_pts=0.05,
+                             expected=None)      # 纯阈值单测；规模防线另有用例
     assert rep["summary"]["status"] == "fail"
     assert rep["summary"]["n"] == 3 and rep["summary"]["pass"] == 2
 
 
 def test_all_strictly_below_threshold_passes():
-    rep = verify_der.compare(fake_rows([0.0, 0.049, -0.049]), threshold_pts=0.05)
+    rep = verify_der.compare(fake_rows([0.0, 0.049, -0.049]), threshold_pts=0.05, expected=None)
     assert rep["summary"]["status"] == "pass"
     assert rep["summary"]["n"] == 3 and rep["summary"]["pass"] == 3
     assert rep["summary"]["max_delta_pts"] == pytest.approx(0.049)
@@ -48,7 +49,7 @@ def test_all_strictly_below_threshold_passes():
 def test_delta_is_signed_in_points_and_absolute_for_judgement():
     rep = verify_der.compare([{"meeting": "M", "arm": "fixed", "ref": 0.30, "ours": 0.3004},
                               {"meeting": "N", "arm": "fixed", "ref": 0.30, "ours": 0.2994}],
-                             threshold_pts=0.05)
+                             threshold_pts=0.05, expected=None)
     rows = {row["meeting"]: row for row in rep["rows"]}
     assert rows["M"]["delta_pts"] == pytest.approx(0.04)    # 百分点，带符号（正 = 我们更高）
     assert rows["N"]["delta_pts"] == pytest.approx(-0.06)   # 负号也要算进绝对差
@@ -73,10 +74,42 @@ def test_missing_numbers_count_as_fail_not_as_zero():
 
 
 def test_empty_rows_is_not_a_pass():
-    """没有一项可比时不许报 pass——空对拍不等于对上了。"""
-    rep = verify_der.compare([], threshold_pts=0.05)
-    assert rep["summary"] == {"n": 0, "pass": 0, "max_delta_pts": None,
-                              "status": "fail", "failed": []}
+    """没有一项可比时不许报 pass——空对拍不等于对上了；且要说明规模不符。"""
+    rep = verify_der.compare([])
+    summary = rep["summary"]
+    assert (summary["n"], summary["pass"], summary["max_delta_pts"]) == (0, 0, None)
+    assert summary["status"] == "fail" and summary["failed"] == []
+    assert summary["expected_rows"] == 24
+    assert any("规模不符" in problem for problem in summary["shape_problems"])
+
+
+def test_short_reference_fails_on_scale_even_when_every_row_matches():
+    """终审 D：参照被裁小（2 行、逐项都在阈值内）也必须红——"跑得少 ⇒ 过得多"不许静默。"""
+    rep = verify_der.compare(fake_rows([0.0, 0.0]))
+    assert (rep["summary"]["n"], rep["summary"]["pass"]) == (2, 2)
+    assert rep["summary"]["status"] == "fail"
+    assert any("规模不符：期望 24 行" in problem for problem in rep["summary"]["shape_problems"])
+    assert any("场次不符" in problem for problem in rep["summary"]["shape_problems"])
+
+
+def test_full_scale_rows_pass_without_shape_problems():
+    rows = [{"meeting": "M%02d" % index, "arm": arm, "ref": 0.2, "ours": 0.2}
+            for index in range(12) for arm in ("base", "fixed")]
+    rep = verify_der.compare(rows)
+    assert rep["summary"]["status"] == "pass"
+    assert rep["summary"]["expected_rows"] == 24 and rep["summary"]["shape_problems"] == []
+
+
+def test_meeting_with_a_missing_arm_fails():
+    """每场两臂必须齐：只有 base 的那场要在 shape_problems 里点名。"""
+    rows = [{"meeting": "M%02d" % index, "arm": arm, "ref": 0.2, "ours": 0.2}
+            for index in range(12) for arm in ("base", "fixed")
+            if (index, arm) != (7, "fixed")]
+    rep = verify_der.compare(rows)
+    assert (rep["summary"]["n"], rep["summary"]["pass"]) == (23, 23)
+    assert rep["summary"]["status"] == "fail"
+    assert rep["summary"]["shape_problems"] == ["规模不符：期望 24 行（12 场 × base/fixed 两臂），"
+                                                "实得 23 行", "M07 缺臂：fixed"]
 
 
 def test_rows_are_not_mutated():
@@ -231,7 +264,8 @@ def test_report_runs_twelve_meetings_times_two_arms(monkeypatch, tmp_path):
     assert [(row["meeting"], row["arm"]) for row in report["rows"]] == [
         (meeting, arm) for meeting in seen for arm in ("base", "fixed")]
     assert report["summary"] == {"n": 24, "pass": 24, "max_delta_pts": 0.0,
-                                 "status": "pass", "failed": []}
+                                 "expected_rows": 24, "status": "pass", "failed": [],
+                                 "shape_problems": []}
     assert all(row["lap_s"] >= 0.0 for row in report["rows"])
 
 
@@ -281,3 +315,62 @@ def test_report_without_reference_rows_fails_instead_of_passing(monkeypatch, tmp
     report = verify_der.parity_report(ref_path, out_path)
 
     assert report["rows"] == [] and report["summary"]["status"] == "fail"
+
+
+def test_reference_row_missing_an_arm_fails_instead_of_raising(monkeypatch, tmp_path):
+    """终审 D 次生问题：参照行缺 `fixed` 键时不许 KeyError 崩栈（盘上旧 pass 会因此留在原地）。"""
+    ref_path, out_path = tmp_path / "ref.json", tmp_path / "out.json"
+    _install_fakes(monkeypatch, ref_path)
+    doc = fake_ref_doc()
+    del doc["rows"][3]["fixed"]
+    ref_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+
+    report = verify_der.parity_report(ref_path, out_path)      # 不许抛 KeyError
+
+    row = next(item for item in report["rows"]
+               if (item["meeting"], item["arm"]) == ("M03", "fixed"))
+    assert row["ref"] is None and row["pass"] is False
+    assert report["summary"]["status"] == "fail"
+    assert report["summary"]["failed"] == [{"meeting": "M03", "arm": "fixed",
+                                             "delta_pts": None, "reason": "missing_ref"}]
+    assert verify_der.parity_status(out_path)["status"] == "fail"   # 盘上那份也是 fail
+
+
+def test_status_is_not_stale_for_a_report_written_against_the_current_reference(monkeypatch, tmp_path):
+    ref_path, out_path = tmp_path / "ref.json", tmp_path / "out.json"
+    _install_fakes(monkeypatch, ref_path)
+
+    report = verify_der.parity_report(ref_path, out_path)
+
+    status = verify_der.parity_status(out_path)
+    assert status["status"] == "pass" and status["stale"] is False
+    assert status["reference_sha256"] == report["reference"]["sha256"]
+
+
+def test_status_flags_a_pass_report_as_stale_once_the_reference_changed(monkeypatch, tmp_path):
+    """参照产物变了（那行刷新 / 手工手术）之后，盘上的旧 pass 不许再冒充凭据。"""
+    ref_path, out_path = tmp_path / "ref.json", tmp_path / "out.json"
+    _install_fakes(monkeypatch, ref_path)
+    report = verify_der.parity_report(ref_path, out_path)
+
+    doc = fake_ref_doc()
+    doc["rows"][0]["base"]["der"] = 0.5          # 只改参照，报告不动
+    ref_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+
+    status = verify_der.parity_status(out_path)
+    assert status["status"] == "pass"             # 报告本身还是那次对拍的结论
+    assert status["stale"] is True
+    assert status["reference_sha256"] == report["reference"]["sha256"]
+
+
+def test_status_flags_an_old_report_without_fingerprint_as_stale(tmp_path):
+    """没有 `reference.sha256` 的旧报告没法证明自己是当前凭据 ⇒ stale。"""
+    path = tmp_path / "old.json"
+    path.write_text(json.dumps({
+        "schema": "web-der-parity-v1", "checked_at": "2026-10-10T00:00:00",
+        "threshold_pts": 0.05,
+        "summary": {"n": 24, "pass": 24, "max_delta_pts": 0.0, "status": "pass",
+                    "failed": []},
+    }, ensure_ascii=False), encoding="utf-8")
+    status = verify_der.parity_status(path)
+    assert status["status"] == "pass" and status["stale"] is True

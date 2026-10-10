@@ -117,9 +117,12 @@ function renderStatusBar() {
     badge.title = "未读到 artifacts/web_der_parity.json 的状态";
   } else if (parity.status === "pass") {
     const date = (parity.checked_at || "").slice(0, 10);
-    badge.textContent = "DER 对拍 " + (parity.n_pass || 0) + "/" + (parity.n_total || 0) + " ✓ · " + date;
-    badge.className = "badge ok";
-    badge.title = "checked_at=" + parity.checked_at + " · 阈值 " + parity.threshold_pts + " 点";
+    // stale：报告不是对着当前参照产物算的（参照变了 / 报告太旧）——数字还在，但凭据过期。
+    const stale = parity.stale ? " ⚠参照已变（须重跑）" : "";
+    badge.textContent = "DER 对拍 " + (parity.n_pass || 0) + "/" + (parity.n_total || 0) + " ✓ · " + date + stale;
+    badge.className = "badge" + (parity.stale ? " warn" : " ok");
+    badge.title = "checked_at=" + parity.checked_at + " · 阈值 " + parity.threshold_pts + " 点"
+      + (parity.stale ? " · 参照产物内容已变，重跑 python -m web.backend.verify_der" : "");
   } else {
     badge.textContent = "DER 对拍未通过（" + parity.status + "）";
     badge.className = "badge bad";
@@ -608,11 +611,11 @@ function seekFromClick(event) {
     audio.play();
   } else if (!state.audioHinted) {
     state.audioHinted = true;
-    logLine("音频未就绪：点击只移动播放头（T7 后 /api/audio 返回真音频）", "warn");
+    logLine("音频未就绪：点击只移动播放头（源 flac 缺失时 /api/audio 回降级回执）", "warn");
   }
 }
 
-/* ── 音频（T7 之前 /api/audio 只回 JSON 回执，页面降级不炸） ── */
+/* ── 音频（/api/audio 回真 audio/wav；源 flac 缺失时回 JSON 降级回执，页面降级不炸） ── */
 
 async function loadAudio(meeting, seconds) {
   const audio = $("audio");
@@ -635,7 +638,7 @@ async function loadAudio(meeting, seconds) {
     audio.removeAttribute("src");
     audio.disabled = true;
     state.audioReady = false;
-    logLine("音频未就绪（T7 未实现）：" + (receipt.note || "服务端未返回音频")
+    logLine("音频未就绪（服务端回降级回执）：" + (receipt.note || "服务端未返回音频")
       + "；clamped_seconds=" + receipt.clamped_seconds
       + "，时间轴仍可定位（仅移动播放头）", "warn");
     return false;
@@ -762,7 +765,8 @@ async function fetchParity() {
 function parityLine(parity) {
   if (parity.status === "pass") {
     return "DER 对拍 " + parity.n_pass + "/" + parity.n_total + " pass · " + parity.checked_at
-      + "（阈值 " + parity.threshold_pts + " 点）";
+      + "（阈值 " + parity.threshold_pts + " 点）"
+      + (parity.stale ? " ⚠ 参照产物已变，结论须重跑确认" : "");
   }
   return "DER 对拍未通过：" + parity.status + "（DER 列显示 —（未对拍））";
 }

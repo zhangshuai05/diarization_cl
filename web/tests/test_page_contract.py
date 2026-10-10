@@ -9,7 +9,8 @@
 * DER 门禁：`parity.status !== "pass"` → 字面量 `—（未对拍）`，数字渲染只在其后；
 * 空读数（``None``）→ `—`，不是 0%；
 * `pin_base` 指示：钉住「生产口径」/ 解钉「base 已非生产口径」；
-* `/api/audio` 现在只回 JSON 回执：页面读回执并降级，不把 JSON 塞给播放器；
+* `/api/audio` 正常回 `audio/wav`；源 flac 缺失时回 JSON 降级回执：页面读回执并降级，
+  不把 JSON 塞给播放器；
 * 播放头 `left` 用**轨道自己的 rect** 换算（8736 有 72 px 错位的老 bug）；
 * 零构建、无外部资源、无动效 / 渐变 / 阴影装饰。
 
@@ -148,11 +149,17 @@ def test_pin_base_labels_exist():
 
 def test_audio_json_receipt_is_tolerated():
     body = _function_body(_read(APP), "loadAudio")
-    assert "response.json()" in body          # T7 之前服务端回 JSON 回执
+    assert "response.json()" in body          # 源 flac 缺失时服务端回 JSON 降级回执
     assert "receipt" in body
     assert "audio/" in body                   # 只有真音频才塞给播放器
     assert "logLine" in body                  # 降级要在日志里给可读提示
     assert "disabled = true" in body          # 播放器不可用也不炸页面
+
+
+def test_parity_badge_carries_the_stale_marker():
+    """参照产物变过之后，盘上的旧 pass 不能悄悄冒充凭据（终审 D / `parity_status().stale`）。"""
+    body = _function_body(_read(APP), "renderStatusBar")
+    assert "parity.stale" in body and "参照" in body
 
 
 def test_playhead_uses_track_rect_not_layer_width():

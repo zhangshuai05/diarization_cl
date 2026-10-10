@@ -64,9 +64,13 @@ python web/server.py          # → http://127.0.0.1:8737/
 **DER 门禁**：`artifacts/web_der_parity.json` 的 `summary.status == "pass"` 才在页面渲染 DER，
 否则显示 `—（未对拍）`。当前报告：
 
-* `checked_at = 2026-10-10T15:30:49`，dev 12 场 × base/fixed 两臂 = **24/24 pass**，
-  最大偏差 **0.0 点**（阈值：逐项严格 `< 0.05` 点），耗时 15.07 s。
-* 重跑：`python -m web.backend.verify_der`（约 15 s）；只看状态：`python -m web.backend.verify_der --status`。
+* `checked_at = 2026-10-10T16:44:37`，dev 12 场 × base/fixed 两臂 = **24/24 pass**，
+  最大偏差 **0.0 点**（阈值：逐项严格 `< 0.05` 点），耗时 22.8 s。
+* 重跑：`python -m web.backend.verify_der`（约 15–25 s）；只看状态：`python -m web.backend.verify_der --status`。
+* **规模也是判定的一部分**：门禁要求恰好 12 场 × 2 臂 = 24 行、每场两臂齐全（参照被裁小、
+  缺 `base`/`fixed` 键 ⇒ `status=fail` + `shape_problems` 说明），并把参照产物的内容指纹
+  写进报告 `reference.sha256`；指纹对不上（参照被改过 / 报告太旧）时页面徽标带 **⚠参照已变**
+  ——盘上的 pass 不许冒充当前凭据。
 
 **`merged` 两列**：消重复簇（`truth_coverage` → `classify_dup` → `merge_dups`）后**重走生产段表**
 再打分；**读真值**。
@@ -96,6 +100,10 @@ python web/server.py          # → http://127.0.0.1:8737/
 2. **参照产物是 λ=0.015 时生成的**（`artifacts/v13_e2e_unlocked2_dev_mw2_objective.json`）
    ⇒ 对拍里 `fixed` 臂必须按 **0.015** 钉住才逐位对上；**页面默认的 `unlocked`（λ=0.005）
    那条没被对拍覆盖**（只保证选择器与段表口径相同）。生产现值已是 0.005。
+   该参照产物在 **2026-10-09** 被刷新过一次：只重跑了 `S_R004S01C01` 的 base 臂
+   （k 4→5、DER 24.82→15.11），另 11 行沿用旧产物、`fixed` 臂未变，文件里 `baseline_refresh`
+   记着来源。刷之前算出的门禁报告在干净 checkout 上不可复现（23/24）——这是终审 Critical A，
+   参照产物入库后才对得上。
 3. `merged` / `oracle` **读真值**（见上），页面带「读真值」徽标；引用它们时必须说是诊断口径。
 4. **`refine=False` 关不掉 `k==1` 的密窗救援**：旋钮语义是「细化」（换掉 `v12._refine_labels`），
    救援（`rescue.npz` → 重跑候选）是另一机制；关掉细化后仍可能出现 `level=rescued`，
@@ -117,9 +125,9 @@ python web/server.py          # → http://127.0.0.1:8737/
 
 ```bash
 # 仓库根：web 调试台全部测试
-python -m pytest web/tests -q          # 133 passed
+python -m pytest web/tests -q          # 142 passed
 
-# 真跑一次 DER 对拍（dev 12 场 × 2 臂，约 15 s，会重写 artifacts/web_der_parity.json）
+# 真跑一次 DER 对拍（dev 12 场 × 2 臂，约 15–25 s，会重写 artifacts/web_der_parity.json）
 python -m web.backend.verify_der
 ```
 
