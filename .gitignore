@@ -18,6 +18,7 @@ diar_out/
 diar_result/
 output/
 streaming_asr/output/
+web/clips/
 
 # ===== 二进制/权重/缓存 =====
 *.bin
