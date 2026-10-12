@@ -41,6 +41,7 @@ from probe_gap_decomp import (  # noqa: E402
     cached_windows, cluster_labels, frame_accuracy, gate_windows, map_by_frames,
     rttm_speech, window_reference)
 from probe_pair_oracle import Transform, lda_fit, pure_windows  # noqa: E402
+from unlocked_selector import CAP, MIN_WIN, build_unlocked, pick_unlocked  # noqa: E402
 
 
 def load(cache, meeting, window, hop):
@@ -116,6 +117,38 @@ def refine_labels(labels, E, times, rE, rtimes, enabled=True):
     return AB.real_path_labels(labels, E, times, rE, rtimes)
 
 
+def variants_for(class_limits, norms, k_modes=("true",)):
+    """枚举全部变体名。
+
+    命名：`{none|c<类窗下限>}_{cos|euc}[_autok]`
+
+    ⚠️ `_euc` 变体**不进 autok 臂**：`build_unlocked` 内部
+    `linkage(E, method="average", metric="cosine")` 是写死的
+    （`unlocked_selector.py:48`），而欧氏空间的 LDA 输出必须用欧氏距离。
+    让它跑 autok 等于用余弦 silhouette 评价欧氏空间。
+    给它加 metric 参数会动到生产共用实现 —— 不值得，跳过即可。
+    """
+    out = []
+    for k_mode in k_modes:
+        suffix = "_autok" if k_mode == "auto" else ""
+        if k_mode == "auto":
+            out.append("none" + suffix)
+        elif k_mode == "true":
+            out.append("none")
+        for c in class_limits:
+            for n in norms:
+                if k_mode == "auto" and not n:
+                    continue
+                out.append(f"c{c}_{'cos' if n else 'euc'}{suffix}")
+    # 去重保序
+    seen, uniq = set(), []
+    for v in out:
+        if v not in seen:
+            seen.add(v)
+            uniq.append(v)
+    return uniq
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=r"D:\yinp\AISHELL-4\data\test")
@@ -129,6 +162,8 @@ def main():
     ap.add_argument("--share", type=float, default=0.05)
     ap.add_argument("--classes", default="2,8,16,32")
     ap.add_argument("--norm", default="euclid,cosine")
+    ap.add_argument("--k-modes", default="true,auto",
+                    help="true = 真值有效人数（诊断）；auto = pick_unlocked 自选（判据）")
     ap.add_argument("--refine", default="on", choices=("on", "off"),
                     help="是否走两级细化。off 仅用于诊断，产物会标 level=none")
     ap.add_argument("--output")
@@ -155,8 +190,8 @@ def main():
         # 反复出现的"不报错只出错数"。§R7：失败场次必须显式记录。
         print(f"⚠️ 无 refine 缓存的场次（跳过）：{missing_refine}", flush=True)
 
-    variants = ["none"] + [f"c{c}_{'cos' if n else 'euc'}"
-                           for c in class_limits for n in norms]
+    k_modes = [x for x in args.k_modes.split(",") if x]
+    variants = variants_for(class_limits, norms, k_modes)
     rows = []
     for meeting in meetings:
         if meeting not in refine_cache:
@@ -181,13 +216,16 @@ def main():
         k = min(len(effective), len(emb))
         row = {"meeting": meeting, "true_k": len(effective),
                "n_windows": int(len(emb)), "variants": {}}
+        row["k_modes"] = k_modes
         for name in variants:
-            if name == "none":
+            base_name = name[:-len("_autok")] if name.endswith("_autok") else name
+            k_mode = "auto" if name.endswith("_autok") else "true"
+            if base_name == "none":
                 vectors, metric, kept = emb, "cosine", None
                 rvectors = rE                      # 裸空间：两侧同为 192 维原始嵌入
             else:
-                limit = int(name[1:name.index("_")])
-                normalize = name.endswith("cos")
+                limit = int(base_name[1:base_name.index("_")])
+                normalize = base_name.endswith("cos")
                 fit, kept = fit_backend(pool, meeting, limit, normalize)
                 if fit is None:
                     # `level` 必须在**每一行**上都在：产物是按行读的，缺键会让
@@ -203,7 +241,15 @@ def main():
                 # 只 `none` 臂能跑（两侧同为原始嵌入），于是崩溃被伪装成
                 # "后端臂无数据"。投影后两侧同空间，与生产同构。
                 rvectors = fit(rE)
-            clusters = cluster_labels(vectors, k, metric=metric)
+            if k_mode == "auto":
+                chosen = pick_unlocked(build_unlocked(vectors, CAP, MIN_WIN), mode="objective")
+                if chosen is None:
+                    # 空候选：与生产一致地退化，但**显式记 None 而非静默出数**
+                    row["variants"][name] = {"accuracy": None, "level": None}
+                    continue
+                k_used, clusters = int(chosen["k"]), np.asarray(chosen["labels"])
+            else:
+                k_used, clusters = k, cluster_labels(vectors, k, metric=metric)
             fclusters, ftimes, level = refine_labels(
                 clusters, vectors, times, rvectors, rtimes, args.refine == "on")
             # `AB._win` 只认 refined/2s-only；关掉细化时该用主窗（`v12.WIN_S`）
@@ -213,7 +259,8 @@ def main():
             row["variants"][name] = {"accuracy": acc["accuracy"],
                                      "classes": kept,
                                      "level": level, "n_final": int(len(ftimes)),
-                                     "n_classes": len(kept) if kept else 0}
+                                     "n_classes": len(kept) if kept else 0,
+                                     "k_mode": k_mode, "k_used": int(k_used)}
         rows.append(row)
         print(json.dumps(row, ensure_ascii=False), flush=True)
 
@@ -226,14 +273,19 @@ def main():
         print(f"{row['meeting']:<16}{row['true_k']:>3}{row['n_windows']:>5}"
               + "".join(cells))
 
-    base = {row["meeting"]: row["variants"]["none"]["accuracy"] for row in rows}
+    # 基线 = 裸臂。`--k-modes auto` 时根本不存在 `none`（只有 `none_autok`），
+    # 写死 `["none"]` 会 KeyError —— 新开的开关不能有值把它跑崩。
+    base = {row["meeting"]: (row["variants"].get("none") or
+                             row["variants"].get("none_autok") or {}).get("accuracy")
+            for row in rows}
     print()
     for v in variants[1:]:
         deltas = []
         for row in rows:
             a = (row["variants"].get(v) or {}).get("accuracy")
-            if a is not None:
-                deltas.append(a - base[row["meeting"]])
+            b = base[row["meeting"]]
+            if a is not None and b is not None:
+                deltas.append(a - b)
         if not deltas:
             continue
         deltas = np.array(deltas)

@@ -152,3 +152,17 @@ def test_refine_labels_off_and_on_are_wired():
             assert "level" in v, f"{row['meeting']}/{name} 缺 level 键"
             if v["accuracy"] is not None:
                 assert v["level"] in ("refined", "2s-only", "none"), v["level"]
+
+
+def test_euclid_variants_skip_the_auto_k_arm():
+    """`build_unlocked` 内部写死余弦（unlocked_selector.py:48）。
+
+    若让欧氏空间的 LDA 输出经它选 k，就是拿余弦 silhouette 去评价欧氏空间
+    —— 第四个"换了东西没隔离变量"。所以 _euc 变体必须跳过自选 k 臂，
+    而不是悄悄用一个不成立的度量。
+    """
+    variants = BS.variants_for([8], [True, False], k_modes=["true", "auto"])
+    assert "c8_cos_autok" in variants
+    assert "c8_euc_autok" not in variants, "欧氏变体不得进入自选 k 臂"
+    assert "c8_euc" in variants, "欧氏变体本身仍要跑（真值 k 臂）"
+    assert "none_autok" in variants, "裸基线也要有自选 k 臂"
