@@ -190,7 +190,10 @@ def main():
                 normalize = name.endswith("cos")
                 fit, kept = fit_backend(pool, meeting, limit, normalize)
                 if fit is None:
-                    row["variants"][name] = {"accuracy": None}
+                    # `level` 必须在**每一行**上都在：产物是按行读的，缺键会让
+                    # "这一步没走" 与 "这段代码没写" 分不开（Task 5 的汇总
+                    # 直接读 `v.get('level')`，缺键显示成空而非"未拟合"）。
+                    row["variants"][name] = {"accuracy": None, "level": None}
                     continue
                 vectors, metric = fit(emb), fit.metric
                 # ⚠️ 细化窗必须过**同一个** `fit`。`_refine_labels` 里是

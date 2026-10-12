@@ -71,3 +71,84 @@ def test_refinement_is_applied_and_level_recorded():
     # 用 arange 重建网格会让 600s 参考的后半段全被判成无覆盖，弃权假报 37%）
     if level == "2s-only":
         assert np.allclose(ft, times), "k<2 时不得重建时间网格"
+
+
+def test_refine_labels_off_and_on_are_wired():
+    """`refine_labels` 是本任务新增的接线点，且 `--refine off` 必须不崩。
+
+    旧测试只碰 `probe_ab_dev.real_path_labels`（本任务未改），k=1 时它走
+    早退分支、两个断言恒真 —— 对本任务新增的代码零覆盖。
+    本测试走两段：先单元层验两个分支，再真跑一次 `main` 验行里的 `level`。
+    """
+    if not DATA.is_dir() or not Path(BS.DEFAULT_CACHE).is_dir():
+        pytest.skip("AISHELL-4 数据/缓存不在本机（绝对路径 D:\\yinp\\…）")
+    import numpy as np
+    import probe_ab_dev as AB
+    import probe_path_equiv as PE
+
+    dev = split_meetings(DATA, "dev")
+    pool = BS.build_pool(dev, BS.DEFAULT_CACHE, 2.0, 1.0)
+    assert pool, "前置：标注窗缓存应非空"
+    meeting = sorted(pool)[0]
+    emb, times, _, _ = pool[meeting]
+    rE, rtimes = PE.cached_stage(meeting, "refine")
+
+    labels = np.zeros(len(emb), dtype=int)
+
+    # off：原样返回 + level="none"（不能调 AB._win，它不认 "none"）
+    off_l, off_t, off_level = BS.refine_labels(labels, emb, times, rE, rtimes, False)
+    assert off_level == "none"
+    assert off_t is times and off_l is labels, "off 分支必须原样返回，不得重建网格"
+
+    # on：走 real_path_labels，level 只能是这两个
+    _, _, on_level = BS.refine_labels(labels, emb, times, rE, rtimes, True)
+    assert on_level in ("refined", "2s-only")
+
+    # 细化窗与锚点必须在**同一空间** —— 这是本任务唯一会崩的地方，也是
+    # brief 原文里唯一真正错的地方（原文直接传 rE，而 anchors 取自 LDA 空间）。
+    #
+    # ⚠️ 判据不能写成"`fit` 输出的列数与输入无关"。那是**恒真**的：`Transform`
+    # 是 `(X - mean) @ weights`，输出宽度只由 `weights` 定（实测 14 == 14），
+    # 在 brief 原文下也照样通过。唯一会红的形式是"目标调用不抛"。
+    from probe_gap_decomp import cluster_labels
+    fit, _ = BS.fit_backend(pool, meeting, 8, True)
+    assert fit is not None, "前置：本场应能拟合"
+    vectors, rvectors = fit(emb), fit(rE)
+    assert rvectors.shape[1] == vectors.shape[1], (
+        f"细化窗在错误空间（{rvectors.shape[1]} 列 vs 聚类空间 {vectors.shape[1]} 列）")
+    labels_k = cluster_labels(vectors, 3, metric=fit.metric)
+    # brief 原文下这里是 `rE @ anchors.T`：ValueError: matmul ... size 14 is
+    # different from 192 —— 会 raise，不会 assert。
+    fclusters, ftimes, level = BS.refine_labels(
+        labels_k, vectors, times, rvectors, rtimes, True)
+    assert level in ("refined", "2s-only"), "投影后的细化窗必须能被消化"
+    assert len(ftimes) == len(rvectors), "细化网格应与细化窗一一对应"
+
+    # ── 端到端：真跑一次 `main`，把同一件事钉在整条变体循环上 ──
+    # 上面几段都只调函数；"level 落进产物行"这个验收点只有穿过 `main`
+    # 才能验到，`fit is None` 存根行带不带 `level` 也只在这里暴露。
+    import json
+    import tempfile
+
+    # 两场：目标场之外还剩一场可拟合 ⇒ LDA 臂真的会跑（单场时池为空、
+    # 只走存根，就绕过了要测的那条路）。
+    two = sorted(pool)[:2]
+    assert len(two) == 2, "前置：至少两场"
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / "sweep.json"
+        argv = sys.argv
+        sys.argv = ["probe_backend_sweep.py", "--meetings", *two,
+                    "--seconds", "120", "--classes", "8", "--norm", "cosine",
+                    "--output", str(out)]
+        try:
+            BS.main()          # brief 原文下：这里抛 ValueError，测试红
+        finally:
+            sys.argv = argv
+        rows = json.loads(out.read_text(encoding="utf-8"))["meetings"]
+    assert len(rows) == 2, f"两场都应出行：{len(rows)}"
+    for row in rows:
+        assert row["variants"], f"{row['meeting']} 无变体行"
+        for name, v in row["variants"].items():
+            assert "level" in v, f"{row['meeting']}/{name} 缺 level 键"
+            if v["accuracy"] is not None:
+                assert v["level"] in ("refined", "2s-only", "none"), v["level"]
