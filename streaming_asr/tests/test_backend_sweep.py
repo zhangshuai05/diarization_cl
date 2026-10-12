@@ -12,6 +12,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 for _p in (str(ROOT / "streaming_asr"), str(ROOT / "scripts" / "evaluation")):
     if _p not in sys.path:
@@ -25,6 +27,11 @@ DATA = Path(r"D:\yinp\AISHELL-4\data\test")
 
 def test_pool_excludes_holdout_when_split_is_dev():
     """池必须只含本 split 的场次 —— 否则封存集为一个输出数字做了贡献。"""
+    # 数据/缓存是机器本地的绝对路径（D:\yinp\…），新克隆、CI、同事机器上不存在。
+    # pytest.ini 的 testpaths=tests 让本文件进每一次全量跑，所以缺数据时必须
+    # skip 而不是 error —— 否则整个包套件在别的机器上全红。
+    if not DATA.is_dir() or not Path(BS.DEFAULT_CACHE).is_dir():
+        pytest.skip("AISHELL-4 数据/缓存不在本机（绝对路径 D:\\yinp\\…）")
     dev = split_meetings(DATA, "dev")
     holdout = split_meetings(DATA, "holdout")
     assert dev and holdout, "前置：两个 split 都应非空"
