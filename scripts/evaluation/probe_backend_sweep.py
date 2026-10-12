@@ -231,7 +231,9 @@ def main():
                     # `level` 必须在**每一行**上都在：产物是按行读的，缺键会让
                     # "这一步没走" 与 "这段代码没写" 分不开（Task 5 的汇总
                     # 直接读 `v.get('level')`，缺键显示成空而非"未拟合"）。
-                    row["variants"][name] = {"accuracy": None, "level": None}
+                    # `k_mode` 同理带上（区分是哪个臂没拟合），`k_used` 无簇可选记 None。
+                    row["variants"][name] = {"accuracy": None, "level": None,
+                                             "k_mode": k_mode, "k_used": None}
                     continue
                 vectors, metric = fit(emb), fit.metric
                 # ⚠️ 细化窗必须过**同一个** `fit`。`_refine_labels` 里是
@@ -245,7 +247,8 @@ def main():
                 chosen = pick_unlocked(build_unlocked(vectors, CAP, MIN_WIN), mode="objective")
                 if chosen is None:
                     # 空候选：与生产一致地退化，但**显式记 None 而非静默出数**
-                    row["variants"][name] = {"accuracy": None, "level": None}
+                    row["variants"][name] = {"accuracy": None, "level": None,
+                                             "k_mode": k_mode, "k_used": None}
                     continue
                 k_used, clusters = int(chosen["k"]), np.asarray(chosen["labels"])
             else:
