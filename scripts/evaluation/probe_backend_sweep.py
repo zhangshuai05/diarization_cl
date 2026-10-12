@@ -11,8 +11,8 @@
   normalize          —— LDA 输出后是否 L2 归一化再聚类
                         False：欧氏距离 + average linkage（LDA 坐标的原生度量）
                         True ：余弦距离（与裸余弦基线同度量，只换了空间）
-  训练池             —— 默认用**全部 20 场**（除目标场）拟合，是对后端最有利的设定：
-                        若这样都不赚，后端方向可以弃了。
+  训练池             —— 默认用**本 split 全部场次**（除目标场）拟合；`--meetings`
+                        可收窄。**不含 holdout** —— 见 `build_pool` docstring。
 
 零推理。
 
@@ -21,6 +21,7 @@
 import argparse
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -47,8 +48,35 @@ def load(cache, meeting, window, hop):
             data["speakers"].astype(str), np.asarray(data["votes"], dtype=float))
 
 
+DEFAULT_CACHE = r"D:\yinp\AISHELL-4\_v13_spike\cache"
+
+
+def build_pool(meetings, cache, window, hop):
+    """加载标注窗缓存，供 LDA 拟合。
+
+    **只加载传入的场次** —— 由调用方决定范围。
+    当前唯一调用方是 `main`，它传**本 split 的场次**。
+
+    ⚠️ 曾经这里写的是 `set(dev + holdout)`，于是对 dev 的每一场，
+    LDA 方向都从含 8 场 holdout 的池里学 —— 封存集为一个输出数字做了贡献，
+    直接违反 spec §3.3。改成按 split 收口后池从 20 场降到 12 场。
+    """
+    pool = {}
+    for meeting in meetings:
+        try:
+            pool[meeting] = load(cache, meeting, window, hop)
+        except FileNotFoundError:
+            continue
+    return pool
+
+
 def fit_backend(pool, target, min_class_windows, normalize):
-    """用除目标场外的全部纯窗拟合 LDA，类 = (身份组, 说话人)。"""
+    """用除目标场外的全部纯窗拟合 LDA，类 = (身份组, 说话人)。
+
+    返回 `(fit, kept_names)` —— `kept_names` 是**保留类的名字清单**（已排序），
+    不是个数。`classes` 轴的真实分辨率只有两点（见全局约束），
+    只有类名清单能让产物自证用了哪批类。
+    """
     Xs, ys = [], []
     for meeting, (emb, times, speakers, votes) in pool.items():
         if meeting == target:
@@ -58,22 +86,25 @@ def fit_backend(pool, target, min_class_windows, normalize):
             Xs.append(pe)
             ys.append(np.array([f"{meeting_group(meeting)}:{x}" for x in ps]))
     if not Xs:
-        return None, 0
+        return None, []
     X, y = np.concatenate(Xs), np.concatenate(ys)
-    kept = sum(1 for c in np.unique(y) if (y == c).sum() >= min_class_windows)
-    if kept < 2:
-        return None, 0
+    counts = Counter(y.tolist())
+    kept_names = sorted(c for c, n in counts.items() if n >= min_class_windows)
+    if len(kept_names) < 2:
+        return None, []
     fit = lda_fit(X, y, min_class_windows=min_class_windows)
     if fit is None:
-        return None, kept
-    return Transform(fit.mean, fit.weights, normalize=normalize), kept
+        return None, kept_names
+    return Transform(fit.mean, fit.weights, normalize=normalize), kept_names
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=r"D:\yinp\AISHELL-4\data\test")
-    ap.add_argument("--cache", default=r"D:\yinp\AISHELL-4\_v13_spike\cache")
+    ap.add_argument("--cache", default=DEFAULT_CACHE)
     ap.add_argument("--split", choices=("dev", "holdout"), default="dev")
+    ap.add_argument("--meetings", nargs="*", default=None,
+                    help="显式场次列表；缺省 = 本 split 全部")
     ap.add_argument("--seconds", type=float, default=600.0)
     ap.add_argument("--window", type=float, default=v12.WIN_S)
     ap.add_argument("--hop", type=float, default=v12.HOP_S)
@@ -87,14 +118,9 @@ def main():
     norms = [x == "cosine" for x in args.norm.split(",")]
 
     root = Path(args.root)
-    meetings = split_meetings(root, args.split)
-    every = sorted(set(split_meetings(root, "dev") + split_meetings(root, "holdout")))
-    pool = {}
-    for meeting in every:
-        try:
-            pool[meeting] = load(args.cache, meeting, args.window, args.hop)
-        except FileNotFoundError:
-            continue
+    meetings = args.meetings or split_meetings(root, args.split)
+    # ★ 池只含本 split —— 见 build_pool docstring 与 test_backend_sweep.py
+    pool = build_pool(meetings, args.cache, args.window, args.hop)
 
     variants = ["none"] + [f"c{c}_{'cos' if n else 'euc'}"
                            for c in class_limits for n in norms]
@@ -134,7 +160,9 @@ def main():
             clusters = cluster_labels(vectors, k, metric=metric)
             named = map_by_frames(reference, times, clusters, win)
             acc = frame_accuracy(reference, times, named, win)
-            row["variants"][name] = {"accuracy": acc["accuracy"], "classes": kept}
+            row["variants"][name] = {"accuracy": acc["accuracy"],
+                                     "classes": kept,
+                                     "n_classes": len(kept) if kept else 0}
         rows.append(row)
         print(json.dumps(row, ensure_ascii=False), flush=True)
 
