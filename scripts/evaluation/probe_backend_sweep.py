@@ -41,6 +41,8 @@ from probe_gap_decomp import (  # noqa: E402
     cached_windows, cluster_labels, frame_accuracy, gate_windows, map_by_frames,
     rttm_speech, window_reference)
 from probe_pair_oracle import Transform, lda_fit, pure_windows  # noqa: E402
+from probe_sentence_attribution import (  # noqa: E402
+    attribution, segment_map, sentence_dict_predictions)
 from unlocked_selector import CAP, MIN_WIN, build_unlocked, pick_unlocked  # noqa: E402
 
 
@@ -149,6 +151,39 @@ def variants_for(class_limits, norms, k_modes=("true",)):
     return uniq
 
 
+def sentence_metrics(sentences, labels, times, win):
+    """句级归属率，带 clean / overlap / overall 三桶。
+
+    ⚠️ **不改 `AB.score`** —— 它只返回 `overall` 派生的 6 个键，而现有调用方
+    （`probe_unlocked_sentence.run_meeting` 等）全是 `**AB.score(...)` 解包，
+    给它加桶会静默改掉它们的产物 schema。这里重建 `score` 的取桶路径，
+    段表构造与 `score` 逐行一致（`segment_map` → `sentence_dict_predictions`
+    → `attribution`），只是不丢掉三桶。
+
+    **弃权与错答必须分开报**：弃权是显式缺失（读者看得到），错答是静默错误
+    （读者被误导而不自知）。合报一个 clean 数会让两者在不该互换的预算里互换。
+
+    `wrong = 1 - per_sentence - abstain`：**clean 桶含弃权句且算未答对**，
+    所以 `1 - per_sentence` 里混着弃权，不能直接当错答率。
+    """
+    end = max(s["end"] for s in sentences)
+    w = np.full(len(labels), win)
+    segs = segment_map(times, labels, w, end)
+    pred = sentence_dict_predictions(sentences, segs)
+    a = attribution(sentences, pred)
+    out = {}
+    for bucket in ("overall", "clean", "overlap"):
+        b = a[bucket]
+        ps, ab = b["per_sentence"], b["abstain"]
+        out[bucket] = {
+            "per_sentence": ps,
+            "abstain": ab,
+            "wrong": None if ps is None or ab is None else 1.0 - ps - ab,
+            "n": b["n"],
+        }
+    return out
+
+
 def k_modes_arg(text):
     """解析 `--k-modes`，未知取值直接报错。
 
@@ -187,6 +222,10 @@ def main():
     norms = [x == "cosine" for x in args.norm.split(",")]
 
     root = Path(args.root)
+    # `AB.load_sentences` 读的是 `AB.DATA` 下的 TextGrid，而本脚本的 `--root`
+    # 才是这一跑的数据根 —— 不接上就会**静默读另一个目录**的标注
+    # （或在别的机器上直接 FileNotFoundError）。
+    AB.DATA = root
     meetings = args.meetings or split_meetings(root, args.split)
     # ★ 池只含本 split —— 见 build_pool docstring 与 test_backend_sweep.py
     pool = build_pool(meetings, args.cache, args.window, args.hop)
@@ -225,6 +264,9 @@ def main():
         emb, times = gate_windows(emb_all, times_all,
                                   rttm_speech(reference, seconds=seconds),
                                   args.window, v11.MIN_VAD_FRACTION)
+        # 每场**只读一次** TextGrid（`load_sentences` 解的是标注文件，不是缓存），
+        # 放进变体循环里会让每个变体各读一遍 —— 纯浪费。
+        sentences = AB.load_sentences(meeting)
         row = {"meeting": meeting, "true_k": len(effective),
                "n_windows": int(len(emb)), "variants": {}, "k_modes": k_modes}
         if len(emb) < 2 or len(effective) < 2:
@@ -236,7 +278,7 @@ def main():
                 row["variants"][name] = {
                     "accuracy": None, "level": None,
                     "k_mode": "auto" if name.endswith("_autok") else "true",
-                    "k_used": None, "skip": reason}
+                    "k_used": None, "sentence": None, "skip": reason}
             rows.append(row)
             print(json.dumps(row, ensure_ascii=False), flush=True)
             continue
@@ -257,7 +299,8 @@ def main():
                     # 直接读 `v.get('level')`，缺键显示成空而非"未拟合"）。
                     # `k_mode` 同理带上（区分是哪个臂没拟合），`k_used` 无簇可选记 None。
                     row["variants"][name] = {"accuracy": None, "level": None,
-                                             "k_mode": k_mode, "k_used": None}
+                                             "k_mode": k_mode, "k_used": None,
+                                             "sentence": None}
                     continue
                 vectors, metric = fit(emb), fit.metric
                 # ⚠️ 细化窗必须过**同一个** `fit`。`_refine_labels` 里是
@@ -272,7 +315,8 @@ def main():
                 if chosen is None:
                     # 空候选：与生产一致地退化，但**显式记 None 而非静默出数**
                     row["variants"][name] = {"accuracy": None, "level": None,
-                                             "k_mode": k_mode, "k_used": None}
+                                             "k_mode": k_mode, "k_used": None,
+                                             "sentence": None}
                     continue
                 k_used, clusters = int(chosen["k"]), np.asarray(chosen["labels"])
             else:
@@ -283,11 +327,16 @@ def main():
             fwin = v12.WIN_S if level == "none" else AB._win(level)
             named = map_by_frames(reference, ftimes, fclusters, np.full(len(ftimes), fwin))
             acc = frame_accuracy(reference, ftimes, named, np.full(len(ftimes), fwin))
+            # 句级指标必须和 frame 指标一样**每条臂都出**（含 `none` 臂）：
+            # 少一条臂就会让"这条臂没跑"与"这条臂在后端上更好"分不开。
+            # `load_sentences` 对本场返回空时记 None（而不是崩），与存根行同构。
+            sent = sentence_metrics(sentences, fclusters, ftimes, fwin) if sentences else None
             row["variants"][name] = {"accuracy": acc["accuracy"],
                                      "classes": kept,
                                      "level": level, "n_final": int(len(ftimes)),
                                      "n_classes": len(kept) if kept else 0,
-                                     "k_mode": k_mode, "k_used": int(k_used)}
+                                     "k_mode": k_mode, "k_used": int(k_used),
+                                     "sentence": sent}
         rows.append(row)
         print(json.dumps(row, ensure_ascii=False), flush=True)
 
@@ -320,6 +369,25 @@ def main():
         losses = int((deltas < -0.01).sum())
         print(f"  {v:>11}  净值 {deltas.mean() * 100:+6.1f} 点   "
               f"赢{wins}/亏{losses}/平{len(deltas) - wins - losses}")
+
+    # 句级汇总：clean 桶的**错答与弃权分开**报。`1 - 归属率` 不是错答率
+    # （clean 桶含弃权句且算未答对），硬凑成一个数会让两者互相顶替。
+    print()
+    print("=== 句级（clean 桶，错答与弃权分开）===")
+    for v in variants:
+        rows_v = [(row["variants"].get(v) or {}).get("sentence") for row in rows]
+        # 无句子的场次 / 存根行 / 未拟合行都会是 None —— 逐场过滤，
+        # 空集合直接跳过（不能让一个 None 把整张表打成 NaN 或抛 TypeError）。
+        rows_v = [x for x in rows_v if x and x["clean"]["per_sentence"] is not None]
+        if not rows_v:
+            print(f"  {v:>12}  （无句级数据）")
+            continue
+        cw = [x["clean"]["wrong"] for x in rows_v if x["clean"]["wrong"] is not None]
+        ca = [x["clean"]["abstain"] for x in rows_v]
+        wrong_s = "     -" if not cw else f"{np.mean(cw) * 100:5.1f}%"
+        print(f"  {v:>12}  clean {np.mean([x['clean']['per_sentence'] for x in rows_v]) * 100:5.1f}%"
+              f"  错答 {wrong_s}  弃权 {np.mean(ca) * 100:5.1f}%"
+              f"   (n={len(rows_v)})")
 
     if args.output:
         Path(args.output).write_text(

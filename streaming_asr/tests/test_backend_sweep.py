@@ -225,3 +225,138 @@ def test_euclid_variants_skip_the_auto_k_arm():
     assert "c8_euc_autok" not in variants, "欧氏变体不得进入自选 k 臂"
     assert "c8_euc" in variants, "欧氏变体本身仍要跑（真值 k 臂）"
     assert "none_autok" in variants, "裸基线也要有自选 k 臂"
+
+
+def test_sentence_metrics_are_reported_for_every_variant():
+    """验收指标是句级归属率，而 frame accuracy 对"多出来的簇"记账方式不同：
+    frame 走贪心映射、句级走匈牙利双射，两者不能互相换算。
+
+    必须报**两个数**：错答（静默错误，读者被误导而不自知）与弃权（显式缺失，
+    读者看得到）。`1 - per_sentence` **不是**错答率 —— clean 桶含弃权句且
+    算未答对，混在里面的那一份必须单列出来。
+    """
+    if not DATA.is_dir() or not Path(BS.DEFAULT_CACHE).is_dir():
+        pytest.skip("AISHELL-4 数据/缓存不在本机（绝对路径 D:/yinp/…）")
+    import json
+    import tempfile
+
+    import probe_ab_dev as AB
+    import probe_path_equiv as PE
+    import claude_a2_v12 as v12
+    from probe_gap_decomp import cluster_labels
+
+    dev = split_meetings(DATA, "dev")
+    pool = BS.build_pool(dev, BS.DEFAULT_CACHE, 2.0, 1.0)
+    assert pool, "前置：标注窗缓存应非空"
+
+    # ── 单元层：与 `AB.score` 走同一条取桶路径（段表 → 句预测 → attribution）──
+    # ⚠️ 输入必须是**真跑出来的** fclusters/ftimes/fwin，不能拿
+    # `zeros(len(sentences))` + `arange` 合成网格充数：合成网格只验证桶的搬运，
+    # 对"接的是不是真实窗网格"零覆盖 —— 而后者才是本任务的全部内容。
+    meeting = sorted(pool)[0]
+    emb, times, _, _ = pool[meeting]
+    rE, rtimes = PE.cached_stage(meeting, "refine")
+    fit, _ = BS.fit_backend(pool, meeting, 8, True)
+    assert fit is not None, "前置：本场应能拟合（否则 LDA 臂只出行存根，测不到）"
+    vectors, rvectors = fit(emb), fit(rE)
+    fclusters, ftimes, level = BS.refine_labels(
+        cluster_labels(vectors, 3, metric=fit.metric), vectors, times,
+        rvectors, rtimes, True)
+    assert level in ("refined", "2s-only")
+    fwin = v12.WIN_S if level == "none" else AB._win(level)
+
+    sentences = AB.load_sentences(meeting)
+    assert sentences, "前置：本场应有句子（TextGrid）"
+
+    # 这一条是"重建 score 取桶路径是否走样"的唯一判据。注意它**只**在
+    # 真输入上有效：`attribution` 的分桶/映射都与 segments 的形状有关。
+    s = BS.sentence_metrics(sentences, fclusters, ftimes, fwin)
+    base = AB.score(sentences, fclusters, ftimes, fwin)
+    assert set(s) == {"overall", "clean", "overlap"}, sorted(s)
+    assert s["overall"]["per_sentence"] == base["per_sentence"], (
+        "sentence_metrics 的 overall 必须与 AB.score 同口径（重建路径走样了）")
+    assert s["overall"]["n"] == base["n"]
+    assert s["overall"]["abstain"] == base["abstain"]
+
+    for bucket, b in s.items():
+        assert set(b) == {"per_sentence", "abstain", "wrong", "n"}, (bucket, sorted(b))
+        if b["per_sentence"] is None:
+            assert b["abstain"] is None and b["wrong"] is None, bucket
+            continue
+        # 两个数必须分开：错答 = 1 - 答对 - 弃权。
+        assert abs(b["wrong"] - (1.0 - b["per_sentence"] - b["abstain"])) < 1e-9, (bucket, b)
+        assert b["abstain"] >= 0.0 and b["wrong"] >= -1e-9, (bucket, b)
+
+    clean = s["clean"]
+    assert clean["n"] > 0, "前置：本场应有 clean 桶句子"
+    if clean["abstain"] > 0:
+        # 弃权 >0 时 `1 - per_sentence` 与错答率**必须**不同 —— 这条把
+        # "两个数" 与 "一个数" 钉开（少了 `- abstain` 就在这里红）。
+        assert abs(clean["wrong"] - (1.0 - clean["per_sentence"])) > 1e-9, clean
+    assert clean["n"] + s["overlap"]["n"] == s["overall"]["n"], (
+        "clean/overlap 必须恰好把 overall 切开")
+
+    # ── 端到端：`sentence` 键必须落进**每一行**，且没有哪条臂豁免 ──
+    # 只单测 `sentence_metrics` 是不够的：把变体行里那个 `"sentence"` 整段删掉，
+    # 上面全部断言照样全绿。所以这里真跑一次 `main`。
+    # 另外把 `AB.DATA` 换成一个不存在的路径再跑：`main` 若没设
+    # `AB.DATA = root`，`load_sentences` 就会抛 FileNotFoundError —— 这条
+    # 同时钉住 brief 的"`AB.DATA` 必须指向 `--root`"。
+    two = sorted(pool)[:2]
+    assert len(two) == 2, "前置：至少两场（单场时池为空、LDA 臂只出行存根）"
+    saved_data = AB.DATA
+
+    def _run(seconds, out_path):
+        argv = sys.argv
+        sys.argv = ["probe_backend_sweep.py", "--root", str(DATA),
+                    "--meetings", *two, "--seconds", str(seconds),
+                    "--classes", "8", "--norm", "cosine",
+                    "--k-modes", "true,auto", "--output", str(out_path)]
+        try:
+            BS.main()          # AB.DATA 未接上 --root 时：这里抛 FileNotFoundError
+        finally:
+            sys.argv = argv
+        return json.loads(out_path.read_text(encoding="utf-8"))["meetings"]
+
+    AB.DATA = Path(r"D:\__no_such_data_root__")
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            rows = _run(120, Path(tmp) / "sent.json")
+            skip_rows = _run(10, Path(tmp) / "skip.json")
+    finally:
+        AB.DATA = saved_data
+
+    assert len(rows) == 2, f"两场都应出行：{len(rows)}"
+    arm_seen = {}
+    for label, run_rows in (("正常", rows), ("跳过", skip_rows)):
+        for row in run_rows:
+            assert row["variants"], f"{label}/{row['meeting']} 无变体行"
+            for name, v in row["variants"].items():
+                assert "sentence" in v, f"{label}/{row['meeting']}/{name} 缺 sentence 键"
+                if v["accuracy"] is None:
+                    # 存根行：不许出数，但键必须在（缺键会让"这步没走"与
+                    # "这段代码没写"分不开 —— 与 `level` 同一条理由）。
+                    assert v["sentence"] is None, \
+                        f"{label}/{row['meeting']}/{name} 未出 frame 数却有句级数"
+                    continue
+                sn = v["sentence"]
+                assert sn is not None, f"{label}/{row['meeting']}/{name} 有 frame 数却无句级数"
+                assert set(sn) == {"overall", "clean", "overlap"}, (name, sorted(sn))
+                for bucket, b in sn.items():
+                    assert set(b) == {"per_sentence", "abstain", "wrong", "n"}, (name, bucket)
+                    if b["per_sentence"] is None:
+                        continue
+                    assert abs(b["wrong"] - (1.0 - b["per_sentence"] - b["abstain"])) < 1e-9, \
+                        (name, bucket, b)
+                arm_seen.setdefault(name, 0)
+                arm_seen[name] += 1
+
+    # `none` 臂与 LDA 臂都必须拿到句级数 —— 同一件事，没有哪条臂豁免。
+    assert arm_seen.get("none"), f"裸臂没出句级数：{sorted(arm_seen)}"
+    assert any(n.startswith("c8_") for n in arm_seen), \
+        f"LDA 臂没出句级数（存根行不算）：{sorted(arm_seen)}"
+    # 跳过轮的每一行都必须是存根（顺带钉住汇总打印不因 sentence=None 而崩）。
+    for row in skip_rows:
+        for name, v in row["variants"].items():
+            assert v["accuracy"] is None, f"{row['meeting']}/{name} 窗数不足却出了数"
+            assert v["sentence"] is None, f"{row['meeting']}/{name} 未跑却有句级数"
