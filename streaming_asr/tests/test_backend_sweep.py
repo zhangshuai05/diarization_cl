@@ -44,3 +44,30 @@ def test_pool_excludes_holdout_when_split_is_dev():
     leaked = sorted(set(pool) & set(holdout))
     assert leaked == [], f"训练池泄漏了封存集场次：{leaked}"
     assert set(pool) <= set(dev), f"池含非本 split 场次：{sorted(set(pool) - set(dev))}"
+
+
+def test_refinement_is_applied_and_level_recorded():
+    """变体结果必须记录细化层级 —— 否则无法区分'后端在 AHC 层的差异'
+    与'整条链路的差异'，而生产里 AHC 只是中间一环。"""
+    dev = split_meetings(DATA, "dev")
+    pool = BS.build_pool(dev, BS.DEFAULT_CACHE, 2.0, 1.0)
+    if not pool:
+        import pytest
+        pytest.skip("无标注窗缓存")
+
+    import numpy as np
+    import probe_ab_dev as AB
+    import probe_path_equiv as PE
+
+    meeting = sorted(pool)[0]
+    emb, times, speakers, votes = pool[meeting]
+    rE, rtimes = PE.cached_stage(meeting, "refine")
+    assert len(rE) > 0, "前置：refine 缓存应非空"
+
+    labels = np.zeros(len(emb), dtype=int)          # k=1，最稳的输入
+    fl, ft, level = AB.real_path_labels(labels, emb, times, rE, rtimes)
+    assert level in ("refined", "2s-only")
+    # k<2 时必须返回原 times（`real_path_labels` docstring 记录的坑：
+    # 用 arange 重建网格会让 600s 参考的后半段全被判成无覆盖，弃权假报 37%）
+    if level == "2s-only":
+        assert np.allclose(ft, times), "k<2 时不得重建时间网格"

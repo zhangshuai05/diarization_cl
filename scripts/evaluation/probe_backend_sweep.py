@@ -35,6 +35,8 @@ import claude_a2_v11 as v11  # noqa: E402
 import claude_a2_v12 as v12  # noqa: E402
 from der import read_rttm  # noqa: E402
 from v12_aishell4 import meeting_group, split_meetings  # noqa: E402
+import probe_ab_dev as AB  # noqa: E402
+import probe_path_equiv as PE  # noqa: E402
 from probe_gap_decomp import (  # noqa: E402
     cached_windows, cluster_labels, frame_accuracy, gate_windows, map_by_frames,
     rttm_speech, window_reference)
@@ -98,6 +100,22 @@ def fit_backend(pool, target, min_class_windows, normalize):
     return Transform(fit.mean, fit.weights, normalize=normalize), kept_names
 
 
+def refine_labels(labels, E, times, rE, rtimes, enabled=True):
+    """走 v12 的同一套两级细化，返回 (labels, times, level)。
+
+    **两臂必须同构**：若 `none` 臂与 LDA 臂都在无细化下跑，结论是
+    "后端在 AHC 那一层的差异"；而生产里细化按簇质心重新归属、
+    会把簇边界错误吸掉一部分 —— **可能正好把 LDA 想修的那部分先修了**。
+    不带细化的数字对"这条线有没有东西"没有回答力。
+
+    ⚠️ `vectors` 必须传**聚类时用的那个空间**（LDA 输出），
+    与 `real_path_labels` 内部取质心一致。
+    """
+    if not enabled:
+        return labels, times, "none"
+    return AB.real_path_labels(labels, E, times, rE, rtimes)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=r"D:\yinp\AISHELL-4\data\test")
@@ -111,6 +129,8 @@ def main():
     ap.add_argument("--share", type=float, default=0.05)
     ap.add_argument("--classes", default="2,8,16,32")
     ap.add_argument("--norm", default="euclid,cosine")
+    ap.add_argument("--refine", default="on", choices=("on", "off"),
+                    help="是否走两级细化。off 仅用于诊断，产物会标 level=none")
     ap.add_argument("--output")
     args = ap.parse_args()
 
@@ -122,10 +142,26 @@ def main():
     # ★ 池只含本 split —— 见 build_pool docstring 与 test_backend_sweep.py
     pool = build_pool(meetings, args.cache, args.window, args.hop)
 
+    refine_cache = {}
+    for meeting in meetings:
+        try:
+            refine_cache[meeting] = PE.cached_stage(meeting, "refine")
+        except FileNotFoundError:
+            continue
+    missing_refine = sorted(set(meetings) - set(refine_cache))
+    if missing_refine:
+        # ⚠️ 不能只 `continue`：那会让这些场次**静默**从产物里消失，
+        # 而"少了几场"看起来和"本来就这么几场"一模一样 —— 本仓库
+        # 反复出现的"不报错只出错数"。§R7：失败场次必须显式记录。
+        print(f"⚠️ 无 refine 缓存的场次（跳过）：{missing_refine}", flush=True)
+
     variants = ["none"] + [f"c{c}_{'cos' if n else 'euc'}"
                            for c in class_limits for n in norms]
     rows = []
     for meeting in meetings:
+        if meeting not in refine_cache:
+            continue
+        rE, rtimes = refine_cache[meeting]
         reference = read_rttm(root / "TextGrid" / f"{meeting}.rttm")
         seconds = args.seconds if args.seconds > 0 else max(s["end"] for s in reference)
         reference = [{"start": s["start"], "end": min(s["end"], seconds),
@@ -140,7 +176,6 @@ def main():
         emb, times = gate_windows(emb_all, times_all,
                                   rttm_speech(reference, seconds=seconds),
                                   args.window, v11.MIN_VAD_FRACTION)
-        win = np.full(len(times), args.window)
         if len(emb) < 2 or len(effective) < 2:
             continue
         k = min(len(effective), len(emb))
@@ -149,6 +184,7 @@ def main():
         for name in variants:
             if name == "none":
                 vectors, metric, kept = emb, "cosine", None
+                rvectors = rE                      # 裸空间：两侧同为 192 维原始嵌入
             else:
                 limit = int(name[1:name.index("_")])
                 normalize = name.endswith("cos")
@@ -157,11 +193,23 @@ def main():
                     row["variants"][name] = {"accuracy": None}
                     continue
                 vectors, metric = fit(emb), fit.metric
+                # ⚠️ 细化窗必须过**同一个** `fit`。`_refine_labels` 里是
+                # `rE @ anchors.T`，而 anchors 取自 `vectors` —— 若 rE 留在
+                # 原始 192 维、vectors 已在 LDA 空间（维度 = 判别方向数），
+                # 这条矩阵乘直接 `ValueError`，**每个 LDA 臂都会崩**。
+                # 只 `none` 臂能跑（两侧同为原始嵌入），于是崩溃被伪装成
+                # "后端臂无数据"。投影后两侧同空间，与生产同构。
+                rvectors = fit(rE)
             clusters = cluster_labels(vectors, k, metric=metric)
-            named = map_by_frames(reference, times, clusters, win)
-            acc = frame_accuracy(reference, times, named, win)
+            fclusters, ftimes, level = refine_labels(
+                clusters, vectors, times, rvectors, rtimes, args.refine == "on")
+            # `AB._win` 只认 refined/2s-only；关掉细化时该用主窗（`v12.WIN_S`）
+            fwin = v12.WIN_S if level == "none" else AB._win(level)
+            named = map_by_frames(reference, ftimes, fclusters, np.full(len(ftimes), fwin))
+            acc = frame_accuracy(reference, ftimes, named, np.full(len(ftimes), fwin))
             row["variants"][name] = {"accuracy": acc["accuracy"],
                                      "classes": kept,
+                                     "level": level, "n_final": int(len(ftimes)),
                                      "n_classes": len(kept) if kept else 0}
         rows.append(row)
         print(json.dumps(row, ensure_ascii=False), flush=True)
