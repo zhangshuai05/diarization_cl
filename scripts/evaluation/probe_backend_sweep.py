@@ -149,6 +149,20 @@ def variants_for(class_limits, norms, k_modes=("true",)):
     return uniq
 
 
+def k_modes_arg(text):
+    """解析 `--k-modes`，未知取值直接报错。
+
+    不这样做的话 `--k-modes True` 会静默落进 `variants_for` 的 else 兜底：
+    既不产 `none` 臂，行里的 `k_modes` 又写着 `True` —— 产物对自己撒谎。
+    一个存在意义就是"记录这一跑用了哪种 K 模式"的开关，不能报错数。
+    """
+    modes = [piece for piece in text.split(",") if piece]
+    unknown = sorted(set(modes) - {"true", "auto"})
+    if unknown:
+        raise argparse.ArgumentTypeError(f"未知 k-mode：{unknown}（只认 true / auto）")
+    return modes
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=r"D:\yinp\AISHELL-4\data\test")
@@ -162,7 +176,7 @@ def main():
     ap.add_argument("--share", type=float, default=0.05)
     ap.add_argument("--classes", default="2,8,16,32")
     ap.add_argument("--norm", default="euclid,cosine")
-    ap.add_argument("--k-modes", default="true,auto",
+    ap.add_argument("--k-modes", default="true,auto", type=k_modes_arg,
                     help="true = 真值有效人数（诊断）；auto = pick_unlocked 自选（判据）")
     ap.add_argument("--refine", default="on", choices=("on", "off"),
                     help="是否走两级细化。off 仅用于诊断，产物会标 level=none")
@@ -190,7 +204,7 @@ def main():
         # 反复出现的"不报错只出错数"。§R7：失败场次必须显式记录。
         print(f"⚠️ 无 refine 缓存的场次（跳过）：{missing_refine}", flush=True)
 
-    k_modes = [x for x in args.k_modes.split(",") if x]
+    k_modes = args.k_modes
     variants = variants_for(class_limits, norms, k_modes)
     rows = []
     for meeting in meetings:
@@ -211,12 +225,22 @@ def main():
         emb, times = gate_windows(emb_all, times_all,
                                   rttm_speech(reference, seconds=seconds),
                                   args.window, v11.MIN_VAD_FRACTION)
+        row = {"meeting": meeting, "true_k": len(effective),
+               "n_windows": int(len(emb)), "variants": {}, "k_modes": k_modes}
         if len(emb) < 2 or len(effective) < 2:
+            # ⚠️ 不能 `continue` 掉整行：跳过与"本来就不跑"在产物里必须可区分。
+            # 该场窗数不足/有效人数不足，逐变体记存根，行仍然落盘。
+            # 与上面"无 refine 缓存"那条同理（§R7：失败场次必须显式记录）。
+            reason = "窗数不足" if len(emb) < 2 else "有效人数不足"
+            for name in variants:
+                row["variants"][name] = {
+                    "accuracy": None, "level": None,
+                    "k_mode": "auto" if name.endswith("_autok") else "true",
+                    "k_used": None, "skip": reason}
+            rows.append(row)
+            print(json.dumps(row, ensure_ascii=False), flush=True)
             continue
         k = min(len(effective), len(emb))
-        row = {"meeting": meeting, "true_k": len(effective),
-               "n_windows": int(len(emb)), "variants": {}}
-        row["k_modes"] = k_modes
         for name in variants:
             base_name = name[:-len("_autok")] if name.endswith("_autok") else name
             k_mode = "auto" if name.endswith("_autok") else "true"

@@ -134,24 +134,83 @@ def test_refine_labels_off_and_on_are_wired():
     # 只走存根，就绕过了要测的那条路）。
     two = sorted(pool)[:2]
     assert len(two) == 2, "前置：至少两场"
-    with tempfile.TemporaryDirectory() as tmp:
-        out = Path(tmp) / "sweep.json"
+
+    def _run(seconds, out_path):
         argv = sys.argv
+        # `--k-modes` 显式传：本任务就是加这条轴，靠默认值会让"flag 没接上"
+        # 与"flag 接上了"看起来一样。
         sys.argv = ["probe_backend_sweep.py", "--meetings", *two,
-                    "--seconds", "120", "--classes", "8", "--norm", "cosine",
-                    "--output", str(out)]
+                    "--seconds", str(seconds), "--classes", "8", "--norm", "cosine",
+                    "--k-modes", "true,auto", "--output", str(out_path)]
         try:
             BS.main()          # brief 原文下：这里抛 ValueError，测试红
         finally:
             sys.argv = argv
-        rows = json.loads(out.read_text(encoding="utf-8"))["meetings"]
+        return json.loads(out_path.read_text(encoding="utf-8"))["meetings"]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        rows = _run(120, Path(tmp) / "sweep.json")
+        # 第二轮：窗数极少的场次走"窗数不足"跳过路径。原来那条路直接
+        # `continue` 丢整行，产物里"跳过了"与"本来就没这场"长得一模一样。
+        skip_rows = _run(10, Path(tmp) / "skip.json")
+
+        # ── 间谍臂：证明 `auto` 真的是**经生产选择器**选的 k ──
+        # 上面那些断言只看产物。一个"名字/标签都对、但 auto 分支实际走
+        # 欧氏 K 选择"的变异能全绿通过（已实测）—— 因为产物里看不出
+        # 选择器有没有被调用。这里包一层，把选择器**返回的 k** 记下来，
+        # 再和产物里记的 `k_used` 逐值对上：只数调用次数不够（true 臂
+        # 若也调一次，次数照样相等），必须绑定"选择器吐出来的数"。
+        returned = []
+        real_build, real_pick = BS.build_unlocked, BS.pick_unlocked
+
+        def spy_build(E, cap=BS.CAP, min_win=BS.MIN_WIN):
+            return real_build(E, cap, min_win)
+
+        def spy_pick(cands, mode="objective"):
+            assert mode == "objective", f"生产默认 mode 应为 objective，收到 {mode}"
+            chosen = real_pick(cands, mode=mode)
+            returned.append(None if chosen is None else int(chosen["k"]))
+            return chosen
+
+        BS.build_unlocked, BS.pick_unlocked = spy_build, spy_pick
+        try:
+            spy_rows = _run(120, Path(tmp) / "spy.json")
+        finally:
+            BS.build_unlocked, BS.pick_unlocked = real_build, real_pick
+
+    assert returned, "auto 臂根本没调用生产选择器（pick_unlocked 一次没进）"
+    # 产物里每个出了数的 `_autok` 变体，其 k_used 必须来自上面的选择器返回。
+    product = [v["k_used"] for row in spy_rows for name, v in row["variants"].items()
+               if name.endswith("_autok") and v["accuracy"] is not None]
+    assert product, "auto 臂没有产出任何可用变体行"
+    assert sorted(product) == sorted(returned), (
+        f"产物记的 k_used {sorted(product)} 与生产选择器实际返回的 {sorted(returned)} "
+        "对不上 —— auto 臂没走选择器（或 true 臂也在调它）")
+
     assert len(rows) == 2, f"两场都应出行：{len(rows)}"
-    for row in rows:
-        assert row["variants"], f"{row['meeting']} 无变体行"
+    assert len(skip_rows) == 2, f"跳过路径也必须出行（不得丢整行）：{len(skip_rows)}"
+
+    for label, run_rows in (("正常", rows), ("跳过", skip_rows)):
+        for row in run_rows:
+            assert row["variants"], f"{label}/{row['meeting']} 无变体行"
+            assert "k_modes" in row, f"{label}/{row['meeting']} 缺 k_modes"
+            assert not [n for n in row["variants"] if n.endswith("_euc_autok")], \
+                f"{label}/{row['meeting']} 欧氏变体混进了自选 k 臂"
+            for name, v in row["variants"].items():
+                assert "level" in v, f"{label}/{row['meeting']}/{name} 缺 level 键"
+                assert "k_mode" in v, f"{label}/{row['meeting']}/{name} 缺 k_mode 键"
+                assert "k_used" in v, f"{label}/{row['meeting']}/{name} 缺 k_used 键"
+                # 名字与 k_mode 必须一致 —— 钉住"名字枚举对了但臂接错了"。
+                assert v["k_mode"] == ("auto" if name.endswith("_autok") else "true"), \
+                    f"{label}/{row['meeting']}/{name} k_mode 与变体名不符：{v['k_mode']}"
+                if v["accuracy"] is not None:
+                    assert v["level"] in ("refined", "2s-only", "none"), v["level"]
+                    assert v["k_mode"] == "auto" or v["k_used"] is not None, name
+    # 跳过轮的每一行都必须是存根：没有数、但**有**键。
+    for row in skip_rows:
         for name, v in row["variants"].items():
-            assert "level" in v, f"{row['meeting']}/{name} 缺 level 键"
-            if v["accuracy"] is not None:
-                assert v["level"] in ("refined", "2s-only", "none"), v["level"]
+            assert v["accuracy"] is None, f"{row['meeting']}/{name} 窗数不足却出了数"
+            assert v["k_used"] is None, f"{row['meeting']}/{name} 未拟合却有 k_used"
 
 
 def test_euclid_variants_skip_the_auto_k_arm():
