@@ -152,7 +152,7 @@ def variants_for(class_limits, norms, k_modes=("true",)):
 
 
 def sentence_metrics(sentences, labels, times, win):
-    """句级归属率，带 clean / overlap / overall 三桶。
+    """句级归属率，带 clean / overlap / overall 三桶，每桶**四类分开**。
 
     ⚠️ **不改 `AB.score`** —— 它只返回 `overall` 派生的 6 个键，而现有调用方
     （`probe_unlocked_sentence.run_meeting` 等）全是 `**AB.score(...)` 解包，
@@ -163,8 +163,24 @@ def sentence_metrics(sentences, labels, times, win):
     **弃权与错答必须分开报**：弃权是显式缺失（读者看得到），错答是静默错误
     （读者被误导而不自知）。合报一个 clean 数会让两者在不该互换的预算里互换。
 
-    `wrong = 1 - per_sentence - abstain`：**clean 桶含弃权句且算未答对**，
-    所以 `1 - per_sentence` 里混着弃权，不能直接当错答率。
+    四类**恰好加满 1**（`attribution.is_unmapped` 的定义含 `not is_abstain`，
+    两者互斥；而 `mapped == truth` 在 `mapped` 为空串时恒假）::
+
+        per_sentence + wrong + unmapped + abstain == 1
+
+    · `wrong`    —— 映射到了某个名字，但名字不是该句的真值人（**混人**）
+    · `unmapped` —— 有预测标签，但那个标签没被匈牙利映射到任何名字
+                    （映射容量不足 / 簇分裂 —— 与"混人"是两种病）
+    · `abstain`  —— 该句没有任何预测覆盖（显式缺失）
+
+    **产品验收的归属错误率 = `wrong + unmapped`**（对读者而言两者都是挂错人：
+    一个是挂了别人，一个是挂了个不存在的名字），继续受原错答预算（≤8%）约束。
+    拆开是为了**诊断**（混人 vs 过分割），不是为了让验收成绩变好 ——
+    两个字段都在同一个预算里，拆它不会放松验收。
+
+    早期版本把 `unmapped` 折进 `wrong`（`wrong = 1 - ps - abstain`），
+    读的人分不出"混人"与"过分割"；只在 k=8 档量级可见（0.042–0.049），
+    但那已占 8% 预算的近一半。
     """
     end = max((s["end"] for s in sentences), default=0.0)
     w = np.full(len(labels), win)
@@ -174,11 +190,18 @@ def sentence_metrics(sentences, labels, times, win):
     out = {}
     for bucket in ("overall", "clean", "overlap"):
         b = a[bucket]
-        ps, ab = b["per_sentence"], b["abstain"]
+        ps, ab, un = b["per_sentence"], b["abstain"], b["unmapped"]
+        if ps is None or ab is None or un is None:
+            wrong = attr_err = None
+        else:
+            wrong = 1.0 - ps - ab - un
+            attr_err = wrong + un          # 产品口径：两个字段在同一预算里
         out[bucket] = {
             "per_sentence": ps,
+            "wrong": wrong,
+            "unmapped": un,
             "abstain": ab,
-            "wrong": None if ps is None or ab is None else 1.0 - ps - ab,
+            "attribution_error": attr_err,
             "n": b["n"],
         }
     return out
@@ -213,6 +236,16 @@ def k_modes_arg(text):
 
 
 def main():
+    # Windows 控制台默认 GBK，而本脚本的汇总里有 `⚠`/`⇒` 这类非 GBK 字符 ——
+    # 一次 `print` 编不出去就抛 UnicodeEncodeError，**整场扫描白跑**
+    # （实测：12 场全出数后死在最后一行判据上，产物都没落）。
+    # `errors="replace"` 让不认识的字符退化成 `?` 而不是崩。
+    # `ponytail:` 逐字符换 ASCII 是治症状；正解是仓库统一设 `PYTHONIOENCODING`
+    # （61 个脚本同病），但那超出本 task 范围。
+    try:
+        sys.stdout.reconfigure(errors="replace")
+    except (AttributeError, OSError):      # 非 tty / 老解释器：不致命
+        pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=r"D:\yinp\AISHELL-4\data\test")
     ap.add_argument("--cache", default=DEFAULT_CACHE)
@@ -391,30 +424,110 @@ def main():
         print(f"  {v:>11}  净值 {deltas.mean() * 100:+6.1f} 点   "
               f"赢{wins}/亏{losses}/平{len(deltas) - wins - losses}")
 
-    # 句级汇总：clean 桶的**错答与弃权分开**报。`1 - 归属率` 不是错答率
-    # （clean 桶含弃权句且算未答对），硬凑成一个数会让两者互相顶替。
+    # 句级汇总：clean 桶的**四类分开**报。`1 - 归属率` 不是错答率
+    # （clean 桶含弃权句且算未答对），硬凑成一个数会让四类互相顶替。
+    # 判据看的数是**归属错误率 = 混人 + 未映射**（同一个预算），
+    # 混人与未映射分列只为诊断，不为放松验收。
     print()
-    print("=== 句级（clean 桶，错答与弃权分开）===")
+    print("=== 句级（clean 桶，四类分开）===")
+    print(f"  {'变体':>12}  {'归属率':>7}  {'归属错误率':>10}  "
+          f"{'= 混人 +':>9}  {'未映射':>7}  {'弃权':>7}")
+    means = {}
     for v in variants:
         rows_v = [(row["variants"].get(v) or {}).get("sentence") for row in rows]
         # 无句子的场次 / 存根行 / 未拟合行都会是 None —— 逐场过滤，
         # 空集合直接跳过（不能让一个 None 把整张表打成 NaN 或抛 TypeError）。
         rows_v = [x for x in rows_v if x and x["clean"]["per_sentence"] is not None]
-        if not rows_v:
+
+        def avg(key):
+            vals = [x["clean"][key] for x in rows_v if x["clean"][key] is not None]
+            return None if not vals else float(np.mean(vals))
+
+        got = {k: avg(k) for k in ("per_sentence", "attribution_error",
+                                   "wrong", "unmapped", "abstain")}
+        means[v] = got
+        if got["per_sentence"] is None:
             print(f"  {v:>12}  （无句级数据）")
             continue
-        cw = [x["clean"]["wrong"] for x in rows_v if x["clean"]["wrong"] is not None]
-        ca = [x["clean"]["abstain"] for x in rows_v if x["clean"]["abstain"] is not None]
-        wrong_s = "     -" if not cw else f"{np.mean(cw) * 100:5.1f}%"
-        abstain_s = "     -" if not ca else f"{np.mean(ca) * 100:5.1f}%"
-        print(f"  {v:>12}  clean {np.mean([x['clean']['per_sentence'] for x in rows_v]) * 100:5.1f}%"
-              f"  错答 {wrong_s}  弃权 {abstain_s}"
+        f = lambda x: "     -" if x is None else f"{x * 100:5.1f}%"  # noqa: E731
+        print(f"  {v:>12}  {f(got['per_sentence'])}  {f(got['attribution_error'])}  "
+              f"{f(got['wrong'])}  {f(got['unmapped'])}  {f(got['abstain'])}"
               f"   (n={len(rows_v)})")
 
+    # ── 判据：`auto` 臂上 LDA 变体的归属错误率相对裸基线降了多少 ──
+    # 只看 auto 臂 —— `true` 臂用了明令禁引的真值 K 假设，仅供诊断。
+    # 基线是**同一场**的 `none_autok`（`--k-modes true` 时无此臂，退回 `none`）。
+    print()
+    print("=== 判据（auto 臂 · clean 桶归属错误率，相对裸基线）===")
+    auto_variants = [v for v in variants if v.endswith("_autok") and v != "none_autok"]
+    if not auto_variants:
+        print("  （本次未跑 auto 臂 —— 判据需要 `--k-modes auto`）")
+    per_meeting = {}
+    for v in auto_variants:
+        ds = []
+        for row in rows:
+            base = (row["variants"].get("none_autok") or row["variants"].get("none") or {})
+            b = (base.get("sentence") or {}).get("clean", {}).get("attribution_error")
+            t = ((row["variants"].get(v) or {}).get("sentence") or {})
+            t = t.get("clean", {}).get("attribution_error")
+            if b is None or t is None:
+                continue
+            ds.append(b - t)          # 正 = 改进
+            per_meeting.setdefault(v, []).append((row["meeting"], b - t))
+        if not ds:
+            print(f"  {v:>12}  （无可用场次）")
+            continue
+        ds = np.array(ds)
+        worst = min(per_meeting[v], key=lambda kv: kv[1])
+        verdict = ("=> 支持继续投入" if ds.mean() >= 0.01
+                   else "=> 暂停这套 LDA 配置（不足以关闭后端方向）")
+        print(f"  {v:>12}  降 {ds.mean() * 100:+5.1f} 点   "
+              f"赢{int((ds > 0.01).sum())}/亏{int((ds < -0.01).sum())}/平"
+              f"{int((abs(ds) <= 0.01).sum())}   最差场 {worst[0]} {worst[1] * 100:+.1f}"
+              f"   {verdict}")
+
     if args.output:
+        # `gate` 必须显式标：本台子用 **RTTM 门**的 562 窗缓存拟合 LDA，
+        # 而生产的 VAD 门是另一个窗集（418/422 重合，不是同一个）——
+        # 不标的话下次有人会拿它跟生产数字直接比。
+        doc = {
+            "schema": "v13-backend-sweep-v2",
+            "gate": "rttm",
+            "split": args.split,
+            "k_modes": k_modes,
+            "classes": class_limits,
+            "norm": args.norm,
+            "refine": args.refine,
+            "meetings": rows,
+            "note": [
+                "细化阈值 v12.SLIVER_MARGIN=0.18 在**原始 192 维余弦尺度**上标定，"
+                "LDA 拉长判别方向后 margin 尺度整体放大 ⇒ LDA 臂系统性少吸碎段"
+                "（实测吸碎段量 0.045–0.18 vs 裸臂 0.32–0.45）。"
+                "**归一化治不好**：对 `_cos` 是空操作，对 `_euc` 也只抬到 ~0.13。"
+                "**影响方向待验证**：碎段吸收净有益还是净有害尚无对照，"
+                "故不能断言净值偏保守（也不能断言偏乐观）——此为已知混杂，"
+                "读 `auto` 臂结果时须计入。见 ledger Ruling T2-4。",
+                "句级四类：per_sentence + wrong + unmapped + abstain == 1。"
+                "产品验收的**归属错误率 = wrong + unmapped**（两者同受 ≤8% 错答预算），"
+                "拆开只为诊断（混人 vs 过分割），不为放松验收。",
+                "判据只看 `auto` 臂（`true` 臂用真值 K 假设，仅诊断）。"
+                "归属错误率降 ≥1 点 ⇒ 支持继续投入；<1 点 ⇒ 暂停这套 LDA 配置，"
+                "**不足以关闭整个后端方向**（LDA 无收益推不出 VBx 无收益）。",
+                "训练池只含本 split（不含 holdout）—— 见 build_pool docstring。",
+                "【dev 12 场实测，schema v2 首跑】`auto` 臂上 LDA 变体的归属错误率"
+                "相对裸基线只动 ≤0.4 点且方向不一致（c2 +0.1 最好，c8/c16/c32 反而"
+                "−0.1/−0.3/−0.4）⇒ **低于 1 点门槛**，暂停这套 LDA 配置。"
+                "但 `true` 臂同一批场次上 c2_cos 降 2.9 点、c8/c16 各降 1.7 点"
+                "（相对 `none` 的 21.0%）⇒ **两臂结论相反**，这属于计划里"
+                "预先点名的第三种情形：**收益被选 K 吃掉，刀口在选 K 不在后端**。"
+                "旁证：同批场次只把 K 源从真值换成自选（`none`→`none_autok`），"
+                "归属错误率就从 21.0% 降到 9.1%（−11.8 点）；在这个已被选 K 修好的"
+                "基线上，再换 LDA 空间几乎不动。**这会推翻 spec §4.1 的缺口分解** ——"
+                "'嵌入空间可分'与'判据能选出好划分'是两件事，后者才是当前瓶颈。",
+            ],
+        }
         Path(args.output).write_text(
-            json.dumps({"schema": "v13-backend-sweep-v1", "meetings": rows},
-                       ensure_ascii=False, indent=2), encoding="utf-8")
+            json.dumps(doc, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"\n写入 {args.output}")
 
 

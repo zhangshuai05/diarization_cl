@@ -279,19 +279,28 @@ def test_sentence_metrics_are_reported_for_every_variant():
     assert s["overall"]["abstain"] == base["abstain"]
 
     for bucket, b in s.items():
-        assert set(b) == {"per_sentence", "abstain", "wrong", "n"}, (bucket, sorted(b))
+        assert set(b) == {"per_sentence", "wrong", "unmapped", "abstain",
+                          "attribution_error", "n"}, (bucket, sorted(b))
         if b["per_sentence"] is None:
             assert b["abstain"] is None and b["wrong"] is None, bucket
+            assert b["unmapped"] is None and b["attribution_error"] is None, bucket
             continue
-        # 两个数必须分开：错答 = 1 - 答对 - 弃权。
-        assert abs(b["wrong"] - (1.0 - b["per_sentence"] - b["abstain"])) < 1e-9, (bucket, b)
-        assert b["abstain"] >= 0.0 and b["wrong"] >= -1e-9, (bucket, b)
+        # 四类**恰好加满 1**。这条把"`unmapped` 被折进 `wrong`"的回归钉死：
+        # 折回去（`wrong = 1 - ps - ab`）会让和式多出 `unmapped` 那一份。
+        assert abs(b["per_sentence"] + b["wrong"] + b["unmapped"] + b["abstain"] - 1.0) < 1e-9, \
+            f"{bucket} 四类之和不为 1：{b}"
+        assert b["abstain"] >= 0.0 and b["wrong"] >= -1e-9 and b["unmapped"] >= -1e-9, (bucket, b)
+        # 产品口径 = 混人 + 未映射，且**恰好等于** `1 - 答对 - 弃权` ——
+        # 拆字段不得改变对外那个数（拆开只加诊断分辨率，不放松验收）。
+        assert abs(b["attribution_error"] - (1.0 - b["per_sentence"] - b["abstain"])) < 1e-9, \
+            f"{bucket} 归属错误率被拆字段改变了：{b}"
+        assert b["attribution_error"] >= b["wrong"] - 1e-9, (bucket, b)
 
     clean = s["clean"]
     assert clean["n"] > 0, "前置：本场应有 clean 桶句子"
-    if clean["abstain"] > 0:
-        # 弃权 >0 时 `1 - per_sentence` 与错答率**必须**不同 —— 这条把
-        # "两个数" 与 "一个数" 钉开（少了 `- abstain` 就在这里红）。
+    if clean["wrong"] > 0:
+        # 混人 >0 时 `1 - per_sentence` 与错答率**必须**不同 —— 这条把
+        # "四类分开" 与 "一个数" 钉开（少了 `- abstain - unmapped` 就在这里红）。
         assert abs(clean["wrong"] - (1.0 - clean["per_sentence"])) > 1e-9, clean
     assert clean["n"] + s["overlap"]["n"] == s["overall"]["n"], (
         "clean/overlap 必须恰好把 overall 切开")
@@ -343,11 +352,14 @@ def test_sentence_metrics_are_reported_for_every_variant():
                 assert sn is not None, f"{label}/{row['meeting']}/{name} 有 frame 数却无句级数"
                 assert set(sn) == {"overall", "clean", "overlap"}, (name, sorted(sn))
                 for bucket, b in sn.items():
-                    assert set(b) == {"per_sentence", "abstain", "wrong", "n"}, (name, bucket)
+                    assert set(b) == {"per_sentence", "wrong", "unmapped", "abstain",
+                                      "attribution_error", "n"}, (name, bucket)
                     if b["per_sentence"] is None:
                         continue
-                    assert abs(b["wrong"] - (1.0 - b["per_sentence"] - b["abstain"])) < 1e-9, \
-                        (name, bucket, b)
+                    # 产物侧也验四类加满 1 —— 单元层对了但落盘掉了 `unmapped`
+                    # 这类回归，只有穿过 `main` 才看得见。
+                    assert abs(b["per_sentence"] + b["wrong"] + b["unmapped"]
+                               + b["abstain"] - 1.0) < 1e-9, (name, bucket, b)
                 arm_seen.setdefault(name, 0)
                 arm_seen[name] += 1
 
@@ -386,7 +398,7 @@ def test_stub_rows_share_the_success_schema():
 
     # 真产物上核一遍：跳过轮（--seconds 10 ⇒ 窗数不足）每行都必须是这种形状。
     if not DATA.is_dir() or not Path(BS.DEFAULT_CACHE).is_dir():
-        pytest.skip("AISHELL-4 数据/缓存不在本机（绝对路径 D:\yinp\…）")
+        pytest.skip(r"AISHELL-4 数据/缓存不在本机（绝对路径 D:\yinp\…）")
     import json
     import tempfile
 
