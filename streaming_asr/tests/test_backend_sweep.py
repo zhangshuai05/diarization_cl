@@ -360,3 +360,55 @@ def test_sentence_metrics_are_reported_for_every_variant():
         for name, v in row["variants"].items():
             assert v["accuracy"] is None, f"{row['meeting']}/{name} 窗数不足却出了数"
             assert v["sentence"] is None, f"{row['meeting']}/{name} 未跑却有句级数"
+
+
+def test_stub_rows_share_the_success_schema():
+    """失败行与成功行必须是**同一种形状**（键集只差 `skip`）。
+
+    产物是按行读的：`{"classes": null}` 与 `{"classes" 不存在}` 在 `json.loads`
+    之后分不开 —— 缺键会让下游必须写 `.get("classes")`，而 `.get` 把
+    "键不存在"和"值为 None"混成一个结果。此前 `classes` 只在成功路径上有，
+    三条失败路径各写各的字典，改一处忘两处正是这类 schema 漂移的成因。
+
+    红验证：把 `stub_row` 里的 `"classes": None` 删掉即红。
+    """
+    skip_keys = {"skip"}
+    stub_name, stub = "c8_cos", BS.stub_row("c8_cos", "true")
+    assert "skip" not in stub, "无 skip 理由时不应凭空多出 skip 键"
+    assert BS.stub_row("c8_cos", "auto", "x")["skip"] == "x"
+
+    # 成功行的键集：与 `probe_backend_sweep.main` 里那条赋值逐字对齐。
+    success_keys = {"accuracy", "classes", "level", "n_final", "n_classes",
+                    "k_mode", "k_used", "sentence"}
+    assert set(stub) == success_keys, (
+        f"存根行键集与成功行不一致：多 {sorted(set(stub) - success_keys)}，"
+        f"少 {sorted(success_keys - set(stub))}")
+
+    # 真产物上核一遍：跳过轮（--seconds 10 ⇒ 窗数不足）每行都必须是这种形状。
+    if not DATA.is_dir() or not Path(BS.DEFAULT_CACHE).is_dir():
+        pytest.skip("AISHELL-4 数据/缓存不在本机（绝对路径 D:\yinp\…）")
+    import json
+    import tempfile
+
+    dev = split_meetings(DATA, "dev")
+    pool = BS.build_pool(dev, BS.DEFAULT_CACHE, 2.0, 1.0)
+    assert pool, "前置：标注窗缓存应非空"
+    two = sorted(pool)[:2]
+    assert len(two) == 2, "前置：至少两场"
+    argv = sys.argv
+    with tempfile.TemporaryDirectory() as tmp:
+        sys.argv = ["probe_backend_sweep.py", "--meetings", *two, "--seconds", "10",
+                    "--classes", "8", "--norm", "cosine", "--k-modes", "true,auto",
+                    "--output", str(Path(tmp) / "stub.json")]
+        try:
+            BS.main()
+        finally:
+            sys.argv = argv
+        rows = json.loads((Path(tmp) / "stub.json").read_text(encoding="utf-8"))["meetings"]
+    assert rows, "跳过轮也必须落行（不得静默丢场次）"
+    for row in rows:
+        for name, v in row["variants"].items():
+            assert v["accuracy"] is None, f"{row['meeting']}/{name} 窗数不足却出了数"
+            assert "skip" in v, f"{row['meeting']}/{name} 跳过却没写理由（与成功行分不开）"
+            assert set(v) == success_keys | {"skip"}, \
+                f"{row['meeting']}/{name} 键集 {sorted(set(v))} ≠ 成功行 + skip"

@@ -166,7 +166,7 @@ def sentence_metrics(sentences, labels, times, win):
     `wrong = 1 - per_sentence - abstain`：**clean 桶含弃权句且算未答对**，
     所以 `1 - per_sentence` 里混着弃权，不能直接当错答率。
     """
-    end = max(s["end"] for s in sentences)
+    end = max((s["end"] for s in sentences), default=0.0)
     w = np.full(len(labels), win)
     segs = segment_map(times, labels, w, end)
     pred = sentence_dict_predictions(sentences, segs)
@@ -182,6 +182,20 @@ def sentence_metrics(sentences, labels, times, win):
             "n": b["n"],
         }
     return out
+
+
+def stub_row(name, k_mode, skip=None):
+    """未出数的变体行。**键集与成功行逐位对齐** —— 产物是按行读的，
+    "这个键没写" 与 "这一步没走" 在 JSON 里长得一样（`json.dumps` 省略
+    None vs 整个键缺失，读的人分不出）。缺 `classes` 曾让下游必须写
+    `.get("classes")` 才能不崩，而 `.get` 把"键不存在"和"值为 None"混成一个结果。
+    """
+    row = {"accuracy": None, "classes": None, "level": None,
+           "n_final": None, "n_classes": None, "k_mode": k_mode,
+           "k_used": None, "sentence": None}
+    if skip is not None:
+        row["skip"] = skip
+    return row
 
 
 def k_modes_arg(text):
@@ -248,10 +262,24 @@ def main():
     rows = []
     for meeting in meetings:
         if meeting not in refine_cache:
+            # ⚠️ 不能 `continue`：那会让这些场次**静默**从产物里消失，而"少了几场"
+            # 看起来和"本来就这么几场"一模一样（§R7）。这里落存根行 —— 与下面
+            # "窗数不足"那条路径对称；此前只有它落行，两条失败路径处理不一致。
+            row = {"meeting": meeting, "true_k": None, "n_windows": None,
+                   "variants": {n: stub_row(n, "auto" if n.endswith("_autok") else "true",
+                                            "无 refine 缓存")
+                                for n in variants},
+                   "k_modes": k_modes}
+            rows.append(row)
+            print(json.dumps(row, ensure_ascii=False), flush=True)
             continue
         rE, rtimes = refine_cache[meeting]
         reference = read_rttm(root / "TextGrid" / f"{meeting}.rttm")
-        seconds = args.seconds if args.seconds > 0 else max(s["end"] for s in reference)
+        # `max()` 空序列会抛 ValueError —— 空 RTTM（或所有段都被上面的 `start < seconds`
+        # 滤掉）会让整场崩掉，而崩溃的场次与"本来就没这场"在产物里分不开。
+        # `--seconds > 0` 时这条不参与求值，所以只在真的读空标注时才生效。
+        seconds = args.seconds if args.seconds > 0 else max(
+            (s["end"] for s in reference), default=0.0)
         reference = [{"start": s["start"], "end": min(s["end"], seconds),
                       "speaker": s["speaker"]} for s in reference if s["start"] < seconds]
         by_speaker = {}
@@ -275,10 +303,8 @@ def main():
             # 与上面"无 refine 缓存"那条同理（§R7：失败场次必须显式记录）。
             reason = "窗数不足" if len(emb) < 2 else "有效人数不足"
             for name in variants:
-                row["variants"][name] = {
-                    "accuracy": None, "level": None,
-                    "k_mode": "auto" if name.endswith("_autok") else "true",
-                    "k_used": None, "sentence": None, "skip": reason}
+                row["variants"][name] = stub_row(
+                    name, "auto" if name.endswith("_autok") else "true", reason)
             rows.append(row)
             print(json.dumps(row, ensure_ascii=False), flush=True)
             continue
@@ -294,13 +320,10 @@ def main():
                 normalize = base_name.endswith("cos")
                 fit, kept = fit_backend(pool, meeting, limit, normalize)
                 if fit is None:
-                    # `level` 必须在**每一行**上都在：产物是按行读的，缺键会让
-                    # "这一步没走" 与 "这段代码没写" 分不开（Task 5 的汇总
-                    # 直接读 `v.get('level')`，缺键显示成空而非"未拟合"）。
-                    # `k_mode` 同理带上（区分是哪个臂没拟合），`k_used` 无簇可选记 None。
-                    row["variants"][name] = {"accuracy": None, "level": None,
-                                             "k_mode": k_mode, "k_used": None,
-                                             "sentence": None}
+                    # `level`/`k_mode`/`k_used` 都必须在**每一行**上都在：产物按行读，
+                    # 缺键会让"这一步没走"与"这段代码没写"分不开。键集由 `stub_row`
+                    # 统一 —— 三处失败路径各写各的曾让 `classes` 只在一处存在。
+                    row["variants"][name] = stub_row(name, k_mode, "未拟合")
                     continue
                 vectors, metric = fit(emb), fit.metric
                 # ⚠️ 细化窗必须过**同一个** `fit`。`_refine_labels` 里是
@@ -314,9 +337,7 @@ def main():
                 chosen = pick_unlocked(build_unlocked(vectors, CAP, MIN_WIN), mode="objective")
                 if chosen is None:
                     # 空候选：与生产一致地退化，但**显式记 None 而非静默出数**
-                    row["variants"][name] = {"accuracy": None, "level": None,
-                                             "k_mode": k_mode, "k_used": None,
-                                             "sentence": None}
+                    row["variants"][name] = stub_row(name, k_mode, "空候选")
                     continue
                 k_used, clusters = int(chosen["k"]), np.asarray(chosen["labels"])
             else:
@@ -383,10 +404,11 @@ def main():
             print(f"  {v:>12}  （无句级数据）")
             continue
         cw = [x["clean"]["wrong"] for x in rows_v if x["clean"]["wrong"] is not None]
-        ca = [x["clean"]["abstain"] for x in rows_v]
+        ca = [x["clean"]["abstain"] for x in rows_v if x["clean"]["abstain"] is not None]
         wrong_s = "     -" if not cw else f"{np.mean(cw) * 100:5.1f}%"
+        abstain_s = "     -" if not ca else f"{np.mean(ca) * 100:5.1f}%"
         print(f"  {v:>12}  clean {np.mean([x['clean']['per_sentence'] for x in rows_v]) * 100:5.1f}%"
-              f"  错答 {wrong_s}  弃权 {np.mean(ca) * 100:5.1f}%"
+              f"  错答 {wrong_s}  弃权 {abstain_s}"
               f"   (n={len(rows_v)})")
 
     if args.output:
