@@ -1,0 +1,486 @@
+{
+  "schema": "v13-selector-score-diagnosis-v2",
+  "supersedes": "v13_selector_score_diagnosis_4238cb9c.json",
+  "gate": "rttm",
+  "split": "dev",
+  "source_table": "artifacts/v13_candidate_score_table_dev.json",
+  "recompute": "python -u -B scripts/evaluation/build_selector_score_diagnosis.py",
+  "corrections_to_previous": [
+    {
+      "field": "rho_note",
+      "previous": "跨 (场次, k) 的秩相关为负：silhouette 越高，错误率越高。这与「用轮廓系数选 K」的直觉相反。",
+      "error": "**符号解释错误**。ρ<0 表示评分**越高**、错误率**越低** —— 即排序**方向与直觉一致**，不是相反。按原文读法（高分 ⇒ 高错）只有 ρ>0 才成立。",
+      "correct": "ρ<0 ⇒ silhouette 越高，归属错误率越低。方向正确；问题在**幅度与口径**，不在符号。"
+    },
+    {
+      "field": "scale_mismatch",
+      "previous": "评分的场内跨度比错误率跨度小 1-2 个数量级 ⇒ 候选之间几乎无分辨力，选 K 实际由惩罚项与噪声驱动。",
+      "error": "**两处**：① 两个跨度单位不同（0–1 相似度 vs 百分点），比大小无意义；② 『跨度小 ⇒ 无分辨力』是**未证推理** —— 判别力是排序性质，单调且幅度小的评分照样能选对。⚠️ 注意：本修正的**初稿**又错了一次（曾声称两个跨度取自不同筛选）。复核发现旧产物的 0.049–0.279 与 1.3–54.0 **都**是 K≥2&合格的数（含 K=1 下界会是 0.0，含不合格会是 -1.0）—— 已在产物里撤回。",
+      "correct": "跨度在三种筛选下并排重算（见 `spans.by_filter`），确认旧值属 K≥2&合格；『噪声驱动』需要扰动稳定性证据，本线没有做，故降级为**待验证假设**。"
+    },
+    {
+      "field": "production_rule_accuracy / direction",
+      "previous": "「12 场中 5 场选到句级最优 K」与「7 场需更大 / 2 场需更小 / 3 场已最优」并列出现，各自的口径未写。",
+      "error": "两者**比较对象不同**且未声明；`需要更小` 在本表上复算为 **0 场**，不是 2 场。",
+      "correct": "严格口径（argmax 命中最小最优 K）与含并列口径的计数分别列出；方向计数按『生产 k 落在并列最优集合之外』判定。"
+    },
+    {
+      "field": "counterfactual_rules.holdout_8 / artifact_warning",
+      "previous": "纯「取最大合格 K」已达 dev 5.95% / holdout **6.11%**，容差规则相对它只多赚 **0.02-0.75 点**。",
+      "error": "**查无出处**：本线产物里**没有** holdout 的 `largest_eligible` 数字（诊断 JSON 只有 dev 的 `largest_eligible_k=0.0595`）；而 JSON 自述的 holdout `sil_tol0.15_largest_k=0.0502` 与引用值 0.0611 相减是 **1.09 点**，方向还与『多赚』相反 ⇒ 这句与其自引数字矛盾。进一步核查 holdout 整腿：唯一一份 holdout clean 桶产物（`v13_clean_bucket_holdout_lamscan_mw2_objective_sel8-*.json`）的 `mw2` 变体均值是 **6.23%**，而旧 JSON 声称 **6.12%**；两者逐场对照有**3 场对不上任何已提交产物**（S_R003S02C01 声称 0.74% vs 产物 2.21%；S_R003S03C01 声称 2.70% vs 3.38%；S_R003S04C01 声称 6.41% vs mw2 5.13%）。⇒ holdout 腿的三个数（6.12 / 5.02 / 2.72）均**不可复算**。",
+      "correct": "0.02–0.75 点的范围、holdout 6.11%、以及 holdout 整条 counterfactual **一并撤回**。能复算的只有 **dev 腿**：5.95%（最大合格 K）→ 5.20%（容差规则，但它的选中 k 就是 CAP ⇒ 常数） = 0.75 点。"
+    },
+    {
+      "field": "conclusions",
+      "previous": "「根因是**评分尺度与目标尺度不匹配**」。",
+      "error": "把**一个未验证的候选解释**写成了已确定的根因。",
+      "correct": "改述为『当前证据支持、且尚未被独立验证的假设之一』。已确认的只有**现象**：生产 objective 相对诊断上界有显著选择损失。"
+    },
+    {
+      "field": "conclusions[1]",
+      "previous": "错误方向**系统性偏向小 K**（7 场需要更大 K）。",
+      "error": "漏了同样重要的另一半：**5 场已最优**，且 `需要更小 K` = 0 场 ⇒ 生产规则**从不选得过大**，偏小是单向的。",
+      "correct": "方向、严格命中、含并列命中三个计数并列报出。"
+    }
+  ],
+  "confirmed_observations": {
+    "spearman_by_filter": {
+      "含K1_含不合格": {
+        "n": 120,
+        "rho_score_vs_error": -0.7120411955047212,
+        "rho_objective_vs_error": -0.6396296373782123,
+        "n_sentinel_score_-1": 1
+      },
+      "K>=2_含不合格": {
+        "n": 108,
+        "rho_score_vs_error": -0.6205559769650084,
+        "rho_objective_vs_error": -0.5260434538414064,
+        "n_sentinel_score_-1": 1
+      },
+      "K>=2_仅合格": {
+        "n": 107,
+        "rho_score_vs_error": -0.611045733426938,
+        "rho_objective_vs_error": -0.5143272533511635,
+        "n_sentinel_score_-1": 0
+      }
+    },
+    "spearman_reading": "三种口径都给出 -0.61 ~ -0.71。**负号 = 评分越高、错误率越低**。口径之间只差一行（M_R003S04C01 k=2，唯一的不合格行，其 score 是 -1.0 哨兵值而非轮廓系数）——把哨兵当测量值会污染相关系数，故 K≥2 且合格的 -0.611 应为准。",
+    "within_meeting_spearman": [
+      {
+        "key": "score",
+        "median_within_meeting_rho": -0.3279024282483883,
+        "n_negative_meetings": 8,
+        "n_meetings": 12
+      },
+      {
+        "key": "objective",
+        "median_within_meeting_rho": -0.05747442746024796,
+        "n_negative_meetings": 7,
+        "n_meetings": 12
+      }
+    ],
+    "within_meeting_reading": "场内 ρ 中位 −0.33（silhouette）比跨场 −0.61 弱得多。**选 K 只依赖场内排序**，因此场内数字才是相关的那个。",
+    "selection_hits": {
+      "score": {
+        "hit_strict": 3,
+        "hit_tie": 4,
+        "hit_strict_basis": "argmax(score) 的 k == 最小最优 k",
+        "hit_tie_basis": "argmax(score) 的 k ∈ 并列最优集合",
+        "n_meetings": 12
+      },
+      "objective": {
+        "hit_strict": 5,
+        "hit_tie": 5,
+        "hit_strict_basis": "argmax(objective) 的 k == 最小最优 k",
+        "hit_tie_basis": "argmax(objective) 的 k ∈ 并列最优集合",
+        "n_meetings": 12
+      }
+    },
+    "direction_counts": {
+      "needs_larger_K": 7,
+      "needs_smaller_K": 0,
+      "already_optimal": 5,
+      "basis": "严格口径（最小最优 K）"
+    },
+    "spans": {
+      "by_filter": {
+        "全表_含K1_含不合格": {
+          "silhouette_span_min": 0.24110212509497933,
+          "silhouette_span_max": 1.3122697535714667,
+          "error_span_min_points": 31.820000000000004,
+          "error_span_max_points": 69.85,
+          "per_meeting": [
+            {
+              "meeting": "L_R003S01C02",
+              "silhouette_span": 0.25555692495973914,
+              "error_span_points": 58.02
+            },
+            {
+              "meeting": "L_R003S02C02",
+              "silhouette_span": 0.28173896424572575,
+              "error_span_points": 35.44
+            },
+            {
+              "meeting": "L_R003S03C02",
+              "silhouette_span": 0.29835310741525506,
+              "error_span_points": 56.940000000000005
+            },
+            {
+              "meeting": "L_R003S04C02",
+              "silhouette_span": 0.24110212509497933,
+              "error_span_points": 40.7
+            },
+            {
+              "meeting": "M_R003S01C01",
+              "silhouette_span": 0.43099534571328746,
+              "error_span_points": 36.84
+            },
+            {
+              "meeting": "M_R003S02C01",
+              "silhouette_span": 0.38896717962058625,
+              "error_span_points": 44.440000000000005
+            },
+            {
+              "meeting": "M_R003S04C01",
+              "silhouette_span": 1.3122697535714667,
+              "error_span_points": 43.470000000000006
+            },
+            {
+              "meeting": "M_R003S05C01",
+              "silhouette_span": 0.36329983578599523,
+              "error_span_points": 64.92
+            },
+            {
+              "meeting": "S_R004S01C01",
+              "silhouette_span": 0.43305706135164845,
+              "error_span_points": 69.85
+            },
+            {
+              "meeting": "S_R004S02C01",
+              "silhouette_span": 0.4858509448222531,
+              "error_span_points": 31.820000000000004
+            },
+            {
+              "meeting": "S_R004S03C01",
+              "silhouette_span": 0.5044542513620527,
+              "error_span_points": 43.870000000000005
+            },
+            {
+              "meeting": "S_R004S04C01",
+              "silhouette_span": 0.49021670280933793,
+              "error_span_points": 35.72
+            }
+          ]
+        },
+        "K>=2_含不合格": {
+          "silhouette_span_min": 0.048633021110451286,
+          "silhouette_span_max": 1.3122697535714667,
+          "error_span_min_points": 1.32000000000001,
+          "error_span_max_points": 53.970000000000006,
+          "per_meeting": [
+            {
+              "meeting": "L_R003S01C02",
+              "silhouette_span": 0.048633021110451286,
+              "error_span_points": 39.51
+            },
+            {
+              "meeting": "L_R003S02C02",
+              "silhouette_span": 0.0712961331274638,
+              "error_span_points": 34.18
+            },
+            {
+              "meeting": "L_R003S03C02",
+              "silhouette_span": 0.1253261448592932,
+              "error_span_points": 51.39
+            },
+            {
+              "meeting": "L_R003S04C02",
+              "silhouette_span": 0.06684640703296554,
+              "error_span_points": 36.28
+            },
+            {
+              "meeting": "M_R003S01C01",
+              "silhouette_span": 0.18843201977617485,
+              "error_span_points": 1.32000000000001
+            },
+            {
+              "meeting": "M_R003S02C01",
+              "silhouette_span": 0.1383240208128561,
+              "error_span_points": 3.169999999999995
+            },
+            {
+              "meeting": "M_R003S04C01",
+              "silhouette_span": 1.3122697535714667,
+              "error_span_points": 43.47
+            },
+            {
+              "meeting": "M_R003S05C01",
+              "silhouette_span": 0.1460990562669743,
+              "error_span_points": 52.629999999999995
+            },
+            {
+              "meeting": "S_R004S01C01",
+              "silhouette_span": 0.1749052232245908,
+              "error_span_points": 53.970000000000006
+            },
+            {
+              "meeting": "S_R004S02C01",
+              "silhouette_span": 0.1489166339633955,
+              "error_span_points": 2.729999999999999
+            },
+            {
+              "meeting": "S_R004S03C01",
+              "silhouette_span": 0.20145716843708977,
+              "error_span_points": 3.510000000000002
+            },
+            {
+              "meeting": "S_R004S04C01",
+              "silhouette_span": 0.2788199740420237,
+              "error_span_points": 5.949999999999999
+            }
+          ]
+        },
+        "K>=2_仅合格": {
+          "silhouette_span_min": 0.048633021110451286,
+          "silhouette_span_max": 0.2788199740420237,
+          "error_span_min_points": 1.32000000000001,
+          "error_span_max_points": 53.970000000000006,
+          "per_meeting": [
+            {
+              "meeting": "L_R003S01C02",
+              "silhouette_span": 0.048633021110451286,
+              "error_span_points": 39.51
+            },
+            {
+              "meeting": "L_R003S02C02",
+              "silhouette_span": 0.0712961331274638,
+              "error_span_points": 34.18
+            },
+            {
+              "meeting": "L_R003S03C02",
+              "silhouette_span": 0.1253261448592932,
+              "error_span_points": 51.39
+            },
+            {
+              "meeting": "L_R003S04C02",
+              "silhouette_span": 0.06684640703296554,
+              "error_span_points": 36.28
+            },
+            {
+              "meeting": "M_R003S01C01",
+              "silhouette_span": 0.18843201977617485,
+              "error_span_points": 1.32000000000001
+            },
+            {
+              "meeting": "M_R003S02C01",
+              "silhouette_span": 0.1383240208128561,
+              "error_span_points": 3.169999999999995
+            },
+            {
+              "meeting": "M_R003S04C01",
+              "silhouette_span": 0.08935774070983818,
+              "error_span_points": 21.74
+            },
+            {
+              "meeting": "M_R003S05C01",
+              "silhouette_span": 0.1460990562669743,
+              "error_span_points": 52.629999999999995
+            },
+            {
+              "meeting": "S_R004S01C01",
+              "silhouette_span": 0.1749052232245908,
+              "error_span_points": 53.970000000000006
+            },
+            {
+              "meeting": "S_R004S02C01",
+              "silhouette_span": 0.1489166339633955,
+              "error_span_points": 2.729999999999999
+            },
+            {
+              "meeting": "S_R004S03C01",
+              "silhouette_span": 0.20145716843708977,
+              "error_span_points": 3.510000000000002
+            },
+            {
+              "meeting": "S_R004S04C01",
+              "silhouette_span": 0.2788199740420237,
+              "error_span_points": 5.949999999999999
+            }
+          ]
+        }
+      },
+      "old_artifact_claimed": {
+        "silhouette": "0.049-0.279",
+        "error_points": "1.3-54.0"
+      },
+      "which_filter_matches_old_artifact": "**K≥2 且合格** —— 0.0486–0.2788 与 1.32–53.97。这不是推测：含 K=1 会让 silhouette 下界变成 0.0，含不合格会让下界变成 -1.0（哨兵值），两者都不会给出 0.049。",
+      "reading": "① **旧产物的两个跨度其实取自同一筛选**（上面已核）—— 『一个来自全表、一个来自合格表』这句话本身是错的，已撤回。② 但**两个跨度量纲不同**（0–1 相似度 vs 百分点），比大小没有意义。③ 更要紧的是：**跨度小 ≠ 无分辨力** —— 判别力是**排序**性质，不是幅度性质；单调而幅度小的评分照样能选对 K。④ 『噪声驱动』需要**扰动稳定性**证据（重采样 / 加噪后 argmax 是否翻），本产物没有做 ⇒ 它是**未验证假设**，不是根因。"
+    },
+    "per_meeting_spans": [
+      {
+        "meeting": "L_R003S01C02",
+        "silhouette_span": 0.048633021110451286,
+        "error_span_points": 39.51
+      },
+      {
+        "meeting": "L_R003S02C02",
+        "silhouette_span": 0.0712961331274638,
+        "error_span_points": 34.18
+      },
+      {
+        "meeting": "L_R003S03C02",
+        "silhouette_span": 0.1253261448592932,
+        "error_span_points": 51.39
+      },
+      {
+        "meeting": "L_R003S04C02",
+        "silhouette_span": 0.06684640703296554,
+        "error_span_points": 36.28
+      },
+      {
+        "meeting": "M_R003S01C01",
+        "silhouette_span": 0.18843201977617485,
+        "error_span_points": 1.32000000000001
+      },
+      {
+        "meeting": "M_R003S02C01",
+        "silhouette_span": 0.1383240208128561,
+        "error_span_points": 3.169999999999995
+      },
+      {
+        "meeting": "M_R003S04C01",
+        "silhouette_span": 0.08935774070983818,
+        "error_span_points": 21.74
+      },
+      {
+        "meeting": "M_R003S05C01",
+        "silhouette_span": 0.1460990562669743,
+        "error_span_points": 52.629999999999995
+      },
+      {
+        "meeting": "S_R004S01C01",
+        "silhouette_span": 0.1749052232245908,
+        "error_span_points": 53.970000000000006
+      },
+      {
+        "meeting": "S_R004S02C01",
+        "silhouette_span": 0.1489166339633955,
+        "error_span_points": 2.729999999999999
+      },
+      {
+        "meeting": "S_R004S03C01",
+        "silhouette_span": 0.20145716843708977,
+        "error_span_points": 3.510000000000002
+      },
+      {
+        "meeting": "S_R004S04C01",
+        "silhouette_span": 0.2788199740420237,
+        "error_span_points": 5.949999999999999
+      }
+    ],
+    "penalty_lambda_0.005": {
+      "n_meetings_changed": 4,
+      "changed": [
+        {
+          "meeting": "L_R003S02C02",
+          "k_with_penalty": 5,
+          "k_without_penalty": 8,
+          "err_with": 0.03800000000000002,
+          "err_without": 0.03800000000000002
+        },
+        {
+          "meeting": "L_R003S04C02",
+          "k_with_penalty": 4,
+          "k_without_penalty": 5,
+          "err_with": 0.11510000000000001,
+          "err_without": 0.13279999999999995
+        },
+        {
+          "meeting": "M_R003S02C01",
+          "k_with_penalty": 2,
+          "k_without_penalty": 4,
+          "err_with": 0.07929999999999995,
+          "err_without": 0.06350000000000003
+        },
+        {
+          "meeting": "S_R004S03C01",
+          "k_with_penalty": 2,
+          "k_without_penalty": 3,
+          "err_with": 0.05259999999999998,
+          "err_without": 0.03510000000000002
+        }
+      ],
+      "remove_penalty_better": [
+        {
+          "meeting": "M_R003S02C01",
+          "delta_points": 1.5799999999999925
+        },
+        {
+          "meeting": "S_R004S03C01",
+          "delta_points": 1.749999999999996
+        }
+      ],
+      "remove_penalty_worse": [
+        {
+          "meeting": "L_R003S04C02",
+          "delta_points": -1.7699999999999938
+        }
+      ],
+      "k_changed_error_same": [
+        {
+          "meeting": "L_R003S02C02",
+          "delta_points": 0.0
+        }
+      ],
+      "mean_with_penalty": 0.09149999999999998,
+      "mean_without_penalty": 0.09019999999999999,
+      "reading": "逐场净出：改善场与变差场必须**一起**计。只累加变差场会把一个净收益说成净损失。"
+    },
+    "cap_dependence": {
+      "cap": 10,
+      "distinct_max_eligible_K_values": [
+        10
+      ],
+      "n_meetings_whose_max_eligible_K_equals_cap": 12,
+      "n_meetings": 12,
+      "reading": "若**每一场**的最大合格 K 都等于 cap，则『取最大合格 K』本身也是常数 —— 它看起来优于生产规则，测的是『cap 定得比生产选的大』，不是某个判据更聪明。"
+    }
+  },
+  "hypotheses_not_root_causes": [
+    "『silhouette 与句级质量尺度不匹配 ⇒ 选 K 被噪声驱动』—— 方向正确（ρ<0）但『无分辨力』未被扰动稳定性证据支持，且跨度不可比。**是假设，不是根因。**",
+    "『需要一个与句级归属质量相关的目标函数』—— 依据是选择损失存在，但选择损失本身是**诊断上界差**（逐场读真值），不能直接推出『换目标函数就能兑现』。"
+  ],
+  "data_gaps": [
+    "旧诊断产物没有生成脚本进仓库 ⇒ 其数字当时不可复算。本产物可由 `v13_candidate_score_table_dev.json` 重算。",
+    "`v13_candidate_score_table_dev.json` 只覆盖 **RTTM 门**。VAD 门（部署时可得）需要另跑；两种门不可互换。",
+    "holdout 整腿不可复算：仓库里**没有** holdout 的 `largest_eligible` 句级产物；旧 JSON 的 holdout 逐场值混了 `base`/`mw2` 两个变体，其中 3 场对不上任何产物（详见 corrections_to_previous 的第 4 条）。"
+  ],
+  "rho_provenance_search": {
+    "全表": {
+      "n": 120,
+      "rho": -0.7120411955047212
+    },
+    "K>=2": {
+      "n": 108,
+      "rho": -0.6205559769650084
+    },
+    "K>=2&合格": {
+      "n": 107,
+      "rho": -0.611045733426938
+    },
+    "K>=3": {
+      "n": 96,
+      "rho": -0.6229130443992889
+    },
+    "K>=2&去掉M_R003S04C01": {
+      "n": 99,
+      "rho": -0.6174904109166229
+    },
+    "K>=2&合格&去掉M_R003S04C01": {
+      "n": 99,
+      "rho": -0.6174904109166229
+    },
+    "old_artifact_value": -0.617,
+    "reading": "旧产物的 −0.617 **不能**由任何自然筛选得到：声明的『K≥2 且合格』下是 −0.611。−0.617 只在**额外剔除 `M_R003S04C01`**（n=99）时出现 —— 而该场恰好是最差两场之一。在报告里剔除一场最差会议会**改变要解释的对象**，且旧产物未声明该操作 ⇒ 以 **−0.611（n=107，K≥2 且合格）** 为准。"
+  }
+}
