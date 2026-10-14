@@ -1,6 +1,21 @@
 # -*- coding: utf-8 -*-
 """v13 真因判别：K 门是不是主因？—— 绕开选 K，在真值 K 上看聚类长什么样。
 
+**这个脚本不能单独回答「改判据还是换后端」。** 纯度只说明「知道 K 时几何可分」，
+不说明**存在一个不读真值的量**能选出这个 K。所以本文件同时打两条：
+
+  * `cluster_purity` / `n_distinct_home_clusters` —— 知道 K 时的聚类质量；
+  * `criterion_curve` / `criterion_picks` —— **现行免真值判据**（`build_unlocked`，
+    与生产候选表同一份实现）在整条 k 网格上选了哪个、真 K 是不是它的极值。
+
+判据选不中真 K ⇒ 问题不在门槛，在**判据没信号**，改门槛一分不赚。
+
+**对照 k 得看 `n_clusters_actual`。** `fcluster(maxclust)` 只保证「最多 k 个」：
+真的没生成出 k 个簇时，"少掉的簇"是**层不到位**，不是"簇很脏"。
+所以空簇单列（`n_empty_clusters` / `reached_target_k`），**不进纯度统计**。
+（v1 把空簇记成 `purity=0.0` 并留在 `rows` 里，`worst_cluster_purity` 会被拉成 0
+——一个 0 就能把「簇数不够」读成「簇很脏」。本文件已修为 v2。）
+
 `probe_v12_k.py` 在 L_R003S01C02 上读到 k=2 的簇是 [421, 1]、k=4 是 [70, 230, 121, 1]。
 一个 1 窗的孤立簇在 `_silhouette` 里把整个 K 打成 −1.0（任一簇 <2 就返回 −1.0），
 所以"放宽 MIN_CLUSTER_SHARE"这条改动在这个形态上**一分不赚**——尺寸门和分数门同时挡着，
@@ -31,6 +46,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "streaming_asr"))
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # `unlocked_selector` 在这
 
 import numpy as np  # noqa: E402
 import soundfile as sf  # noqa: E402
@@ -38,6 +54,7 @@ import soundfile as sf  # noqa: E402
 import claude_a2_v11 as v11  # noqa: E402
 import claude_a2_v12 as v12  # noqa: E402
 from der import read_rttm  # noqa: E402
+from unlocked_selector import CAP, MIN_WIN, build_unlocked, pick_unlocked  # noqa: E402
 from v12_aishell4 import split_meetings  # noqa: E402
 
 FRAME = 0.01
@@ -81,12 +98,16 @@ def cluster_rows(vectors, reference_labels, k, times):
     predicted = fcluster(tree, t=k, criterion="maxclust") - 1
     truth = np.asarray(reference_labels)
 
-    rows = []
+    rows, empty = [], 0
     for cluster in range(k):
         mask = predicted == cluster
         if not mask.any():
-            rows.append({"cluster": cluster, "windows": 0, "purity": 0.0,
-                         "majority": "", "speakers": {}})
+            # `fcluster(maxclust)` 只保证**最多** k 个簇，可能少于 k。空簇不是
+            # "很脏的簇"、也不是碎簇，是**根本没生成出来**：单列计数，绝不进纯度。
+            # v1 把它记成 `purity=0.0` 并留在 `rows` 里，于是
+            # `worst_cluster_purity` 会把「簇数不够」误报成「簇很脏」——
+            # 而这正是「改判据 vs 换后端」的判别量，错不起。
+            empty += 1
             continue
         counts = Counter(name for name in truth[mask].tolist() if name)
         name, hits = counts.most_common(1)[0] if counts else ("", 0)
@@ -109,7 +130,57 @@ def cluster_rows(vectors, reference_labels, k, times):
             "home_cluster": cluster,
             "share_in_home": round(float((predicted[mask] == cluster).mean()), 4),
         }
-    return predicted, rows, homes
+    return predicted, rows, homes, empty
+
+
+def criterion_curve(E, truth_k):
+    """同一份 embedding 上，**现行免真值判据**在 k 网格上选了哪个。
+
+    这才是「改判据 vs 换后端」的真判别量：纯度只说明「知道 K 时几何可分」，
+    **不说明存在一个不读真值的量能选出这个 K**。这一步不新增判据，
+    只把生产候选表的同一份实现（`build_unlocked`）在整条 k 网格上的读数打出来，
+    看真 K 是不是极值。真 K 不是任何判据的极值 ⇒ 问题不在门槛，在**判据没信号**。
+    """
+    cands = build_unlocked(E, CAP, MIN_WIN)
+    curve = [{"k": c["k"], "score": round(float(c["score"]), 4),
+              "objective": round(float(c["objective"]), 4),
+              "eligible": bool(c["eligible"]), "sizes": list(c["sizes"])}
+             for c in cands]
+    elig = [c for c in cands if c["eligible"] and c["k"] >= 2]
+    # 空候选（窗太少）时 `pick_unlocked` 返回 None，旧实现此时给 k=1 —— 别把库函数变成会抛。
+    obj = pick_unlocked(cands, mode="objective") or {"k": 1}
+    big = pick_unlocked(cands, mode="largest_eligible") or {"k": 1}
+    picks = {
+        # 两个与生产可比的判据直接调同一份实现：抄一遍 tie-break / 无合格候选回退 k=1 的
+        # 规则，会在 pick_unlocked 改动后静默漂移，而结论会被当生产口径引用。
+        "argmax_objective": obj["k"],
+        "largest_eligible": big["k"],
+        # `argmax_score`（轮廓极值）是本探针的第三个判据，生产没有对应实现。
+        "argmax_score": max(elig, key=lambda c: (c["score"], -c["k"]))["k"] if elig else 1,
+    }
+    return curve, picks, {name: (k == truth_k) for name, k in picks.items()}
+
+
+def selfcheck():
+    """空簇不进纯度：构造「fcluster 返回少于 k」的退化输入，断言统计不变味。
+
+    8 个完全相同的窗 → 距离全 0 → 层次树切不出 3 个簇。
+    v1 在这里会报 `worst_cluster_purity = 0.0`（两个幻影簇造成的假脏）。
+    """
+    vectors = np.ones((8, 3))
+    times = np.arange(8, dtype=float)
+    _, rows, _, empty = cluster_rows(vectors, ["A", "B"] * 4, 3, times)
+    assert empty == 2, "退化输入应当出 2 个空簇，实得 %d" % empty
+    assert len(rows) == 1, "非空簇应当只有 1 个，实得 %d" % len(rows)
+    worst = min(row["purity"] for row in rows)
+    assert worst > 0.0, "空簇混进了纯度统计（worst=%r）" % worst
+    print("selfcheck ✓  目标 k=3 → 实得簇 1 个、空簇 %d 个（单列）；"
+          "最差簇纯度 %.2f，未被空簇拉成 0" % (empty, worst))
+    # 判据曲线在退化输入上不得抛异常（k=1 单簇时 eligible 为空，会走 else 分支）
+    curve, picks, hits = criterion_curve(np.ones((8, 3)), 1)
+    assert curve and picks["argmax_objective"] >= 1, (curve, picks)
+    print("selfcheck ✓  判据曲线退化输入不抛异常（k 网格 %d 项，选 %r）"
+          % (len(curve), picks["argmax_objective"]))
 
 
 def main():
@@ -122,7 +193,12 @@ def main():
                     help="有效说话人门槛：占参考语音时长的比例")
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--output")
+    ap.add_argument("--selfcheck", action="store_true",
+                    help="只跑统计口径的空跑（不加载模型）")
     args = ap.parse_args()
+
+    if args.selfcheck:
+        return selfcheck()
 
     root = Path(args.root)
     if args.meeting:
@@ -177,6 +253,7 @@ def main():
             "reference_speakers_all": len(seconds_by_speaker),
             "effective": effective, "true_k": len(effective),
             "effective_without_window": [n for n in effective if n not in in_pool],
+            "speakers_visible": len([n for n in effective if n in in_pool]),
             "window_purity_mean": round(float(np.mean(purity)), 4) if len(purity) else None,
             "window_purity_lt_50pct": int(sum(1 for value in purity if value < 0.5)),
             "v12_selected_k": int(result["k"]),
@@ -184,53 +261,92 @@ def main():
             "v12_rescued": bool(result["rescued"]),
             "ahc_true_k": None, "cluster_purity": [], "speaker_homes": {},
             "min_cluster_windows": None,
+            "n_clusters_actual": 0, "n_empty_clusters": 0,
+            "reached_target_k": False, "n_distinct_home_clusters": 0,
+            "criterion_curve": [], "criterion_picks": {}, "criterion_hits_truth_k": {},
         }
 
         if len(E) >= 2 and len(effective) >= 2:
             k = min(len(effective), len(E))
-            _, rows, homes = cluster_rows(E, labels, k, times)
+            _, rows, homes, empty = cluster_rows(E, labels, k, times)
             item["ahc_true_k"] = k
             item["cluster_purity"] = rows
             item["speaker_homes"] = homes
+            # 空簇只在这两个数里出现，不参与下面的纯度与最小规模。
+            item["n_clusters_actual"] = len(rows)
+            item["n_empty_clusters"] = empty
+            item["reached_target_k"] = (len(rows) == k)
             item["min_cluster_windows"] = min((row["windows"] for row in rows),
                                               default=0)
             # 纯度的诚实汇总：按窗加权，但另报**最差簇**——一个簇吞掉大半、
-            # 其余碎成渣时均值会骗人，最差簇不会。
-            item["worst_cluster_purity"] = round(min(row["purity"] for row in rows), 4)
+            # 其余碎成渣时均值会骗人，最差簇不会。（空簇不算最差簇。）
+            item["worst_cluster_purity"] = round(
+                min((row["purity"] for row in rows), default=0.0), 4)
             item["speakers_with_own_cluster"] = sum(
                 1 for name in effective
                 if homes.get(name, {}).get("share_in_home", 0.0) >= 0.5)
+            # ⚠「有家」看不见合并：两人并进同一簇时两边 `share_in_home` 都≈1.0、
+            # 都得满分。家簇**去重**后的个数才是「真分出了几个不同的家」。
+            # dev 实测：12 场里 6 场报「有家=真K」，去重后家簇数显著更少。
+            item["n_distinct_home_clusters"] = len({
+                homes[name]["home_cluster"] for name in effective
+                if homes.get(name, {}).get("share_in_home", 0.0) >= 0.5})
+            curve, picks, hits = criterion_curve(E, len(effective))
+            item["criterion_curve"] = curve
+            item["criterion_picks"] = picks
+            item["criterion_hits_truth_k"] = hits
 
         report.append(item)
         print(json.dumps(item, ensure_ascii=False, indent=2), flush=True)
 
     if args.output:
         Path(args.output).write_text(
-            json.dumps({"schema": "v13-truek-purity-v1", "meetings": report},
+            json.dumps({"schema": "v13-truek-purity-v2", "meetings": report},
                        ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"\n写入 {args.output}")
 
-    print(f"\n{'会议':<16}{'有效':>4}{'真K':>5}{'选K':>5}{'窗数':>6}{'窗纯度':>8}"
-          f"{'最差簇':>8}{'有家':>5}  缺窗说话人")
+    print(f"\n{'会议':<16}{'真K':>4}{'可见':>5}{'簇数':>5}{'空簇':>5}{'选K':>5}"
+          f"{'窗数':>6}{'窗纯度':>8}{'最差簇':>8}{'有家':>6}{'家簇':>5}  缺窗说话人")
     for item in report:
         homes = item.get("speakers_with_own_cluster")
         worst = item.get("worst_cluster_purity")
-        print(f"{item['meeting']:<16}{len(item['effective']):>4}{item['true_k']:>5}"
+        print(f"{item['meeting']:<16}{item['true_k']:>4}"
+              f"{item.get('speakers_visible', 0):>5}"
+              f"{item.get('n_clusters_actual', 0):>5}{item.get('n_empty_clusters', 0):>5}"
               f"{item['v12_selected_k']:>5}{item['n_windows']:>6}"
               f"{(item['window_purity_mean'] or 0) * 100:>7.1f}%"
               f"{(worst or 0) * 100:>7.1f}%"
-              f"{str(homes) + '/' + str(item['true_k']):>6}  "
+              f"{str(homes) + '/' + str(item['true_k']):>6}"
+              f"{item.get('n_distinct_home_clusters', 0):>5}  "
               f"{','.join(item['effective_without_window']) or '-'}")
+        picks = item.get("criterion_picks") or {}
+        if picks:
+            print(f"{'':16}  真K={item['true_k']} 免真值判据选中: "
+                  + "  ".join("%s=%d%s" % (
+                      label, picks[name],
+                      "✓" if item["criterion_hits_truth_k"].get(name) else "✗")
+                      for name, label in (("argmax_objective", "目标函数"),
+                                          ("argmax_score", "轮廓"),
+                                          ("largest_eligible", "最大合格"))))
 
     if report:
         ok = [item for item in report if item.get("ahc_true_k")]
         if ok:
+            n_ok = sum(1 for i in ok if i.get("reached_target_k"))
             print(f"\n真K 下：平均最差簇纯度 "
                   f"{np.mean([i['worst_cluster_purity'] for i in ok]) * 100:.1f}%"
                   f"，平均有家 {np.mean([i['speakers_with_own_cluster'] for i in ok]):.2f}"
-                  f"/{np.mean([i['true_k'] for i in ok]):.2f} 人")
-            print(f"v12 选 K 命中 {sum(1 for i in ok if i['v12_selected_k'] == i['true_k'])}"
+                  f"/{np.mean([i['true_k'] for i in ok]):.2f} 人"
+                  f"，去重后家簇 {np.mean([i['n_distinct_home_clusters'] for i in ok]):.2f}")
+            print(f"达标 K（真生成出目标簇数）{n_ok}/{len(ok)} 场；"
+                  f"v12 选 K 命中 {sum(1 for i in ok if i['v12_selected_k'] == i['true_k'])}"
                   f"/{len(ok)} 场")
+            for name, label in (("argmax_objective", "argmax 目标函数"),
+                                ("argmax_score", "argmax 轮廓"),
+                                ("largest_eligible", "最大合格 k")):
+                print(f"  免真值判据能选出真K：{label} "
+                      f"{sum(1 for i in ok if i['criterion_hits_truth_k'].get(name))}"
+                      f"/{len(ok)} 场")
 
 
 if __name__ == "__main__":

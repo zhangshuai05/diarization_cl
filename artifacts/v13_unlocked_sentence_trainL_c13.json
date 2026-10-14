@@ -1,0 +1,343 @@
+{
+  "schema": "v13-unlocked-sentence-v1",
+  "split": "dev",
+  "cohort_tag": "trainL_c13",
+  "meetings": [
+    "20200706_L_R001S01C01",
+    "20200706_L_R001S02C01",
+    "20200706_L_R001S03C01",
+    "20200706_L_R001S04C01",
+    "20200706_L_R001S05C01",
+    "20200706_L_R001S06C01",
+    "20200706_L_R001S07C01",
+    "20200706_L_R001S08C01",
+    "20200707_L_R001S01C01",
+    "20200707_L_R001S02C01",
+    "20200707_L_R001S03C01",
+    "20200707_L_R001S04C01",
+    "20200707_L_R001S05C01"
+  ],
+  "mode": "objective",
+  "min_wins": [
+    2
+  ],
+  "cap": 10,
+  "path": "cache+real_path_labels(句级已验证≡diarize)",
+  "penalty": 0.015,
+  "production_penalty": 0.015,
+  "skipped": [],
+  "rows": {
+    "20200706_L_R001S01C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.448,
+        "duration_weighted": 0.6558,
+        "abstain": 0.08,
+        "unmapped": 0.0,
+        "n": 125,
+        "n_sentences": 125
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.448,
+        "duration_weighted": 0.6558,
+        "abstain": 0.08,
+        "unmapped": 0.0,
+        "n": 125,
+        "n_sentences": 125
+      }
+    },
+    "20200706_L_R001S02C01": {
+      "base": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.3185,
+        "duration_weighted": 0.3506,
+        "abstain": 0.1778,
+        "unmapped": 0.0,
+        "n": 135,
+        "n_sentences": 135
+      },
+      "mw2": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.3185,
+        "duration_weighted": 0.3506,
+        "abstain": 0.1778,
+        "unmapped": 0.0,
+        "n": 135,
+        "n_sentences": 135
+      }
+    },
+    "20200706_L_R001S03C01": {
+      "base": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.3562,
+        "duration_weighted": 0.3943,
+        "abstain": 0.2055,
+        "unmapped": 0.0,
+        "n": 146,
+        "n_sentences": 146
+      },
+      "mw2": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.3562,
+        "duration_weighted": 0.3943,
+        "abstain": 0.2055,
+        "unmapped": 0.0,
+        "n": 146,
+        "n_sentences": 146
+      }
+    },
+    "20200706_L_R001S04C01": {
+      "base": {
+        "k": 4,
+        "level": "refined",
+        "n_clusters_after_refine": 4,
+        "per_sentence": 0.403,
+        "duration_weighted": 0.568,
+        "abstain": 0.2761,
+        "unmapped": 0.0,
+        "n": 134,
+        "n_sentences": 134
+      },
+      "mw2": {
+        "k": 4,
+        "level": "refined",
+        "n_clusters_after_refine": 4,
+        "per_sentence": 0.403,
+        "duration_weighted": 0.568,
+        "abstain": 0.2761,
+        "unmapped": 0.0,
+        "n": 134,
+        "n_sentences": 134
+      }
+    },
+    "20200706_L_R001S05C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.5702,
+        "duration_weighted": 0.8355,
+        "abstain": 0.2193,
+        "unmapped": 0.0,
+        "n": 114,
+        "n_sentences": 114
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.5702,
+        "duration_weighted": 0.8355,
+        "abstain": 0.2193,
+        "unmapped": 0.0,
+        "n": 114,
+        "n_sentences": 114
+      }
+    },
+    "20200706_L_R001S06C01": {
+      "base": {
+        "k": 1,
+        "level": "2s-only",
+        "n_clusters_after_refine": 1,
+        "per_sentence": 0.1825,
+        "duration_weighted": 0.2414,
+        "abstain": 0.2701,
+        "unmapped": 0.0,
+        "n": 137,
+        "n_sentences": 137
+      },
+      "mw2": {
+        "k": 5,
+        "level": "refined",
+        "n_clusters_after_refine": 5,
+        "per_sentence": 0.6423,
+        "duration_weighted": 0.6857,
+        "abstain": 0.1679,
+        "unmapped": 0.0073,
+        "n": 137,
+        "n_sentences": 137
+      }
+    },
+    "20200706_L_R001S07C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4394,
+        "duration_weighted": 0.6261,
+        "abstain": 0.2727,
+        "unmapped": 0.0,
+        "n": 66,
+        "n_sentences": 66
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4394,
+        "duration_weighted": 0.6261,
+        "abstain": 0.2727,
+        "unmapped": 0.0,
+        "n": 66,
+        "n_sentences": 66
+      }
+    },
+    "20200706_L_R001S08C01": {
+      "base": {
+        "k": 1,
+        "level": "2s-only",
+        "n_clusters_after_refine": 1,
+        "per_sentence": 0.24,
+        "duration_weighted": 0.2982,
+        "abstain": 0.4914,
+        "unmapped": 0.0,
+        "n": 175,
+        "n_sentences": 175
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4743,
+        "duration_weighted": 0.5135,
+        "abstain": 0.2857,
+        "unmapped": 0.0,
+        "n": 175,
+        "n_sentences": 175
+      }
+    },
+    "20200707_L_R001S01C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.3424,
+        "duration_weighted": 0.39,
+        "abstain": 0.25,
+        "unmapped": 0.0,
+        "n": 184,
+        "n_sentences": 184
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.3424,
+        "duration_weighted": 0.39,
+        "abstain": 0.25,
+        "unmapped": 0.0,
+        "n": 184,
+        "n_sentences": 184
+      }
+    },
+    "20200707_L_R001S02C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.3397,
+        "duration_weighted": 0.4356,
+        "abstain": 0.3333,
+        "unmapped": 0.0,
+        "n": 156,
+        "n_sentences": 156
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.3397,
+        "duration_weighted": 0.4356,
+        "abstain": 0.3333,
+        "unmapped": 0.0,
+        "n": 156,
+        "n_sentences": 156
+      }
+    },
+    "20200707_L_R001S03C01": {
+      "base": {
+        "k": 1,
+        "level": "2s-only",
+        "n_clusters_after_refine": 1,
+        "per_sentence": 0.2336,
+        "duration_weighted": 0.3095,
+        "abstain": 0.4599,
+        "unmapped": 0.0,
+        "n": 137,
+        "n_sentences": 137
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.292,
+        "duration_weighted": 0.3968,
+        "abstain": 0.2701,
+        "unmapped": 0.0,
+        "n": 137,
+        "n_sentences": 137
+      }
+    },
+    "20200707_L_R001S04C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4717,
+        "duration_weighted": 0.5155,
+        "abstain": 0.1321,
+        "unmapped": 0.0,
+        "n": 159,
+        "n_sentences": 159
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4717,
+        "duration_weighted": 0.5155,
+        "abstain": 0.1321,
+        "unmapped": 0.0,
+        "n": 159,
+        "n_sentences": 159
+      }
+    },
+    "20200707_L_R001S05C01": {
+      "base": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.2869,
+        "duration_weighted": 0.3926,
+        "abstain": 0.2787,
+        "unmapped": 0.0,
+        "n": 122,
+        "n_sentences": 122
+      },
+      "mw2": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.2869,
+        "duration_weighted": 0.3926,
+        "abstain": 0.2787,
+        "unmapped": 0.0,
+        "n": 122,
+        "n_sentences": 122
+      }
+    }
+  }
+}

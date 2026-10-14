@@ -1,0 +1,619 @@
+{
+  "schema": "v13-clean-bucket-lambda-v1",
+  "cohort_tag": "holdout",
+  "split": "holdout",
+  "min_win": 2,
+  "mode": "objective",
+  "penalties": [
+    0.005
+  ],
+  "production_penalty": 0.005,
+  "meetings": [
+    "L_R004S01C01",
+    "L_R004S02C01",
+    "L_R004S03C01",
+    "L_R004S06C01",
+    "S_R003S01C01",
+    "S_R003S02C01",
+    "S_R003S03C01",
+    "S_R003S04C01"
+  ],
+  "base_k_changed_meetings": 0,
+  "path": "cache+real_path_labels(句级已验证≡diarize)",
+  "note": "clean 桶含弃权句且算未答对（abstain 与 per_sentence 同分母）",
+  "skipped": [],
+  "rows": {
+    "L_R004S01C01": {
+      "0.005": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8095,
+          "duration_weighted": 0.8955,
+          "abstain": 0.0204,
+          "unmapped": 0.0,
+          "n": 147,
+          "n_sentences": 147,
+          "overall": {
+            "n": 147,
+            "seconds": 533.1,
+            "duration_weighted": 0.8955,
+            "per_sentence": 0.8095,
+            "abstain": 0.0204,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 140,
+            "seconds": 523.2,
+            "duration_weighted": 0.8998,
+            "per_sentence": 0.8214,
+            "abstain": 0.0214,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 9.9,
+            "duration_weighted": 0.666,
+            "per_sentence": 0.5714,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8095,
+          "duration_weighted": 0.8955,
+          "abstain": 0.0204,
+          "unmapped": 0.0,
+          "n": 147,
+          "n_sentences": 147,
+          "overall": {
+            "n": 147,
+            "seconds": 533.1,
+            "duration_weighted": 0.8955,
+            "per_sentence": 0.8095,
+            "abstain": 0.0204,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 140,
+            "seconds": 523.2,
+            "duration_weighted": 0.8998,
+            "per_sentence": 0.8214,
+            "abstain": 0.0214,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 9.9,
+            "duration_weighted": 0.666,
+            "per_sentence": 0.5714,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R004S02C01": {
+      "0.005": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "n_clusters_after_refine": 1,
+          "per_sentence": 0.448,
+          "duration_weighted": 0.482,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 125,
+          "n_sentences": 125,
+          "overall": {
+            "n": 125,
+            "seconds": 588.5,
+            "duration_weighted": 0.482,
+            "per_sentence": 0.448,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 119,
+            "seconds": 575.6,
+            "duration_weighted": 0.4802,
+            "per_sentence": 0.437,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 12.9,
+            "duration_weighted": 0.5625,
+            "per_sentence": 0.6667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 6,
+          "level": "refined",
+          "n_clusters_after_refine": 6,
+          "per_sentence": 0.96,
+          "duration_weighted": 0.9923,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 125,
+          "n_sentences": 125,
+          "overall": {
+            "n": 125,
+            "seconds": 588.5,
+            "duration_weighted": 0.9923,
+            "per_sentence": 0.96,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 119,
+            "seconds": 575.6,
+            "duration_weighted": 0.9945,
+            "per_sentence": 0.9664,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 12.9,
+            "duration_weighted": 0.8911,
+            "per_sentence": 0.8333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R004S03C01": {
+      "0.005": {
+        "base": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9383,
+          "duration_weighted": 0.9825,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 162,
+          "n_sentences": 162,
+          "overall": {
+            "n": 162,
+            "seconds": 602.9,
+            "duration_weighted": 0.9825,
+            "per_sentence": 0.9383,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 146,
+            "seconds": 580.6,
+            "duration_weighted": 0.9908,
+            "per_sentence": 0.9726,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 16,
+            "seconds": 22.3,
+            "duration_weighted": 0.7654,
+            "per_sentence": 0.625,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9383,
+          "duration_weighted": 0.9825,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 162,
+          "n_sentences": 162,
+          "overall": {
+            "n": 162,
+            "seconds": 602.9,
+            "duration_weighted": 0.9825,
+            "per_sentence": 0.9383,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 146,
+            "seconds": 580.6,
+            "duration_weighted": 0.9908,
+            "per_sentence": 0.9726,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 16,
+            "seconds": 22.3,
+            "duration_weighted": 0.7654,
+            "per_sentence": 0.625,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R004S06C01": {
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8381,
+          "duration_weighted": 0.8503,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 105,
+          "n_sentences": 105,
+          "overall": {
+            "n": 105,
+            "seconds": 514.9,
+            "duration_weighted": 0.8503,
+            "per_sentence": 0.8381,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 100,
+            "seconds": 506.9,
+            "duration_weighted": 0.85,
+            "per_sentence": 0.84,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 5,
+            "seconds": 8.0,
+            "duration_weighted": 0.8666,
+            "per_sentence": 0.8,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8381,
+          "duration_weighted": 0.8503,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 105,
+          "n_sentences": 105,
+          "overall": {
+            "n": 105,
+            "seconds": 514.9,
+            "duration_weighted": 0.8503,
+            "per_sentence": 0.8381,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 100,
+            "seconds": 506.9,
+            "duration_weighted": 0.85,
+            "per_sentence": 0.84,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 5,
+            "seconds": 8.0,
+            "duration_weighted": 0.8666,
+            "per_sentence": 0.8,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "S_R003S01C01": {
+      "0.005": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.9434,
+          "duration_weighted": 0.9853,
+          "abstain": 0.0063,
+          "unmapped": 0.0,
+          "n": 159,
+          "n_sentences": 159,
+          "overall": {
+            "n": 159,
+            "seconds": 551.5,
+            "duration_weighted": 0.9853,
+            "per_sentence": 0.9434,
+            "abstain": 0.0063,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 153,
+            "seconds": 548.1,
+            "duration_weighted": 0.9913,
+            "per_sentence": 0.9804,
+            "abstain": 0.0065,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 3.4,
+            "duration_weighted": 0.0,
+            "per_sentence": 0.0,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.9434,
+          "duration_weighted": 0.9853,
+          "abstain": 0.0063,
+          "unmapped": 0.0,
+          "n": 159,
+          "n_sentences": 159,
+          "overall": {
+            "n": 159,
+            "seconds": 551.5,
+            "duration_weighted": 0.9853,
+            "per_sentence": 0.9434,
+            "abstain": 0.0063,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 153,
+            "seconds": 548.1,
+            "duration_weighted": 0.9913,
+            "per_sentence": 0.9804,
+            "abstain": 0.0065,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 3.4,
+            "duration_weighted": 0.0,
+            "per_sentence": 0.0,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "S_R003S02C01": {
+      "0.005": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.9638,
+          "duration_weighted": 0.9904,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 138,
+          "n_sentences": 138,
+          "overall": {
+            "n": 138,
+            "seconds": 561.5,
+            "duration_weighted": 0.9904,
+            "per_sentence": 0.9638,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 136,
+            "seconds": 559.2,
+            "duration_weighted": 0.9943,
+            "per_sentence": 0.9779,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 2,
+            "seconds": 2.2,
+            "duration_weighted": 0.0,
+            "per_sentence": 0.0,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.9638,
+          "duration_weighted": 0.9904,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 138,
+          "n_sentences": 138,
+          "overall": {
+            "n": 138,
+            "seconds": 561.5,
+            "duration_weighted": 0.9904,
+            "per_sentence": 0.9638,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 136,
+            "seconds": 559.2,
+            "duration_weighted": 0.9943,
+            "per_sentence": 0.9779,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 2,
+            "seconds": 2.2,
+            "duration_weighted": 0.0,
+            "per_sentence": 0.0,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "S_R003S03C01": {
+      "0.005": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.9459,
+          "duration_weighted": 0.9753,
+          "abstain": 0.0203,
+          "unmapped": 0.0,
+          "n": 148,
+          "n_sentences": 148,
+          "overall": {
+            "n": 148,
+            "seconds": 545.5,
+            "duration_weighted": 0.9753,
+            "per_sentence": 0.9459,
+            "abstain": 0.0203,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 148,
+            "seconds": 545.5,
+            "duration_weighted": 0.9753,
+            "per_sentence": 0.9459,
+            "abstain": 0.0203,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.9459,
+          "duration_weighted": 0.9753,
+          "abstain": 0.0203,
+          "unmapped": 0.0,
+          "n": 148,
+          "n_sentences": 148,
+          "overall": {
+            "n": 148,
+            "seconds": 545.5,
+            "duration_weighted": 0.9753,
+            "per_sentence": 0.9459,
+            "abstain": 0.0203,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 148,
+            "seconds": 545.5,
+            "duration_weighted": 0.9753,
+            "per_sentence": 0.9459,
+            "abstain": 0.0203,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      }
+    },
+    "S_R003S04C01": {
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5649,
+          "duration_weighted": 0.839,
+          "abstain": 0.0076,
+          "unmapped": 0.0,
+          "n": 131,
+          "n_sentences": 131,
+          "overall": {
+            "n": 131,
+            "seconds": 624.4,
+            "duration_weighted": 0.839,
+            "per_sentence": 0.5649,
+            "abstain": 0.0076,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 78,
+            "seconds": 556.9,
+            "duration_weighted": 0.8922,
+            "per_sentence": 0.8462,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 53,
+            "seconds": 67.5,
+            "duration_weighted": 0.3999,
+            "per_sentence": 0.1509,
+            "abstain": 0.0189,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.6336,
+          "duration_weighted": 0.9236,
+          "abstain": 0.0076,
+          "unmapped": 0.0,
+          "n": 131,
+          "n_sentences": 131,
+          "overall": {
+            "n": 131,
+            "seconds": 624.4,
+            "duration_weighted": 0.9236,
+            "per_sentence": 0.6336,
+            "abstain": 0.0076,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 78,
+            "seconds": 556.9,
+            "duration_weighted": 0.986,
+            "per_sentence": 0.9487,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 53,
+            "seconds": 67.5,
+            "duration_weighted": 0.4093,
+            "per_sentence": 0.1698,
+            "abstain": 0.0189,
+            "unmapped": 0.0
+          }
+        }
+      }
+    }
+  }
+}

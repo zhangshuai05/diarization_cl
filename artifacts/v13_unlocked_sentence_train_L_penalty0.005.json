@@ -1,0 +1,93 @@
+{
+  "schema": "v13-unlocked-sentence-v1",
+  "split": "dev",
+  "cohort_tag": "train_L",
+  "meetings": [
+    "20200706_L_R001S07C01",
+    "20200708_L_R002S02C01",
+    "20200709_L_R002S07C01"
+  ],
+  "mode": "objective",
+  "min_wins": [
+    2
+  ],
+  "cap": 10,
+  "path": "cache+real_path_labels(句级已验证≡diarize)",
+  "penalty": 0.005,
+  "production_penalty": 0.015,
+  "skipped": [],
+  "rows": {
+    "20200706_L_R001S07C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4394,
+        "duration_weighted": 0.6261,
+        "abstain": 0.2727,
+        "unmapped": 0.0,
+        "n": 66,
+        "n_sentences": 66
+      },
+      "mw2": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4394,
+        "duration_weighted": 0.6261,
+        "abstain": 0.2727,
+        "unmapped": 0.0,
+        "n": 66,
+        "n_sentences": 66
+      }
+    },
+    "20200708_L_R002S02C01": {
+      "base": {
+        "k": 3,
+        "level": "refined",
+        "n_clusters_after_refine": 3,
+        "per_sentence": 0.4037,
+        "duration_weighted": 0.476,
+        "abstain": 0.0642,
+        "unmapped": 0.0,
+        "n": 109,
+        "n_sentences": 109
+      },
+      "mw2": {
+        "k": 5,
+        "level": "refined",
+        "n_clusters_after_refine": 5,
+        "per_sentence": 0.6055,
+        "duration_weighted": 0.6784,
+        "abstain": 0.0642,
+        "unmapped": 0.0,
+        "n": 109,
+        "n_sentences": 109
+      }
+    },
+    "20200709_L_R002S07C01": {
+      "base": {
+        "k": 2,
+        "level": "refined",
+        "n_clusters_after_refine": 2,
+        "per_sentence": 0.3413,
+        "duration_weighted": 0.4785,
+        "abstain": 0.0,
+        "unmapped": 0.0,
+        "n": 126,
+        "n_sentences": 126
+      },
+      "mw2": {
+        "k": 7,
+        "level": "refined",
+        "n_clusters_after_refine": 7,
+        "per_sentence": 0.6429,
+        "duration_weighted": 0.8252,
+        "abstain": 0.0,
+        "unmapped": 0.0079,
+        "n": 126,
+        "n_sentences": 126
+      }
+    }
+  }
+}

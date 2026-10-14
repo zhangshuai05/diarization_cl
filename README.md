@@ -83,27 +83,43 @@ cd streaming_asr && python -B -m pytest -q     # 154 passed
 
 | 文件 | 内容 |
 |---|---|
-| `docs/HANDOFF.md` | **最新**。大簇拆分收益诊断（指标失败 + "过分割涨分"未证伪） |
+| `docs/HANDOFF.md` | **最新**。unlocked 的主指标收口（+8.8，非样本外）+ 残差归因翻转（「剩下是聚类可分性」不成立） |
+| `docs/交接文档_1008_过分割涨分证伪.md` | 过分割涨分**一半成立**（4 真 / 1 假 / 7 零收益）+ 换尺子重跑，最优 k 从 10 → 6 |
+| `docs/交接文档_0930b_大簇拆分.md` | 大簇拆分收益**指标失败**（gain 与 oracle 近乎正交，精确率 0.35） |
 | `docs/交接文档_0930.md` | 零模型诊断链：三道锁 / 小簇性质 / 候选有效性 |
 | `docs/交接文档_092902.md` | OCR 复审第二轮：3 处静默失真 + 8 条 medium，含"明确不修的"及理由 |
 | `docs/交接文档_0929.md` | K 上限修复的代价量化、A 的定位改写、六处被数据推翻的判断 |
 | `docs/交接文档_0928.md` | K 上限 bug 的**发现过程**（含路径等价检查方法论） |
 | `docs/交接文档_0924.md` | 句子级主指标的定义草案与三步计划 |
 | `artifacts/v13_交付合并表.md` | 交付数字 + 证据索引（含物理边界与未验证项） |
+| `artifacts/过分割涨分证伪.html` | **本轮结论的分析页**（浏览器直接打开） |
 | `artifacts/v13_会话发现_20260923.md` | 该会话实测记录 |
 | `docs/环境清单.md` | 绝对路径与本机未装的备选模型 |
 
 > 交接文档（`交接文档_09*.md` / `HANDOFF.md`）**自 2026-10-08 起统一在 `docs/`**，
 > 不再放仓库根。根目录只留 `README.md`。
 
-**新对话开场**：先读 `docs/HANDOFF.md`，再按 `交接文档_0930` → `092902` → `0929` → `0928` 上溯，**先复现再采信**：
+**新对话开场**：先读 `docs/HANDOFF.md`，再按 `交接文档_1008_过分割涨分证伪` →
+`0930b_大簇拆分` → `0930` → `092902` → `0929` → `0928` 上溯，**先复现再采信**：
 
 ```bash
 cd streaming_asr && python -B -m pytest -q                              # 154 passed
 python -B -m pytest tests/test_k_cap_dispatch.py -q                     # K 上限修复的回归
 python -B -m pytest tests/test_rescue_replacement.py -q                 # rescue 替换控制流
 cd .. && python -u -B scripts/evaluation/probe_step_a_baseline.py       # 四口径证据链（零模型）
+PYTHONIOENCODING=utf-8 python -u -B \
+    scripts/evaluation/probe_unlocked_sentence.py --min-wins 2,3,4 --selfcheck   # 主指标，秒级
 ```
+
+> ⚠️ 跑**真实路径**（`probe_e2e_unlocked2.py`）是 **21 分钟/场**，别拿它做扫描。
+> 句级口径走缓存即可（`probe_path_equiv` 已验证等价）。
+>
+> ⚠️ **建缓存时退出码 1 不代表失败**：门限自检的参照
+> （`v13_ab_dev_results.json`）**只覆盖 dev 12 场**，所以 train_L 与 holdout 的场次
+> 全部会报"不在参照里"，最后 `SystemExit(1)`——**此时 npz 与 manifest 已经写完**。
+> 这两批缓存的门限自检**是空的**（`--check-only` 复算的是同一批 VAD 区间，
+> 只验确定性、不验 VAD 本身）。要补真正的门限验证，得先按同口径跑
+> `probe_ab_dev` 生成覆盖该 cohort 的参照。
 
 ---
 

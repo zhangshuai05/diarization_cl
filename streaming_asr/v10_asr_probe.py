@@ -22,8 +22,12 @@ def _text(result):
 
 
 def stream_replay(model, audio, sample_rate=16000, chunk_size=DEFAULT_CHUNK_SIZE,
-                  realtime=True, clock=time.perf_counter, sleep=time.sleep):
-    """Feed only arrived samples and return an auditable chunk event log."""
+                  realtime=True, clock=time.perf_counter, sleep=time.sleep, on_text=None):
+    """Feed only arrived samples and return an auditable chunk event log.
+
+    `on_text(text, audio_end_ms)` 每有一个非空结果就调一次，给测试台边跑边上屏用；
+    传了它不影响返回值里的 events。
+    """
     chunk_samples = int(chunk_size[1] * 0.06 * sample_rate)
     if chunk_samples <= 0:
         raise ValueError("chunk_size[1] must be positive")
@@ -58,6 +62,8 @@ def stream_replay(model, audio, sample_rate=16000, chunk_size=DEFAULT_CHUNK_SIZE
         text = _text(result)
         if text:
             pieces.append(text)
+            if on_text is not None:
+                on_text(text, round(end * 1000 / sample_rate))
             if first_partial_ms is None:
                 first_partial_ms = round((call_ended - started) * 1000, 1)
         events.append({

@@ -1,0 +1,58 @@
+{
+  "schema": "v13-e2e-unlocked2-v1",
+  "split": "dev",
+  "root": "D:\\yinp\\AISHELL-4\\data\\test",
+  "min_win": 2,
+  "cap": 10,
+  "mode": "objective",
+  "rows": [
+    {
+      "meeting": "S_R004S01C01",
+      "eff_k": 5,
+      "base": {
+        "total_frames": 47876,
+        "missed": 20,
+        "false_alarm": 6086,
+        "confusion": 1128,
+        "miss_rate": 0.0004,
+        "false_alarm_rate": 0.1271,
+        "confusion_rate": 0.0236,
+        "der": 0.1511,
+        "n_ref_speakers": 5,
+        "n_pred_speakers": 5,
+        "mapping": {
+          "v_0": "001-M",
+          "v_3": "004-F",
+          "v_4": "005-F",
+          "v_2": "003-F",
+          "v_1": "002-F"
+        },
+        "k": 5,
+        "level": "refined",
+        "n_segments": 128
+      },
+      "fixed": {
+        "total_frames": 47876,
+        "missed": 20,
+        "false_alarm": 6086,
+        "confusion": 1128,
+        "miss_rate": 0.0004,
+        "false_alarm_rate": 0.1271,
+        "confusion_rate": 0.0236,
+        "der": 0.1511,
+        "n_ref_speakers": 5,
+        "n_pred_speakers": 5,
+        "mapping": {
+          "v_0": "001-M",
+          "v_3": "004-F",
+          "v_4": "005-F",
+          "v_2": "003-F",
+          "v_1": "002-F"
+        },
+        "k": 5,
+        "level": "refined",
+        "n_segments": 128
+      }
+    }
+  ]
+}

@@ -81,15 +81,26 @@ def score(sentences, labels, times, win):
     """把最终标签铺成段表并算句子级归属率（§R1 口径）。
 
     **永远用传入的 `times`**（真实窗起点），不用 `arange` 重建。
+
+    `attribution` 本来就把句子分**有重叠 / 无重叠**两栏算好，早期只取了 `overall`
+    把另外两栏扔掉。现在整份带出：
+
+    * 平铺的 6 个旧键（`per_sentence` … `n_sentences`）**逐位不动**——调用方全是
+      `**score(...)` 解包，加键天然兼容，既有产物口径不受影响。
+    * `overall` / `clean` / `overlap` 三个整桶（每桶含 `per_sentence` / `abstain` /
+      `unmapped` / `n`）。⚠️ **`clean` 桶含弃权句且算未答对**（`abstain` 与
+      `per_sentence` 同分母），所以它不是纯几何读数——要拆开看 `clean["abstain"]`。
     """
     end = max(s["end"] for s in sentences)
     w = np.full(len(labels), win)
     segs = segment_map(times, labels, w, end)
     pred = sentence_dict_predictions(sentences, segs)
-    r = attribution(sentences, pred)["overall"]
-    return {"per_sentence": r["per_sentence"], "duration_weighted": r["duration_weighted"],
-            "abstain": r["abstain"], "unmapped": r["unmapped"], "n": r["n"],
-            "n_sentences": len(sentences)}
+    r = attribution(sentences, pred)
+    o = r["overall"]
+    return {"per_sentence": o["per_sentence"], "duration_weighted": o["duration_weighted"],
+            "abstain": o["abstain"], "unmapped": o["unmapped"], "n": o["n"],
+            "n_sentences": len(sentences),
+            "overall": o, "clean": r["clean"], "overlap": r["overlap"]}
 
 
 # ───────────────────── 主流程 ─────────────────────

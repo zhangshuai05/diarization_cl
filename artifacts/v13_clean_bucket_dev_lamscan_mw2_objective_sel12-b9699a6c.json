@@ -1,0 +1,3514 @@
+{
+  "schema": "v13-clean-bucket-lambda-v1",
+  "cohort_tag": "dev",
+  "split": "dev",
+  "min_win": 2,
+  "mode": "objective",
+  "penalties": [
+    0.0,
+    0.005,
+    0.015,
+    0.03
+  ],
+  "production_penalty": 0.005,
+  "meetings": [
+    "L_R003S01C02",
+    "L_R003S02C02",
+    "L_R003S03C02",
+    "L_R003S04C02",
+    "M_R003S01C01",
+    "M_R003S02C01",
+    "M_R003S04C01",
+    "M_R003S05C01",
+    "S_R004S01C01",
+    "S_R004S02C01",
+    "S_R004S03C01",
+    "S_R004S04C01"
+  ],
+  "base_k_changed_meetings": 0,
+  "path": "cache+real_path_labels(句级已验证≡diarize)",
+  "note": "clean 桶含弃权句且算未答对（abstain 与 per_sentence 同分母）",
+  "skipped": [],
+  "rows": {
+    "L_R003S01C02": {
+      "0.0": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "n_clusters_after_refine": 1,
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.3347,
+            "per_sentence": 0.2745,
+            "abstain": 0.0196,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.3304,
+            "per_sentence": 0.321,
+            "abstain": 0.0247,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.3715,
+            "per_sentence": 0.0952,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.8039,
+          "duration_weighted": 0.9609,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.9609,
+            "per_sentence": 0.8039,
+            "abstain": 0.0294,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.9831,
+            "per_sentence": 0.8889,
+            "abstain": 0.037,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.7718,
+            "per_sentence": 0.4762,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "n_clusters_after_refine": 1,
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.3347,
+            "per_sentence": 0.2745,
+            "abstain": 0.0196,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.3304,
+            "per_sentence": 0.321,
+            "abstain": 0.0247,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.3715,
+            "per_sentence": 0.0952,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.8039,
+          "duration_weighted": 0.9609,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.9609,
+            "per_sentence": 0.8039,
+            "abstain": 0.0294,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.9831,
+            "per_sentence": 0.8889,
+            "abstain": 0.037,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.7718,
+            "per_sentence": 0.4762,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "n_clusters_after_refine": 1,
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.3347,
+            "per_sentence": 0.2745,
+            "abstain": 0.0196,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.3304,
+            "per_sentence": 0.321,
+            "abstain": 0.0247,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.3715,
+            "per_sentence": 0.0952,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.8039,
+          "duration_weighted": 0.9609,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.9609,
+            "per_sentence": 0.8039,
+            "abstain": 0.0294,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.9831,
+            "per_sentence": 0.8889,
+            "abstain": 0.037,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.7718,
+            "per_sentence": 0.4762,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 1,
+          "level": "2s-only",
+          "n_clusters_after_refine": 1,
+          "per_sentence": 0.2745,
+          "duration_weighted": 0.3347,
+          "abstain": 0.0196,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.3347,
+            "per_sentence": 0.2745,
+            "abstain": 0.0196,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.3304,
+            "per_sentence": 0.321,
+            "abstain": 0.0247,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.3715,
+            "per_sentence": 0.0952,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.451,
+          "duration_weighted": 0.5406,
+          "abstain": 0.0294,
+          "unmapped": 0.0,
+          "n": 102,
+          "n_sentences": 102,
+          "overall": {
+            "n": 102,
+            "seconds": 575.0,
+            "duration_weighted": 0.5406,
+            "per_sentence": 0.451,
+            "abstain": 0.0294,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 81,
+            "seconds": 514.7,
+            "duration_weighted": 0.5404,
+            "per_sentence": 0.5185,
+            "abstain": 0.037,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 21,
+            "seconds": 60.4,
+            "duration_weighted": 0.542,
+            "per_sentence": 0.1905,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R003S02C02": {
+      "0.0": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8824,
+          "duration_weighted": 0.9463,
+          "abstain": 0.0235,
+          "unmapped": 0.0,
+          "n": 85,
+          "n_sentences": 85,
+          "overall": {
+            "n": 85,
+            "seconds": 530.7,
+            "duration_weighted": 0.9463,
+            "per_sentence": 0.8824,
+            "abstain": 0.0235,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 79,
+            "seconds": 517.4,
+            "duration_weighted": 0.954,
+            "per_sentence": 0.9241,
+            "abstain": 0.0253,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 13.4,
+            "duration_weighted": 0.6458,
+            "per_sentence": 0.3333,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R003S03C02": {
+      "0.0": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 6,
+          "level": "refined",
+          "n_clusters_after_refine": 6,
+          "per_sentence": 0.8554,
+          "duration_weighted": 0.974,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.974,
+            "per_sentence": 0.8554,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.9928,
+            "per_sentence": 0.9583,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 6,
+          "level": "refined",
+          "n_clusters_after_refine": 6,
+          "per_sentence": 0.8554,
+          "duration_weighted": 0.974,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.974,
+            "per_sentence": 0.8554,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.9928,
+            "per_sentence": 0.9583,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.6024,
+          "duration_weighted": 0.7326,
+          "abstain": 0.0361,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 555.1,
+            "duration_weighted": 0.7326,
+            "per_sentence": 0.6024,
+            "abstain": 0.0361,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 72,
+            "seconds": 536.8,
+            "duration_weighted": 0.7432,
+            "per_sentence": 0.6667,
+            "abstain": 0.0139,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 11,
+            "seconds": 18.3,
+            "duration_weighted": 0.4236,
+            "per_sentence": 0.1818,
+            "abstain": 0.1818,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "L_R003S04C02": {
+      "0.0": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.8235,
+          "duration_weighted": 0.9596,
+          "abstain": 0.0084,
+          "unmapped": 0.0168,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9596,
+            "per_sentence": 0.8235,
+            "abstain": 0.0084,
+            "unmapped": 0.0168
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.968,
+            "per_sentence": 0.8584,
+            "abstain": 0.0088,
+            "unmapped": 0.0177
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 4,
+          "level": "refined",
+          "n_clusters_after_refine": 4,
+          "per_sentence": 0.8403,
+          "duration_weighted": 0.9693,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.9693,
+            "per_sentence": 0.8403,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.9778,
+            "per_sentence": 0.8761,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.1104,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4958,
+          "duration_weighted": 0.594,
+          "abstain": 0.0084,
+          "unmapped": 0.0,
+          "n": 119,
+          "n_sentences": 119,
+          "overall": {
+            "n": 119,
+            "seconds": 518.7,
+            "duration_weighted": 0.594,
+            "per_sentence": 0.4958,
+            "abstain": 0.0084,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 113,
+            "seconds": 513.6,
+            "duration_weighted": 0.5945,
+            "per_sentence": 0.5133,
+            "abstain": 0.0088,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 6,
+            "seconds": 5.1,
+            "duration_weighted": 0.5459,
+            "per_sentence": 0.1667,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "M_R003S01C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.8072,
+          "duration_weighted": 0.9497,
+          "abstain": 0.0964,
+          "unmapped": 0.0,
+          "n": 83,
+          "n_sentences": 83,
+          "overall": {
+            "n": 83,
+            "seconds": 574.2,
+            "duration_weighted": 0.9497,
+            "per_sentence": 0.8072,
+            "abstain": 0.0964,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 76,
+            "seconds": 568.2,
+            "duration_weighted": 0.9578,
+            "per_sentence": 0.8684,
+            "abstain": 0.0658,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 7,
+            "seconds": 6.0,
+            "duration_weighted": 0.1912,
+            "per_sentence": 0.1429,
+            "abstain": 0.4286,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "M_R003S02C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.7191,
+          "duration_weighted": 0.8858,
+          "abstain": 0.0225,
+          "unmapped": 0.0,
+          "n": 89,
+          "n_sentences": 89,
+          "overall": {
+            "n": 89,
+            "seconds": 604.8,
+            "duration_weighted": 0.8858,
+            "per_sentence": 0.7191,
+            "abstain": 0.0225,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 519.4,
+            "duration_weighted": 0.9725,
+            "per_sentence": 0.9048,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 26,
+            "seconds": 85.4,
+            "duration_weighted": 0.3589,
+            "per_sentence": 0.2692,
+            "abstain": 0.0385,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "M_R003S04C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.5825,
+          "duration_weighted": 0.7034,
+          "abstain": 0.0049,
+          "unmapped": 0.0,
+          "n": 206,
+          "n_sentences": 206,
+          "overall": {
+            "n": 206,
+            "seconds": 614.9,
+            "duration_weighted": 0.7034,
+            "per_sentence": 0.5825,
+            "abstain": 0.0049,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 115,
+            "seconds": 457.6,
+            "duration_weighted": 0.7803,
+            "per_sentence": 0.7217,
+            "abstain": 0.0087,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 91,
+            "seconds": 157.3,
+            "duration_weighted": 0.4799,
+            "per_sentence": 0.4066,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "M_R003S05C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 7,
+          "level": "refined",
+          "n_clusters_after_refine": 7,
+          "per_sentence": 0.9298,
+          "duration_weighted": 0.9927,
+          "abstain": 0.0351,
+          "unmapped": 0.0175,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9927,
+            "per_sentence": 0.9298,
+            "abstain": 0.0351,
+            "unmapped": 0.0175
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9927,
+            "per_sentence": 0.9298,
+            "abstain": 0.0351,
+            "unmapped": 0.0175
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 6,
+          "level": "refined",
+          "n_clusters_after_refine": 6,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9947,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9947,
+            "per_sentence": 0.9474,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9947,
+            "per_sentence": 0.9474,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 6,
+          "level": "refined",
+          "n_clusters_after_refine": 6,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9947,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9947,
+            "per_sentence": 0.9474,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.9947,
+            "per_sentence": 0.9474,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.4211,
+          "duration_weighted": 0.4756,
+          "abstain": 0.0351,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 552.7,
+            "duration_weighted": 0.4756,
+            "per_sentence": 0.4211,
+            "abstain": 0.0351,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      }
+    },
+    "S_R004S01C01": {
+      "0.0": {
+        "base": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        },
+        "mw2": {
+          "k": 5,
+          "level": "refined",
+          "n_clusters_after_refine": 5,
+          "per_sentence": 0.9067,
+          "duration_weighted": 0.9884,
+          "abstain": 0.0133,
+          "unmapped": 0.0,
+          "n": 75,
+          "n_sentences": 75,
+          "overall": {
+            "n": 75,
+            "seconds": 525.8,
+            "duration_weighted": 0.9884,
+            "per_sentence": 0.9067,
+            "abstain": 0.0133,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 63,
+            "seconds": 508.5,
+            "duration_weighted": 0.9961,
+            "per_sentence": 0.9683,
+            "abstain": 0.0159,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 12,
+            "seconds": 17.3,
+            "duration_weighted": 0.7602,
+            "per_sentence": 0.5833,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          }
+        }
+      }
+    },
+    "S_R004S02C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9636,
+          "duration_weighted": 0.9888,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 110,
+          "n_sentences": 110,
+          "overall": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 110,
+            "seconds": 572.1,
+            "duration_weighted": 0.9888,
+            "per_sentence": 0.9636,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      }
+    },
+    "S_R004S03C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 3,
+          "level": "refined",
+          "n_clusters_after_refine": 3,
+          "per_sentence": 0.9649,
+          "duration_weighted": 0.9956,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9956,
+            "per_sentence": 0.9649,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9956,
+            "per_sentence": 0.9649,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9474,
+          "duration_weighted": 0.9931,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 57,
+          "n_sentences": 57,
+          "overall": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 57,
+            "seconds": 580.3,
+            "duration_weighted": 0.9931,
+            "per_sentence": 0.9474,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      }
+    },
+    "S_R004S04C01": {
+      "0.0": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.005": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.015": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      },
+      "0.03": {
+        "base": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        },
+        "mw2": {
+          "k": 2,
+          "level": "refined",
+          "n_clusters_after_refine": 2,
+          "per_sentence": 0.9286,
+          "duration_weighted": 0.9311,
+          "abstain": 0.0,
+          "unmapped": 0.0,
+          "n": 84,
+          "n_sentences": 84,
+          "overall": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "clean": {
+            "n": 84,
+            "seconds": 578.1,
+            "duration_weighted": 0.9311,
+            "per_sentence": 0.9286,
+            "abstain": 0.0,
+            "unmapped": 0.0
+          },
+          "overlap": {
+            "n": 0,
+            "seconds": 0,
+            "duration_weighted": null,
+            "per_sentence": null,
+            "abstain": null,
+            "unmapped": null
+          }
+        }
+      }
+    }
+  }
+}

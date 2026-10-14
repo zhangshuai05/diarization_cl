@@ -178,12 +178,91 @@ def probe_reference():
             for row in payload["results"] if not row.get("insufficient")}
 
 
+def check_meeting(meeting, record, seconds):
+    """按 manifest 记的 VAD 区间复算三个阶段窗数，与记录比对。
+
+    用**同一份生产函数**（`extract()`） + 桩声纹模型：窗接收集只取决于门限与
+    窗参数，与嵌入值无关（嵌入失败只是 `continue`）。所以不必重跑 CAM++。
+
+    ⚠️ 验的是**门限 + 窗参数**（配合记录里的 VAD 区间），不验 VAD 本身。
+    """
+    import soundfile as sf
+
+    wav = str(DATA / "wav" / f"{meeting}.flac")
+    info = sf.info(wav)
+    stop = min(int(seconds * info.samplerate), info.frames)
+    audio, rate = sf.read(wav, dtype="float32", stop=stop)
+    if audio.ndim > 1:
+        audio = audio[:, 0]
+    vad_segments = [(a, b) for a, b in record["vad_intervals"]]
+    models = {"spk": _StubSpk()}
+    return {stage: int(len(extract(stage, audio, rate, vad_segments, models)[1]))
+            for stage in STAGES}
+
+
+class _StubSpk:
+    """只回答"这个窗能不能过门"，不做任何推理。"""
+
+    def generate(self, **kwargs):
+        return [{"spk_embedding": np.ones(4, dtype=np.float32)}]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--meetings", nargs="*", default=None,
                     help="要建的场次；缺省 = 既有 manifest 的全部场次 ∪ TARGET_MEETINGS")
+    ap.add_argument("--root", default=None,
+                    help="数据根，缺省 = test 划分。train_L 等另一个 cohort 用这个。"
+                         "注意门限自检的参照只覆盖 dev 12 场，所以**任何不在参照里的"
+                         "场次**（train_L 带日期前缀的、以及 holdout 8 场）都会报"
+                         "失败并最后 SystemExit(1)：缓存与 manifest 在退出前已写完，"
+                         "那是**已知且正确**的行为。这批场次的窗口径用 --check-only 核对，"
+                         "但它复算的是同一批 VAD 区间 ⇒ 只验确定性、不验 VAD 本身")
+    ap.add_argument("--check-only", action="store_true",
+                    help="不建缓存，只按 manifest 记的 VAD 区间复算窗数并比对；"
+                         "不加载任何模型（秒级）。注：manifest 里的 VAD 区间建缓存时已 round 到 "
+                         "4 位小数，边界窗恰好压线时可能假报 MISMATCH（概率极低，未消除）")
     ap.add_argument("--seconds", type=float, default=SECONDS)
     args = ap.parse_args()
+
+    if args.root:
+        global DATA
+        DATA = Path(args.root)
+
+    if args.check_only:
+        manifest = json.loads((OUT / "manifest.json").read_text(encoding="utf-8"))
+        meetings = args.meetings or sorted(manifest["meetings"])
+        if not args.meetings:
+            # manifest 是**跨 cohort 共享**的（test 12 场 + train_L 若干），
+            # 不能直接全拿：另一个 cohort 的 wav 不在本 root 下。
+            have = [m for m in meetings if (DATA / "wav" / f"{m}.flac").exists()]
+            print("未指定 --meetings：本 root 下 %d 场，跳过 %d 场不属于它"
+                  % (len(have), len(meetings) - len(have)), flush=True)
+            meetings = have
+        if not meetings:
+            # 0 场会让下面打印「全部一致」并以 0 退出 —— 那是静默通过（--root 写错就是这种）。
+            raise SystemExit("没有可核对的场次（检查 --root / --meetings）")
+        # 复算口径以 manifest 为准：它是建缓存时的记录，用 --seconds 复算会假报 MISMATCH。
+        seconds = manifest.get("seconds", args.seconds)
+        bad = []
+        for meeting in meetings:
+            # 缺记录/缺 wav 不能打断整轮：前面已核对的结果会连同它一起汇总报出。
+            record = manifest["meetings"].get(meeting)
+            if record is None or not (DATA / "wav" / f"{meeting}.flac").exists():
+                bad.append("%s: manifest 无记录或 wav 不存在" % meeting)
+                print("%-26s MISSING" % meeting, flush=True)
+                continue
+            got = check_meeting(meeting, record, seconds)
+            same = all(got[stage] == record["counts"][stage] for stage in STAGES)
+            if not same:
+                bad.append("%s 复算 %s != 记录 %s" % (meeting, got, record["counts"]))
+            print("%-26s %s | 复算 %s" % (meeting, "OK" if same else "MISMATCH", got),
+                  flush=True)
+        print("\n核对 %d 场：%s" % (len(meetings),
+                                 "全部一致" if not bad else "\n  ".join(bad)))
+        if bad:
+            raise SystemExit(1)
+        return
 
     # 合并而不是覆盖：缺省时把既有 manifest 的场次一并带上，避免无参数运行
     # 把 12 场缩成 3 场（见 `load_existing` 的说明）。
@@ -192,6 +271,17 @@ def main():
         args.meetings = sorted(set(existing) | set(TARGET_MEETINGS))
         print(f"未指定 --meetings：沿用既有 {len(existing)} 场 + 目标场，"
               f"共 {len(args.meetings)} 场", flush=True)
+    # 与 --check-only 同一条规矩：只建本 root 下真有 wav 的场次。
+    # manifest 跨 cohort 共享，默认列表里一定有别的 cohort 的场次（train_L 30 场在 test root
+    # 下没 wav）；不滤掉会在第一场就抛 FileNotFoundError，而 manifest 是循环后才写，
+    # 已经跑完的场次（每场都要加载 VAD、几十秒到十分钟）对应的条目**全部丢失**。
+    missing = [m for m in args.meetings if not (DATA / "wav" / f"{m}.flac").exists()]
+    if missing:
+        print(f"跳过 {len(missing)} 场（本 root 下无 wav）："
+              f"{', '.join(missing[:5])}{' …' if len(missing) > 5 else ''}", flush=True)
+        args.meetings = [m for m in args.meetings if m not in missing]   # 场次 ≤50，列表查找就够
+    if not args.meetings:
+        raise SystemExit("没有可建的场次（检查 --root / --meetings）")
 
     reference = probe_reference()
     if not reference:
@@ -244,6 +334,8 @@ def main():
             "probe_n_windows": ref.get("n_windows"),
             "probe_n_dense": ref.get("n_dense"),
             "vad_intervals": [[round(a, 4), round(b, 4)] for a, b in vad_segments],
+            # ponytail: 这里 round 到 4 位（0.1 ms）是个已知的极小误差源——`--check-only` 用
+            # 它复算，边界窗恰好压线时会假报 MISMATCH；真要杜绝就得写原值重建全部缓存。
         }
 
     (OUT / "manifest.json").write_text(

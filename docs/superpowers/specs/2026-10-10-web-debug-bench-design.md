@@ -105,8 +105,11 @@ load cache(main) → _candidate_clusters/lanes 选 K →
 |---|---|---|
 | `GET /api/meetings` | — | `{meetings:[{id,cohort,has_ref,gt_speakers,duration,n_windows}]}`（`has_ref` = 该场在 `v13_ab_dev_results.json` 参照里） |
 | `GET /api/run` | `meeting, lam, min_win, cap, mode, refine, oracle, pin_base` | ndjson：每完成一条泳道推 `{"t":"lane","lane":"base","metrics":{...},"segments":[...]}`；结束推 `{"t":"done","parity":{...}}`；错误推 `{"t":"error",...}` |
+| `GET /api/truth` | `meeting` | `{reference:[{start,end,speaker}], gt_k, has_ref}` —— 时间轴的真值轨与映射表的分母（**补于 Ruling 12**：§6.1 要求真值轨与映射表，原 §5 契约漏了这一路） |
 | `GET /api/audio` | `meeting, seconds` | `audio/wav`（ffmpeg `pan=mono|c0=c0`，缓存到 `web/clips/`） |
 | `POST /api/verify` | — | ndjson 进度；结束推 parity summary |
+
+⚠️ **Ruling 12（2026-10-10 补）**：`lane` 事件必须带 `pairs`（映射表行：`pred`/`ref`/`overlap`/`share`/`pred_seconds`，实现照 `streaming_asr/bench/bench_server.py` 的 `pairs()`），且页面可选 `GET /api/truth?meeting=` 取真值轨；键名集合见 `contract.LANE_EVENT_KEYS = LANE_PAYLOAD_KEYS + ("pairs",)`。原因：§6.1 要求真值轨与映射表，而本节最初漏了这一路数据来源。
 
 错误处理：`meeting` 必须命中 `meetings()` 白名单；`seconds` 钳制到 `[30, 3600]`；任何异常推 `{"t":"error"}` 并保留已完成泳道（**不写终止块之后的数据**——8736 踩过这个坑）。
 

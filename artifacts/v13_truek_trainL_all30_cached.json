@@ -1,0 +1,8528 @@
+{
+  "schema": "v13-truek-purity-v2",
+  "path": "existing production-window cache + probe_truek_purity.main",
+  "seconds": 600,
+  "cache_manifest": "D:\\yinp\\AISHELL-4\\_v13_spike\\cache\\probe\\manifest.json",
+  "independent_model_artifact_checks": [
+    "20200706_L_R001S07C01",
+    "20200708_L_R002S02C01",
+    "20200709_L_R002S07C01"
+  ],
+  "meetings": [
+    {
+      "meeting": "20200706_L_R001S01C01",
+      "seconds": 600.0,
+      "n_windows": 445,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9445,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 18,
+          "majority": "001-M",
+          "purity": 0.9444,
+          "speakers": {
+            "001-M": 17,
+            "004-M": 1
+          },
+          "span_sec": [
+            33.0,
+            588.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 112,
+          "majority": "004-M",
+          "purity": 0.9286,
+          "speakers": {
+            "004-M": 104,
+            "002-M": 4,
+            "001-M": 3,
+            "003-M": 1
+          },
+          "span_sec": [
+            38.0,
+            551.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 172,
+          "majority": "003-M",
+          "purity": 0.9884,
+          "speakers": {
+            "003-M": 170,
+            "004-M": 1,
+            "002-M": 1
+          },
+          "span_sec": [
+            83.0,
+            581.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 34,
+          "majority": "002-M",
+          "purity": 0.7941,
+          "speakers": {
+            "002-M": 27,
+            "003-M": 5,
+            "004-M": 1,
+            "001-M": 1
+          },
+          "span_sec": [
+            67.0,
+            593.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 62,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 62
+          },
+          "span_sec": [
+            454.0,
+            525.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 47,
+          "majority": "005-F",
+          "purity": 0.9787,
+          "speakers": {
+            "005-F": 46,
+            "001-M": 1
+          },
+          "span_sec": [
+            314.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 22,
+          "home_cluster": 0,
+          "share_in_home": 0.7727
+        },
+        "002-M": {
+          "windows": 32,
+          "home_cluster": 3,
+          "share_in_home": 0.8438
+        },
+        "003-M": {
+          "windows": 176,
+          "home_cluster": 2,
+          "share_in_home": 0.9659
+        },
+        "004-M": {
+          "windows": 107,
+          "home_cluster": 1,
+          "share_in_home": 0.972
+        },
+        "005-F": {
+          "windows": 46,
+          "home_cluster": 5,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 62,
+          "home_cluster": 4,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 18,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 6,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            445
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2273,
+          "objective": 0.2273,
+          "eligible": true,
+          "sizes": [
+            130,
+            315
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2649,
+          "objective": 0.2499,
+          "eligible": true,
+          "sizes": [
+            130,
+            206,
+            109
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2541,
+          "objective": 0.2241,
+          "eligible": true,
+          "sizes": [
+            18,
+            112,
+            206,
+            109
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2816,
+          "objective": 0.2366,
+          "eligible": true,
+          "sizes": [
+            18,
+            112,
+            206,
+            47,
+            62
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2882,
+          "objective": 0.2282,
+          "eligible": true,
+          "sizes": [
+            18,
+            112,
+            34,
+            172,
+            47,
+            62
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2761,
+          "objective": 0.2011,
+          "eligible": true,
+          "sizes": [
+            18,
+            3,
+            34,
+            172,
+            109,
+            47,
+            62
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2675,
+          "objective": 0.1775,
+          "eligible": true,
+          "sizes": [
+            18,
+            3,
+            32,
+            2,
+            172,
+            109,
+            47,
+            62
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2461,
+          "objective": 0.1411,
+          "eligible": true,
+          "sizes": [
+            18,
+            3,
+            32,
+            2,
+            170,
+            109,
+            47,
+            62,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2442,
+          "objective": 0.1242,
+          "eligible": true,
+          "sizes": [
+            2,
+            3,
+            32,
+            2,
+            170,
+            109,
+            16,
+            47,
+            62,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 6,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": true,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.7941,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200706_L_R001S02C01",
+      "seconds": 600.0,
+      "n_windows": 238,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "005-F",
+        "007-M"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.8922,
+      "window_purity_lt_50pct": 5,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 26,
+          "majority": "005-F",
+          "purity": 0.9615,
+          "speakers": {
+            "005-F": 25,
+            "001-M": 1
+          },
+          "span_sec": [
+            51.0,
+            420.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 4,
+          "majority": "002-M",
+          "purity": 0.75,
+          "speakers": {
+            "002-M": 3,
+            "003-M": 1
+          },
+          "span_sec": [
+            111.0,
+            410.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 48,
+          "majority": "001-M",
+          "purity": 0.6458,
+          "speakers": {
+            "001-M": 31,
+            "004-M": 10,
+            "005-F": 3,
+            "002-M": 2,
+            "007-M": 2
+          },
+          "span_sec": [
+            38.0,
+            516.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 82,
+          "majority": "002-M",
+          "purity": 0.8415,
+          "speakers": {
+            "002-M": 69,
+            "001-M": 7,
+            "003-M": 6
+          },
+          "span_sec": [
+            41.0,
+            564.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 78,
+          "majority": "003-M",
+          "purity": 0.9231,
+          "speakers": {
+            "003-M": 72,
+            "002-M": 4,
+            "004-M": 1,
+            "001-M": 1
+          },
+          "span_sec": [
+            44.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 40,
+          "home_cluster": 2,
+          "share_in_home": 0.775
+        },
+        "002-M": {
+          "windows": 78,
+          "home_cluster": 3,
+          "share_in_home": 0.8846
+        },
+        "003-M": {
+          "windows": 79,
+          "home_cluster": 4,
+          "share_in_home": 0.9114
+        },
+        "004-M": {
+          "windows": 11,
+          "home_cluster": 2,
+          "share_in_home": 0.9091
+        },
+        "005-F": {
+          "windows": 28,
+          "home_cluster": 0,
+          "share_in_home": 0.8929
+        },
+        "007-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 4,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            238
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.174,
+          "objective": 0.174,
+          "eligible": true,
+          "sizes": [
+            212,
+            26
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.1213,
+          "objective": 0.1063,
+          "eligible": true,
+          "sizes": [
+            208,
+            26,
+            4
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.1547,
+          "objective": 0.1247,
+          "eligible": true,
+          "sizes": [
+            48,
+            160,
+            26,
+            4
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.1878,
+          "objective": 0.1428,
+          "eligible": true,
+          "sizes": [
+            48,
+            82,
+            78,
+            26,
+            4
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2021,
+          "objective": 0.1421,
+          "eligible": true,
+          "sizes": [
+            32,
+            82,
+            78,
+            16,
+            26,
+            4
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.194,
+          "objective": 0.119,
+          "eligible": true,
+          "sizes": [
+            32,
+            82,
+            78,
+            16,
+            22,
+            4,
+            4
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.1957,
+          "objective": 0.1057,
+          "eligible": true,
+          "sizes": [
+            32,
+            82,
+            77,
+            16,
+            22,
+            4,
+            4,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1863,
+          "objective": 0.0813,
+          "eligible": true,
+          "sizes": [
+            32,
+            77,
+            77,
+            16,
+            22,
+            4,
+            4,
+            1,
+            5
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1853,
+          "objective": 0.0653,
+          "eligible": true,
+          "sizes": [
+            32,
+            77,
+            77,
+            16,
+            22,
+            1,
+            3,
+            4,
+            1,
+            5
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 6,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6458,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200706_L_R001S03C01",
+      "seconds": 600.0,
+      "n_windows": 194,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9105,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 47,
+          "majority": "004-M",
+          "purity": 0.9787,
+          "speakers": {
+            "004-M": 46,
+            "003-M": 1
+          },
+          "span_sec": [
+            59.0,
+            569.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 4,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 4
+          },
+          "span_sec": [
+            595.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 124,
+          "majority": "003-M",
+          "purity": 0.7339,
+          "speakers": {
+            "003-M": 91,
+            "001-M": 25,
+            "002-M": 8
+          },
+          "span_sec": [
+            57.0,
+            467.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 19,
+          "majority": "002-M",
+          "purity": 0.7895,
+          "speakers": {
+            "002-M": 15,
+            "001-M": 3,
+            "003-M": 1
+          },
+          "span_sec": [
+            227.0,
+            573.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 28,
+          "home_cluster": 2,
+          "share_in_home": 0.8929
+        },
+        "002-M": {
+          "windows": 23,
+          "home_cluster": 3,
+          "share_in_home": 0.6522
+        },
+        "003-M": {
+          "windows": 93,
+          "home_cluster": 2,
+          "share_in_home": 0.9785
+        },
+        "004-M": {
+          "windows": 46,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 4,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 4,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            194
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2531,
+          "objective": 0.2531,
+          "eligible": true,
+          "sizes": [
+            147,
+            47
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2201,
+          "objective": 0.2051,
+          "eligible": true,
+          "sizes": [
+            143,
+            47,
+            4
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2163,
+          "objective": 0.1863,
+          "eligible": true,
+          "sizes": [
+            124,
+            47,
+            19,
+            4
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2002,
+          "objective": 0.1552,
+          "eligible": true,
+          "sizes": [
+            124,
+            47,
+            17,
+            2,
+            4
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2317,
+          "objective": 0.1717,
+          "eligible": true,
+          "sizes": [
+            102,
+            47,
+            22,
+            17,
+            2,
+            4
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2197,
+          "objective": 0.1447,
+          "eligible": true,
+          "sizes": [
+            102,
+            47,
+            22,
+            2,
+            15,
+            2,
+            4
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2174,
+          "objective": 0.1274,
+          "eligible": true,
+          "sizes": [
+            102,
+            47,
+            22,
+            2,
+            12,
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2066,
+          "objective": 0.1016,
+          "eligible": true,
+          "sizes": [
+            84,
+            47,
+            22,
+            18,
+            2,
+            12,
+            3,
+            2,
+            4
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2106,
+          "objective": 0.0906,
+          "eligible": true,
+          "sizes": [
+            84,
+            47,
+            22,
+            18,
+            2,
+            12,
+            3,
+            1,
+            1,
+            4
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 2,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.7339,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200706_L_R001S04C01",
+      "seconds": 600.0,
+      "n_windows": 155,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.9318,
+      "window_purity_lt_50pct": 2,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 50,
+          "majority": "001-M",
+          "purity": 0.94,
+          "speakers": {
+            "001-M": 47,
+            "002-M": 1,
+            "003-M": 1,
+            "007-M": 1
+          },
+          "span_sec": [
+            38.0,
+            559.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 26,
+          "majority": "004-M",
+          "purity": 0.9615,
+          "speakers": {
+            "004-M": 25,
+            "003-M": 1
+          },
+          "span_sec": [
+            43.0,
+            243.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 46,
+          "majority": "006-F",
+          "purity": 0.6957,
+          "speakers": {
+            "006-F": 32,
+            "005-F": 14
+          },
+          "span_sec": [
+            46.0,
+            390.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 14,
+          "majority": "007-M",
+          "purity": 0.5714,
+          "speakers": {
+            "007-M": 8,
+            "002-M": 5
+          },
+          "span_sec": [
+            144.0,
+            531.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 19,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 19
+          },
+          "span_sec": [
+            178.0,
+            213.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 47,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 6,
+          "home_cluster": 3,
+          "share_in_home": 0.8333
+        },
+        "003-M": {
+          "windows": 21,
+          "home_cluster": 4,
+          "share_in_home": 0.9048
+        },
+        "004-M": {
+          "windows": 25,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 14,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 32,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 9,
+          "home_cluster": 3,
+          "share_in_home": 0.8889
+        }
+      },
+      "min_cluster_windows": 14,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            155
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.1843,
+          "objective": 0.1843,
+          "eligible": true,
+          "sizes": [
+            76,
+            79
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.22,
+          "objective": 0.205,
+          "eligible": true,
+          "sizes": [
+            76,
+            46,
+            33
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2723,
+          "objective": 0.2423,
+          "eligible": true,
+          "sizes": [
+            50,
+            26,
+            46,
+            33
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2817,
+          "objective": 0.2367,
+          "eligible": true,
+          "sizes": [
+            50,
+            26,
+            46,
+            14,
+            19
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2819,
+          "objective": 0.2219,
+          "eligible": true,
+          "sizes": [
+            50,
+            26,
+            46,
+            14,
+            1,
+            18
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.275,
+          "objective": 0.2,
+          "eligible": true,
+          "sizes": [
+            50,
+            26,
+            46,
+            12,
+            2,
+            1,
+            18
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2676,
+          "objective": 0.1776,
+          "eligible": true,
+          "sizes": [
+            50,
+            24,
+            46,
+            12,
+            2,
+            1,
+            18,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2904,
+          "objective": 0.1854,
+          "eligible": true,
+          "sizes": [
+            50,
+            24,
+            14,
+            12,
+            2,
+            1,
+            18,
+            2,
+            32
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2936,
+          "objective": 0.1736,
+          "eligible": true,
+          "sizes": [
+            49,
+            24,
+            14,
+            1,
+            12,
+            2,
+            1,
+            18,
+            2,
+            32
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 10,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5714,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200706_L_R001S05C01",
+      "seconds": 600.0,
+      "n_windows": 162,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M"
+      ],
+      "true_k": 3,
+      "effective_without_window": [],
+      "speakers_visible": 3,
+      "window_purity_mean": 0.9141,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 7,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 7
+          },
+          "span_sec": [
+            130.0,
+            168.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 121,
+          "majority": "003-M",
+          "purity": 0.9917,
+          "speakers": {
+            "003-M": 120,
+            "001-M": 1
+          },
+          "span_sec": [
+            308.0,
+            589.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 34,
+          "majority": "001-M",
+          "purity": 0.8235,
+          "speakers": {
+            "001-M": 28,
+            "003-M": 4,
+            "004-M": 1,
+            "005-F": 1
+          },
+          "span_sec": [
+            33.0,
+            596.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 29,
+          "home_cluster": 2,
+          "share_in_home": 0.9655
+        },
+        "002-M": {
+          "windows": 7,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 124,
+          "home_cluster": 1,
+          "share_in_home": 0.9677
+        },
+        "004-M": {
+          "windows": 1,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 1,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 7,
+      "n_clusters_actual": 3,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            162
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.215,
+          "objective": 0.215,
+          "eligible": true,
+          "sizes": [
+            155,
+            7
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2841,
+          "objective": 0.2691,
+          "eligible": true,
+          "sizes": [
+            34,
+            7,
+            121
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2845,
+          "objective": 0.2545,
+          "eligible": true,
+          "sizes": [
+            33,
+            7,
+            121,
+            1
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2638,
+          "objective": 0.2188,
+          "eligible": true,
+          "sizes": [
+            31,
+            2,
+            7,
+            121,
+            1
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.1708,
+          "objective": 0.1108,
+          "eligible": true,
+          "sizes": [
+            31,
+            2,
+            7,
+            119,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.1412,
+          "objective": 0.0662,
+          "eligible": true,
+          "sizes": [
+            31,
+            2,
+            7,
+            13,
+            106,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.1408,
+          "objective": 0.0508,
+          "eligible": true,
+          "sizes": [
+            31,
+            2,
+            5,
+            2,
+            13,
+            106,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1279,
+          "objective": 0.0229,
+          "eligible": true,
+          "sizes": [
+            31,
+            2,
+            5,
+            2,
+            4,
+            106,
+            9,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1126,
+          "objective": -0.0074,
+          "eligible": true,
+          "sizes": [
+            29,
+            2,
+            5,
+            2,
+            4,
+            106,
+            9,
+            2,
+            2,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": true,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8235,
+      "speakers_with_own_cluster": 3
+    },
+    {
+      "meeting": "20200706_L_R001S06C01",
+      "seconds": 600.0,
+      "n_windows": 238,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "005-F",
+        "007-M"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9085,
+      "window_purity_lt_50pct": 3,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 3,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 3
+          },
+          "span_sec": [
+            336.0,
+            338.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 68,
+          "majority": "001-M",
+          "purity": 0.9706,
+          "speakers": {
+            "001-M": 66,
+            "004-M": 2
+          },
+          "span_sec": [
+            15.0,
+            436.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 3,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 3
+          },
+          "span_sec": [
+            84.0,
+            189.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 34,
+          "majority": "003-M",
+          "purity": 0.8824,
+          "speakers": {
+            "003-M": 30,
+            "001-M": 2,
+            "004-M": 2
+          },
+          "span_sec": [
+            222.0,
+            587.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 28,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 28
+          },
+          "span_sec": [
+            111.0,
+            140.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 102,
+          "majority": "004-M",
+          "purity": 0.8627,
+          "speakers": {
+            "004-M": 88,
+            "001-M": 5,
+            "003-M": 4,
+            "002-M": 3,
+            "007-M": 2
+          },
+          "span_sec": [
+            21.0,
+            595.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 73,
+          "home_cluster": 1,
+          "share_in_home": 0.9041
+        },
+        "002-M": {
+          "windows": 6,
+          "home_cluster": 2,
+          "share_in_home": 0.5
+        },
+        "003-M": {
+          "windows": 37,
+          "home_cluster": 3,
+          "share_in_home": 0.8108
+        },
+        "004-M": {
+          "windows": 92,
+          "home_cluster": 5,
+          "share_in_home": 0.9565
+        },
+        "005-F": {
+          "windows": 28,
+          "home_cluster": 4,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 2,
+          "home_cluster": 5,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 3,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            238
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2063,
+          "objective": 0.2063,
+          "eligible": true,
+          "sizes": [
+            235,
+            3
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2167,
+          "objective": 0.2017,
+          "eligible": true,
+          "sizes": [
+            105,
+            130,
+            3
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2707,
+          "objective": 0.2407,
+          "eligible": true,
+          "sizes": [
+            105,
+            102,
+            28,
+            3
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2951,
+          "objective": 0.2501,
+          "eligible": true,
+          "sizes": [
+            68,
+            102,
+            37,
+            28,
+            3
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.275,
+          "objective": 0.215,
+          "eligible": true,
+          "sizes": [
+            68,
+            102,
+            3,
+            28,
+            34,
+            3
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2768,
+          "objective": 0.2018,
+          "eligible": true,
+          "sizes": [
+            68,
+            101,
+            3,
+            28,
+            1,
+            34,
+            3
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2718,
+          "objective": 0.1818,
+          "eligible": true,
+          "sizes": [
+            68,
+            101,
+            3,
+            28,
+            1,
+            26,
+            8,
+            3
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2606,
+          "objective": 0.1556,
+          "eligible": true,
+          "sizes": [
+            68,
+            101,
+            3,
+            28,
+            1,
+            24,
+            8,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.262,
+          "objective": 0.142,
+          "eligible": true,
+          "sizes": [
+            68,
+            100,
+            3,
+            28,
+            1,
+            1,
+            24,
+            8,
+            3,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 5,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8627,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200706_L_R001S07C01",
+      "seconds": 600.0,
+      "n_windows": 188,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "005-F",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 7,
+      "effective_without_window": [
+        "002-M",
+        "007-M"
+      ],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.9526,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 7,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 34,
+          "majority": "004-M",
+          "purity": 0.9706,
+          "speakers": {
+            "004-M": 33,
+            "001-M": 1
+          },
+          "span_sec": [
+            65.0,
+            464.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 1,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 1
+          },
+          "span_sec": [
+            100.0,
+            100.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 6,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 6
+          },
+          "span_sec": [
+            274.0,
+            572.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 20,
+          "majority": "003-M",
+          "purity": 0.95,
+          "speakers": {
+            "003-M": 19,
+            "006-F": 1
+          },
+          "span_sec": [
+            271.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 1,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 1
+          },
+          "span_sec": [
+            540.0,
+            540.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 15,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 15
+          },
+          "span_sec": [
+            364.0,
+            592.0
+          ]
+        },
+        {
+          "cluster": 6,
+          "windows": 111,
+          "majority": "005-F",
+          "purity": 0.9459,
+          "speakers": {
+            "005-F": 105,
+            "004-M": 6
+          },
+          "span_sec": [
+            76.0,
+            545.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 0.5
+        },
+        "003-M": {
+          "windows": 26,
+          "home_cluster": 3,
+          "share_in_home": 0.7308
+        },
+        "004-M": {
+          "windows": 39,
+          "home_cluster": 0,
+          "share_in_home": 0.8462
+        },
+        "005-F": {
+          "windows": 105,
+          "home_cluster": 6,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 16,
+          "home_cluster": 5,
+          "share_in_home": 0.9375
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 7,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            188
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2821,
+          "objective": 0.2821,
+          "eligible": true,
+          "sizes": [
+            35,
+            153
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.3187,
+          "objective": 0.3037,
+          "eligible": true,
+          "sizes": [
+            35,
+            126,
+            27
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3211,
+          "objective": 0.2911,
+          "eligible": true,
+          "sizes": [
+            34,
+            126,
+            1,
+            27
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2761,
+          "objective": 0.2311,
+          "eligible": true,
+          "sizes": [
+            34,
+            111,
+            1,
+            27,
+            15
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2766,
+          "objective": 0.2166,
+          "eligible": true,
+          "sizes": [
+            34,
+            111,
+            1,
+            26,
+            15,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2602,
+          "objective": 0.1852,
+          "eligible": true,
+          "sizes": [
+            34,
+            111,
+            1,
+            20,
+            6,
+            15,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2143,
+          "objective": 0.1243,
+          "eligible": true,
+          "sizes": [
+            34,
+            105,
+            1,
+            6,
+            20,
+            6,
+            15,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1956,
+          "objective": 0.0906,
+          "eligible": true,
+          "sizes": [
+            34,
+            105,
+            1,
+            3,
+            3,
+            20,
+            6,
+            15,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1591,
+          "objective": 0.0391,
+          "eligible": true,
+          "sizes": [
+            2,
+            32,
+            105,
+            1,
+            3,
+            3,
+            20,
+            6,
+            15,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.9459,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200706_L_R001S08C01",
+      "seconds": 600.0,
+      "n_windows": 115,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "007-M"
+      ],
+      "true_k": 3,
+      "effective_without_window": [
+        "007-M"
+      ],
+      "speakers_visible": 2,
+      "window_purity_mean": 0.8794,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 2,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 2
+          },
+          "span_sec": [
+            178.0,
+            183.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 57,
+          "majority": "001-M",
+          "purity": 0.5614,
+          "speakers": {
+            "001-M": 32,
+            "004-M": 15,
+            "002-M": 8,
+            "003-M": 2
+          },
+          "span_sec": [
+            33.0,
+            597.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 56,
+          "majority": "002-M",
+          "purity": 0.9821,
+          "speakers": {
+            "002-M": 55,
+            "001-M": 1
+          },
+          "span_sec": [
+            120.0,
+            592.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 33,
+          "home_cluster": 1,
+          "share_in_home": 0.9697
+        },
+        "002-M": {
+          "windows": 63,
+          "home_cluster": 2,
+          "share_in_home": 0.873
+        },
+        "003-M": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 15,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 3,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 2,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            115
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.1344,
+          "objective": 0.1344,
+          "eligible": true,
+          "sizes": [
+            113,
+            2
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.1967,
+          "objective": 0.1817,
+          "eligible": true,
+          "sizes": [
+            57,
+            56,
+            2
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.1736,
+          "objective": 0.1436,
+          "eligible": true,
+          "sizes": [
+            57,
+            54,
+            2,
+            2
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2104,
+          "objective": 0.1654,
+          "eligible": true,
+          "sizes": [
+            40,
+            17,
+            54,
+            2,
+            2
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2336,
+          "objective": 0.1736,
+          "eligible": true,
+          "sizes": [
+            40,
+            17,
+            54,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2167,
+          "objective": 0.1417,
+          "eligible": true,
+          "sizes": [
+            40,
+            17,
+            8,
+            46,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2009,
+          "objective": 0.1109,
+          "eligible": true,
+          "sizes": [
+            38,
+            17,
+            8,
+            46,
+            2,
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1953,
+          "objective": 0.0903,
+          "eligible": true,
+          "sizes": [
+            38,
+            17,
+            4,
+            46,
+            2,
+            1,
+            4,
+            1,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1977,
+          "objective": 0.0777,
+          "eligible": true,
+          "sizes": [
+            38,
+            17,
+            4,
+            45,
+            2,
+            1,
+            4,
+            1,
+            1,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 6,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": true,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5614,
+      "speakers_with_own_cluster": 2
+    },
+    {
+      "meeting": "20200707_L_R001S01C01",
+      "seconds": 600.0,
+      "n_windows": 212,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "006-F"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.9043,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 7,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 7
+          },
+          "span_sec": [
+            497.0,
+            505.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 28,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 28
+          },
+          "span_sec": [
+            81.0,
+            475.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 29,
+          "majority": "003-M",
+          "purity": 0.6552,
+          "speakers": {
+            "003-M": 19,
+            "002-M": 7,
+            "004-M": 2,
+            "001-M": 1
+          },
+          "span_sec": [
+            203.0,
+            552.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 8,
+          "majority": "003-M",
+          "purity": 0.75,
+          "speakers": {
+            "003-M": 6,
+            "007-M": 2
+          },
+          "span_sec": [
+            195.0,
+            539.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 140,
+          "majority": "004-M",
+          "purity": 0.5143,
+          "speakers": {
+            "004-M": 72,
+            "001-M": 64,
+            "002-M": 3,
+            "003-M": 1
+          },
+          "span_sec": [
+            71.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 65,
+          "home_cluster": 4,
+          "share_in_home": 0.9846
+        },
+        "002-M": {
+          "windows": 10,
+          "home_cluster": 2,
+          "share_in_home": 0.7
+        },
+        "003-M": {
+          "windows": 26,
+          "home_cluster": 2,
+          "share_in_home": 0.7308
+        },
+        "004-M": {
+          "windows": 74,
+          "home_cluster": 4,
+          "share_in_home": 0.973
+        },
+        "005-F": {
+          "windows": 7,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 28,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 2,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 7,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            212
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2402,
+          "objective": 0.2402,
+          "eligible": true,
+          "sizes": [
+            177,
+            35
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2867,
+          "objective": 0.2717,
+          "eligible": true,
+          "sizes": [
+            148,
+            35,
+            29
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2593,
+          "objective": 0.2293,
+          "eligible": true,
+          "sizes": [
+            148,
+            28,
+            29,
+            7
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2244,
+          "objective": 0.1794,
+          "eligible": true,
+          "sizes": [
+            140,
+            28,
+            8,
+            29,
+            7
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3125,
+          "objective": 0.2525,
+          "eligible": true,
+          "sizes": [
+            63,
+            77,
+            28,
+            8,
+            29,
+            7
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.313,
+          "objective": 0.238,
+          "eligible": true,
+          "sizes": [
+            63,
+            77,
+            28,
+            7,
+            29,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2869,
+          "objective": 0.1969,
+          "eligible": true,
+          "sizes": [
+            63,
+            77,
+            28,
+            5,
+            29,
+            2,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2707,
+          "objective": 0.1657,
+          "eligible": true,
+          "sizes": [
+            63,
+            77,
+            26,
+            5,
+            29,
+            2,
+            2,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2723,
+          "objective": 0.1523,
+          "eligible": true,
+          "sizes": [
+            63,
+            77,
+            2,
+            5,
+            29,
+            2,
+            24,
+            2,
+            7,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 7,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5143,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200707_L_R001S02C01",
+      "seconds": 600.0,
+      "n_windows": 142,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "005-F",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 6,
+      "effective_without_window": [
+        "007-M"
+      ],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.8689,
+      "window_purity_lt_50pct": 5,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 12,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 12
+          },
+          "span_sec": [
+            66.0,
+            82.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 20,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 20
+          },
+          "span_sec": [
+            39.0,
+            532.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 56,
+          "majority": "001-M",
+          "purity": 0.7679,
+          "speakers": {
+            "001-M": 43,
+            "003-M": 6,
+            "002-M": 4,
+            "004-M": 2,
+            "005-F": 1
+          },
+          "span_sec": [
+            35.0,
+            596.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 4,
+          "majority": "001-M",
+          "purity": 0.5,
+          "speakers": {
+            "001-M": 2,
+            "003-M": 1,
+            "002-M": 1
+          },
+          "span_sec": [
+            367.0,
+            465.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 7,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 7
+          },
+          "span_sec": [
+            108.0,
+            566.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 43,
+          "majority": "003-M",
+          "purity": 0.9767,
+          "speakers": {
+            "003-M": 42,
+            "001-M": 1
+          },
+          "span_sec": [
+            127.0,
+            408.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 46,
+          "home_cluster": 2,
+          "share_in_home": 0.9348
+        },
+        "002-M": {
+          "windows": 12,
+          "home_cluster": 4,
+          "share_in_home": 0.5833
+        },
+        "003-M": {
+          "windows": 49,
+          "home_cluster": 5,
+          "share_in_home": 0.8571
+        },
+        "004-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 13,
+          "home_cluster": 0,
+          "share_in_home": 0.9231
+        },
+        "006-F": {
+          "windows": 20,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 4,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            142
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2017,
+          "objective": 0.2017,
+          "eligible": true,
+          "sizes": [
+            110,
+            32
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2371,
+          "objective": 0.2221,
+          "eligible": true,
+          "sizes": [
+            56,
+            32,
+            54
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2181,
+          "objective": 0.1881,
+          "eligible": true,
+          "sizes": [
+            56,
+            32,
+            50,
+            4
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2378,
+          "objective": 0.1928,
+          "eligible": true,
+          "sizes": [
+            56,
+            20,
+            12,
+            50,
+            4
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.237,
+          "objective": 0.177,
+          "eligible": true,
+          "sizes": [
+            56,
+            20,
+            12,
+            7,
+            43,
+            4
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2442,
+          "objective": 0.1692,
+          "eligible": true,
+          "sizes": [
+            9,
+            20,
+            47,
+            12,
+            7,
+            43,
+            4
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2364,
+          "objective": 0.1464,
+          "eligible": true,
+          "sizes": [
+            9,
+            20,
+            47,
+            12,
+            7,
+            43,
+            2,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.233,
+          "objective": 0.128,
+          "eligible": true,
+          "sizes": [
+            9,
+            2,
+            47,
+            12,
+            18,
+            7,
+            43,
+            2,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2238,
+          "objective": 0.1038,
+          "eligible": true,
+          "sizes": [
+            7,
+            2,
+            47,
+            12,
+            18,
+            7,
+            43,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 7,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200707_L_R001S03C01",
+      "seconds": 600.0,
+      "n_windows": 163,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9377,
+      "window_purity_lt_50pct": 2,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 2,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 2
+          },
+          "span_sec": [
+            141.0,
+            297.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 7,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 7
+          },
+          "span_sec": [
+            38.0,
+            175.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 151,
+          "majority": "004-M",
+          "purity": 0.8543,
+          "speakers": {
+            "004-M": 129,
+            "002-M": 11,
+            "001-M": 7,
+            "003-M": 2,
+            "007-M": 1
+          },
+          "span_sec": [
+            36.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 1,
+          "majority": "004-M",
+          "purity": 1.0,
+          "speakers": {
+            "004-M": 1
+          },
+          "span_sec": [
+            443.0,
+            443.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 1,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 1
+          },
+          "span_sec": [
+            334.0,
+            334.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 1,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 1
+          },
+          "span_sec": [
+            254.0,
+            254.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 7,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 12,
+          "home_cluster": 2,
+          "share_in_home": 0.9167
+        },
+        "003-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 130,
+          "home_cluster": 2,
+          "share_in_home": 0.9923
+        },
+        "005-F": {
+          "windows": 7,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 3,
+          "home_cluster": 0,
+          "share_in_home": 0.6667
+        },
+        "007-M": {
+          "windows": 2,
+          "home_cluster": 2,
+          "share_in_home": 0.5
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 2,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            163
+          ]
+        },
+        {
+          "k": 2,
+          "score": -1.0,
+          "objective": -1.0,
+          "eligible": false,
+          "sizes": [
+            162,
+            1
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2795,
+          "objective": 0.2645,
+          "eligible": true,
+          "sizes": [
+            153,
+            9,
+            1
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2821,
+          "objective": 0.2521,
+          "eligible": true,
+          "sizes": [
+            152,
+            9,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2842,
+          "objective": 0.2392,
+          "eligible": true,
+          "sizes": [
+            151,
+            9,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2761,
+          "objective": 0.2161,
+          "eligible": true,
+          "sizes": [
+            151,
+            7,
+            2,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2691,
+          "objective": 0.1941,
+          "eligible": true,
+          "sizes": [
+            126,
+            25,
+            7,
+            2,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2627,
+          "objective": 0.1727,
+          "eligible": true,
+          "sizes": [
+            126,
+            9,
+            7,
+            16,
+            2,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2421,
+          "objective": 0.1371,
+          "eligible": true,
+          "sizes": [
+            126,
+            2,
+            7,
+            16,
+            2,
+            1,
+            1,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2441,
+          "objective": 0.1241,
+          "eligible": true,
+          "sizes": [
+            125,
+            2,
+            7,
+            16,
+            2,
+            1,
+            1,
+            7,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8543,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200707_L_R001S04C01",
+      "seconds": 600.0,
+      "n_windows": 205,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "002-M",
+        "003-M",
+        "004-M",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.9229,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 33,
+          "majority": "006-F",
+          "purity": 0.9394,
+          "speakers": {
+            "006-F": 31,
+            "005-F": 1,
+            "007-M": 1
+          },
+          "span_sec": [
+            546.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 96,
+          "majority": "004-M",
+          "purity": 0.8854,
+          "speakers": {
+            "004-M": 85,
+            "001-M": 9,
+            "003-M": 2
+          },
+          "span_sec": [
+            37.0,
+            448.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 49,
+          "majority": "003-M",
+          "purity": 0.898,
+          "speakers": {
+            "003-M": 44,
+            "004-M": 3,
+            "007-M": 1,
+            "002-M": 1
+          },
+          "span_sec": [
+            66.0,
+            543.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 15,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 15
+          },
+          "span_sec": [
+            212.0,
+            258.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 12,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 12
+          },
+          "span_sec": [
+            49.0,
+            494.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 9,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 16,
+          "home_cluster": 3,
+          "share_in_home": 0.9375
+        },
+        "003-M": {
+          "windows": 46,
+          "home_cluster": 2,
+          "share_in_home": 0.9565
+        },
+        "004-M": {
+          "windows": 88,
+          "home_cluster": 1,
+          "share_in_home": 0.9659
+        },
+        "005-F": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 31,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 14,
+          "home_cluster": 4,
+          "share_in_home": 0.8571
+        }
+      },
+      "min_cluster_windows": 12,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            205
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2446,
+          "objective": 0.2446,
+          "eligible": true,
+          "sizes": [
+            172,
+            33
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2915,
+          "objective": 0.2765,
+          "eligible": true,
+          "sizes": [
+            96,
+            76,
+            33
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2955,
+          "objective": 0.2655,
+          "eligible": true,
+          "sizes": [
+            96,
+            27,
+            49,
+            33
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2942,
+          "objective": 0.2492,
+          "eligible": true,
+          "sizes": [
+            96,
+            12,
+            49,
+            15,
+            33
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2929,
+          "objective": 0.2329,
+          "eligible": true,
+          "sizes": [
+            96,
+            11,
+            1,
+            49,
+            15,
+            33
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2823,
+          "objective": 0.2073,
+          "eligible": true,
+          "sizes": [
+            9,
+            87,
+            11,
+            1,
+            49,
+            15,
+            33
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2716,
+          "objective": 0.1816,
+          "eligible": true,
+          "sizes": [
+            9,
+            87,
+            11,
+            1,
+            47,
+            15,
+            2,
+            33
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2688,
+          "objective": 0.1638,
+          "eligible": true,
+          "sizes": [
+            9,
+            87,
+            11,
+            1,
+            47,
+            13,
+            2,
+            2,
+            33
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2639,
+          "objective": 0.1439,
+          "eligible": true,
+          "sizes": [
+            9,
+            87,
+            11,
+            1,
+            44,
+            13,
+            2,
+            2,
+            3,
+            33
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8854,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200707_L_R001S05C01",
+      "seconds": 600.0,
+      "n_windows": 180,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "003-M",
+        "004-M",
+        "007-M"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9549,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 7,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 7
+          },
+          "span_sec": [
+            256.0,
+            267.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 2,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 2
+          },
+          "span_sec": [
+            42.0,
+            43.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 160,
+          "majority": "004-M",
+          "purity": 0.9625,
+          "speakers": {
+            "004-M": 154,
+            "001-M": 3,
+            "007-M": 3
+          },
+          "span_sec": [
+            48.0,
+            549.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 11,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 11
+          },
+          "span_sec": [
+            166.0,
+            396.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 5,
+          "home_cluster": 2,
+          "share_in_home": 0.6
+        },
+        "003-M": {
+          "windows": 7,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 154,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 14,
+          "home_cluster": 3,
+          "share_in_home": 0.7857
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            180
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.3727,
+          "objective": 0.3727,
+          "eligible": true,
+          "sizes": [
+            173,
+            7
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.3331,
+          "objective": 0.3181,
+          "eligible": true,
+          "sizes": [
+            2,
+            171,
+            7
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3392,
+          "objective": 0.3092,
+          "eligible": true,
+          "sizes": [
+            2,
+            160,
+            11,
+            7
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3222,
+          "objective": 0.2772,
+          "eligible": true,
+          "sizes": [
+            2,
+            160,
+            7,
+            4,
+            7
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3243,
+          "objective": 0.2643,
+          "eligible": true,
+          "sizes": [
+            2,
+            159,
+            1,
+            7,
+            4,
+            7
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3273,
+          "objective": 0.2523,
+          "eligible": true,
+          "sizes": [
+            2,
+            159,
+            1,
+            1,
+            6,
+            4,
+            7
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3285,
+          "objective": 0.2385,
+          "eligible": true,
+          "sizes": [
+            2,
+            158,
+            1,
+            1,
+            6,
+            4,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1984,
+          "objective": 0.0934,
+          "eligible": true,
+          "sizes": [
+            2,
+            153,
+            5,
+            1,
+            1,
+            6,
+            4,
+            7,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1992,
+          "objective": 0.0792,
+          "eligible": true,
+          "sizes": [
+            2,
+            153,
+            5,
+            1,
+            1,
+            5,
+            1,
+            4,
+            7,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 2,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.9625,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200707_L_R001S06C01",
+      "seconds": 600.0,
+      "n_windows": 172,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "004-M",
+        "005-F",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.9682,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 2,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 2
+          },
+          "span_sec": [
+            571.0,
+            590.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 41,
+          "majority": "004-M",
+          "purity": 0.9268,
+          "speakers": {
+            "004-M": 38,
+            "001-M": 3
+          },
+          "span_sec": [
+            303.0,
+            363.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 1,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 1
+          },
+          "span_sec": [
+            169.0,
+            169.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 39,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 39
+          },
+          "span_sec": [
+            272.0,
+            553.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 89,
+          "majority": "005-F",
+          "purity": 0.8876,
+          "speakers": {
+            "005-F": 79,
+            "007-M": 10
+          },
+          "span_sec": [
+            103.0,
+            533.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 3,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 1,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 38,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 79,
+          "home_cluster": 4,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 39,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 10,
+          "home_cluster": 4,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            172
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.1951,
+          "objective": 0.1951,
+          "eligible": true,
+          "sizes": [
+            170,
+            2
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2544,
+          "objective": 0.2394,
+          "eligible": true,
+          "sizes": [
+            128,
+            42,
+            2
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3238,
+          "objective": 0.2938,
+          "eligible": true,
+          "sizes": [
+            89,
+            42,
+            39,
+            2
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3269,
+          "objective": 0.2819,
+          "eligible": true,
+          "sizes": [
+            89,
+            1,
+            39,
+            41,
+            2
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3535,
+          "objective": 0.2935,
+          "eligible": true,
+          "sizes": [
+            79,
+            1,
+            10,
+            39,
+            41,
+            2
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3526,
+          "objective": 0.2776,
+          "eligible": true,
+          "sizes": [
+            79,
+            1,
+            10,
+            39,
+            38,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3203,
+          "objective": 0.2303,
+          "eligible": true,
+          "sizes": [
+            79,
+            1,
+            10,
+            25,
+            14,
+            38,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3219,
+          "objective": 0.2169,
+          "eligible": true,
+          "sizes": [
+            79,
+            1,
+            10,
+            25,
+            14,
+            38,
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3155,
+          "objective": 0.1955,
+          "eligible": true,
+          "sizes": [
+            79,
+            1,
+            7,
+            25,
+            14,
+            38,
+            3,
+            3,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 6,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8876,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200707_L_R001S07C01",
+      "seconds": 600.0,
+      "n_windows": 135,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "004-M",
+        "005-F",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9665,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 3,
+          "majority": "002-M",
+          "purity": 1.0,
+          "speakers": {
+            "002-M": 3
+          },
+          "span_sec": [
+            399.0,
+            403.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 4,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 4
+          },
+          "span_sec": [
+            257.0,
+            437.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 44,
+          "majority": "004-M",
+          "purity": 0.8409,
+          "speakers": {
+            "004-M": 37,
+            "001-M": 5,
+            "007-M": 2
+          },
+          "span_sec": [
+            41.0,
+            561.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 2,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 2
+          },
+          "span_sec": [
+            591.0,
+            592.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 40,
+          "majority": "005-F",
+          "purity": 0.975,
+          "speakers": {
+            "005-F": 39,
+            "001-M": 1
+          },
+          "span_sec": [
+            82.0,
+            427.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 42,
+          "majority": "006-F",
+          "purity": 0.7857,
+          "speakers": {
+            "006-F": 33,
+            "005-F": 9
+          },
+          "span_sec": [
+            184.0,
+            577.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 6,
+          "home_cluster": 2,
+          "share_in_home": 0.8333
+        },
+        "002-M": {
+          "windows": 3,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 2,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 37,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 48,
+          "home_cluster": 4,
+          "share_in_home": 0.8125
+        },
+        "006-F": {
+          "windows": 33,
+          "home_cluster": 5,
+          "share_in_home": 1.0
+        },
+        "007-M": {
+          "windows": 6,
+          "home_cluster": 1,
+          "share_in_home": 0.6667
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            135
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.297,
+          "objective": 0.297,
+          "eligible": true,
+          "sizes": [
+            51,
+            84
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2749,
+          "objective": 0.2599,
+          "eligible": true,
+          "sizes": [
+            51,
+            82,
+            2
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2537,
+          "objective": 0.2237,
+          "eligible": true,
+          "sizes": [
+            48,
+            82,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3596,
+          "objective": 0.3146,
+          "eligible": true,
+          "sizes": [
+            48,
+            40,
+            42,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3613,
+          "objective": 0.3013,
+          "eligible": true,
+          "sizes": [
+            44,
+            40,
+            42,
+            4,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3565,
+          "objective": 0.2815,
+          "eligible": true,
+          "sizes": [
+            5,
+            39,
+            40,
+            42,
+            4,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3604,
+          "objective": 0.2704,
+          "eligible": true,
+          "sizes": [
+            5,
+            39,
+            40,
+            41,
+            1,
+            4,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3621,
+          "objective": 0.2571,
+          "eligible": true,
+          "sizes": [
+            5,
+            39,
+            40,
+            41,
+            1,
+            3,
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3078,
+          "objective": 0.1878,
+          "eligible": true,
+          "sizes": [
+            5,
+            39,
+            40,
+            37,
+            1,
+            3,
+            1,
+            4,
+            3,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 5,
+        "argmax_score": 9,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.7857,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200707_L_R001S08C01",
+      "seconds": 600.0,
+      "n_windows": 59,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "003-M",
+        "005-F",
+        "006-F",
+        "007-M"
+      ],
+      "true_k": 5,
+      "effective_without_window": [
+        "001-M"
+      ],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9074,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 12,
+          "majority": "003-M",
+          "purity": 0.5,
+          "speakers": {
+            "003-M": 6,
+            "004-M": 3,
+            "007-M": 2,
+            "006-F": 1
+          },
+          "span_sec": [
+            84.0,
+            528.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 32,
+          "majority": "003-M",
+          "purity": 0.6875,
+          "speakers": {
+            "003-M": 22,
+            "007-M": 6,
+            "002-M": 2,
+            "005-F": 2
+          },
+          "span_sec": [
+            135.0,
+            592.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 8,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 8
+          },
+          "span_sec": [
+            576.0,
+            595.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 6,
+          "majority": "006-F",
+          "purity": 0.6667,
+          "speakers": {
+            "006-F": 4,
+            "005-F": 2
+          },
+          "span_sec": [
+            227.0,
+            531.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 1,
+          "majority": "007-M",
+          "purity": 1.0,
+          "speakers": {
+            "007-M": 1
+          },
+          "span_sec": [
+            535.0,
+            535.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 28,
+          "home_cluster": 1,
+          "share_in_home": 0.7857
+        },
+        "004-M": {
+          "windows": 3,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "005-F": {
+          "windows": 12,
+          "home_cluster": 2,
+          "share_in_home": 0.6667
+        },
+        "006-F": {
+          "windows": 5,
+          "home_cluster": 3,
+          "share_in_home": 0.8
+        },
+        "007-M": {
+          "windows": 9,
+          "home_cluster": 1,
+          "share_in_home": 0.6667
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            59
+          ]
+        },
+        {
+          "k": 2,
+          "score": -1.0,
+          "objective": -1.0,
+          "eligible": false,
+          "sizes": [
+            58,
+            1
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.1991,
+          "objective": 0.1841,
+          "eligible": true,
+          "sizes": [
+            12,
+            46,
+            1
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2432,
+          "objective": 0.2132,
+          "eligible": true,
+          "sizes": [
+            12,
+            32,
+            14,
+            1
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2652,
+          "objective": 0.2202,
+          "eligible": true,
+          "sizes": [
+            12,
+            32,
+            6,
+            1,
+            8
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2724,
+          "objective": 0.2124,
+          "eligible": true,
+          "sizes": [
+            11,
+            32,
+            6,
+            1,
+            1,
+            8
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.282,
+          "objective": 0.207,
+          "eligible": true,
+          "sizes": [
+            10,
+            32,
+            6,
+            1,
+            1,
+            1,
+            8
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2959,
+          "objective": 0.2059,
+          "eligible": true,
+          "sizes": [
+            10,
+            6,
+            6,
+            26,
+            1,
+            1,
+            1,
+            8
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.284,
+          "objective": 0.179,
+          "eligible": true,
+          "sizes": [
+            10,
+            6,
+            3,
+            3,
+            26,
+            1,
+            1,
+            1,
+            8
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.229,
+          "objective": 0.109,
+          "eligible": true,
+          "sizes": [
+            10,
+            6,
+            3,
+            3,
+            23,
+            1,
+            3,
+            1,
+            1,
+            8
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 5,
+        "argmax_score": 8,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": true,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200708_L_R002S01C01",
+      "seconds": 600.0,
+      "n_windows": 463,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.951,
+      "window_purity_lt_50pct": 4,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 92,
+          "majority": "007-F",
+          "purity": 1.0,
+          "speakers": {
+            "007-F": 92
+          },
+          "span_sec": [
+            434.0,
+            525.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 65,
+          "majority": "006-F",
+          "purity": 0.9846,
+          "speakers": {
+            "006-F": 64,
+            "004-M": 1
+          },
+          "span_sec": [
+            71.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 33,
+          "majority": "001-M",
+          "purity": 0.9697,
+          "speakers": {
+            "001-M": 32,
+            "002-M": 1
+          },
+          "span_sec": [
+            61.0,
+            273.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 244,
+          "majority": "002-M",
+          "purity": 0.8361,
+          "speakers": {
+            "002-M": 204,
+            "003-M": 34,
+            "001-M": 3,
+            "004-M": 2,
+            "006-F": 1
+          },
+          "span_sec": [
+            64.0,
+            590.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 28,
+          "majority": "004-M",
+          "purity": 1.0,
+          "speakers": {
+            "004-M": 28
+          },
+          "span_sec": [
+            381.0,
+            421.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 1,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 1
+          },
+          "span_sec": [
+            308.0,
+            308.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 35,
+          "home_cluster": 2,
+          "share_in_home": 0.9143
+        },
+        "002-M": {
+          "windows": 205,
+          "home_cluster": 3,
+          "share_in_home": 0.9951
+        },
+        "003-M": {
+          "windows": 34,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "004-M": {
+          "windows": 31,
+          "home_cluster": 4,
+          "share_in_home": 0.9032
+        },
+        "005-F": {
+          "windows": 1,
+          "home_cluster": 5,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 65,
+          "home_cluster": 1,
+          "share_in_home": 0.9846
+        },
+        "007-F": {
+          "windows": 92,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            463
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2117,
+          "objective": 0.2117,
+          "eligible": true,
+          "sizes": [
+            434,
+            29
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2126,
+          "objective": 0.1976,
+          "eligible": true,
+          "sizes": [
+            434,
+            1,
+            28
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.283,
+          "objective": 0.253,
+          "eligible": true,
+          "sizes": [
+            342,
+            1,
+            28,
+            92
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.32,
+          "objective": 0.275,
+          "eligible": true,
+          "sizes": [
+            277,
+            65,
+            1,
+            28,
+            92
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3524,
+          "objective": 0.2924,
+          "eligible": true,
+          "sizes": [
+            33,
+            244,
+            65,
+            1,
+            28,
+            92
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3356,
+          "objective": 0.2606,
+          "eligible": true,
+          "sizes": [
+            33,
+            244,
+            55,
+            1,
+            28,
+            10,
+            92
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3473,
+          "objective": 0.2573,
+          "eligible": true,
+          "sizes": [
+            33,
+            206,
+            38,
+            55,
+            1,
+            28,
+            10,
+            92
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3486,
+          "objective": 0.2436,
+          "eligible": true,
+          "sizes": [
+            33,
+            205,
+            38,
+            55,
+            1,
+            28,
+            10,
+            92,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3494,
+          "objective": 0.2294,
+          "eligible": true,
+          "sizes": [
+            33,
+            204,
+            38,
+            55,
+            1,
+            28,
+            10,
+            92,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 6,
+        "argmax_score": 6,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": true,
+        "argmax_score": true,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8361,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200708_L_R002S02C01",
+      "seconds": 600.0,
+      "n_windows": 399,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "005-F",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 7,
+      "effective_without_window": [
+        "005-F"
+      ],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9557,
+      "window_purity_lt_50pct": 2,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 7,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 56,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 56
+          },
+          "span_sec": [
+            316.0,
+            375.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 109,
+          "majority": "007-F",
+          "purity": 0.5688,
+          "speakers": {
+            "007-F": 62,
+            "006-F": 47
+          },
+          "span_sec": [
+            379.0,
+            577.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 2,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 2
+          },
+          "span_sec": [
+            340.0,
+            341.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 31,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 31
+          },
+          "span_sec": [
+            31.0,
+            589.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 42,
+          "majority": "004-M",
+          "purity": 1.0,
+          "speakers": {
+            "004-M": 42
+          },
+          "span_sec": [
+            199.0,
+            269.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 5,
+          "majority": "003-M",
+          "purity": 0.6,
+          "speakers": {
+            "003-M": 3,
+            "006-F": 2
+          },
+          "span_sec": [
+            169.0,
+            529.0
+          ]
+        },
+        {
+          "cluster": 6,
+          "windows": 154,
+          "majority": "003-M",
+          "purity": 0.6948,
+          "speakers": {
+            "003-M": 107,
+            "002-M": 44,
+            "001-M": 2,
+            "004-M": 1
+          },
+          "span_sec": [
+            33.0,
+            549.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 33,
+          "home_cluster": 3,
+          "share_in_home": 0.9394
+        },
+        "002-M": {
+          "windows": 44,
+          "home_cluster": 6,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 110,
+          "home_cluster": 6,
+          "share_in_home": 0.9727
+        },
+        "004-M": {
+          "windows": 43,
+          "home_cluster": 4,
+          "share_in_home": 0.9767
+        },
+        "006-F": {
+          "windows": 107,
+          "home_cluster": 0,
+          "share_in_home": 0.5234
+        },
+        "007-F": {
+          "windows": 62,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 7,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            399
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.189,
+          "objective": 0.189,
+          "eligible": true,
+          "sizes": [
+            343,
+            56
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2993,
+          "objective": 0.2843,
+          "eligible": true,
+          "sizes": [
+            234,
+            56,
+            109
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2845,
+          "objective": 0.2545,
+          "eligible": true,
+          "sizes": [
+            33,
+            201,
+            56,
+            109
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3097,
+          "objective": 0.2647,
+          "eligible": true,
+          "sizes": [
+            33,
+            159,
+            42,
+            56,
+            109
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2972,
+          "objective": 0.2372,
+          "eligible": true,
+          "sizes": [
+            31,
+            159,
+            42,
+            56,
+            2,
+            109
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2727,
+          "objective": 0.1977,
+          "eligible": true,
+          "sizes": [
+            31,
+            154,
+            5,
+            42,
+            56,
+            2,
+            109
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2946,
+          "objective": 0.2046,
+          "eligible": true,
+          "sizes": [
+            31,
+            41,
+            113,
+            5,
+            42,
+            56,
+            2,
+            109
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2817,
+          "objective": 0.1767,
+          "eligible": true,
+          "sizes": [
+            31,
+            41,
+            111,
+            2,
+            5,
+            42,
+            56,
+            2,
+            109
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2721,
+          "objective": 0.1521,
+          "eligible": true,
+          "sizes": [
+            31,
+            41,
+            111,
+            2,
+            3,
+            42,
+            56,
+            2,
+            109,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5688,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200708_L_R002S03C01",
+      "seconds": 600.0,
+      "n_windows": 450,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "004-M",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 5,
+      "effective_without_window": [
+        "005-F"
+      ],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.931,
+      "window_purity_lt_50pct": 3,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 11,
+          "majority": "006-F",
+          "purity": 0.9091,
+          "speakers": {
+            "006-F": 10,
+            "007-F": 1
+          },
+          "span_sec": [
+            52.0,
+            159.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 61,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 61
+          },
+          "span_sec": [
+            50.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 246,
+          "majority": "004-M",
+          "purity": 0.9837,
+          "speakers": {
+            "004-M": 242,
+            "002-M": 3,
+            "003-M": 1
+          },
+          "span_sec": [
+            67.0,
+            519.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 33,
+          "majority": "001-M",
+          "purity": 0.6364,
+          "speakers": {
+            "001-M": 21,
+            "004-M": 12
+          },
+          "span_sec": [
+            38.0,
+            522.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 99,
+          "majority": "002-M",
+          "purity": 0.798,
+          "speakers": {
+            "002-M": 79,
+            "003-M": 14,
+            "004-M": 6
+          },
+          "span_sec": [
+            40.0,
+            515.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 21,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 82,
+          "home_cluster": 4,
+          "share_in_home": 0.9634
+        },
+        "003-M": {
+          "windows": 15,
+          "home_cluster": 4,
+          "share_in_home": 0.9333
+        },
+        "004-M": {
+          "windows": 260,
+          "home_cluster": 2,
+          "share_in_home": 0.9308
+        },
+        "006-F": {
+          "windows": 71,
+          "home_cluster": 1,
+          "share_in_home": 0.8592
+        },
+        "007-F": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 11,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            450
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2418,
+          "objective": 0.2418,
+          "eligible": true,
+          "sizes": [
+            439,
+            11
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2753,
+          "objective": 0.2603,
+          "eligible": true,
+          "sizes": [
+            378,
+            61,
+            11
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3261,
+          "objective": 0.2961,
+          "eligible": true,
+          "sizes": [
+            132,
+            61,
+            11,
+            246
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3149,
+          "objective": 0.2699,
+          "eligible": true,
+          "sizes": [
+            33,
+            99,
+            61,
+            11,
+            246
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2993,
+          "objective": 0.2393,
+          "eligible": true,
+          "sizes": [
+            33,
+            84,
+            15,
+            61,
+            11,
+            246
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2734,
+          "objective": 0.1984,
+          "eligible": true,
+          "sizes": [
+            33,
+            84,
+            15,
+            58,
+            11,
+            246,
+            3
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2605,
+          "objective": 0.1705,
+          "eligible": true,
+          "sizes": [
+            17,
+            84,
+            15,
+            16,
+            58,
+            11,
+            246,
+            3
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2236,
+          "objective": 0.1186,
+          "eligible": true,
+          "sizes": [
+            17,
+            84,
+            15,
+            14,
+            58,
+            11,
+            246,
+            2,
+            3
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2058,
+          "objective": 0.0858,
+          "eligible": true,
+          "sizes": [
+            17,
+            84,
+            15,
+            14,
+            58,
+            11,
+            242,
+            4,
+            2,
+            3
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6364,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200708_L_R002S04C01",
+      "seconds": 600.0,
+      "n_windows": 348,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-M",
+        "005-F",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 7,
+      "effective_without_window": [],
+      "speakers_visible": 7,
+      "window_purity_mean": 0.9489,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 7,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 128,
+          "majority": "004-M",
+          "purity": 0.9844,
+          "speakers": {
+            "004-M": 126,
+            "005-F": 1,
+            "003-M": 1
+          },
+          "span_sec": [
+            392.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 24,
+          "majority": "002-M",
+          "purity": 0.9583,
+          "speakers": {
+            "002-M": 23,
+            "003-M": 1
+          },
+          "span_sec": [
+            263.0,
+            291.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 38,
+          "majority": "003-M",
+          "purity": 0.8158,
+          "speakers": {
+            "003-M": 31,
+            "001-M": 4,
+            "002-M": 1,
+            "005-F": 1,
+            "004-M": 1
+          },
+          "span_sec": [
+            31.0,
+            527.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 35,
+          "majority": "001-M",
+          "purity": 0.9143,
+          "speakers": {
+            "001-M": 32,
+            "003-M": 2,
+            "005-F": 1
+          },
+          "span_sec": [
+            29.0,
+            353.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 72,
+          "majority": "007-F",
+          "purity": 1.0,
+          "speakers": {
+            "007-F": 72
+          },
+          "span_sec": [
+            62.0,
+            136.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 7,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 7
+          },
+          "span_sec": [
+            253.0,
+            371.0
+          ]
+        },
+        {
+          "cluster": 6,
+          "windows": 44,
+          "majority": "006-F",
+          "purity": 0.9773,
+          "speakers": {
+            "006-F": 43,
+            "004-M": 1
+          },
+          "span_sec": [
+            41.0,
+            459.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 36,
+          "home_cluster": 3,
+          "share_in_home": 0.8889
+        },
+        "002-M": {
+          "windows": 24,
+          "home_cluster": 1,
+          "share_in_home": 0.9583
+        },
+        "003-M": {
+          "windows": 35,
+          "home_cluster": 2,
+          "share_in_home": 0.8857
+        },
+        "004-M": {
+          "windows": 128,
+          "home_cluster": 0,
+          "share_in_home": 0.9844
+        },
+        "005-F": {
+          "windows": 10,
+          "home_cluster": 5,
+          "share_in_home": 0.7
+        },
+        "006-F": {
+          "windows": 43,
+          "home_cluster": 6,
+          "share_in_home": 1.0
+        },
+        "007-F": {
+          "windows": 72,
+          "home_cluster": 4,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 7,
+      "n_clusters_actual": 7,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 7,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            348
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2452,
+          "objective": 0.2452,
+          "eligible": true,
+          "sizes": [
+            225,
+            123
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2777,
+          "objective": 0.2627,
+          "eligible": true,
+          "sizes": [
+            225,
+            51,
+            72
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3326,
+          "objective": 0.3026,
+          "eligible": true,
+          "sizes": [
+            97,
+            51,
+            72,
+            128
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3331,
+          "objective": 0.2881,
+          "eligible": true,
+          "sizes": [
+            97,
+            44,
+            72,
+            7,
+            128
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3383,
+          "objective": 0.2783,
+          "eligible": true,
+          "sizes": [
+            73,
+            44,
+            72,
+            7,
+            24,
+            128
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3473,
+          "objective": 0.2723,
+          "eligible": true,
+          "sizes": [
+            35,
+            38,
+            44,
+            72,
+            7,
+            24,
+            128
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3482,
+          "objective": 0.2582,
+          "eligible": true,
+          "sizes": [
+            35,
+            38,
+            44,
+            72,
+            7,
+            24,
+            127,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3465,
+          "objective": 0.2415,
+          "eligible": true,
+          "sizes": [
+            33,
+            38,
+            44,
+            72,
+            7,
+            24,
+            2,
+            127,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3474,
+          "objective": 0.2274,
+          "eligible": true,
+          "sizes": [
+            33,
+            38,
+            44,
+            72,
+            7,
+            24,
+            2,
+            126,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 8,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.8158,
+      "speakers_with_own_cluster": 7
+    },
+    {
+      "meeting": "20200708_L_R002S05C01",
+      "seconds": 600.0,
+      "n_windows": 366,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-F",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.9498,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 5,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 104,
+          "majority": "002-M",
+          "purity": 0.8077,
+          "speakers": {
+            "002-M": 84,
+            "003-M": 19,
+            "001-M": 1
+          },
+          "span_sec": [
+            38.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 81,
+          "majority": "001-M",
+          "purity": 0.9506,
+          "speakers": {
+            "001-M": 77,
+            "007-F": 2,
+            "002-M": 1,
+            "004-F": 1
+          },
+          "span_sec": [
+            36.0,
+            568.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 78,
+          "majority": "007-F",
+          "purity": 1.0,
+          "speakers": {
+            "007-F": 78
+          },
+          "span_sec": [
+            308.0,
+            391.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 52,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 52
+          },
+          "span_sec": [
+            213.0,
+            486.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 48,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 48
+          },
+          "span_sec": [
+            74.0,
+            122.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 3,
+          "majority": "006-F",
+          "purity": 0.6667,
+          "speakers": {
+            "006-F": 2,
+            "001-M": 1
+          },
+          "span_sec": [
+            123.0,
+            362.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 79,
+          "home_cluster": 1,
+          "share_in_home": 0.9747
+        },
+        "002-M": {
+          "windows": 85,
+          "home_cluster": 0,
+          "share_in_home": 0.9882
+        },
+        "003-M": {
+          "windows": 19,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 53,
+          "home_cluster": 3,
+          "share_in_home": 0.9811
+        },
+        "006-F": {
+          "windows": 50,
+          "home_cluster": 4,
+          "share_in_home": 0.96
+        },
+        "007-F": {
+          "windows": 80,
+          "home_cluster": 2,
+          "share_in_home": 0.975
+        }
+      },
+      "min_cluster_windows": 3,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 5,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            366
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2355,
+          "objective": 0.2355,
+          "eligible": true,
+          "sizes": [
+            185,
+            181
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2944,
+          "objective": 0.2794,
+          "eligible": true,
+          "sizes": [
+            185,
+            103,
+            78
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3189,
+          "objective": 0.2889,
+          "eligible": true,
+          "sizes": [
+            185,
+            51,
+            52,
+            78
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3821,
+          "objective": 0.3371,
+          "eligible": true,
+          "sizes": [
+            81,
+            104,
+            51,
+            52,
+            78
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3623,
+          "objective": 0.3023,
+          "eligible": true,
+          "sizes": [
+            81,
+            104,
+            48,
+            3,
+            52,
+            78
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3376,
+          "objective": 0.2626,
+          "eligible": true,
+          "sizes": [
+            78,
+            104,
+            48,
+            3,
+            52,
+            78,
+            3
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3505,
+          "objective": 0.2605,
+          "eligible": true,
+          "sizes": [
+            78,
+            85,
+            48,
+            3,
+            52,
+            78,
+            3,
+            19
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3477,
+          "objective": 0.2427,
+          "eligible": true,
+          "sizes": [
+            78,
+            85,
+            48,
+            2,
+            52,
+            78,
+            3,
+            1,
+            19
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3311,
+          "objective": 0.2111,
+          "eligible": true,
+          "sizes": [
+            78,
+            83,
+            48,
+            2,
+            2,
+            52,
+            78,
+            3,
+            1,
+            19
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 5,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6667,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200708_L_R002S07C01",
+      "seconds": 600.0,
+      "n_windows": 473,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "004-F",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9636,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 41,
+          "majority": "001-M",
+          "purity": 0.7561,
+          "speakers": {
+            "001-M": 31,
+            "003-M": 8,
+            "002-M": 1,
+            "004-F": 1
+          },
+          "span_sec": [
+            16.0,
+            189.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 1,
+          "majority": "007-F",
+          "purity": 1.0,
+          "speakers": {
+            "007-F": 1
+          },
+          "span_sec": [
+            28.0,
+            28.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 162,
+          "majority": "004-F",
+          "purity": 0.9877,
+          "speakers": {
+            "004-F": 160,
+            "005-F": 1,
+            "006-F": 1
+          },
+          "span_sec": [
+            64.0,
+            593.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 269,
+          "majority": "006-F",
+          "purity": 0.5279,
+          "speakers": {
+            "006-F": 142,
+            "005-F": 127
+          },
+          "span_sec": [
+            26.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 31,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 1,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 8,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 161,
+          "home_cluster": 2,
+          "share_in_home": 0.9938
+        },
+        "005-F": {
+          "windows": 128,
+          "home_cluster": 3,
+          "share_in_home": 0.9922
+        },
+        "006-F": {
+          "windows": 143,
+          "home_cluster": 3,
+          "share_in_home": 0.993
+        },
+        "007-F": {
+          "windows": 1,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            473
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2346,
+          "objective": 0.2346,
+          "eligible": true,
+          "sizes": [
+            42,
+            431
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.3078,
+          "objective": 0.2928,
+          "eligible": true,
+          "sizes": [
+            42,
+            269,
+            162
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3089,
+          "objective": 0.2789,
+          "eligible": true,
+          "sizes": [
+            41,
+            269,
+            1,
+            162
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3877,
+          "objective": 0.3427,
+          "eligible": true,
+          "sizes": [
+            41,
+            143,
+            1,
+            162,
+            126
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3918,
+          "objective": 0.3318,
+          "eligible": true,
+          "sizes": [
+            12,
+            143,
+            1,
+            29,
+            162,
+            126
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3592,
+          "objective": 0.2842,
+          "eligible": true,
+          "sizes": [
+            12,
+            143,
+            1,
+            29,
+            160,
+            126,
+            2
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3946,
+          "objective": 0.3046,
+          "eligible": true,
+          "sizes": [
+            12,
+            143,
+            1,
+            29,
+            160,
+            126,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3895,
+          "objective": 0.2845,
+          "eligible": true,
+          "sizes": [
+            5,
+            143,
+            1,
+            29,
+            160,
+            7,
+            126,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3593,
+          "objective": 0.2393,
+          "eligible": true,
+          "sizes": [
+            5,
+            143,
+            1,
+            29,
+            160,
+            7,
+            123,
+            1,
+            1,
+            3
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 5,
+        "argmax_score": 8,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5279,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200708_L_R002S08C01",
+      "seconds": 600.0,
+      "n_windows": 268,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "002-M",
+        "003-M",
+        "004-F"
+      ],
+      "true_k": 3,
+      "effective_without_window": [],
+      "speakers_visible": 3,
+      "window_purity_mean": 0.8803,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 19,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 19
+          },
+          "span_sec": [
+            456.0,
+            578.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 2,
+          "majority": "006-F",
+          "purity": 1.0,
+          "speakers": {
+            "006-F": 2
+          },
+          "span_sec": [
+            56.0,
+            57.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 247,
+          "majority": "003-M",
+          "purity": 0.5749,
+          "speakers": {
+            "003-M": 142,
+            "002-M": 100,
+            "001-M": 5
+          },
+          "span_sec": [
+            46.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 5,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 100,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 142,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 19,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 3,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 2,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            268
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.3738,
+          "objective": 0.3738,
+          "eligible": true,
+          "sizes": [
+            249,
+            19
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2948,
+          "objective": 0.2798,
+          "eligible": true,
+          "sizes": [
+            247,
+            2,
+            19
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.1789,
+          "objective": 0.1489,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            241,
+            19
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.249,
+          "objective": 0.204,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            102,
+            139,
+            19
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2507,
+          "objective": 0.1907,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            102,
+            138,
+            1,
+            19
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2424,
+          "objective": 0.1674,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            102,
+            138,
+            1,
+            17,
+            2
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.1954,
+          "objective": 0.1054,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            83,
+            138,
+            19,
+            1,
+            17,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1965,
+          "objective": 0.0915,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            83,
+            137,
+            19,
+            1,
+            1,
+            17,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1657,
+          "objective": 0.0457,
+          "eligible": true,
+          "sizes": [
+            6,
+            2,
+            83,
+            134,
+            19,
+            1,
+            3,
+            1,
+            17,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 2,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5749,
+      "speakers_with_own_cluster": 3
+    },
+    {
+      "meeting": "20200709_L_R002S01C01",
+      "seconds": 600.0,
+      "n_windows": 494,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "006-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9531,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 3,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 141,
+          "majority": "006-F",
+          "purity": 0.9645,
+          "speakers": {
+            "006-F": 136,
+            "007-F": 3,
+            "003-M": 2
+          },
+          "span_sec": [
+            46.0,
+            581.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 100,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 100
+          },
+          "span_sec": [
+            43.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 2,
+          "majority": "002-M",
+          "purity": 0.5,
+          "speakers": {
+            "002-M": 1,
+            "003-M": 1
+          },
+          "span_sec": [
+            41.0,
+            42.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 251,
+          "majority": "002-M",
+          "purity": 0.8406,
+          "speakers": {
+            "002-M": 211,
+            "001-M": 38,
+            "006-F": 2
+          },
+          "span_sec": [
+            39.0,
+            526.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 38,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 212,
+          "home_cluster": 3,
+          "share_in_home": 0.9953
+        },
+        "003-M": {
+          "windows": 103,
+          "home_cluster": 1,
+          "share_in_home": 0.9709
+        },
+        "006-F": {
+          "windows": 138,
+          "home_cluster": 0,
+          "share_in_home": 0.9855
+        },
+        "007-F": {
+          "windows": 3,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 2,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            494
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.3149,
+          "objective": 0.3149,
+          "eligible": true,
+          "sizes": [
+            353,
+            141
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.4,
+          "objective": 0.385,
+          "eligible": true,
+          "sizes": [
+            253,
+            100,
+            141
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3647,
+          "objective": 0.3347,
+          "eligible": true,
+          "sizes": [
+            251,
+            2,
+            100,
+            141
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.345,
+          "objective": 0.3,
+          "eligible": true,
+          "sizes": [
+            251,
+            2,
+            100,
+            138,
+            3
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3774,
+          "objective": 0.3174,
+          "eligible": true,
+          "sizes": [
+            38,
+            2,
+            100,
+            138,
+            3,
+            213
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3353,
+          "objective": 0.2603,
+          "eligible": true,
+          "sizes": [
+            38,
+            2,
+            100,
+            138,
+            3,
+            211,
+            2
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3357,
+          "objective": 0.2457,
+          "eligible": true,
+          "sizes": [
+            37,
+            2,
+            100,
+            138,
+            3,
+            1,
+            211,
+            2
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3368,
+          "objective": 0.2318,
+          "eligible": true,
+          "sizes": [
+            37,
+            2,
+            100,
+            138,
+            3,
+            1,
+            210,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3372,
+          "objective": 0.2172,
+          "eligible": true,
+          "sizes": [
+            37,
+            2,
+            99,
+            138,
+            3,
+            1,
+            210,
+            2,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 3,
+        "argmax_score": 3,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.5,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200709_L_R002S03C01",
+      "seconds": 600.0,
+      "n_windows": 402,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "002-M",
+        "003-M",
+        "004-F"
+      ],
+      "true_k": 3,
+      "effective_without_window": [],
+      "speakers_visible": 3,
+      "window_purity_mean": 0.9641,
+      "window_purity_lt_50pct": 1,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 3,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 30,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 30
+          },
+          "span_sec": [
+            391.0,
+            540.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 3,
+          "majority": "007-F",
+          "purity": 0.6667,
+          "speakers": {
+            "007-F": 2,
+            "006-F": 1
+          },
+          "span_sec": [
+            43.0,
+            45.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 369,
+          "majority": "003-M",
+          "purity": 0.6775,
+          "speakers": {
+            "003-M": 250,
+            "002-M": 118,
+            "001-M": 1
+          },
+          "span_sec": [
+            36.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 1,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 118,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 250,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 30,
+          "home_cluster": 0,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 1,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "007-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 3,
+      "n_clusters_actual": 3,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 2,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            402
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.3117,
+          "objective": 0.3117,
+          "eligible": true,
+          "sizes": [
+            372,
+            30
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2401,
+          "objective": 0.2251,
+          "eligible": true,
+          "sizes": [
+            369,
+            3,
+            30
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3696,
+          "objective": 0.3396,
+          "eligible": true,
+          "sizes": [
+            122,
+            3,
+            247,
+            30
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.3707,
+          "objective": 0.3257,
+          "eligible": true,
+          "sizes": [
+            122,
+            3,
+            247,
+            29,
+            1
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3628,
+          "objective": 0.3028,
+          "eligible": true,
+          "sizes": [
+            122,
+            1,
+            2,
+            247,
+            29,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3635,
+          "objective": 0.2885,
+          "eligible": true,
+          "sizes": [
+            122,
+            1,
+            2,
+            247,
+            28,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3227,
+          "objective": 0.2327,
+          "eligible": true,
+          "sizes": [
+            3,
+            1,
+            2,
+            119,
+            247,
+            28,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2371,
+          "objective": 0.1321,
+          "eligible": true,
+          "sizes": [
+            3,
+            1,
+            2,
+            114,
+            247,
+            5,
+            28,
+            1,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1807,
+          "objective": 0.0607,
+          "eligible": true,
+          "sizes": [
+            3,
+            1,
+            2,
+            114,
+            240,
+            5,
+            7,
+            28,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6667,
+      "speakers_with_own_cluster": 3
+    },
+    {
+      "meeting": "20200709_L_R002S04C01",
+      "seconds": 600.0,
+      "n_windows": 346,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 6,
+      "effective": [
+        "001-M",
+        "003-M",
+        "004-F",
+        "006-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9565,
+      "window_purity_lt_50pct": 2,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 125,
+          "majority": "004-F",
+          "purity": 0.992,
+          "speakers": {
+            "004-F": 124,
+            "003-M": 1
+          },
+          "span_sec": [
+            109.0,
+            432.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 145,
+          "majority": "006-F",
+          "purity": 0.869,
+          "speakers": {
+            "006-F": 126,
+            "001-M": 9,
+            "004-F": 9,
+            "007-F": 1
+          },
+          "span_sec": [
+            42.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 52,
+          "majority": "003-M",
+          "purity": 0.9808,
+          "speakers": {
+            "003-M": 51,
+            "004-F": 1
+          },
+          "span_sec": [
+            38.0,
+            436.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 24,
+          "majority": "001-M",
+          "purity": 0.7917,
+          "speakers": {
+            "001-M": 19,
+            "004-F": 3,
+            "002-M": 2
+          },
+          "span_sec": [
+            34.0,
+            569.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 28,
+          "home_cluster": 3,
+          "share_in_home": 0.6786
+        },
+        "002-M": {
+          "windows": 2,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 52,
+          "home_cluster": 2,
+          "share_in_home": 0.9808
+        },
+        "004-F": {
+          "windows": 137,
+          "home_cluster": 0,
+          "share_in_home": 0.9051
+        },
+        "006-F": {
+          "windows": 126,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "007-F": {
+          "windows": 1,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        }
+      },
+      "min_cluster_windows": 24,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            346
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.3294,
+          "objective": 0.3294,
+          "eligible": true,
+          "sizes": [
+            221,
+            125
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.3979,
+          "objective": 0.3829,
+          "eligible": true,
+          "sizes": [
+            76,
+            145,
+            125
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.4272,
+          "objective": 0.3972,
+          "eligible": true,
+          "sizes": [
+            24,
+            52,
+            145,
+            125
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.4288,
+          "objective": 0.3838,
+          "eligible": true,
+          "sizes": [
+            24,
+            52,
+            144,
+            125,
+            1
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3592,
+          "objective": 0.2992,
+          "eligible": true,
+          "sizes": [
+            24,
+            52,
+            4,
+            125,
+            140,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3601,
+          "objective": 0.2851,
+          "eligible": true,
+          "sizes": [
+            24,
+            52,
+            4,
+            124,
+            1,
+            140,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.3342,
+          "objective": 0.2442,
+          "eligible": true,
+          "sizes": [
+            24,
+            52,
+            2,
+            124,
+            1,
+            140,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.3351,
+          "objective": 0.2301,
+          "eligible": true,
+          "sizes": [
+            23,
+            52,
+            2,
+            124,
+            1,
+            1,
+            140,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.3227,
+          "objective": 0.2027,
+          "eligible": true,
+          "sizes": [
+            21,
+            2,
+            52,
+            2,
+            124,
+            1,
+            1,
+            140,
+            2,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 5,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": true,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.7917,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200709_L_R002S05C01",
+      "seconds": 600.0,
+      "n_windows": 376,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-F"
+      ],
+      "true_k": 4,
+      "effective_without_window": [],
+      "speakers_visible": 4,
+      "window_purity_mean": 0.9395,
+      "window_purity_lt_50pct": 0,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 4,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 25,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 25
+          },
+          "span_sec": [
+            62.0,
+            553.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 294,
+          "majority": "002-M",
+          "purity": 0.9796,
+          "speakers": {
+            "002-M": 288,
+            "004-F": 6
+          },
+          "span_sec": [
+            134.0,
+            569.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 5,
+          "majority": "003-M",
+          "purity": 1.0,
+          "speakers": {
+            "003-M": 5
+          },
+          "span_sec": [
+            574.0,
+            594.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 52,
+          "majority": "001-M",
+          "purity": 0.9038,
+          "speakers": {
+            "001-M": 47,
+            "004-F": 3,
+            "002-M": 2
+          },
+          "span_sec": [
+            32.0,
+            330.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 47,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 290,
+          "home_cluster": 1,
+          "share_in_home": 0.9931
+        },
+        "003-M": {
+          "windows": 5,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "004-F": {
+          "windows": 34,
+          "home_cluster": 0,
+          "share_in_home": 0.7353
+        }
+      },
+      "min_cluster_windows": 5,
+      "n_clusters_actual": 4,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            376
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.4099,
+          "objective": 0.4099,
+          "eligible": true,
+          "sizes": [
+            351,
+            25
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.4068,
+          "objective": 0.3918,
+          "eligible": true,
+          "sizes": [
+            57,
+            25,
+            294
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.3949,
+          "objective": 0.3649,
+          "eligible": true,
+          "sizes": [
+            52,
+            25,
+            294,
+            5
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2987,
+          "objective": 0.2537,
+          "eligible": true,
+          "sizes": [
+            52,
+            25,
+            291,
+            3,
+            5
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.3001,
+          "objective": 0.2401,
+          "eligible": true,
+          "sizes": [
+            52,
+            25,
+            290,
+            3,
+            1,
+            5
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3012,
+          "objective": 0.2262,
+          "eligible": true,
+          "sizes": [
+            52,
+            25,
+            289,
+            3,
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.292,
+          "objective": 0.202,
+          "eligible": true,
+          "sizes": [
+            52,
+            23,
+            289,
+            3,
+            1,
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2929,
+          "objective": 0.1879,
+          "eligible": true,
+          "sizes": [
+            52,
+            22,
+            289,
+            3,
+            1,
+            1,
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2248,
+          "objective": 0.1048,
+          "eligible": true,
+          "sizes": [
+            52,
+            22,
+            284,
+            3,
+            1,
+            1,
+            1,
+            5,
+            2,
+            5
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 2,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.9038,
+      "speakers_with_own_cluster": 4
+    },
+    {
+      "meeting": "20200709_L_R002S06C01",
+      "seconds": 600.0,
+      "n_windows": 416,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "005-F",
+        "006-F"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.852,
+      "window_purity_lt_50pct": 20,
+      "v12_selected_k": 1,
+      "v12_refined": false,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 2,
+          "majority": "004-F",
+          "purity": 1.0,
+          "speakers": {
+            "004-F": 2
+          },
+          "span_sec": [
+            190.0,
+            419.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 277,
+          "majority": "003-M",
+          "purity": 0.6534,
+          "speakers": {
+            "003-M": 181,
+            "002-M": 51,
+            "001-M": 34,
+            "006-F": 4,
+            "004-F": 4
+          },
+          "span_sec": [
+            28.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 7,
+          "majority": "005-F",
+          "purity": 1.0,
+          "speakers": {
+            "005-F": 7
+          },
+          "span_sec": [
+            520.0,
+            576.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 129,
+          "majority": "006-F",
+          "purity": 0.8527,
+          "speakers": {
+            "006-F": 110,
+            "007-F": 9,
+            "003-M": 5,
+            "002-M": 2,
+            "004-F": 2
+          },
+          "span_sec": [
+            38.0,
+            448.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 1,
+          "majority": "007-F",
+          "purity": 1.0,
+          "speakers": {
+            "007-F": 1
+          },
+          "span_sec": [
+            315.0,
+            315.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 35,
+          "home_cluster": 1,
+          "share_in_home": 0.9714
+        },
+        "002-M": {
+          "windows": 53,
+          "home_cluster": 1,
+          "share_in_home": 0.9623
+        },
+        "003-M": {
+          "windows": 186,
+          "home_cluster": 1,
+          "share_in_home": 0.9731
+        },
+        "004-F": {
+          "windows": 8,
+          "home_cluster": 1,
+          "share_in_home": 0.5
+        },
+        "005-F": {
+          "windows": 7,
+          "home_cluster": 2,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 114,
+          "home_cluster": 3,
+          "share_in_home": 0.9649
+        },
+        "007-F": {
+          "windows": 13,
+          "home_cluster": 3,
+          "share_in_home": 0.6923
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 3,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            416
+          ]
+        },
+        {
+          "k": 2,
+          "score": -1.0,
+          "objective": -1.0,
+          "eligible": false,
+          "sizes": [
+            415,
+            1
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.1882,
+          "objective": 0.1732,
+          "eligible": true,
+          "sizes": [
+            413,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2237,
+          "objective": 0.1937,
+          "eligible": true,
+          "sizes": [
+            277,
+            136,
+            2,
+            1
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2226,
+          "objective": 0.1776,
+          "eligible": true,
+          "sizes": [
+            277,
+            129,
+            2,
+            1,
+            7
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2233,
+          "objective": 0.1633,
+          "eligible": true,
+          "sizes": [
+            277,
+            1,
+            128,
+            2,
+            1,
+            7
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2175,
+          "objective": 0.1425,
+          "eligible": true,
+          "sizes": [
+            41,
+            236,
+            1,
+            128,
+            2,
+            1,
+            7
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2221,
+          "objective": 0.1321,
+          "eligible": true,
+          "sizes": [
+            41,
+            236,
+            1,
+            128,
+            1,
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.1989,
+          "objective": 0.0939,
+          "eligible": true,
+          "sizes": [
+            41,
+            236,
+            1,
+            108,
+            20,
+            1,
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.1854,
+          "objective": 0.0654,
+          "eligible": true,
+          "sizes": [
+            41,
+            236,
+            1,
+            106,
+            2,
+            20,
+            1,
+            1,
+            1,
+            7
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6534,
+      "speakers_with_own_cluster": 5
+    },
+    {
+      "meeting": "20200709_L_R002S07C01",
+      "seconds": 600.0,
+      "n_windows": 542,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "001-M",
+        "002-M",
+        "003-M",
+        "004-F",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 6,
+      "effective_without_window": [],
+      "speakers_visible": 6,
+      "window_purity_mean": 0.8756,
+      "window_purity_lt_50pct": 8,
+      "v12_selected_k": 2,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 6,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 129,
+          "majority": "004-F",
+          "purity": 0.9845,
+          "speakers": {
+            "004-F": 127,
+            "003-M": 1,
+            "007-F": 1
+          },
+          "span_sec": [
+            400.0,
+            598.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 5,
+          "majority": "006-F",
+          "purity": 0.4,
+          "speakers": {
+            "006-F": 2,
+            "005-F": 2,
+            "004-F": 1
+          },
+          "span_sec": [
+            413.0,
+            430.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 39,
+          "majority": "001-M",
+          "purity": 0.9231,
+          "speakers": {
+            "001-M": 36,
+            "003-M": 2,
+            "004-F": 1
+          },
+          "span_sec": [
+            25.0,
+            553.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 211,
+          "majority": "003-M",
+          "purity": 0.6967,
+          "speakers": {
+            "003-M": 147,
+            "002-M": 56,
+            "004-F": 4,
+            "007-F": 3,
+            "006-F": 1
+          },
+          "span_sec": [
+            27.0,
+            546.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 157,
+          "majority": "007-F",
+          "purity": 0.7452,
+          "speakers": {
+            "007-F": 117,
+            "006-F": 35,
+            "004-F": 3,
+            "003-M": 2
+          },
+          "span_sec": [
+            35.0,
+            517.0
+          ]
+        },
+        {
+          "cluster": 5,
+          "windows": 1,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 1
+          },
+          "span_sec": [
+            53.0,
+            53.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 37,
+          "home_cluster": 2,
+          "share_in_home": 0.973
+        },
+        "002-M": {
+          "windows": 56,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "003-M": {
+          "windows": 152,
+          "home_cluster": 3,
+          "share_in_home": 0.9671
+        },
+        "004-F": {
+          "windows": 136,
+          "home_cluster": 0,
+          "share_in_home": 0.9338
+        },
+        "005-F": {
+          "windows": 2,
+          "home_cluster": 1,
+          "share_in_home": 1.0
+        },
+        "006-F": {
+          "windows": 38,
+          "home_cluster": 4,
+          "share_in_home": 0.9211
+        },
+        "007-F": {
+          "windows": 121,
+          "home_cluster": 4,
+          "share_in_home": 0.9669
+        }
+      },
+      "min_cluster_windows": 1,
+      "n_clusters_actual": 6,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            542
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.2716,
+          "objective": 0.2716,
+          "eligible": true,
+          "sizes": [
+            413,
+            129
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2156,
+          "objective": 0.2006,
+          "eligible": true,
+          "sizes": [
+            408,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2787,
+          "objective": 0.2487,
+          "eligible": true,
+          "sizes": [
+            250,
+            158,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2804,
+          "objective": 0.2354,
+          "eligible": true,
+          "sizes": [
+            250,
+            157,
+            1,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2938,
+          "objective": 0.2338,
+          "eligible": true,
+          "sizes": [
+            39,
+            211,
+            157,
+            1,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.3144,
+          "objective": 0.2394,
+          "eligible": true,
+          "sizes": [
+            39,
+            211,
+            36,
+            1,
+            121,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.2949,
+          "objective": 0.2049,
+          "eligible": true,
+          "sizes": [
+            39,
+            211,
+            36,
+            1,
+            118,
+            3,
+            129,
+            5
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.2911,
+          "objective": 0.1861,
+          "eligible": true,
+          "sizes": [
+            39,
+            211,
+            36,
+            1,
+            118,
+            3,
+            129,
+            3,
+            2
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.2786,
+          "objective": 0.1586,
+          "eligible": true,
+          "sizes": [
+            39,
+            197,
+            36,
+            1,
+            118,
+            3,
+            14,
+            129,
+            3,
+            2
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 2,
+        "argmax_score": 7,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.4,
+      "speakers_with_own_cluster": 6
+    },
+    {
+      "meeting": "20200709_L_R002S08C01",
+      "seconds": 600.0,
+      "n_windows": 452,
+      "embedding_errors": null,
+      "window_seconds": 2.0,
+      "reference_speakers_all": 7,
+      "effective": [
+        "002-M",
+        "003-M",
+        "004-F",
+        "006-F",
+        "007-F"
+      ],
+      "true_k": 5,
+      "effective_without_window": [],
+      "speakers_visible": 5,
+      "window_purity_mean": 0.8774,
+      "window_purity_lt_50pct": 22,
+      "v12_selected_k": 4,
+      "v12_refined": true,
+      "v12_rescued": false,
+      "ahc_true_k": 5,
+      "cluster_purity": [
+        {
+          "cluster": 0,
+          "windows": 86,
+          "majority": "004-F",
+          "purity": 0.9884,
+          "speakers": {
+            "004-F": 85,
+            "005-F": 1
+          },
+          "span_sec": [
+            118.0,
+            557.0
+          ]
+        },
+        {
+          "cluster": 1,
+          "windows": 155,
+          "majority": "007-F",
+          "purity": 0.9161,
+          "speakers": {
+            "007-F": 142,
+            "005-F": 5,
+            "004-F": 3,
+            "002-M": 2,
+            "003-M": 2
+          },
+          "span_sec": [
+            44.0,
+            573.0
+          ]
+        },
+        {
+          "cluster": 2,
+          "windows": 119,
+          "majority": "006-F",
+          "purity": 0.9076,
+          "speakers": {
+            "006-F": 108,
+            "004-F": 7,
+            "005-F": 2,
+            "007-F": 2
+          },
+          "span_sec": [
+            42.0,
+            580.0
+          ]
+        },
+        {
+          "cluster": 3,
+          "windows": 5,
+          "majority": "001-M",
+          "purity": 1.0,
+          "speakers": {
+            "001-M": 5
+          },
+          "span_sec": [
+            35.0,
+            480.0
+          ]
+        },
+        {
+          "cluster": 4,
+          "windows": 87,
+          "majority": "002-M",
+          "purity": 0.6207,
+          "speakers": {
+            "002-M": 54,
+            "003-M": 28,
+            "007-F": 3,
+            "006-F": 1,
+            "004-F": 1
+          },
+          "span_sec": [
+            36.0,
+            598.0
+          ]
+        }
+      ],
+      "speaker_homes": {
+        "001-M": {
+          "windows": 5,
+          "home_cluster": 3,
+          "share_in_home": 1.0
+        },
+        "002-M": {
+          "windows": 56,
+          "home_cluster": 4,
+          "share_in_home": 0.9643
+        },
+        "003-M": {
+          "windows": 30,
+          "home_cluster": 4,
+          "share_in_home": 0.9333
+        },
+        "004-F": {
+          "windows": 96,
+          "home_cluster": 0,
+          "share_in_home": 0.8854
+        },
+        "005-F": {
+          "windows": 8,
+          "home_cluster": 1,
+          "share_in_home": 0.625
+        },
+        "006-F": {
+          "windows": 110,
+          "home_cluster": 2,
+          "share_in_home": 0.9818
+        },
+        "007-F": {
+          "windows": 147,
+          "home_cluster": 1,
+          "share_in_home": 0.966
+        }
+      },
+      "min_cluster_windows": 5,
+      "n_clusters_actual": 5,
+      "n_empty_clusters": 0,
+      "reached_target_k": true,
+      "n_distinct_home_clusters": 4,
+      "criterion_curve": [
+        {
+          "k": 1,
+          "score": 0.0,
+          "objective": 0.0,
+          "eligible": true,
+          "sizes": [
+            452
+          ]
+        },
+        {
+          "k": 2,
+          "score": 0.1789,
+          "objective": 0.1789,
+          "eligible": true,
+          "sizes": [
+            366,
+            86
+          ]
+        },
+        {
+          "k": 3,
+          "score": 0.2479,
+          "objective": 0.2329,
+          "eligible": true,
+          "sizes": [
+            211,
+            155,
+            86
+          ]
+        },
+        {
+          "k": 4,
+          "score": 0.2981,
+          "objective": 0.2681,
+          "eligible": true,
+          "sizes": [
+            92,
+            119,
+            155,
+            86
+          ]
+        },
+        {
+          "k": 5,
+          "score": 0.2884,
+          "objective": 0.2434,
+          "eligible": true,
+          "sizes": [
+            5,
+            87,
+            119,
+            155,
+            86
+          ]
+        },
+        {
+          "k": 6,
+          "score": 0.2891,
+          "objective": 0.2291,
+          "eligible": true,
+          "sizes": [
+            5,
+            86,
+            119,
+            155,
+            86,
+            1
+          ]
+        },
+        {
+          "k": 7,
+          "score": 0.2497,
+          "objective": 0.1747,
+          "eligible": true,
+          "sizes": [
+            5,
+            86,
+            119,
+            150,
+            5,
+            86,
+            1
+          ]
+        },
+        {
+          "k": 8,
+          "score": 0.234,
+          "objective": 0.144,
+          "eligible": true,
+          "sizes": [
+            5,
+            86,
+            119,
+            150,
+            5,
+            78,
+            8,
+            1
+          ]
+        },
+        {
+          "k": 9,
+          "score": 0.227,
+          "objective": 0.122,
+          "eligible": true,
+          "sizes": [
+            5,
+            86,
+            2,
+            150,
+            117,
+            5,
+            78,
+            8,
+            1
+          ]
+        },
+        {
+          "k": 10,
+          "score": 0.228,
+          "objective": 0.108,
+          "eligible": true,
+          "sizes": [
+            5,
+            86,
+            2,
+            150,
+            116,
+            5,
+            78,
+            8,
+            1,
+            1
+          ]
+        }
+      ],
+      "criterion_picks": {
+        "argmax_objective": 4,
+        "argmax_score": 4,
+        "largest_eligible": 10
+      },
+      "criterion_hits_truth_k": {
+        "argmax_objective": false,
+        "argmax_score": false,
+        "largest_eligible": false
+      },
+      "worst_cluster_purity": 0.6207,
+      "speakers_with_own_cluster": 5
+    }
+  ]
+}

@@ -1,0 +1,901 @@
+{
+  "schema": "v13-abstain-diagnosis-v1",
+  "root": "D:\\yinp\\AISHELL-4\\data\\train_L",
+  "seconds": 600,
+  "path": "same cache+real_path_labels as sentence lambda sweep; no inference",
+  "scope": "Window coverage only; before run_claude_lane short-segment filtering and ASR.",
+  "summary": {
+    "n_meetings": 30,
+    "n_sentences": 3790,
+    "n_abstain": 714,
+    "macro_abstain_rate": 0.182,
+    "causes": {
+      "no_vad_overlap": 596,
+      "vad_overlap_without_main_window": 118
+    }
+  },
+  "meetings": [
+    {
+      "meeting": "20200706_L_R001S01C01",
+      "n_sentences": 125,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 10,
+      "abstain_rate": 0.08,
+      "causes": {
+        "no_vad_overlap": 10
+      },
+      "examples": [
+        {
+          "start": 57.63036,
+          "end": 58.45536,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 58.54536,
+          "end": 59.03484733880555,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 58.90972457314065,
+          "end": 59.529625,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S02C01",
+      "n_sentences": 135,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 24,
+      "abstain_rate": 0.1778,
+      "causes": {
+        "no_vad_overlap": 24
+      },
+      "examples": [
+        {
+          "start": 108.58509,
+          "end": 109.63829167197456,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 109.42755774030113,
+          "end": 110.48122739866824,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 117.11729,
+          "end": 118.00747598416703,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S03C01",
+      "n_sentences": 146,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 30,
+      "abstain_rate": 0.2055,
+      "causes": {
+        "no_vad_overlap": 30
+      },
+      "examples": [
+        {
+          "start": 68.92094,
+          "end": 70.25107,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 76.89897,
+          "end": 77.50903,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 125.02437,
+          "end": 126.3445,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S04C01",
+      "n_sentences": 134,
+      "base_level": "refined",
+      "base_k": 4,
+      "n_abstain": 37,
+      "abstain_rate": 0.2761,
+      "causes": {
+        "no_vad_overlap": 37
+      },
+      "examples": [
+        {
+          "start": 56.22076,
+          "end": 58.04594,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 76.9028,
+          "end": 82.65337,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 85.46031,
+          "end": 86.09465089099595,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S05C01",
+      "n_sentences": 114,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 25,
+      "abstain_rate": 0.2193,
+      "causes": {
+        "no_vad_overlap": 25
+      },
+      "examples": [
+        {
+          "start": 36.97543,
+          "end": 38.94043,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 44.95545,
+          "end": 47.07045,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 47.13795,
+          "end": 50.18296,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S06C01",
+      "n_sentences": 137,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 37,
+      "abstain_rate": 0.2701,
+      "causes": {
+        "no_vad_overlap": 22,
+        "vad_overlap_without_main_window": 15
+      },
+      "examples": [
+        {
+          "start": 25.17688,
+          "end": 26.828,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 26.87466,
+          "end": 28.46466,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 94.57024,
+          "end": 98.50691,
+          "speaker": "002-M",
+          "cause": "vad_overlap_without_main_window"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S07C01",
+      "n_sentences": 66,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 18,
+      "abstain_rate": 0.2727,
+      "causes": {
+        "no_vad_overlap": 18
+      },
+      "examples": [
+        {
+          "start": 68.67998,
+          "end": 71.93998,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 78.30998,
+          "end": 80.08998,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 80.18998,
+          "end": 81.78998,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200706_L_R001S08C01",
+      "n_sentences": 175,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 86,
+      "abstain_rate": 0.4914,
+      "causes": {
+        "no_vad_overlap": 59,
+        "vad_overlap_without_main_window": 27
+      },
+      "examples": [
+        {
+          "start": 42.14417,
+          "end": 44.19417,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 44.48417,
+          "end": 46.35417,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 46.68616,
+          "end": 48.68616,
+          "speaker": "007-M",
+          "cause": "vad_overlap_without_main_window"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S01C01",
+      "n_sentences": 184,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 46,
+      "abstain_rate": 0.25,
+      "causes": {
+        "no_vad_overlap": 46
+      },
+      "examples": [
+        {
+          "start": 98.39518031702374,
+          "end": 98.99225979009844,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 98.99225979009844,
+          "end": 99.55421694122757,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 100.18286,
+          "end": 102.35286,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S02C01",
+      "n_sentences": 156,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 52,
+      "abstain_rate": 0.3333,
+      "causes": {
+        "no_vad_overlap": 52
+      },
+      "examples": [
+        {
+          "start": 42.32271,
+          "end": 43.97271,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 55.39021,
+          "end": 63.12022,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 89.39700059832057,
+          "end": 91.06181722413719,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S03C01",
+      "n_sentences": 137,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 63,
+      "abstain_rate": 0.4599,
+      "causes": {
+        "vad_overlap_without_main_window": 25,
+        "no_vad_overlap": 38
+      },
+      "examples": [
+        {
+          "start": 31.55039,
+          "end": 33.15039,
+          "speaker": "001-M",
+          "cause": "vad_overlap_without_main_window"
+        },
+        {
+          "start": 33.19539,
+          "end": 34.8954,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 40.1254,
+          "end": 42.08041,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S04C01",
+      "n_sentences": 159,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 21,
+      "abstain_rate": 0.1321,
+      "causes": {
+        "no_vad_overlap": 21
+      },
+      "examples": [
+        {
+          "start": 112.22522,
+          "end": 117.69523,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 125.95525,
+          "end": 127.43525,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 127.95525,
+          "end": 128.73525,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S05C01",
+      "n_sentences": 122,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 34,
+      "abstain_rate": 0.2787,
+      "causes": {
+        "no_vad_overlap": 34
+      },
+      "examples": [
+        {
+          "start": 50.23256,
+          "end": 52.23256,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 54.65881,
+          "end": 56.34881,
+          "speaker": "007-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 64.63881,
+          "end": 69.71881,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S06C01",
+      "n_sentences": 117,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 56,
+      "abstain_rate": 0.4786,
+      "causes": {
+        "no_vad_overlap": 29,
+        "vad_overlap_without_main_window": 27
+      },
+      "examples": [
+        {
+          "start": 54.535,
+          "end": 56.925,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 57.105,
+          "end": 58.935,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 59.065,
+          "end": 60.885,
+          "speaker": "003-M",
+          "cause": "vad_overlap_without_main_window"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S07C01",
+      "n_sentences": 120,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 33,
+      "abstain_rate": 0.275,
+      "causes": {
+        "no_vad_overlap": 33
+      },
+      "examples": [
+        {
+          "start": 43.23773,
+          "end": 44.73773,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 48.43523,
+          "end": 51.32523,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 51.78023,
+          "end": 54.16023,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200707_L_R001S08C01",
+      "n_sentences": 84,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 46,
+      "abstain_rate": 0.5476,
+      "causes": {
+        "vad_overlap_without_main_window": 21,
+        "no_vad_overlap": 25
+      },
+      "examples": [
+        {
+          "start": 76.22542,
+          "end": 80.71115076774687,
+          "speaker": "001-M",
+          "cause": "vad_overlap_without_main_window"
+        },
+        {
+          "start": 80.71115076774687,
+          "end": 82.3443387382159,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 86.38543,
+          "end": 88.41043,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S01C01",
+      "n_sentences": 96,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 2,
+      "abstain_rate": 0.0208,
+      "causes": {
+        "no_vad_overlap": 2
+      },
+      "examples": [
+        {
+          "start": 73.28497,
+          "end": 75.08497,
+          "speaker": "007-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 84.47497,
+          "end": 89.66498,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S02C01",
+      "n_sentences": 109,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 7,
+      "abstain_rate": 0.0642,
+      "causes": {
+        "no_vad_overlap": 7
+      },
+      "examples": [
+        {
+          "start": 37.45542,
+          "end": 39.01542,
+          "speaker": "004-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 39.06542,
+          "end": 40.67543,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 40.71543,
+          "end": 42.45043,
+          "speaker": "006-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S03C01",
+      "n_sentences": 133,
+      "base_level": "refined",
+      "base_k": 4,
+      "n_abstain": 6,
+      "abstain_rate": 0.0451,
+      "causes": {
+        "no_vad_overlap": 6
+      },
+      "examples": [
+        {
+          "start": 47.22507,
+          "end": 49.64507,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 65.74551423741617,
+          "end": 66.59391316760046,
+          "speaker": "004-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 122.53517,
+          "end": 126.51115278356693,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S04C01",
+      "n_sentences": 111,
+      "base_level": "refined",
+      "base_k": 4,
+      "n_abstain": 6,
+      "abstain_rate": 0.0541,
+      "causes": {
+        "no_vad_overlap": 6
+      },
+      "examples": [
+        {
+          "start": 39.21138,
+          "end": 40.91638,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 181.51406,
+          "end": 182.30906,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 247.69914,
+          "end": 248.82760028595965,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S05C01",
+      "n_sentences": 107,
+      "base_level": "refined",
+      "base_k": 5,
+      "n_abstain": 4,
+      "abstain_rate": 0.0374,
+      "causes": {
+        "no_vad_overlap": 4
+      },
+      "examples": [
+        {
+          "start": 41.66386,
+          "end": 43.56387,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 43.71512,
+          "end": 45.54512,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 200.27275,
+          "end": 212.94776,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S07C01",
+      "n_sentences": 110,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 4,
+      "abstain_rate": 0.0364,
+      "causes": {
+        "no_vad_overlap": 4
+      },
+      "examples": [
+        {
+          "start": 126.50083719933531,
+          "end": 127.36905303299324,
+          "speaker": "003-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 316.20608,
+          "end": 317.20618,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 316.5817382953308,
+          "end": 317.23675000000003,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200708_L_R002S08C01",
+      "n_sentences": 162,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 22,
+      "abstain_rate": 0.1358,
+      "causes": {
+        "no_vad_overlap": 22
+      },
+      "examples": [
+        {
+          "start": 53.19125,
+          "end": 54.8575,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 93.98484,
+          "end": 95.02984,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 137.47976,
+          "end": 138.22976,
+          "speaker": "003-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200709_L_R002S01C01",
+      "n_sentences": 98,
+      "base_level": "refined",
+      "base_k": 3,
+      "n_abstain": 0,
+      "abstain_rate": 0.0,
+      "causes": {},
+      "examples": []
+    },
+    {
+      "meeting": "20200709_L_R002S03C01",
+      "n_sentences": 103,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 3,
+      "abstain_rate": 0.0291,
+      "causes": {
+        "no_vad_overlap": 3
+      },
+      "examples": [
+        {
+          "start": 367.38495,
+          "end": 372.66529,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 380.6758,
+          "end": 387.54123,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 422.89847,
+          "end": 426.77872,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200709_L_R002S04C01",
+      "n_sentences": 105,
+      "base_level": "refined",
+      "base_k": 4,
+      "n_abstain": 11,
+      "abstain_rate": 0.1048,
+      "causes": {
+        "no_vad_overlap": 11
+      },
+      "examples": [
+        {
+          "start": 45.58279,
+          "end": 50.80311,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 55.6334,
+          "end": 57.2385,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 58.43191,
+          "end": 61.16874,
+          "speaker": "001-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200709_L_R002S05C01",
+      "n_sentences": 100,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 5,
+      "abstain_rate": 0.05,
+      "causes": {
+        "no_vad_overlap": 5
+      },
+      "examples": [
+        {
+          "start": 38.00034,
+          "end": 39.48534,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 39.51034,
+          "end": 40.98534,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 270.15185040840345,
+          "end": 271.0749490883491,
+          "speaker": "002-M",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    },
+    {
+      "meeting": "20200709_L_R002S06C01",
+      "n_sentences": 206,
+      "base_level": "2s-only",
+      "base_k": 1,
+      "n_abstain": 24,
+      "abstain_rate": 0.1165,
+      "causes": {
+        "no_vad_overlap": 21,
+        "vad_overlap_without_main_window": 3
+      },
+      "examples": [
+        {
+          "start": 34.04782,
+          "end": 35.449655394818464,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 35.449655394818464,
+          "end": 37.114774733366914,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 139.23603444398614,
+          "end": 139.9361414386031,
+          "speaker": "001-M",
+          "cause": "vad_overlap_without_main_window"
+        }
+      ]
+    },
+    {
+      "meeting": "20200709_L_R002S07C01",
+      "n_sentences": 126,
+      "base_level": "refined",
+      "base_k": 2,
+      "n_abstain": 0,
+      "abstain_rate": 0.0,
+      "causes": {},
+      "examples": []
+    },
+    {
+      "meeting": "20200709_L_R002S08C01",
+      "n_sentences": 113,
+      "base_level": "refined",
+      "base_k": 4,
+      "n_abstain": 2,
+      "abstain_rate": 0.0177,
+      "causes": {
+        "no_vad_overlap": 2
+      },
+      "examples": [
+        {
+          "start": 39.75264,
+          "end": 41.53764,
+          "speaker": "004-F",
+          "cause": "no_vad_overlap"
+        },
+        {
+          "start": 97.07616692556398,
+          "end": 98.45139557119722,
+          "speaker": "005-F",
+          "cause": "no_vad_overlap"
+        }
+      ]
+    }
+  ]
+}

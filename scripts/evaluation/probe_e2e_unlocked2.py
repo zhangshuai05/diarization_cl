@@ -48,6 +48,8 @@ def main():
                     help="all = 该 root 下全部 rttm，不经身份组分组（train_L 的 id 带日期前缀，"
                          "分组函数会抛异常）")
     ap.add_argument("--root", default=str(ROOT_DATA), help="数据根，默认 test 划分")
+    ap.add_argument("--meeting", default=None,
+                    help="只跑指定场次；与 --limit 互斥，输出写入独立 meeting 后缀")
     ap.add_argument("--limit", type=int, default=0, help="只跑前 N 场（0 = 全部）")
     ap.add_argument("--seconds", type=float, default=SECONDS)
     ap.add_argument("--min-win", type=int, default=MIN_WIN)
@@ -57,18 +59,23 @@ def main():
                     help="选 K 规则；VAD 门扫描显示 largest_eligible 优于 objective")
     args = ap.parse_args()
 
-    from web_server import get_models
-
-    models = get_models(lambda m: None, need_stream=False, need_offline=False)
-
     rows = []
     root = Path(args.root)
+    if args.meeting and args.limit:
+        ap.error("--meeting 与 --limit 不能同时使用")
     if args.split == "all":
         meetings = sorted(p.stem for p in (root / "TextGrid").glob("*.rttm"))
     else:
         meetings = split_meetings(root, args.split)
+    if args.meeting:
+        if args.meeting not in meetings:
+            ap.error("场次不在所选 split/root 中: %s" % args.meeting)
+        meetings = [args.meeting]
     if args.limit:
         meetings = meetings[:args.limit]
+    from web_server import get_models
+
+    models = get_models(lambda m: None, need_stream=False, need_offline=False)
     print("min_win=%d cap=%d mode=%s  分=%s  root=%s  场次=%d"
           % (args.min_win, args.cap, args.mode, args.split, root, len(meetings)), flush=True)
     print("%-16s%5s | %-30s | %-30s | %7s" % ("会议", "真K", "基线 k/DER/conf", "解锁 k/DER/conf", "ΔDER"))
@@ -111,8 +118,12 @@ def main():
     print("\n  %s：DER 均值 %.1f%% -> %.1f%%  (%.1f 点)  改善 %d / 恶化 %d / 不变 %d" % (
         args.split, b * 100, f * 100, (b - f) * 100, imp, wor, len(rows) - imp - wor))
 
+    # 文件名不带 `--limit`，所以「跑一场看看」会静默覆盖整批产物
+    # （实测过：把 12 场的 dev 产物写成了 1 场）。限量跑写到另一个名字。
+    suffix = ("_meeting_%s" % args.meeting if args.meeting else
+              "_limit%d" % args.limit if args.limit else "")
     output = ROOT / "artifacts" / (
-        "v13_e2e_unlocked2_%s_mw%d_%s.json" % (args.split, args.min_win, args.mode))
+        "v13_e2e_unlocked2_%s_mw%d_%s%s.json" % (args.split, args.min_win, args.mode, suffix))
     output.write_text(json.dumps({"schema": "v13-e2e-unlocked2-v1",
                                   "split": args.split, "root": str(root),
                                   "min_win": args.min_win,

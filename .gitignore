@@ -47,3 +47,8 @@ __pycache__/
 # ===== 临时与本地产物 =====
 artifacts/_tmp/
 *.log
+
+# ===== 工具状态与参考资料（不入库）=====
+.opencodereview/
+AliMeeting/*.html
+artifacts/_*.txt
