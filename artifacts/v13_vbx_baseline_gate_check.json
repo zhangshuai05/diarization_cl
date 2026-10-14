@@ -1,0 +1,20 @@
+{
+  "rttm": {
+    "mean": 0.09149999999999998,
+    "expected": 0.0915,
+    "published_artifact_mean": 0.09149999999999998,
+    "freshly_run": true,
+    "source": "v13_selector_stability_diagnosis_rttm.json 的「生产 objective(λ=0.005)」行",
+    "ok": true
+  },
+  "vad": {
+    "mean": 0.07194999999999999,
+    "expected": 0.0719,
+    "published_artifact_mean": 0.07194999999999999,
+    "freshly_run": true,
+    "source": "v13_selector_stability_diagnosis_vad.json 的「生产 objective(λ=0.005)」行",
+    "ok": true
+  },
+  "tolerance": 0.0005,
+  "ok": true
+}
