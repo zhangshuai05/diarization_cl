@@ -52,3 +52,4 @@ artifacts/_tmp/
 .opencodereview/
 AliMeeting/*.html
 artifacts/_*.txt
+AliMeeting/results/_*.json
