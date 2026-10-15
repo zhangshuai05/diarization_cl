@@ -259,19 +259,15 @@ def turns_multilabel(binary, turns, frame_step_s, thresh=0.25):
             "coverage": cov / max(len(gt), 1)}
 
 
-def class_chunks(probs, frame_step_s, chunk_s=CHUNK_S, step_s=STEP_S,
-                 min_run_s=0.30):
-    """在 powerset 的"同一局部说话人"区间内切 chunk，而不是从 VAD 段盲滑。
+def class_intervals(probs, frame_step_s, min_run_s=0.30, merge_under_s=None):
+    """powerset class 1/2/3 的连续区间（短于 merge_under_s 的并入前一个）。
 
-    **为什么**：实测 2.0s 网格窗有 **90%** 跨说话人边界（1851 个里只有 194 个能标上
-    唯一说话人），因为 VAD 段只认"有没有语音"、不认"是谁在说"，A 说完 B 接话就落进
-    同一段。powerset 的 class 1/2/3 是"局部 speaker 1/2/3 单独说话"，实测类别纯度
-    77–83%，按它切分能把"窗内只属于一个人"的比例从 10.5% 提到 52%。
-    跨窗编号不连续没关系 —— 聚类本来就要解决跨窗对齐。
+    class_chunks（切 chunk）与 --refine-confine（限制细化窗）共用这一份区间，
+    保证"chunk 从哪切"和"细化窗留哪些"的口径完全一致。
 
     区间先按 min_run_s（0.30s）全收，**不能**按 chunk_s 过滤：实测那样 R8007_M8010
-    只剩 668 个 chunk、覆盖掉到 45%、准确率反降 4.7 点。短于 chunk_s 的区间
-    **并入前一个**，否则它塞不下一个完整窗、只能整段丢弃。
+    只剩 668 个 chunk、覆盖掉到 45%、准确率反降 4.7 点。短区间**并入前一个**，
+    否则它塞不下一个完整窗、只能整段丢弃。
     """
     argmax = probs.argmax(axis=1)
     single = np.isin(argmax, (1, 2, 3))
@@ -291,11 +287,47 @@ def class_chunks(probs, frame_step_s, chunk_s=CHUNK_S, step_s=STEP_S,
 
     merged = []
     for a, b in raw:
-        if merged and (b - a) < chunk_s:
+        if merged and merge_under_s and (b - a) < merge_under_s:
             merged[-1][1] = b                  # 短区间并入前一个，保住覆盖
         else:
             merged.append([a, b])
+    return merged
 
+
+def confine_refine(times, intervals, win_s):
+    """困境六验证：只保留**完整落在某个 class 区间内**的细化窗。
+
+    假设：细化（0.6s 短窗按最近质心重判）把 class 切分已经切对的地方重判散了 ——
+    跨区间的窗里坐着两个人，嵌入是两人平均，最近质心判归属等于掷硬币。
+    全包含（不是中心在内）才把这类污染窗干净地剔除。返回布尔掩码。
+    """
+    keep = np.zeros(len(times), dtype=bool)
+    j = 0
+    for i, t in enumerate(times):
+        a, b = float(t), float(t) + win_s
+        while j < len(intervals) and intervals[j][1] < b:
+            j += 1
+        if j < len(intervals) and intervals[j][0] <= a:
+            keep[i] = True
+    return keep
+
+
+def class_chunks(probs, frame_step_s, chunk_s=None, step_s=None,
+                 min_run_s=0.30):
+    # ⚠️ 不能写成 chunk_s=CHUNK_S：默认参数在 def 时就绑定，改模块常量改不动它
+    # （Task 2 在 `_candidate_clusters(max_speakers=MAX_SPEAKERS)` 上踩过同一个坑）。
+    chunk_s = CHUNK_S if chunk_s is None else chunk_s
+    step_s = STEP_S if step_s is None else step_s
+    """在 powerset 的"同一局部说话人"区间内切 chunk，而不是从 VAD 段盲滑。
+
+    **为什么**：实测 2.0s 网格窗有 **90%** 跨说话人边界（1851 个里只有 194 个能标上
+    唯一说话人），因为 VAD 段只认"有没有语音"、不认"是谁在说"，A 说完 B 接话就落进
+    同一段。powerset 的 class 1/2/3 是"局部 speaker 1/2/3 单独说话"，实测类别纯度
+    77–83%，按它切分能把"窗内只属于一个人"的比例从 10.5% 提到 52%。
+    跨窗编号不连续没关系 —— 聚类本来就要解决跨窗对齐。
+    """
+    merged = class_intervals(probs, frame_step_s, min_run_s=min_run_s,
+                             merge_under_s=chunk_s)
     wins = []
     for a, b in merged:
         t = a
@@ -305,22 +337,56 @@ def class_chunks(probs, frame_step_s, chunk_s=CHUNK_S, step_s=STEP_S,
     return wins, len(merged)
 
 
-def chunks_to_turns(windows, labels, turns):
-    """chunk 标签 -> 句级主导投票 -> 全局映射 -> 句级准确率。"""
+def ahc_cluster(E, forced_k=None):
+    """复用生产的 AHC + 选 K，用于在**同一份嵌入**上和谱聚类并排对照。
+
+    为什么要并排跑：2 人场上谱聚类比现状低约 3 点，但那个对比跨了口径
+    （现状是 v12 生产段表、含细化）。只有同嵌入换聚类，才能把
+    "聚类算法的差" 与 "chunk 切分的差" 分开。
+    """
+    import claude_a2_v11 as v11
+    if len(E) < 2:
+        return np.zeros(len(E), dtype=int), 1
+    old = (v11.MIN_CLUSTER_WINDOWS, v11.MIN_CLUSTER_SHARE)
+    v11.MIN_CLUSTER_WINDOWS, v11.MIN_CLUSTER_SHARE = 2, 0.010
+    try:
+        cands, _ = v11._candidate_clusters(E, max_speakers=min(MAX_K, len(E)))
+        best = v11._select_candidate(cands, forced_k=forced_k)
+    finally:
+        v11.MIN_CLUSTER_WINDOWS, v11.MIN_CLUSTER_SHARE = old
+    return best["labels"], int(best["k"])
+
+
+def chunks_to_turns(windows, labels, turns, fallback=None):
+    """chunk 标签 -> 句级主导投票 -> 全局映射 -> 句级准确率。
+
+    fallback=(fb_windows, fb_labels)：没有窗覆盖的句子退回主窗（长窗）投票，
+    而不是拿"时间最近"的窗瞎猜。R8008_M8013 上细化窗只覆盖 51.8% 的句子，
+    其余 48.2% 落到旧的最近窗兜底——0.15s 步长的密集网格里"最近"的窗很可能
+    在几秒之外、属于别人，这是细化 −10.2 的真凶（2026-10-15 定位）。
+    两级窗的本意就是"长窗定身份、短窗找边界"，没短窗覆盖就该退回长窗的答案。
+    """
     gt, pred, durs, cover = [], [], [], 0
+    fb_windows, fb_labels = fallback if fallback is not None else (None, None)
     for turn in turns:
         tally = defaultdict(float)
         for (a, b), lab in zip(windows, labels.tolist()):
             ov = min(b, turn["end"]) - max(a, turn["start"])
             if ov > 0:
                 tally[lab] += ov
+        own_cover = bool(tally)
+        if not tally and fb_windows is not None:
+            for (a, b), lab in zip(fb_windows, fb_labels.tolist()):
+                ov = min(b, turn["end"]) - max(a, turn["start"])
+                if ov > 0:
+                    tally[lab] += ov
         if not tally:
             mid = (turn["start"] + turn["end"]) / 2.0
             near = min(range(len(windows)),
                        key=lambda i: abs((windows[i][0] + windows[i][1]) / 2.0 - mid))
             tally[labels[near]] = 1.0
-        else:
-            cover += 1
+        if own_cover:
+            cover += 1   # coverage 只计本臂自己的窗，fallback 覆盖不算
         gt.append(turn["speaker"])
         pred.append(max(tally, key=lambda x: tally[x]))
         durs.append(turn["end"] - turn["start"])
@@ -349,7 +415,19 @@ def main():
     ap.add_argument("--post", action="store_true",
                     help="启用 OSD+匈牙利匹配后处理（实测 2/3 场有害，默认关；"
                          "只有需要重叠多标签时才开）")
+    ap.add_argument("--chunk-s", type=float, default=None,
+                    help="chunk 窗长（默认 1.5，即 3D-Speaker 配方；现状生产用 2.0）")
+    ap.add_argument("--step-s", type=float, default=None, help="chunk 步长（默认 0.75）")
+    ap.add_argument("--refine-confine", action="store_true",
+                    help="困境六验证：细化窗只保留完整落在 class 区间内的，"
+                         "排除跨边界（窗内两人）的污染窗")
     args = ap.parse_args()
+    global CHUNK_S, STEP_S
+    if args.chunk_s:
+        CHUNK_S = args.chunk_s
+    if args.step_s:
+        STEP_S = args.step_s
+    print("chunk = %.2fs / hop = %.2fs" % (CHUNK_S, STEP_S), flush=True)
 
     import onnxruntime as ort
     import claude_a2_v11 as v11
@@ -386,6 +464,43 @@ def main():
         labels_true, _, _ = spectral_cluster(E, min(true_k, len(E) - 1))
         r_auto = chunks_to_turns(kept, labels_auto, turns)
         r_true = chunks_to_turns(kept, labels_true, turns)
+        # 同一份嵌入换聚类，把"聚类算法的差"与"chunk 切分的差"分开
+        la_ahc, ka_ahc = ahc_cluster(E)
+        lt_ahc, _ = ahc_cluster(E, forced_k=min(true_k, len(E) - 1))
+        r_ahc = chunks_to_turns(kept, la_ahc, turns)
+        r_ahc_true = chunks_to_turns(kept, lt_ahc, turns)
+        # 细化层：复用 v12 的"长窗定身份、0.6s 密集窗找边界"。
+        # 实测这一层单独值 +7.6 pt（baseline 45.6% -> v12 53.2%），所以必须接上。
+        import claude_a2_v12 as v12mod
+        r_ref = r_ref_c = None
+        confine_keep = None
+        if k_auto >= 2:
+            rE, rtimes = v12mod._refine_windows(audio, rate, vad, models["spk"])
+            anchors = v11._centroids(E, labels_auto)
+            alabs = sorted(set(int(x) for x in labels_auto.tolist()))
+            rlabels = v12mod._refine_labels(rE, anchors, alabs, rtimes)
+            if rlabels is not None and len(set(rlabels.tolist())) >= 2:
+                rwins = [(float(t), float(t) + v12mod.REFINE_WIN_S) for t in rtimes]
+                # ★ fallback=主窗：细化窗只盖住一半句子（R8008_M8013 实测 51.8%），
+                # 落在外面的句子退回长窗投票，而不是拿几秒外别人的短窗瞎猜。
+                r_ref = chunks_to_turns(rwins, rlabels, turns,
+                                        fallback=(kept, labels_auto))
+            # confine 臂（困境六）：细化窗只留完整落在 class 区间内的。
+            # 结论（2026-10-15）：只挪 0.3 点，"细化把 class 切对的地方重判散了"被**证伪**；
+            # 它的轻微变差其实来自"少了 564 个窗 ⇒ 更多句子落兜底"，与覆盖率假说同向。
+            # 保留此臂作为覆盖率假说的旁证，别再拿它当机制冲突的证据。
+            if args.refine_confine and probs is not None:
+                intervals = class_intervals(probs, fs, merge_under_s=CHUNK_S)
+                confine_keep = confine_refine(rtimes, intervals, v12mod.REFINE_WIN_S)
+                if confine_keep.sum() >= v12mod.REFINE_MIN_WINDOWS:
+                    rc_labels = v12mod._refine_labels(
+                        rE[confine_keep], anchors, alabs, rtimes[confine_keep])
+                    if (rc_labels is not None
+                            and len(set(rc_labels.tolist())) >= 2):
+                        rcwins = [(float(t), float(t) + v12mod.REFINE_WIN_S)
+                                  for t in rtimes[confine_keep]]
+                        r_ref_c = chunks_to_turns(rcwins, rc_labels, turns,
+                                                  fallback=(kept, labels_auto))
         pa = pt = None
         if args.post and probs is not None:        # 复用上面那一次 OSD，不重复跑
             k_t = min(true_k, len(E) - 1)
@@ -396,15 +511,22 @@ def main():
         row = {"meeting": meeting, "true_k": true_k, "n_chunks": len(E),
                "k_auto": k_auto, "eigvals": [round(float(v), 4) for v in eigs[:8]],
                "auto": r_auto, "true_k_forced": r_true,
+               "ahc": r_ahc, "ahc_true": r_ahc_true, "k_ahc": ka_ahc,
+               "refined": r_ref,
+               "refined_confined": r_ref_c,
+               "confine_kept": ([int(confine_keep.sum()), int(len(confine_keep))]
+                                if confine_keep is not None else None),
                "post_auto": pa, "post_true": pt,
                "elapsed_s": round(time.time() - t0, 1)}
         rows.append(row)
-        print("[%s] %-14s %5d %6d | K %2d/%2d 覆盖%3.0f%% | 谱聚类 %5.1f%%/%5.1f%% | "
-              "+OSD后处理 %5.1f%%/%5.1f%% (多标签 %s)"
-              % (arm, meeting, true_k, len(E), k_auto, true_k,
-                 r_auto["coverage"] * 100, r_auto["acc"] * 100, r_true["acc"] * 100,
-                 (pa or {}).get("acc", 0) * 100, (pt or {}).get("acc", 0) * 100,
-                 ("%.0f%%" % ((pt or {}).get("multilabel_rate", 0) * 100)) if pt else "-"),
+        print("[%s] %-14s %5d %6d | K 谱%2d/真%2d AHC%2d | 覆盖%3.0f%% | "
+              "谱聚类 %5.1f%% | AHC %5.1f%% | **+细化 %s** | confine %s(%s) | +OSD %5.1f%%"
+              % (arm, meeting, true_k, len(E), k_auto, true_k, ka_ahc,
+                 r_auto["coverage"] * 100, r_auto["acc"] * 100, r_ahc["acc"] * 100,
+                 ("%5.1f%%" % (r_ref["acc"] * 100)) if r_ref else "  -  ",
+                 ("%5.1f%%" % (r_ref_c["acc"] * 100)) if r_ref_c else "  -  ",
+                 ("%d/%d" % tuple(row["confine_kept"])) if row["confine_kept"] else "-",
+                 (pt or {}).get("acc", 0) * 100),
               flush=True)
         RESULTS.mkdir(parents=True, exist_ok=True)
         (RESULTS / args.out).write_text(
@@ -420,18 +542,32 @@ def main():
         BASE = {"R8001_M8004": 45.0, "R8003_M8001": 42.3, "R8007_M8010": 22.2,
                 "R8007_M8011": 34.8, "R8008_M8013": 38.1, "R8009_M8018": 77.1,
                 "R8009_M8019": 85.7, "R8009_M8020": 84.2}
-        pairs = [(r["meeting"], r["auto"]["acc"] * 100, BASE[r["meeting"]])
+        quads = [(r["meeting"], r["auto"]["acc"] * 100,
+                  (r.get("refined") or {}).get("acc", 0) * 100,
+                  ((r.get("refined_confined") or {}).get("acc") or 0) * 100
+                  if r.get("refined_confined") else None,
+                  BASE[r["meeting"]])
                  for r in rows if r["meeting"] in BASE]
-        if pairs:
-            print("\n=== 汇总（%d 场，臂=%s，后处理=%s）==="
-                  % (len(rows), args.arm, "开" if args.post else "关"))
-            print("  %-14s %8s %8s %8s" % ("meeting", "本方案", "现状", "净变化"))
-            for m, a, b in pairs:
-                print("  %-14s %7.1f%% %7.1f%% %+7.1f" % (m, a, b, a - b))
-            print("  %-14s %7.1f%% %7.1f%% %+7.1f"
-                  % ("平均", st.mean([a for _, a, _ in pairs]),
-                     st.mean([b for _, _, b in pairs]),
-                     st.mean([a - b for _, a, b in pairs])))
+        if quads:
+            has_c = any(x[3] is not None for x in quads)
+            print("\n=== 汇总（%d 场，臂=%s）===" % (len(rows), args.arm))
+            cols = ("meeting", "谱聚类", "+细化") + (("confine",) if has_c else ()) + ("现状", "细化增益")
+            print("  %-14s" % cols[0] + "".join(" %8s" % c for c in cols[1:]))
+            for m, sp, rf, rc, b in quads:
+                line = "  %-14s %7.1f%% %7.1f%%" % (m, sp, rf)
+                if has_c:
+                    line += " %7.1f%%" % (rc if rc is not None else float("nan"))
+                line += " %7.1f%% %+9.1f" % (b, rf - sp)
+                print(line)
+            print("  %-14s %7.1f%% %7.1f%%" % ("平均", st.mean([x[1] for x in quads]),
+                                                st.mean([x[2] for x in quads]))
+                  + (" %7.1f%%" % st.mean([x[3] for x in quads if x[3] is not None]) if has_c else "")
+                  + " %7.1f%% %+9.1f" % (st.mean([x[4] for x in quads]),
+                                         st.mean([x[2] - x[1] for x in quads])))
+            print("  含细化 vs 现状：%+.1f pt" % st.mean([x[2] - x[4] for x in quads]))
+            if has_c:
+                print("  困境六判据（R8008_M8013）：confine 恢复 ≥45%% ⇒ 机制冲突坐实；"
+                      "仍 ~40%% ⇒ 接线问题" )
     print("已写出 %s" % (RESULTS / args.out))
 
 

@@ -168,6 +168,11 @@ def confusion(truth, pred, mapping):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--arm", default="v12",
+                    help="对比哪条预测臂：v12 含 0.6s 细化 / baseline 无细化")
+    args = ap.parse_args()
     meetings = sorted(p.stem for p in ALI_RTTM.glob("*.rttm"))
     rows = []
     print("%-14s %5s %8s %9s %9s %8s %8s | %9s %9s %8s %8s"
@@ -175,7 +180,7 @@ def main():
              "映射数", "平滑后句级", "平滑后帧级", "平滑后碎", "平滑后切"),
           flush=True)
     for meeting in meetings:
-        pred_path = PREDICTIONS / f"{meeting}.v12.full.rttm"
+        pred_path = PREDICTIONS / f"{meeting}.{args.arm}.full.rttm"
         if not pred_path.exists():
             continue
         truth = read_rttm(ALI_RTTM / f"{meeting}.rttm")
@@ -239,7 +244,7 @@ def main():
     row = next((r for r in rows if r["meeting"] == target), None)
     if row:
         truth = read_rttm(ALI_RTTM / f"{target}.rttm")
-        pred = read_rttm(PREDICTIONS / f"{target}.v12.full.rttm")
+        pred = read_rttm(PREDICTIONS / f"{target}.{args.arm}.full.rttm")
         print("\n=== %s 根因：真值 %d 人 / 预测 %d 簇（人数已选对，DER 仍 79%%）==="
               % (target, row["n_truth_speakers"], row["n_pred_speakers"]))
         print("  映射: %s" % row["mapping"])
@@ -258,7 +263,7 @@ def main():
     print("  %9s %11s %10s %11s" % ("min_hold", "句级准确", "切句率", "碎段均值"))
     cache = []
     for meeting in meetings:
-        pred_path = PREDICTIONS / f"{meeting}.v12.full.rttm"
+        pred_path = PREDICTIONS / f"{meeting}.{args.arm}.full.rttm"
         if not pred_path.exists():
             continue
         truth = read_rttm(ALI_RTTM / f"{meeting}.rttm")
